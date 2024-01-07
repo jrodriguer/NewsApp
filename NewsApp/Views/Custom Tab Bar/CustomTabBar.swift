@@ -31,7 +31,7 @@ struct CustomTabBar: View {
                     .frame(width: geo.size.width, height: geo.size.height)
                 }
             }
-            //.tint(Color("icons-secondary"))
+            .tint(Color(.gray))
             
             Button {
                 
@@ -63,7 +63,7 @@ struct CustomTabBar: View {
                     .frame(width: geo.size.width, height: geo.size.height)
                 }
             }
-            //.tint(Color("icons-secondary"))
+            .tint(Color(.gray))
         }
         .frame(height: 82)
     }
