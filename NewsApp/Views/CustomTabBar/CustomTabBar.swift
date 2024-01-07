@@ -32,7 +32,6 @@ struct CustomTabBar: View {
                     Image(systemName: "network")
                         .frame(width: 32, height: 32)
                     Text("Headers")
-                    //.font(Font.tabBar)
                 }
             }
             
