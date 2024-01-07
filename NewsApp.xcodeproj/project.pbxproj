@@ -79,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A3712D22B4B2CEB005D6575 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				8A74C61B2B4B1D1A005C7EDC /* CustomTabBar.swift */,
+				8A74C61D2B4B1D73005C7EDC /* TabBarButton.swift */,
+			);
+			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
 		8A4E22B02B4A2BCA006D71C6 = {
 			isa = PBXGroup;
 			children = (
@@ -140,19 +149,10 @@
 		8A4E22E62B4A2BE0006D71C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8A4E22E92B4A3267006D71C6 /* Custom Tab Bar */,
+				8A3712D22B4B2CEB005D6575 /* CustomTabBar */,
 				8A4E22EC2B4A3324006D71C6 /* RootView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		8A4E22E92B4A3267006D71C6 /* Custom Tab Bar */ = {
-			isa = PBXGroup;
-			children = (
-				8A74C61B2B4B1D1A005C7EDC /* CustomTabBar.swift */,
-				8A74C61D2B4B1D73005C7EDC /* TabBarButton.swift */,
-			);
-			path = "Custom Tab Bar";
 			sourceTree = "<group>";
 		};
 		8A74C6162B4B03B2005C7EDC /* Helpers */ = {
