@@ -11,40 +11,59 @@ struct CustomTabBar: View {
     var body: some View {
         HStack {
             Button {
-                // Switch to Personal
+                
             } label: {
-                VStack(alignment: .center, spacing: 4) {
+                GeometryReader { geo in
+                    
                     Rectangle()
                         .foregroundColor(.blue)
-                        .frame(width: 59, height: 2)
-                    Image(systemName: "person.crop.circle")
-                        .frame(width: 24, height: 24)
-                    Text("Personal")
-                        //.font(Font.tabBar)
+                        .frame(width: geo.size.width/2, height: 4)
+                        .padding(.leading, geo.size.width/4)
+                    
+                    VStack(alignment: .center, spacing: 4) {
+                        Image(systemName: "person.crop.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 24, height: 24)
+                        Text("Personal")
+                            //.font(Font.tabBar)
+                    }
+                    .frame(width: geo.size.width, height: geo.size.height)
                 }
+            }
+            //.tint(Color("icons-secondary"))
+            
+            Button {
+                
+            } label: {
+                    VStack(alignment: .center, spacing: 4) {
+                        Image(systemName: "network")
+                            .frame(width: 32, height: 32)
+                        Text("Headers")
+                        //.font(Font.tabBar)
+                    }
             }
             
             Button {
-                // Switch to Headers
+                
             } label: {
-                VStack(alignment: .center, spacing: 4) {
-                    Image(systemName: "network")
-                        .frame(width: 24, height: 24)
-                    Text("Headers")
+                GeometryReader { geo in
+                    
+                    Rectangle()
+                        .foregroundColor(.blue)
+                        .frame(width: geo.size.width/2, height: 4)
+                        .padding(.leading, geo.size.width/4)
+                    
+                    VStack(alignment: .center, spacing: 4) {
+                        Image(systemName: "heart")
+                            .frame(width: 24, height: 24)
+                        Text("Favorites")
                         //.font(Font.tabBar)
+                    }
+                    .frame(width: geo.size.width, height: geo.size.height)
                 }
             }
-            
-            Button {
-                // Switch to Favorites
-            } label: {
-                VStack(alignment: .center, spacing: 4) {
-                    Image(systemName: "heart")
-                        .frame(width: 24, height: 24)
-                    Text("Favorites")
-                        //.font(Font.tabBar)
-                }
-            }
+            //.tint(Color("icons-secondary"))
         }
         .frame(height: 82)
     }
