@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Favorites: View {
+struct FavoritesView: View {
     var body: some View {
         VStack {
             Spacer()
@@ -27,5 +27,5 @@ struct Favorites: View {
 }
 
 #Preview {
-    Favorites()
+    FavoritesView()
 }

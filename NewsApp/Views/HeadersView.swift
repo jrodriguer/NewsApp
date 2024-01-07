@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Headers: View {
+struct HeadersView: View {
     var body: some View {
         VStack {
             Spacer()
@@ -27,5 +27,5 @@ struct Headers: View {
 }
 
 #Preview {
-    Headers()
+    HeadersView()
 }
