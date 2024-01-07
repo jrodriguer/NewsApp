@@ -7,18 +7,27 @@
 
 import SwiftUI
 
+enum Tabs: Int {
+    case personal = 0
+    case headers = 1
+    case favorites = 2
+}
+
 struct CustomTabBar: View {
+    @Binding var selectedTab: Tabs
+    
     var body: some View {
         HStack {
             Button {
-                
+                selectedTab = .favorites
             } label: {
                 GeometryReader { geo in
-                    
-                    Rectangle()
-                        .foregroundColor(.blue)
-                        .frame(width: geo.size.width/2, height: 4)
-                        .padding(.leading, geo.size.width/4)
+                    if selectedTab == .personal {
+                        Rectangle()
+                            .foregroundColor(.blue)
+                            .frame(width: geo.size.width/2, height: 4)
+                            .padding(.leading, geo.size.width/4)
+                    }
                     
                     VStack(alignment: .center, spacing: 4) {
                         Image(systemName: "person.crop.circle")
@@ -26,7 +35,7 @@ struct CustomTabBar: View {
                             .scaledToFit()
                             .frame(width: 24, height: 24)
                         Text("Personal")
-                            //.font(Font.tabBar)
+                        //.font(Font.tabBar)
                     }
                     .frame(width: geo.size.width, height: geo.size.height)
                 }
@@ -34,25 +43,26 @@ struct CustomTabBar: View {
             .tint(Color(.gray))
             
             Button {
-                
+                selectedTab = .headers
             } label: {
-                    VStack(alignment: .center, spacing: 4) {
-                        Image(systemName: "network")
-                            .frame(width: 32, height: 32)
-                        Text("Headers")
-                        //.font(Font.tabBar)
-                    }
+                VStack(alignment: .center, spacing: 4) {
+                    Image(systemName: "network")
+                        .frame(width: 32, height: 32)
+                    Text("Headers")
+                    //.font(Font.tabBar)
+                }
             }
             
             Button {
-                
+                selectedTab = .favorites
             } label: {
                 GeometryReader { geo in
-                    
-                    Rectangle()
-                        .foregroundColor(.blue)
-                        .frame(width: geo.size.width/2, height: 4)
-                        .padding(.leading, geo.size.width/4)
+                    if selectedTab == .favorites {
+                        Rectangle()
+                            .foregroundColor(.blue)
+                            .frame(width: geo.size.width/2, height: 4)
+                            .padding(.leading, geo.size.width/4)
+                    }
                     
                     VStack(alignment: .center, spacing: 4) {
                         Image(systemName: "heart")
@@ -70,5 +80,5 @@ struct CustomTabBar: View {
 }
 
 #Preview {
-    CustomTabBar()
+    CustomTabBar(selectedTab: .constant(.personal))
 }
