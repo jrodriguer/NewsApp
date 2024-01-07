@@ -15,7 +15,7 @@ struct RootView: View {
         
         Spacer()
         
-        Headers()
+        HeadersView()
         
         CustomTabBar(selectedTab: $selectedTab)
     }
