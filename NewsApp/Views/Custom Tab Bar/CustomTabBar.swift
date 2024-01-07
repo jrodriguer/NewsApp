@@ -21,24 +21,7 @@ struct CustomTabBar: View {
             Button {
                 selectedTab = .favorites
             } label: {
-                GeometryReader { geo in
-                    if selectedTab == .personal {
-                        Rectangle()
-                            .foregroundColor(.blue)
-                            .frame(width: geo.size.width/2, height: 4)
-                            .padding(.leading, geo.size.width/4)
-                    }
-                    
-                    VStack(alignment: .center, spacing: 4) {
-                        Image(systemName: "person.crop.circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 24, height: 24)
-                        Text("Personal")
-                        //.font(Font.tabBar)
-                    }
-                    .frame(width: geo.size.width, height: geo.size.height)
-                }
+                TabBarButton(buttonText: "Personal", imageName: "person.crop.circle", isActive: selectedTab == .personal)
             }
             .tint(Color(.gray))
             
@@ -56,22 +39,7 @@ struct CustomTabBar: View {
             Button {
                 selectedTab = .favorites
             } label: {
-                GeometryReader { geo in
-                    if selectedTab == .favorites {
-                        Rectangle()
-                            .foregroundColor(.blue)
-                            .frame(width: geo.size.width/2, height: 4)
-                            .padding(.leading, geo.size.width/4)
-                    }
-                    
-                    VStack(alignment: .center, spacing: 4) {
-                        Image(systemName: "heart")
-                            .frame(width: 24, height: 24)
-                        Text("Favorites")
-                        //.font(Font.tabBar)
-                    }
-                    .frame(width: geo.size.width, height: geo.size.height)
-                }
+                TabBarButton(buttonText: "Favorites", imageName: "heart", isActive: selectedTab == .favorites)
             }
             .tint(Color(.gray))
         }
