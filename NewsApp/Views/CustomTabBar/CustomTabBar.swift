@@ -19,7 +19,7 @@ struct CustomTabBar: View {
     var body: some View {
         HStack {
             Button {
-                selectedTab = .favorites
+                selectedTab = .personal
             } label: {
                 TabBarButton(buttonText: "Personal", imageName: "person.crop.circle", isActive: selectedTab == .personal)
             }
