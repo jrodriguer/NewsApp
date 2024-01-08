@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-struct Article: Codable {
+struct Article: Codable, Identifiable {
+    var id = UUID()
+
     var author: String?
     var title: String
     var description: String?
@@ -58,5 +60,7 @@ extension DateFormatter {
 }
 
 struct TopHeadlines: Codable {
+    var status: String
+    var totalResults: Int
     var articles: [Article]
 }
