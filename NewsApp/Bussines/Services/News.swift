@@ -49,7 +49,3 @@ struct Article: Decodable {
     let description: String
     // TODO: Updaate Article structure
 }
-
-Task {
-    
-}

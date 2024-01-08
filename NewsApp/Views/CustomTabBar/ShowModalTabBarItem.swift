@@ -37,7 +37,6 @@ struct ShowModalTabBarItem: View {
 struct ShowModalTabBarItem_Previews: PreviewProvider {
     static var previews: some View {
         ShowModalTabBarItem(radius: 55) {
-            // Action for onTapGesture
             print("Button tapped")
         }
     }
