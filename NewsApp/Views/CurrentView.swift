@@ -13,7 +13,7 @@ struct CurrentView: View {
     var body: some View {
         VStack {
             if self.currentView == .Headers {
-                HeadersView()
+                HeadersView(articles: [])
             } else {
                 FavoritesView()
             }
