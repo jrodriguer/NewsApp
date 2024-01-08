@@ -4,27 +4,29 @@
     "articles": [
         {
             "source": {
-                "id":"reuters","name":"Reuters"
+                "id": "reuters",
+                "name": "Reuters"
             },
-            "author":"Reuters.com",
-            "title":"North Korea vows military strike if any provocation, fires artillery rounds - Reuters.com",
+            "author": "Reuters.com",
+            "title":" North Korea vows military strike if any provocation, fires artillery rounds - Reuters.com",
             "description":null,
-            "url":"https://www.reuters.com/world/asia-pacific/north-koreas-kim-yo-jong-vows-immediate-response-provocation-kcna-2024-01-07/",
-            "urlToImage":null,
-            "publishedAt":"2024-01-07T10:38:00Z",
-            "content":null
+            "url": "https://www.reuters.com/world/asia-pacific/north-koreas-kim-yo-jong-vows-immediate-response-provocation-kcna-2024-01-07/",
+            "urlToImage": null,
+            "publishedAt": "2024-01-07T10:38:00Z",
+            "content": null
         },
         {
             "source": {
-                "id":null,"name":"Nbcsportschicago.com"
+                "id": null,
+                "name": "Nbcsportschicago.com"
             },
-            "author":"Charlie Roumeliotis",
-            "title":"How Blackhawks plan to move forward without Connor Bedard, 8 others on injured reserve - NBC Sports Chicago",
-            "description":"The Blackhawks have nine players on injured reserve, including Connor Bedard. It’s comical at this point.",
-            "url":"http://www.nbcsportschicago.com/nhl/chicago-blackhawks/how-blackhawks-plan-to-move-forward-without-connor-bedard-8-others-on-injured-reserve/530421/",
-            "urlToImage":"https://media.nbcsportschicago.com/2024/01/GettyImages-1903203802.jpg?quality=85&strip=all&resize=1200%2C675",
-            "publishedAt":"2024-01-07T02:43:04Z",
-            "content":"Presented by Nationwide Insurance Agent Jeff Vukovich\r\nThe Chicago Blackhawks recently completed a five-game road swing, and it was a disastrous trip, not only because they went 0-4-1 during it but b… [+3547 chars]"
+            "author": "Charlie Roumeliotis",
+            "title": "How Blackhawks plan to move forward without Connor Bedard, 8 others on injured reserve - NBC Sports Chicago",
+            "description": "The Blackhawks have nine players on injured reserve, including Connor Bedard. It’s comical at this point.",
+            "url": "http://www.nbcsportschicago.com/nhl/chicago-blackhawks/how-blackhawks-plan-to-move-forward-without-connor-bedard-8-others-on-injured-reserve/530421/",
+            "urlToImage": "https://media.nbcsportschicago.com/2024/01/GettyImages-1903203802.jpg?quality=85&strip=all&resize=1200%2C675",
+            "publishedAt": "2024-01-07T02:43:04Z",
+            "content": "Presented by Nationwide Insurance Agent Jeff Vukovich\r\nThe Chicago Blackhawks recently completed a five-game road swing, and it was a disastrous trip, not only because they went 0-4-1 during it but b… [+3547 chars]"
         }
     ]
 }
