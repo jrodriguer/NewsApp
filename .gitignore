@@ -1,0 +1,21 @@
+# Mac OS X Finder
+.DS_Store
+
+## GCC Patch
+/*.gcno
+
+# Xcode
+xcuserdata/
+project.xcworkspace/
+DerivedData/
+
+# build products
+build/
+*.[oa]
+
+## Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
