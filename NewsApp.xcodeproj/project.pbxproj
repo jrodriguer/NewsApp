@@ -24,7 +24,6 @@
 		8A8EF22E2B4B664A00402584 /* ShowModalTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF22D2B4B664A00402584 /* ShowModalTabBarItem.swift */; };
 		8A8EF2362B4C166400402584 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF2352B4C166400402584 /* Article.swift */; };
 		8A8EF2382B4C1F6400402584 /* TopHeadLines.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A8EF2372B4C1F6400402584 /* TopHeadLines.json */; };
-		8A8EF23A2B4C1FEB00402584 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF2392B4C1FEB00402584 /* PreviewData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +64,6 @@
 		8A8EF22D2B4B664A00402584 /* ShowModalTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModalTabBarItem.swift; sourceTree = "<group>"; };
 		8A8EF2352B4C166400402584 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		8A8EF2372B4C1F6400402584 /* TopHeadLines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TopHeadLines.json; sourceTree = "<group>"; };
-		8A8EF2392B4C1FEB00402584 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +104,7 @@
 		8A4E22B02B4A2BCA006D71C6 = {
 			isa = PBXGroup;
 			children = (
+				8A8EF23C2B4C623400402584 /* Resources */,
 				8A4E22BB2B4A2BCA006D71C6 /* NewsApp */,
 				8A4E22CC2B4A2BCD006D71C6 /* NewsAppTests */,
 				8A4E22D62B4A2BCD006D71C6 /* NewsAppUITests */,
@@ -126,10 +125,10 @@
 		8A4E22BB2B4A2BCA006D71C6 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
-				8A8EF22F2B4B7E3700402584 /* Bussines */,
 				8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */,
 				8A4E22BE2B4A2BCA006D71C6 /* ContentView.swift */,
 				8A74C6162B4B03B2005C7EDC /* Helpers */,
+				8A8EF23B2B4C61DA00402584 /* Model */,
 				8A4E22BC2B4A2BCA006D71C6 /* NewsAppApp.swift */,
 				8A4E22C22B4A2BCC006D71C6 /* Preview Content */,
 				8A4E22E62B4A2BE0006D71C6 /* Views */,
@@ -141,8 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				8A4E22C32B4A2BCC006D71C6 /* Preview Assets.xcassets */,
-				8A8EF2392B4C1FEB00402584 /* PreviewData.swift */,
-				8A8EF2372B4C1F6400402584 /* TopHeadLines.json */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -184,36 +181,20 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		8A8EF22F2B4B7E3700402584 /* Bussines */ = {
-			isa = PBXGroup;
-			children = (
-				8A8EF2312B4B7FA400402584 /* Data */,
-				8A8EF2302B4B7E4000402584 /* Services */,
-			);
-			path = Bussines;
-			sourceTree = "<group>";
-		};
-		8A8EF2302B4B7E4000402584 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		8A8EF2312B4B7FA400402584 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				8A8EF2322B4B7FAC00402584 /* Entities */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		8A8EF2322B4B7FAC00402584 /* Entities */ = {
+		8A8EF23B2B4C61DA00402584 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				8A8EF2352B4C166400402584 /* Article.swift */,
 			);
-			path = Entities;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A8EF23C2B4C623400402584 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8A8EF2372B4C1F6400402584 /* TopHeadLines.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,7 +332,6 @@
 				8A74C6182B4B03D0005C7EDC /* Fonts.swift in Sources */,
 				8A4E22BF2B4A2BCA006D71C6 /* ContentView.swift in Sources */,
 				8A4E22BD2B4A2BCA006D71C6 /* NewsAppApp.swift in Sources */,
-				8A8EF23A2B4C1FEB00402584 /* PreviewData.swift in Sources */,
 				8A4E22ED2B4A3324006D71C6 /* RootView.swift in Sources */,
 				8A74C61C2B4B1D1A005C7EDC /* CustomTabBar.swift in Sources */,
 				8A8EF2282B4B610200402584 /* HeadersView.swift in Sources */,

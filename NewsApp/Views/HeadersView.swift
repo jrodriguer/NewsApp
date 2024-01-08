@@ -8,15 +8,22 @@
 import SwiftUI
 
 struct HeadersView: View {
+    let data = (1...100).map { "Item \($0)" }
+    
+    let columns = [
+        GridItem(.adaptive(minimum: 80))
+    ]
+    
     var body: some View {
-        VStack {
-            Spacer()
-            Grid {
-                
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(data, id: \.self) { item in
+                    Text(item)
+                }
             }
+            .padding(.horizontal)
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-        .navigationBarTitle("Headers")
+        .frame(maxHeight: 300)
     }
 }
 
