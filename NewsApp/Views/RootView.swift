@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct RootView: View {
-    @State private var selectedTab: Tabs = .personal
+    @State private var selectedTab: Tabs = .Headers
+    @State private var showModal: Bool = false
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        
-        Spacer()
-        
-        HeadersView()
-        
-        CustomTabBar(selectedTab: $selectedTab)
+        CurrentView(currentView: self.$selectedTab)
+        CustomTabBar(selectedTab: $selectedTab, showModal: $showModal)
     }
 }
 

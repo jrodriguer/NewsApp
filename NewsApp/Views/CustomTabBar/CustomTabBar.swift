@@ -8,37 +8,33 @@
 import SwiftUI
 
 enum Tabs: Int {
-    case personal = 0
-    case headers = 1
-    case favorites = 2
+    case Headers
+    case Favorites
 }
 
 struct CustomTabBar: View {
     @Binding var selectedTab: Tabs
+    @Binding var showModal: Bool
     
     var body: some View {
         HStack {
             Button {
-                selectedTab = .personal
+                selectedTab = .Headers
             } label: {
-                TabBarButton(buttonText: "Personal", imageName: "person.crop.circle", isActive: selectedTab == .personal)
+                TabBarButton(buttonText: "Headers", imageName: "network", isActive: selectedTab == .Headers)
             }
             .tint(Color(.gray))
             
             Button {
-                selectedTab = .headers
+                
             } label: {
-                VStack(alignment: .center, spacing: 4) {
-                    Image(systemName: "network")
-                        .frame(width: 32, height: 32)
-                    Text("Headers")
-                }
+                ShowModalTabBarItem(radius: 55) { showModal.toggle() }
             }
             
             Button {
-                selectedTab = .favorites
+                selectedTab = .Favorites
             } label: {
-                TabBarButton(buttonText: "Favorites", imageName: "heart", isActive: selectedTab == .favorites)
+                TabBarButton(buttonText: "Favorites", imageName: "heart", isActive: selectedTab == .Favorites)
             }
             .tint(Color(.gray))
         }
@@ -47,5 +43,5 @@ struct CustomTabBar: View {
 }
 
 #Preview {
-    CustomTabBar(selectedTab: .constant(.personal))
+    CustomTabBar(selectedTab: .constant(.Headers), showModal: .constant(false))
 }
