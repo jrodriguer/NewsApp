@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Article: Decodable, Identifiable, Hashable {
+struct Article: Decodable, Identifiable {
     var id = UUID()
     let source: ArticleSource
     let author: String?
@@ -17,14 +17,6 @@ struct Article: Decodable, Identifiable, Hashable {
     let urlToImage: String?
     let publishedAt: String
     let content: String?
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func ==(lhs: Article, rhs: Article) -> Bool {
-        return lhs.id == rhs.id
-    }
 }
 
 struct ArticleSource: Decodable {
