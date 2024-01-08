@@ -7,7 +7,7 @@
 
 import Foundation
 
-var news: [TopHeadlines] = load("TopHeadLines.json")
+var news: TopHeadlines = load("TopHeadLines.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
