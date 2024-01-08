@@ -104,7 +104,6 @@
 		8A4E22B02B4A2BCA006D71C6 = {
 			isa = PBXGroup;
 			children = (
-				8A8EF23C2B4C623400402584 /* Resources */,
 				8A4E22BB2B4A2BCA006D71C6 /* NewsApp */,
 				8A4E22CC2B4A2BCD006D71C6 /* NewsAppTests */,
 				8A4E22D62B4A2BCD006D71C6 /* NewsAppUITests */,
@@ -131,6 +130,7 @@
 				8A8EF23B2B4C61DA00402584 /* Model */,
 				8A4E22BC2B4A2BCA006D71C6 /* NewsAppApp.swift */,
 				8A4E22C22B4A2BCC006D71C6 /* Preview Content */,
+				8A8EF23C2B4C623400402584 /* Resources */,
 				8A4E22E62B4A2BE0006D71C6 /* Views */,
 			);
 			path = NewsApp;
