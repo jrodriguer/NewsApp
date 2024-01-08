@@ -2,7 +2,7 @@
 //  RootView.swift
 //  NewsApp
 //
-//  Created by Julio Rodriguez on 7/1/24.
+//  Created by Julio Rodriguez on 8/1/24.
 //
 
 import SwiftUI
