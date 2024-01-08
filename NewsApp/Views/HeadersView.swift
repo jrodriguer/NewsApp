@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct HeadersView: View {
-    let data = (1...100).map { "Item \($0)" }
-    
-    let columns = [
-        GridItem(.adaptive(minimum: 80))
-    ]
+    var news: TopHeadlines?
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(data, id: \.self) { item in
-                    Text(item)
-                }
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                Text("Headers")
+                    .font(.system(size: 20))
+                    .bold()
+                Spacer()
             }
-            .padding(.horizontal)
+            
+            Spacer()
         }
-        .frame(maxHeight: 300)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+        .navigationBarTitle("Headers")
     }
 }
 
