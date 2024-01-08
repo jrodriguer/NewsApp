@@ -8,26 +8,26 @@
 import SwiftUI
 
 struct HeadersView: View {
-    var news: TopHeadlines?
+    var articles: [Article]
     
     var body: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Spacer()
-                Text("Headers")
-                    .font(.system(size: 20))
-                    .bold()
-                Spacer()
+        ScrollView {
+            VStack {
+                if !articles.isEmpty {
+                    ForEach(articles, id: \.id) { article in
+                        CardView(imageURL: article.urlToImage, category: "News", heading: article.title, author: article.author ?? "")
+                    }
+                } else {
+                    Text("No articles available")
+                        .foregroundColor(.red)
+                        .padding()
+                }
             }
-            
-            Spacer()
+            .navigationBarTitle("Headers")
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-        .navigationBarTitle("Headers")
     }
 }
 
 #Preview {
-    HeadersView()
+    HeadersView(articles: news.articles)
 }
