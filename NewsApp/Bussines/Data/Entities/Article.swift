@@ -6,3 +6,32 @@
 //
 
 import Foundation
+
+struct Article: Decodable, Identifiable, Hashable {
+    var id = UUID()
+    let source: ArticleSource
+    let author: String?
+    let title: String
+    let description: String?
+    let url: String
+    let urlToImage: String?
+    let publishedAt: String
+    let content: String?
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func ==(lhs: Article, rhs: Article) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
+struct ArticleSource: Decodable {
+    let id: String?
+    let name: String
+}
+
+struct TopHeadlines: Decodable {
+    let articles: [Article]
+}
