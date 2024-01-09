@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CardView: View {
     var imageURL: URL?
-    var category: String
     var heading: String
     var author: String
     
@@ -39,9 +38,9 @@ struct CardView: View {
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text(category)
-                        .font(.headline)
-                        .foregroundColor(.secondary)
+                    //Text(category)
+                        //.font(.headline)
+                        //.foregroundColor(.secondary)
                     Text(heading)
                         .font(.title)
                         .fontWeight(.black)
