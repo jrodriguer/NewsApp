@@ -62,8 +62,17 @@ struct HeadersView: View {
     }
     
     private func listView() -> some View {
-        // TODO: Define list view: List or another suitable view for a list-based layout
-        Text("List View Placeholder")
+        List {
+            if !articles.isEmpty {
+                ForEach(articles) { article in
+                    ListView(title: article.title, author: article.author ?? "")
+                }
+            } else {
+                Text("No articles available")
+                    .foregroundColor(.red)
+                    .padding()
+            }
+        }
     }
 }
 
