@@ -8,11 +8,42 @@
 import SwiftUI
 
 struct HeadersView: View {
+    enum ViewOption: String, CaseIterable {
+        case cardView = "Card View"
+        case listView = "List View"
+    }
+    @State private var selectedViewOption = ViewOption.cardView
+    
     var articles: [Article]
     
     @EnvironmentObject var favorites: Favorites
     
     var body: some View {
+        VStack {
+            Picker("Select View", selection: $selectedViewOption) {
+                ForEach(ViewOption.allCases, id: \.self) { option in
+                    Text(option.rawValue).tag(option)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding()
+            
+            viewForSelectedOption()
+        }
+        .navigationBarTitle("Headers")
+    }
+    
+    @ViewBuilder
+    private func viewForSelectedOption() -> some View {
+        switch selectedViewOption {
+        case .cardView:
+            cardView()
+        case .listView:
+            listView()
+        }
+    }
+    
+    private func cardView() -> some View {
         ScrollView {
             VStack {
                 if !articles.isEmpty {
@@ -27,8 +58,12 @@ struct HeadersView: View {
                         .padding()
                 }
             }
-            .navigationBarTitle("Headers")
         }
+    }
+    
+    private func listView() -> some View {
+        // TODO: Define list view: List or another suitable view for a list-based layout
+        Text("List View Placeholder")
     }
 }
 
