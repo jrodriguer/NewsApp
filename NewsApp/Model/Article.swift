@@ -26,10 +26,8 @@ struct Article: Codable, Identifiable {
         var name: String
     }
     
-    var isFavorite: Bool
-    
     private enum CodingKeys: String, CodingKey {
-        case author, title, description, url, urlToImage, publishedAt, content, source, isFavorite
+        case author, title, description, url, urlToImage, publishedAt, content, source
     }
     
     init(from decoder: Decoder) throws {
@@ -42,7 +40,6 @@ struct Article: Codable, Identifiable {
         urlToImage = try container.decodeIfPresent(URL.self, forKey: .urlToImage)
         content = try container.decodeIfPresent(String.self, forKey: .content)
         source = try container.decode(ArticleSource.self, forKey: .source)
-        isFavorite = try container.decode(Bool.self, forKey: .isFavorite)
         
         // Decode publishedAt using custom strategy (String to Date)
         var dateString = try container.decode(String.self, forKey: .publishedAt)
