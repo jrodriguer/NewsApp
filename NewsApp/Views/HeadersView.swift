@@ -10,6 +10,8 @@ import SwiftUI
 struct HeadersView: View {
     var articles: [Article]
     
+    @EnvironmentObject var favorites: Favorites
+    
     var body: some View {
         ScrollView {
             VStack {

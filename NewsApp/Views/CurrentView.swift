@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CurrentView: View {
-    @Environment(ModelData.self) var modelData
     @Binding var currentView: Tabs
     @StateObject var favorites = Favorites()
     
@@ -28,5 +27,4 @@ struct CurrentView: View {
 
 #Preview {
     CurrentView(currentView: .constant(.Headers))
-        .environment(ModelData())
 }
