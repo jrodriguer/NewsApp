@@ -13,7 +13,6 @@
 		8A4E22CE2B4A2BCD006D71C6 /* NewsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22CD2B4A2BCD006D71C6 /* NewsAppTests.swift */; };
 		8A4E22D82B4A2BCD006D71C6 /* NewsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22D72B4A2BCD006D71C6 /* NewsAppUITests.swift */; };
 		8A4E22DA2B4A2BCD006D71C6 /* NewsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22D92B4A2BCD006D71C6 /* NewsAppUITestsLaunchTests.swift */; };
-		8A74C6182B4B03D0005C7EDC /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A74C6172B4B03D0005C7EDC /* Fonts.swift */; };
 		8A74C61C2B4B1D1A005C7EDC /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A74C61B2B4B1D1A005C7EDC /* CustomTabBar.swift */; };
 		8A74C61E2B4B1D73005C7EDC /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A74C61D2B4B1D73005C7EDC /* TabBarButton.swift */; };
 		8A8EF2282B4B610200402584 /* HeadersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF2252B4B610200402584 /* HeadersView.swift */; };
@@ -54,7 +53,6 @@
 		8A4E22D32B4A2BCD006D71C6 /* NewsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4E22D72B4A2BCD006D71C6 /* NewsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppUITests.swift; sourceTree = "<group>"; };
 		8A4E22D92B4A2BCD006D71C6 /* NewsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		8A74C6172B4B03D0005C7EDC /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		8A74C61B2B4B1D1A005C7EDC /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		8A74C61D2B4B1D73005C7EDC /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		8A8EF2252B4B610200402584 /* HeadersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadersView.swift; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */,
-				8A74C6162B4B03B2005C7EDC /* Helpers */,
 				8A8EF23B2B4C61DA00402584 /* Model */,
 				8A4E22BC2B4A2BCA006D71C6 /* NewsAppApp.swift */,
 				8A4E22C22B4A2BCC006D71C6 /* Preview Content */,
@@ -173,14 +170,6 @@
 				8A8EF2412B4C843C00402584 /* RootView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		8A74C6162B4B03B2005C7EDC /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				8A74C6172B4B03D0005C7EDC /* Fonts.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		8A8EF23B2B4C61DA00402584 /* Model */ = {
@@ -340,7 +329,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A8EF22E2B4B664A00402584 /* ShowModalTabBarItem.swift in Sources */,
-				8A74C6182B4B03D0005C7EDC /* Fonts.swift in Sources */,
 				8A4E22BD2B4A2BCA006D71C6 /* NewsAppApp.swift in Sources */,
 				8A8EF23E2B4C630100402584 /* ModelData.swift in Sources */,
 				8A74C61C2B4B1D1A005C7EDC /* CustomTabBar.swift in Sources */,
