@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HeadersView: View {
-    @Environment(ModelData.self) var modelData
     var articles: [Article]
     
     var body: some View {
@@ -32,7 +31,5 @@ struct HeadersView: View {
 }
 
 #Preview {
-    let modelData = ModelData()
-    return HeadersView(articles: modelData.news.articles)
-        .environment(ModelData())
+    return HeadersView(articles: ModelData().news.articles)
 }

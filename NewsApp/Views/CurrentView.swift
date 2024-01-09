@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CurrentView: View {
+    @Environment(ModelData.self) var modelData
     @Binding var currentView: Tabs
     
     var body: some View {
@@ -23,4 +24,5 @@ struct CurrentView: View {
 
 #Preview {
     CurrentView(currentView: .constant(.Headers))
+        .environment(ModelData())
 }
