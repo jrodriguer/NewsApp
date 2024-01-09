@@ -16,7 +16,7 @@ struct HeadersView: View {
         ScrollView {
             VStack {
                 if !articles.isEmpty {
-                    ForEach(articles, id: \.id) { article in
+                    ForEach(articles) { article in
                         if article.title != "[Removed]" {
                             CardView(imageURL: article.urlToImage, heading: article.title, author: article.author ?? "", description: article.description ?? "")
                         }
