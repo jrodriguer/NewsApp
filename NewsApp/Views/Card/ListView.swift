@@ -15,11 +15,11 @@ struct ListView: View {
         HStack {
             Text(title)
             Spacer()
-            //Image(systemName: food.isFavorite ? "heart.fill" : "heart")
         }
     }
 }
 
 #Preview {
-    ListView(title: "Israel-Gaza war live updates: Blinken in Middle East as U.S. seeks to avert war between Israel and Hezbollah - The Washington Post", author: "Niha Masih, Jennifer Hassan, John Hudson, Yasmeen Abutaleb, Shane Harris")
+    ListView(title: "Israel-Gaza war live updates: Blinken in Middle East as U.S. seeks to avert war between Israel and Hezbollah - The Washington Post", author: "The Washington Post")
 }
+    

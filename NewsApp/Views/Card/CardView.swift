@@ -59,6 +59,7 @@ struct CardView: View {
                     .foregroundColor(.primary)
                     .padding(.vertical, 1)
             }
+            .padding([.bottom, .trailing], 10)
         }
         .background(Color(.systemGray6))
         .cornerRadius(10)
@@ -67,5 +68,6 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(imageURL: URL(string: "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://d1i4t8bqe7zgj6.cloudfront.net/01-07-2024/t_542a740c3bec4840811b74a7f8030823_name_UG3Y5CBFJHTU37IQY74PED45AE.jpg&w=1440"), heading: "Israel-Gaza war live updates: Blinken in Middle East as U.S. seeks to avert war between Israel and Hezbollah - The Washington Post", author: "Niha Masih, Jennifer Hassan, John Hudson, Yasmeen Abutaleb, Shane Harris", description: "The secretary of state’s tour is part of the U.S. effort to avoid regional escalation, in particular a war between Israel and the militant group in Lebanon.")
+    CardView(imageURL: URL(string: "https://scitechdaily.com/images/Neptune-and-Uranus-True-Colors.jpg"), heading: "Astronomical Illusions: New Images Reveal What Neptune and Uranus Really Look Like - SciTechDaily", author: "SciTechDaily", description: "Recent research led by Professor Patrick Irwin shows that Neptune and Uranus are both a similar shade of greenish-blue, challenging previous perceptions of their colors. The study used modern telescopic data to correct historical color inaccuracies and explai…")
+    
 }
