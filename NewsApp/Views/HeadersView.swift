@@ -15,7 +15,9 @@ struct HeadersView: View {
             VStack {
                 if !articles.isEmpty {
                     ForEach(articles, id: \.id) { article in
-                        CardView(imageURL: article.urlToImage, heading: article.title, author: article.author ?? "")
+                        if article.title != "[Removed]" {
+                            CardView(imageURL: article.urlToImage, heading: article.title, author: article.author ?? "", description: article.description ?? "")
+                        }
                     }
                 } else {
                     Text("No articles available")
