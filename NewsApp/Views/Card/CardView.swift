@@ -35,6 +35,7 @@ struct CardView: View {
                 .cornerRadius(10)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 0))
             } else {
+                // TODO: Check another data of wrong images
                 Image(systemName: "photo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
