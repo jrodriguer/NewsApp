@@ -38,8 +38,7 @@ struct CardView: View {
                 Image(systemName: "photo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(height: 70)
-                    .background(Color.gray.opacity(0.5)) 
+                    .frame(width: 200, height: 100)
                     .cornerRadius(10)
                     .padding()
             }
@@ -50,6 +49,7 @@ struct CardView: View {
                     .fontWeight(.black)
                     .foregroundColor(.primary)
                     .lineLimit(3)
+                    .padding([.vertical, .bottom], 14.976)
                 Text(author.uppercased())
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -57,13 +57,13 @@ struct CardView: View {
                     .font(.subheadline)
                     .fontWeight(.regular)
                     .foregroundColor(.primary)
-                    .padding(.vertical, 1)
+                    .padding(.bottom, 12.8)
             }
-            .padding([.bottom, .trailing], 10)
+            .padding(.horizontal, 4)
         }
         .background(Color(.systemGray6))
         .cornerRadius(10)
-        .padding()
+        .padding(10)
     }
 }
 
