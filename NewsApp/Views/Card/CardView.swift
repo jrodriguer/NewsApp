@@ -14,8 +14,8 @@ struct CardView: View {
     
     var body: some View {
         VStack {
-            imageURL.map {
-                AsyncImage(url: $0) { phase in
+            if let imageURL = imageURL {
+                AsyncImage(url: imageURL) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
@@ -31,16 +31,23 @@ struct CardView: View {
                         EmptyView()
                     }
                 }
+                .frame(height: 200)
+                .cornerRadius(10)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
+            } else {
+                Image(systemName: "photo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 200)
+                    .cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
             }
-            .frame(height: 200)
-            .cornerRadius(10)
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
             
             HStack {
                 VStack(alignment: .leading) {
                     //Text(category)
-                        //.font(.headline)
-                        //.foregroundColor(.secondary)
+                    //.font(.headline)
+                    //.foregroundColor(.secondary)
                     Text(heading)
                         .font(.title)
                         .fontWeight(.black)
@@ -54,8 +61,8 @@ struct CardView: View {
                 
                 Spacer()
             }
-            .padding()
         }
+        .padding()
     }
 }
 
