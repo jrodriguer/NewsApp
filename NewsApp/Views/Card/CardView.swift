@@ -32,7 +32,6 @@ struct CardView: View {
                         EmptyView()
                     }
                 }
-                .frame(height: 200)
                 .cornerRadius(10)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 0))
             } else {
@@ -40,6 +39,8 @@ struct CardView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 70)
+                    .background(Color.gray.opacity(0.5)) 
+                    .cornerRadius(10)
                     .padding()
             }
             
@@ -58,9 +59,9 @@ struct CardView: View {
                     .foregroundColor(.primary)
                     .padding(.vertical, 1)
             }
-            Spacer()
         }
-        
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
         .padding()
     }
 }
