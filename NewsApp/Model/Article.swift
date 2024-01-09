@@ -18,27 +18,31 @@ struct Article: Codable, Identifiable {
     var urlToImage: URL?
     var publishedAt: Date
     var content: String?
+    
     var source: ArticleSource
-
+    
     struct ArticleSource: Codable {
         var id: String?
         var name: String
     }
     
+    var isFavorite: Bool
+    
     private enum CodingKeys: String, CodingKey {
-        case source, author, title, description, url, urlToImage, publishedAt, content
+        case author, title, description, url, urlToImage, publishedAt, content, source, isFavorite
     }
     
     init(from decoder: Decoder) throws {
         var container = try decoder.container(keyedBy: CodingKeys.self)
         
-        source = try container.decode(ArticleSource.self, forKey: .source)
         author = try container.decodeIfPresent(String.self, forKey: .author)
         title = try container.decode(String.self, forKey: .title)
         description = try container.decodeIfPresent(String.self, forKey: .description)
         url = try container.decode(URL.self, forKey: .url)
         urlToImage = try container.decodeIfPresent(URL.self, forKey: .urlToImage)
         content = try container.decodeIfPresent(String.self, forKey: .content)
+        source = try container.decode(ArticleSource.self, forKey: .source)
+        isFavorite = try container.decode(Bool.self, forKey: .isFavorite)
         
         // Decode publishedAt using custom strategy (String to Date)
         var dateString = try container.decode(String.self, forKey: .publishedAt)
