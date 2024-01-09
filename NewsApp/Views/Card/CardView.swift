@@ -58,3 +58,7 @@ struct CardView: View {
         }
     }
 }
+
+#Preview {
+    CardView(imageURL: URL(string: "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://d1i4t8bqe7zgj6.cloudfront.net/01-07-2024/t_542a740c3bec4840811b74a7f8030823_name_UG3Y5CBFJHTU37IQY74PED45AE.jpg&w=1440"), heading: "Israel-Gaza war live updates: Blinken in Middle East as U.S. seeks to avert war between Israel and Hezbollah - The Washington Post", author: "Niha Masih, Jennifer Hassan, John Hudson, Yasmeen Abutaleb, Shane Harris")
+}
