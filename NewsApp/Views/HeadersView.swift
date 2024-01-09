@@ -31,5 +31,5 @@ struct HeadersView: View {
 }
 
 #Preview {
-    return HeadersView(articles: ModelData().news.articles)
+    HeadersView(articles: ModelData().news.articles)
 }
