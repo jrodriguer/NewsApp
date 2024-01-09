@@ -7,7 +7,10 @@
 
 import Foundation
 
-var news: TopHeadlines = load("TopHeadLines.json")
+@Observable
+class ModelData {
+    var news: TopHeadlines = load("TopHeadLines.json")
+}
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
