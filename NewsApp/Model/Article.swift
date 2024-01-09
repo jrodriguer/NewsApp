@@ -31,7 +31,7 @@ struct Article: Codable, Identifiable {
     }
     
     init(from decoder: Decoder) throws {
-        var container = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         
         author = try container.decodeIfPresent(String.self, forKey: .author)
         title = try container.decode(String.self, forKey: .title)
@@ -42,8 +42,8 @@ struct Article: Codable, Identifiable {
         source = try container.decode(ArticleSource.self, forKey: .source)
         
         // Decode publishedAt using custom strategy (String to Date)
-        var dateString = try container.decode(String.self, forKey: .publishedAt)
-        if var date = DateFormatter.iso8601Full.date(from: dateString) {
+        let dateString = try container.decode(String.self, forKey: .publishedAt)
+        if let date = DateFormatter.iso8601Full.date(from: dateString) {
             publishedAt = date
         } else {
             throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
