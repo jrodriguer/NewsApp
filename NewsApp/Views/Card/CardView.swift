@@ -34,7 +34,7 @@ struct CardView: View {
                 }
                 .frame(height: 200)
                 .cornerRadius(10)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 0))
             } else {
                 Image(systemName: "photo")
                     .resizable()
