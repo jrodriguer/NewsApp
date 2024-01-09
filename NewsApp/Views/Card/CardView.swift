@@ -44,13 +44,11 @@ struct CardView: View {
             }
             
             VStack(alignment: .leading) {
-                HStack {
-                    Text(heading)
-                        .font(.title)
-                        .fontWeight(.black)
-                        .foregroundColor(.primary)
+                Text(heading)
+                    .font(.title)
+                    .fontWeight(.black)
+                    .foregroundColor(.primary)
                     .lineLimit(3)
-                }
                 Text(author.uppercased())
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -60,10 +58,9 @@ struct CardView: View {
                     .foregroundColor(.primary)
                     .padding(.vertical, 1)
             }
-            .layoutPriority(100)
-            
             Spacer()
         }
+        
         .padding()
     }
 }
