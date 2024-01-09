@@ -34,4 +34,5 @@ struct HeadersView: View {
 
 #Preview {
     HeadersView(articles: ModelData().news.articles)
+        .environmentObject(Favorites())
 }
