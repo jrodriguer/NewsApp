@@ -65,7 +65,9 @@ struct HeadersView: View {
         List {
             if !articles.isEmpty {
                 ForEach(articles) { article in
-                    ListView(title: article.title, author: article.source.name)
+                    if article.title != "[Removed]" {
+                        ListView(title: article.title, author: article.source.name)
+                    }
                 }
             } else {
                 Text("No articles available")
