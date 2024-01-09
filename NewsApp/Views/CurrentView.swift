@@ -10,15 +10,19 @@ import SwiftUI
 struct CurrentView: View {
     @Environment(ModelData.self) var modelData
     @Binding var currentView: Tabs
+    @StateObject var favorites = Favorites()
     
     var body: some View {
-        VStack {
-            if self.currentView == .Headers {
-                HeadersView(articles: [])
-            } else {
-                FavoritesView()
+        NavigationView {
+            VStack {
+                if self.currentView == .Headers {
+                    HeadersView(articles: [])
+                } else {
+                    FavoritesView()
+                }
             }
         }
+        .environmentObject(favorites)
     }
 }
 
