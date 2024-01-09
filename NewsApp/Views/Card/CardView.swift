@@ -43,26 +43,26 @@ struct CardView: View {
                     .padding()
             }
             
-            HStack {
-                VStack(alignment: .leading) {
+            VStack(alignment: .leading) {
+                HStack {
                     Text(heading)
                         .font(.title)
                         .fontWeight(.black)
                         .foregroundColor(.primary)
-                        .lineLimit(3)
-                    Text(author.uppercased())
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Text(description)
-                        .font(.subheadline)
-                        .fontWeight(.regular)
-                        .foregroundColor(.primary)
-                        .padding(.vertical, 1)
+                    .lineLimit(3)
                 }
-                .layoutPriority(100)
-                
-                Spacer()
+                Text(author.uppercased())
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text(description)
+                    .font(.subheadline)
+                    .fontWeight(.regular)
+                    .foregroundColor(.primary)
+                    .padding(.vertical, 1)
             }
+            .layoutPriority(100)
+            
+            Spacer()
         }
         .padding()
     }
