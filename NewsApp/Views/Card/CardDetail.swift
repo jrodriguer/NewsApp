@@ -12,50 +12,65 @@ struct CardDetail: View {
     
     var body: some View {
         ScrollView {
-            if let imageURL = article.urlToImage {
-                AsyncImage(url: imageURL) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    case .failure(_):
+            VStack(alignment: .leading, spacing: 12) {
+                if let imageURL = article.urlToImage {
+                    AsyncImage(url: imageURL) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        case .failure(_):
+                            notImageView()
+                        case .empty:
+                            EmptyView()
+                        @unknown default:
+                            ProgressView()
+                        }
+                    }
+                    .frame(maxHeight: 300)
+                    .cornerRadius(10)
+                } else {
                         notImageView()
-                    case .empty:
-                        EmptyView()
-                    @unknown default:
-                        ProgressView()
+                    }
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(article.title)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                        .multilineTextAlignment(.leading)
+                    
+                    if let author = article.author {
+                        Text("Author: \(author)")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    if let description = article.description {
+                        Text(description)
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                            .lineLimit(nil)
+                            .padding(.bottom, 8)
+                    }
+                    
+                    if let content = article.content {
+                        Text("Content:")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.primary)
+                        
+                        Text(content)
+                            .font(.body)
+                            .foregroundColor(.primary)
+                            .lineLimit(nil)
                     }
                 }
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 0))
-            } else {
-                notImageView()
+                .padding()
             }
-            
-            VStack(alignment: .leading) {
-                Text(article.title)
-                    .font(.title)
-                    .fontWeight(.black)
-                    .foregroundColor(.primary)
-                    .lineLimit(3)
-                    .padding([.vertical, .bottom], 14.976)
-                Text(article.source.name.uppercased())
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                Text(article.description ?? "Not description")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-                    .foregroundColor(.primary)
-                    .padding(.bottom, 12.8)
-                Text(article.content ?? "Not content")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-                    .foregroundColor(.primary)
-                    .padding(.bottom, 12.8)
-            }
-            .padding(.horizontal)
         }
-        .padding(10)
+        .navigationBarTitle("Article Detail")
     }
     
     private func notImageView() -> some View {

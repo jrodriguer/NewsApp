@@ -27,6 +27,7 @@
 		8A8EF23E2B4C630100402584 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF23D2B4C630100402584 /* ModelData.swift */; };
 		8A8EF2422B4C843C00402584 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF2412B4C843C00402584 /* RootView.swift */; };
 		8A8EF2482B4CB1E300402584 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF2472B4CB1E300402584 /* CardView.swift */; };
+		8A9CFC822B4EB1C700F70B13 /* CardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC812B4EB1C700F70B13 /* CardDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		8A8EF23D2B4C630100402584 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		8A8EF2412B4C843C00402584 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		8A8EF2472B4CB1E300402584 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		8A9CFC812B4EB1C700F70B13 /* CardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			children = (
 				8A8EF2472B4CB1E300402584 /* CardView.swift */,
 				8A7E4EB82B4D84AF00E297D9 /* ListView.swift */,
+				8A9CFC812B4EB1C700F70B13 /* CardDetail.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				8A8EF23E2B4C630100402584 /* ModelData.swift in Sources */,
 				8A7E4EAF2B4D48DA00E297D9 /* FavoriteButton.swift in Sources */,
 				8A74C61C2B4B1D1A005C7EDC /* CustomTabBar.swift in Sources */,
+				8A9CFC822B4EB1C700F70B13 /* CardDetail.swift in Sources */,
 				8A8EF2282B4B610200402584 /* HeadersView.swift in Sources */,
 				8A8EF2362B4C166400402584 /* Article.swift in Sources */,
 				8A8EF2422B4C843C00402584 /* RootView.swift in Sources */,

@@ -28,29 +28,28 @@ struct CardView: View {
                     }
                 }
                 .cornerRadius(10)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 0))
             } else {
                 notImageView()
             }
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(article.title)
                     .font(.title)
-                    .fontWeight(.black)
+                    .fontWeight(.bold)
                     .foregroundColor(.primary)
                     .lineLimit(3)
-                    .padding([.vertical, .bottom], 14.976)
+                
                 Text(article.source.name.uppercased())
                     .font(.caption)
                     .foregroundColor(.secondary)
+                
                 Text(article.description ?? "Not description")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
+                    .font(.body)
                     .foregroundColor(.primary)
-                    .padding(.bottom, 12.8)
+                    .lineLimit(2)
             }
-            .padding(.horizontal)
         }
+        .padding(12)
         .background(Color(.systemGray6))
         .cornerRadius(10)
         .padding(10)
