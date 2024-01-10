@@ -9,7 +9,13 @@ import SwiftUI
 
 struct WrongImage: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image(systemName: "photo.circle.fill")
+            .resizable()
+            .foregroundColor(.teal)
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 200, height: 100)
+            .padding(.vertical, 10)
+            .opacity(0.6)
     }
 }
 
