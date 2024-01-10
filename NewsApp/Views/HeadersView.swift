@@ -18,9 +18,14 @@ struct HeadersView: View {
     
     @EnvironmentObject var favorites: Favorites
     
-    // FIXME: Not navigate with Picker
     // TODO: Change Headers filter
     var body: some View {
+        VStack {
+            viewForSelectedOption()
+        }
+    }
+    
+    private func filterToogle() -> some View {
         VStack {
             Picker("Select View", selection: $selectedViewOption) {
                 ForEach(ViewOption.allCases, id: \.self) { option in
@@ -29,8 +34,6 @@ struct HeadersView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding()
-            
-            viewForSelectedOption()
         }
     }
     
@@ -48,6 +51,7 @@ struct HeadersView: View {
         NavigationSplitView {
             ScrollView {
                 VStack {
+                    filterToogle()
                     // FIXME: Fix content alignment. This's not good, but into View it's OK
                     if !articles.isEmpty {
                         ForEach(articles) { article in
@@ -74,17 +78,21 @@ struct HeadersView: View {
     }
     
     private func listView() -> some View {
-        List {
-            if !articles.isEmpty {
-                ForEach(articles) { article in
-                    if article.title != "[Removed]" {
-                        ArticleRow(article: article)
+        VStack {
+            filterToogle()
+            
+            List {
+                if !articles.isEmpty {
+                    ForEach(articles) { article in
+                        if article.title != "[Removed]" {
+                            ArticleRow(article: article)
+                        }
                     }
+                } else {
+                    Text("No articles available")
+                        .foregroundColor(.red)
+                        .padding()
                 }
-            } else {
-                Text("No articles available")
-                    .foregroundColor(.red)
-                    .padding()
             }
         }
     }
