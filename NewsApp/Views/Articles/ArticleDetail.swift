@@ -10,6 +10,8 @@ import SwiftUI
 struct ArticleDetail: View {
     var article: Article
     
+    @StateObject var favorites = Favorites()
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
@@ -21,7 +23,7 @@ struct ArticleDetail: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                         case .failure(_):
-                            notImageView()
+                            WrongImage()
                         case .empty:
                             EmptyView()
                         @unknown default:
@@ -31,7 +33,7 @@ struct ArticleDetail: View {
                     .frame(maxHeight: 300)
                     .cornerRadius(10)
                 } else {
-                        notImageView()
+                        WrongImage()
                     }
                 
                 VStack(alignment: .leading, spacing: 8) {
@@ -67,10 +69,21 @@ struct ArticleDetail: View {
                             .font(.body)
                             .foregroundColor(.primary)
                             .lineLimit(nil)
+                            .padding(.bottom, 2)
                     }
                     
-                    // TODO: Adding a control for navigating to a URL
-    
+                    Link("Visit Newspaper", destination: article.url)
+                                        
+                    Spacer()
+                    
+                    Button(favorites.contains(article) ? "Remove from Favorites" : "Add to Favorites") {
+                        if favorites.contains(article) {
+                            favorites.remove(article)
+                        } else {
+                            favorites.add(article)
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
                 .padding()
             }
@@ -78,18 +91,9 @@ struct ArticleDetail: View {
         .navigationTitle("Article from \(article.source.name)")
         .navigationBarTitleDisplayMode(.inline)
     }
-    
-    private func notImageView() -> some View {
-        Image(systemName: "photo.circle.fill")
-            .resizable()
-            .foregroundColor(.teal)
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 200, height: 100)
-            .padding(.vertical, 10)
-            .opacity(0.6)
-    }
 }
 
 #Preview {
     ArticleDetail(article: ModelData().news.articles[2])
+        .environmentObject(Favorites())
 }
