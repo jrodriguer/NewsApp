@@ -13,12 +13,13 @@ struct HeadersView: View {
         case listView = "List View"
     }
     @State private var selectedViewOption = ViewOption.cardView
-    
+        
     var articles: [Article]
     
     @EnvironmentObject var favorites: Favorites
     
-    // TODO: Not navigate with Picker
+    // FIXME: Not navigate with Picker
+    // TODO: Change Headers filter
     var body: some View {
         VStack {
             Picker("Select View", selection: $selectedViewOption) {
@@ -47,7 +48,7 @@ struct HeadersView: View {
         NavigationSplitView {
             ScrollView {
                 VStack {
-                    // TODO: Fix content alignment. This's not good, but into View it's OK
+                    // FIXME: Fix content alignment. This's not good, but into View it's OK
                     if !articles.isEmpty {
                         ForEach(articles) { article in
                             if article.title != "[Removed]" {
