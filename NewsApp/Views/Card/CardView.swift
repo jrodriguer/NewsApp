@@ -12,31 +12,25 @@ struct CardView: View {
     
     var body: some View {
         VStack {
-            if let image = article.urlToImage {
-                AsyncImage(url: article.urlToImage) { phase in
+            if let imageURL = article.urlToImage {
+                AsyncImage(url: imageURL) { phase in
                     switch phase {
-                    case .empty:
-                        ProgressView()
                     case .success(let image):
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                    case .failure:
-                        Image(systemName: "photo")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    @unknown default:
+                    case .failure(_):
+                        notImageView()
+                    case .empty:
                         EmptyView()
+                    @unknown default:
+                        ProgressView()
                     }
                 }
                 .cornerRadius(10)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 0))
             } else {
-                Image(systemName: "photo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 100)
-                    .padding()
+                notImageView()
             }
             
             VStack(alignment: .leading) {
@@ -55,11 +49,21 @@ struct CardView: View {
                     .foregroundColor(.primary)
                     .padding(.bottom, 12.8)
             }
-            .padding(.horizontal, 4)
+            .padding(.horizontal)
         }
         .background(Color(.systemGray6))
         .cornerRadius(10)
         .padding(10)
+    }
+    
+    private func notImageView() -> some View {
+        Image(systemName: "photo.circle.fill")
+            .resizable()
+            .foregroundColor(.teal)
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 200, height: 100)
+            .padding(.vertical, 10)
+            .opacity(0.6)
     }
 }
 
