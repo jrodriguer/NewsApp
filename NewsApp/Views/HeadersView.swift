@@ -78,22 +78,27 @@ struct HeadersView: View {
     }
     
     private func listView() -> some View {
-        VStack {
-            filterToogle()
-            
-            List {
-                if !articles.isEmpty {
-                    ForEach(articles) { article in
-                        if article.title != "[Removed]" {
-                            ArticleRow(article: article)
+        NavigationSplitView {
+            VStack {
+                filterToogle()
+                
+                List {
+                    if !articles.isEmpty {
+                        ForEach(articles) { article in
+                            if article.title != "[Removed]" {
+                                ArticleRow(article: article)
+                            }
                         }
+                    } else {
+                        Text("No articles available")
+                            .foregroundColor(.red)
+                            .padding()
                     }
-                } else {
-                    Text("No articles available")
-                        .foregroundColor(.red)
-                        .padding()
                 }
             }
+            .navigationTitle("Headers")
+        } detail: {
+            Text("Select a Article")
         }
     }
 }
