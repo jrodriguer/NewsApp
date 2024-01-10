@@ -18,6 +18,7 @@ struct HeadersView: View {
     
     @EnvironmentObject var favorites: Favorites
     
+    // TODO: Not navigate with Picker
     var body: some View {
         VStack {
             Picker("Select View", selection: $selectedViewOption) {
@@ -44,20 +45,30 @@ struct HeadersView: View {
     }
     
     private func cardView() -> some View {
-        ScrollView {
-            VStack {
-                if !articles.isEmpty {
-                    ForEach(articles) { article in
-                        if article.title != "[Removed]" {
-                            CardView(article: article)
+        NavigationSplitView {
+            ScrollView {
+                VStack {
+                    // TODO: Fix content alignment. This's not good, but into View it's OK
+                    if !articles.isEmpty {
+                        ForEach(articles) { article in
+                            if article.title != "[Removed]" {
+                                NavigationLink {
+                                    CardDetail(article: article)
+                                    
+                                } label: {
+                                    CardView(article: article)
+                                }
+                            }
                         }
+                    } else {
+                        Text("No articles available")
+                            .foregroundColor(.red)
+                            .padding()
                     }
-                } else {
-                    Text("No articles available")
-                        .foregroundColor(.red)
-                        .padding()
                 }
             }
+        } detail: {
+            Text("Select a Article")
         }
     }
     
