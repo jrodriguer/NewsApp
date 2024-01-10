@@ -26,8 +26,6 @@ struct ShowModalTabBarItem: View {
                 .background(Color(.white))
                 .cornerRadius(radius/2)
                 .overlay(RoundedRectangle(cornerRadius: radius/2).stroke(Color(.blue), lineWidth: 2))
-            //Text("Add")
-            //TODO: Add font from .font(Font.tabBar)
         }
         .frame(width: radius, height: radius)
         .onTapGesture(perform: action)
