@@ -49,7 +49,7 @@ struct HeadersView: View {
                 if !articles.isEmpty {
                     ForEach(articles) { article in
                         if article.title != "[Removed]" {
-                            CardView(imageURL: article.urlToImage, heading: article.title, author: article.source.name, description: article.description ?? "Not description")
+                            CardView(article: article)
                         }
                     }
                 } else {
@@ -66,7 +66,7 @@ struct HeadersView: View {
             if !articles.isEmpty {
                 ForEach(articles) { article in
                     if article.title != "[Removed]" {
-                        ListView(title: article.title, author: article.source.name)
+                        ListView(article: article)
                     }
                 }
             } else {

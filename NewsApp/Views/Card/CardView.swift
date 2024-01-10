@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct CardView: View {
-    var imageURL: URL?
-    var heading: String
-    var author: String
-    var description: String
+    var article: Article
     
     var body: some View {
         VStack {
-            if let imageURL = imageURL {
-                AsyncImage(url: imageURL) { phase in
+            if let imageURL = article.urlToImage {
+                AsyncImage(url: article.urlToImage) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
@@ -43,16 +40,16 @@ struct CardView: View {
             }
             
             VStack(alignment: .leading) {
-                Text(heading)
+                Text(article.title)
                     .font(.title)
                     .fontWeight(.black)
                     .foregroundColor(.primary)
                     .lineLimit(3)
                     .padding([.vertical, .bottom], 14.976)
-                Text(author.uppercased())
+                Text(article.source.name.uppercased())
                     .font(.caption)
                     .foregroundColor(.secondary)
-                Text(description)
+                Text(article.description ?? "Not description")
                     .font(.subheadline)
                     .fontWeight(.regular)
                     .foregroundColor(.primary)
@@ -67,6 +64,6 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(imageURL: URL(string: "https://scitechdaily.com/images/Neptune-and-Uranus-True-Colors.jpg"), heading: "Astronomical Illusions: New Images Reveal What Neptune and Uranus Really Look Like - SciTechDaily", author: "SciTechDaily", description: "Recent research led by Professor Patrick Irwin shows that Neptune and Uranus are both a similar shade of greenish-blue, challenging previous perceptions of their colors. The study used modern telescopic data to correct historical color inaccuracies and explai…")
+    CardView(article: ModelData().news.articles[1])
     
 }

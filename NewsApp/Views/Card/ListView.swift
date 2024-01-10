@@ -8,18 +8,24 @@
 import SwiftUI
 
 struct ListView: View {
-    var title: String
-    var author: String
+    var article: Article
     
     var body: some View {
         HStack {
-            Text(title)
+            Text(article.title)
+            
             Spacer()
+            
+            
         }
     }
 }
 
 #Preview {
-    ListView(title: "Israel-Gaza war live updates: Blinken in Middle East as U.S. seeks to avert war between Israel and Hezbollah - The Washington Post", author: "The Washington Post")
+    let articles = ModelData().news.articles
+    return Group {
+        ListView(article: articles[0])
+        ListView(article: articles[1])
+    }
 }
     
