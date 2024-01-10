@@ -31,7 +31,6 @@ struct HeadersView: View {
             
             viewForSelectedOption()
         }
-        .navigationBarTitle("Headers")
     }
     
     @ViewBuilder
@@ -53,10 +52,10 @@ struct HeadersView: View {
                         ForEach(articles) { article in
                             if article.title != "[Removed]" {
                                 NavigationLink {
-                                    CardDetail(article: article)
+                                    ArticleDetail(article: article)
                                     
                                 } label: {
-                                    CardView(article: article)
+                                    ArticleCard(article: article)
                                 }
                             }
                         }
@@ -67,6 +66,7 @@ struct HeadersView: View {
                     }
                 }
             }
+            .navigationTitle("Headers")
         } detail: {
             Text("Select a Article")
         }
@@ -77,7 +77,7 @@ struct HeadersView: View {
             if !articles.isEmpty {
                 ForEach(articles) { article in
                     if article.title != "[Removed]" {
-                        ListView(article: article)
+                        ArticleRow(article: article)
                     }
                 }
             } else {

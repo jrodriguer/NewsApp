@@ -1,13 +1,13 @@
 //
-//  CardView.swift
+//  ArticleCard.swift
 //  NewsApp
 //
-//  Created by Julio Rodriguez on 8/1/24.
+//  Created by Julio Rodriguez on 10/1/24.
 //
 
 import SwiftUI
 
-struct CardView: View {
+struct ArticleCard: View {
     var article: Article
     
     var body: some View {
@@ -67,6 +67,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(article: ModelData().news.articles[1])
-    
+    ArticleCard(article: ModelData().news.articles[1])
 }

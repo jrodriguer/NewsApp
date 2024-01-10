@@ -1,5 +1,5 @@
 //
-//  CardDetail.swift
+//  ArticleDetail.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 10/1/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardDetail: View {
+struct ArticleDetail: View {
     var article: Article
     
     var body: some View {
@@ -70,7 +70,8 @@ struct CardDetail: View {
                 .padding()
             }
         }
-        .navigationBarTitle("Article Detail")
+        .navigationTitle("Article from \(article.source.name)")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func notImageView() -> some View {
@@ -85,5 +86,5 @@ struct CardDetail: View {
 }
 
 #Preview {
-    CardDetail(article: ModelData().news.articles[2])
+    ArticleDetail(article: ModelData().news.articles[2])
 }
