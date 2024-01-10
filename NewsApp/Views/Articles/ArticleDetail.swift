@@ -68,6 +68,9 @@ struct ArticleDetail: View {
                             .foregroundColor(.primary)
                             .lineLimit(nil)
                     }
+                    
+                    // TODO: Adding a control for navigating to a URL
+    
                 }
                 .padding()
             }
