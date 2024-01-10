@@ -44,32 +44,6 @@
         {
             "source":{
                 "id":null,
-                "name":"Cointelegraph"
-            },
-            "author":"Cointelegraph",
-            "title":"Bitcoin ETFs will solve unit bias psychology, says VanEck adviser - Cointelegraph",
-            "description":null,
-            "url":"https://cointelegraph.com/news/bitcoin-etf-unit-bias-psychology-vaneck",
-            "urlToImage":null,
-            "publishedAt":"2024-01-07T08:43:06Z",
-            "content":null
-        },
-        {
-            "source":{
-                "id":"reuters",
-                "name":"Reuters"
-            },
-            "author":"Reuters.com",
-            "title":"Russia launches 28 drones, three missiles at Ukraine - Ukraine's air force - Reuters.com",
-            "description":null,
-            "url":"https://www.reuters.com/world/europe/russia-launches-28-drones-three-missiles-ukraine-ukraines-air-force-2024-01-07/",
-            "urlToImage":null,
-            "publishedAt":"2024-01-07T08:15:00Z",
-            "content":null
-        },
-        {
-            "source":{
-                "id":null,
                 "name":"BBC News"
             },
             "author":null,
