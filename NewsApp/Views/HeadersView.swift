@@ -18,7 +18,8 @@ struct HeadersView: View {
     
     @EnvironmentObject var favorites: Favorites
     
-    // TODO: Change Headers filter
+    // TODO: Animation translation on cards view
+    
     var body: some View {
         VStack {
             viewForSelectedOption()
@@ -86,7 +87,12 @@ struct HeadersView: View {
                     if !articles.isEmpty {
                         ForEach(articles) { article in
                             if article.title != "[Removed]" {
-                                ArticleRow(article: article)
+                                NavigationLink {
+                                    ArticleDetail(article: article)
+                                    
+                                } label: {
+                                    ArticleRow(article: article)
+                                }
                             }
                         }
                     } else {
