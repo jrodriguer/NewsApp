@@ -15,7 +15,7 @@ struct CurrentView: View {
         NavigationView {
             VStack {
                 if self.currentView == .Headers {
-                    HeadersView(articles: [])
+                    HeadersView(articles: ModelData().news.articles)
                 } else {
                     FavoritesView()
                 }
