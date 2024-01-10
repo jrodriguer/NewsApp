@@ -41,8 +41,10 @@ struct ArticleDetail: View {
                         .foregroundColor(.primary)
                         .multilineTextAlignment(.leading)
                     
+                    // TODO: Add grey container, similar "background" an input field when data it's nil
+                    
                     if let author = article.author {
-                        Text("Author: \(author)")
+                        Text(author)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
