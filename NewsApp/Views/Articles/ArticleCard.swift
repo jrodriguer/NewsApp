@@ -20,7 +20,7 @@ struct ArticleCard: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     case .failure(_):
-                        notImageView()
+                        WrongImage()
                     case .empty:
                         EmptyView()
                     @unknown default:
@@ -29,40 +29,25 @@ struct ArticleCard: View {
                 }
                 .cornerRadius(10)
             } else {
-                notImageView()
+                WrongImage()
             }
-            
+                    
             VStack(alignment: .leading, spacing: 8) {
+                Text(article.source.name)
+                    .font(.headline)
+                    .foregroundColor(.secondary)
+                
                 Text(article.title)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
                     .lineLimit(3)
-                
-                Text(article.author ?? article.source.name)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                
-                Text(article.description ?? "Not description")
-                    .font(.body)
-                    .foregroundColor(.primary)
-                    .lineLimit(2)
             }
         }
         .padding(12)
         .background(Color(.systemGray6))
         .cornerRadius(10)
         .padding(10)
-    }
-    
-    private func notImageView() -> some View {
-        Image(systemName: "photo.circle.fill")
-            .resizable()
-            .foregroundColor(.teal)
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 200, height: 100)
-            .padding(.vertical, 10)
-            .opacity(0.6)
     }
 }
 
