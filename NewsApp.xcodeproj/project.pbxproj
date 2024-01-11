@@ -28,6 +28,7 @@
 		8A9CFC8E2B4EC5F400F70B13 /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC8D2B4EC5F300F70B13 /* ArticleRow.swift */; };
 		8A9CFC922B4EC61000F70B13 /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC912B4EC61000F70B13 /* ArticleDetail.swift */; };
 		8A9CFC942B4EC7B500F70B13 /* ArticleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC932B4EC7B500F70B13 /* ArticleCard.swift */; };
+		8A9CFC962B4EEF7400F70B13 /* WrongImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC952B4EEF7400F70B13 /* WrongImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		8A9CFC8D2B4EC5F300F70B13 /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
 		8A9CFC912B4EC61000F70B13 /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
 		8A9CFC932B4EC7B500F70B13 /* ArticleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCard.swift; sourceTree = "<group>"; };
+		8A9CFC952B4EEF7400F70B13 /* WrongImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				8A7E4EAE2B4D48DA00E297D9 /* FavoriteButton.swift */,
+				8A9CFC952B4EEF7400F70B13 /* WrongImage.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				8A8EF2362B4C166400402584 /* Article.swift in Sources */,
 				8A8EF2422B4C843C00402584 /* RootView.swift in Sources */,
 				8A74C61E2B4B1D73005C7EDC /* TabBarButton.swift in Sources */,
+				8A9CFC962B4EEF7400F70B13 /* WrongImage.swift in Sources */,
 				8A8EF22C2B4B641300402584 /* CurrentView.swift in Sources */,
 				8A8EF22A2B4B610200402584 /* FavoritesView.swift in Sources */,
 				8A7E4EB52B4D628500E297D9 /* Favorites.swift in Sources */,

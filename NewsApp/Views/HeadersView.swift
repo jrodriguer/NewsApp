@@ -18,7 +18,7 @@ struct HeadersView: View {
     
     @EnvironmentObject var favorites: Favorites
     
-    // TODO: Animation translation on cards view
+    // TODO: Animation translation on cards view, or datapicker
     
     var body: some View {
         VStack {
@@ -53,7 +53,7 @@ struct HeadersView: View {
             ScrollView {
                 VStack {
                     filterToogle()
-                    // FIXME: Fix content alignment. This's not good, but into View it's OK
+                    // FIXME: Fix content alignment. This's not good, but into View it's OK.
                     if !articles.isEmpty {
                         ForEach(articles) { article in
                             if article.title != "[Removed]" {

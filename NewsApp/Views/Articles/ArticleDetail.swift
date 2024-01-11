@@ -32,24 +32,26 @@ struct ArticleDetail: View {
                     }
                     .frame(maxHeight: 300)
                     .cornerRadius(10)
+                    .padding()
                 } else {
                         WrongImage()
                     }
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(article.title)
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.primary)
+                    HStack {
+                        Text(article.title)
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.primary)
                         .multilineTextAlignment(.leading)
-                    
-                    // TODO: Add grey container, similar "background" an input field when data it's nil
-                    
-                    if let author = article.author {
-                        Text(author)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
                     }
+                    
+                    // TODO: Add grey container, similar "background" an input field when data it's nil.
+                    
+                    Text(article.author ?? article.source.name)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    
                     
                     if let description = article.description {
                         Text(description)
@@ -76,6 +78,7 @@ struct ArticleDetail: View {
                                         
                     Spacer()
                     
+                    // TODO: Check with FavoriteButton.
                     Button(favorites.contains(article) ? "Remove from Favorites" : "Add to Favorites") {
                         if favorites.contains(article) {
                             favorites.remove(article)
@@ -94,6 +97,6 @@ struct ArticleDetail: View {
 }
 
 #Preview {
-    ArticleDetail(article: ModelData().news.articles[2])
+    ArticleDetail(article: ModelData().news.articles[1])
         .environmentObject(Favorites())
 }

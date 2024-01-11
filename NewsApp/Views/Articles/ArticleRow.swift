@@ -16,6 +16,8 @@ struct ArticleRow: View {
         HStack {
             Text(article.title)
             
+            // FIXME: Check article is favorite.
+            
             if favorites.contains(article) {
                 Spacer()
                 Image(systemName: "star.fill")
@@ -32,4 +34,5 @@ struct ArticleRow: View {
         ArticleRow(article: articles[0])
         ArticleRow(article: articles[1])
     }
+    .environmentObject(Favorites())
 }
