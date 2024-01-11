@@ -39,7 +39,7 @@ struct ArticleCard: View {
                     .foregroundColor(.primary)
                     .lineLimit(3)
                 
-                Text(article.source.name.uppercased())
+                Text(article.author ?? article.source.name)
                     .font(.caption)
                     .foregroundColor(.secondary)
                 
