@@ -12,6 +12,8 @@ enum Tabs: Int {
     case Favorites
 }
 
+// TODO: Check the Tab Bar always enable.
+
 struct CustomTabBar: View {
     @Binding var selectedTab: Tabs
     @Binding var showModal: Bool

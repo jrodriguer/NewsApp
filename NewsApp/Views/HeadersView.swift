@@ -53,13 +53,13 @@ struct HeadersView: View {
             ScrollView {
                 VStack {
                     filterToogle()
+                    
                     // FIXME: Fix content alignment. This's not good, but into View it's OK.
                     if !articles.isEmpty {
                         ForEach(articles) { article in
                             if article.title != "[Removed]" {
                                 NavigationLink {
                                     ArticleDetail(article: article)
-                                    
                                 } label: {
                                     ArticleCard(article: article)
                                 }

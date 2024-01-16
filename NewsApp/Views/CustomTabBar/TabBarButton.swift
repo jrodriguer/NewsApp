@@ -27,7 +27,6 @@ struct TabBarButton: View {
                     .scaledToFit()
                     .frame(width: 24, height: 24)
                 Text(buttonText)
-                //TODO: Add font from .font(Font.tabBar)
             }
             .frame(width: geo.size.width, height: geo.size.height)
         }
