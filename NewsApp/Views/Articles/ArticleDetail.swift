@@ -34,11 +34,12 @@ struct ArticleDetail: View {
                     .cornerRadius(10)
                     .padding()
                 } else {
-                        WrongImage()
-                    }
+                    WrongImage()
+                }
                 
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
+                        
                         Text(article.title)
                             .font(.title)
                             .fontWeight(.bold)
