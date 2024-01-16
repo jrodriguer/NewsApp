@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ArticleCard: View {
-    var article: Article
+    let article: Article
     
     var body: some View {
         VStack {
@@ -42,6 +42,8 @@ struct ArticleCard: View {
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
                     .lineLimit(3)
+                
+                TimeDifference(published: ModelData().news.articles[1].publishedAt)
             }
         }
         .padding(12)
