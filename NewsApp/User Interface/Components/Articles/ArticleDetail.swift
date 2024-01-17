@@ -68,7 +68,7 @@ struct ArticleDetail: View {
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
                         
-                        Text(Utils.displayContent(from: content))
+                        Text(Utils.displayContent(content))
                             .font(.body)
                             .foregroundColor(.primary)
                             .lineLimit(nil)
