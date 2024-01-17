@@ -48,9 +48,6 @@ struct ArticleDetail: View {
                         .foregroundColor(.primary)
                         .multilineTextAlignment(.leading)
                     
-                    
-                    // TODO: Add grey container, similar "background" an input field when data it's nil.
-                    
                     if let author = article.author {
                         Text(author)
                             .font(.subheadline)
@@ -71,7 +68,7 @@ struct ArticleDetail: View {
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
                         
-                        Text(content)
+                        Text(Utils.displayContent(from: content))
                             .font(.body)
                             .foregroundColor(.primary)
                             .lineLimit(nil)
@@ -82,7 +79,6 @@ struct ArticleDetail: View {
                     
                     Spacer()
                     
-                    // TODO: Check with FavoriteButton.
                     Button(favorites.contains(article) ? "Remove from Favorites" : "Add to Favorites") {
                         if favorites.contains(article) {
                             favorites.remove(article)

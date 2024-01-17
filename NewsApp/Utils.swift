@@ -21,4 +21,11 @@ class Utils {
             return author
         }
     }
+    
+    static func displayContent(_ content: String?) -> String {
+        guard let content = content else {
+            return ""
+        }
+        return content.replacingOccurrences(of: "\\[.*\\]", with: "", options: .regularExpression)
+    }
 }
