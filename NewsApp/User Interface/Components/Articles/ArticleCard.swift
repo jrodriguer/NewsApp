@@ -51,8 +51,8 @@ struct ArticleCard: View {
                     Text("•")
                     
                     if let author = article.author {
-                        Text(author)
-                            .lineLimit(1)
+                        Text(Utils.displayAuthor(author))
+                            
                     }
                 }
                 .font(.footnote)
