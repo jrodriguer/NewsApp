@@ -38,14 +38,15 @@ struct ArticleDetail: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        
+                    
+                    // TODO: Aritlce source name
+                    
                         Text(article.title)
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
                         .multilineTextAlignment(.leading)
-                    }
+                    
                     
                     // TODO: Add grey container, similar "background" an input field when data it's nil.
                     
