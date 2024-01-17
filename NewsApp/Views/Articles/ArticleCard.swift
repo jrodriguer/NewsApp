@@ -33,6 +33,9 @@ struct ArticleCard: View {
             }
                     
             VStack(alignment: .leading, spacing: 8) {
+                
+                // TODO: Change newspaper title desing
+                
                 Text(article.source.name)
                     .font(.headline)
                     .foregroundColor(.secondary)
@@ -43,13 +46,36 @@ struct ArticleCard: View {
                     .foregroundColor(.primary)
                     .lineLimit(3)
                 
-                TimeDifference(published: ModelData().news.articles[1].publishedAt)
+                Divider()
+                Text(timeDifference(from: article.publishedAt))
+                    .font(.footnote)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.secondary)
             }
         }
         .padding(12)
         .background(Color(.systemGray6))
         .cornerRadius(10)
         .padding(10)
+    }
+    
+    private func timeDifference(from date: Date) -> String {
+        let currentDate = Date()
+        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date, to: currentDate)
+        
+        if let year = components.year, year > 0 {
+            return "\(year) year\(year == 1 ? "" : "s") ago"
+        } else if let month = components.month, month > 0 {
+            return "\(month) month\(month == 1 ? "" : "s") ago"
+        } else if let day = components.day, day > 0 {
+            return "\(day) day\(day == 1 ? "" : "s") ago"
+        } else if let hour = components.hour, hour > 0 {
+            return "\(hour) hour\(hour == 1 ? "" : "s") ago"
+        } else if let minute = components.minute, minute > 0 {
+            return "\(minute) minute\(minute == 1 ? "" : "s") ago"
+        } else {
+            return "Just now"
+        }
     }
 }
 
