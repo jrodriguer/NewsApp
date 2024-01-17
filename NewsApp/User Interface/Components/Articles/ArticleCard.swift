@@ -48,11 +48,13 @@ struct ArticleCard: View {
                 HStack {
                     Text(timeDifference(from: article.publishedAt))
                     
+                    // TODO: A lot of space between Texts
+                    
                     Text("•")
                     
                     if let author = article.author {
-                        Text(Utils.displayAuthor(author))
-                            
+                        Text(author)
+                            .lineLimit(1)
                     }
                 }
                 .font(.footnote)
