@@ -38,22 +38,24 @@ struct ArticleDetail: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 8) {
+                    Text(article.source.name)
+                        .font(.headline)
+                        .foregroundColor(.secondary)
                     
-                    // TODO: Aritlce source name
-                    
-                        Text(article.title)
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(.primary)
+                    Text(Utils.displayTitle(article.title))
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
                         .multilineTextAlignment(.leading)
                     
                     
                     // TODO: Add grey container, similar "background" an input field when data it's nil.
                     
-                    Text(article.author ?? article.source.name)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
+                    if let author = article.author {
+                        Text(author)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
                     
                     if let description = article.description {
                         Text(description)
@@ -77,7 +79,7 @@ struct ArticleDetail: View {
                     }
                     
                     Link("Visit Newspaper", destination: article.url)
-                                        
+                    
                     Spacer()
                     
                     // TODO: Check with FavoriteButton.
@@ -99,6 +101,6 @@ struct ArticleDetail: View {
 }
 
 #Preview {
-    ArticleDetail(article: ModelData().news.articles[1])
+    ArticleDetail(article: ModelData().news.articles[10])
         .environmentObject(Favorites())
 }

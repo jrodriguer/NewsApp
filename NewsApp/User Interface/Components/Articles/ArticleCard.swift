@@ -33,24 +33,31 @@ struct ArticleCard: View {
             }
                     
             VStack(alignment: .leading, spacing: 8) {
-                
-                // TODO: Change newspaper title desing
-                
                 Text(article.source.name)
                     .font(.headline)
                     .foregroundColor(.secondary)
                 
-                Text(article.title)
+                Text(Utils.displayTitle(article.title))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
                     .lineLimit(3)
                 
                 Divider()
-                Text(timeDifference(from: article.publishedAt))
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.secondary)
+                
+                HStack {
+                    Text(timeDifference(from: article.publishedAt))
+                    
+                    Text("•")
+                    
+                    if let author = article.author {
+                        Text(author)
+                            .lineLimit(1)
+                    }
+                }
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .foregroundColor(.secondary)
             }
         }
         .padding(12)
