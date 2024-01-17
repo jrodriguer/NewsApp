@@ -49,7 +49,7 @@ struct ArticleCard: View {
                 Divider()
                 Text(timeDifference(from: article.publishedAt))
                     .font(.footnote)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .fontWeight(.semibold)
                     .foregroundColor(.secondary)
             }
         }
