@@ -38,15 +38,25 @@ struct ArticleDetail: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(article.source.name)
-                        .font(.headline)
-                        .foregroundColor(.secondary)
-                    
-                    Text(Utils.displayTitle(article.title))
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.primary)
+                    HStack {
+                        Text(Utils.displayTitle(article.title))
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.primary)
                         .multilineTextAlignment(.leading)
+                    
+                        Button {
+                            if favorites.contains(article) {
+                                favorites.remove(article)
+                            } else {
+                                favorites.add(article)
+                            }
+                        } label: {
+                            Label("Toggle Favorite", systemImage: favorites.contains(article) ? "star.fill" : "star")
+                                .labelStyle(.iconOnly)
+                                .foregroundStyle(favorites.contains(article) ? .yellow : .gray)
+                        }
+                    }
                     
                     if let author = article.author {
                         Text(author)
@@ -74,19 +84,13 @@ struct ArticleDetail: View {
                             .lineLimit(nil)
                             .padding(.bottom, 2)
                     }
-                    
-                    Link("Visit Newspaper", destination: article.url)
-                    
-                    Spacer()
-                    
-                    Button(favorites.contains(article) ? "Remove from Favorites" : "Add to Favorites") {
-                        if favorites.contains(article) {
-                            favorites.remove(article)
-                        } else {
-                            favorites.add(article)
+                                        
+                    HStack {
+                        Link(destination: article.url) {
+                            Image(systemName: "link.circle.fill")
+                                .font(.largeTitle)
                         }
                     }
-                    .buttonStyle(.borderedProminent)
                 }
                 .padding()
             }
