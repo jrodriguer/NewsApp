@@ -47,9 +47,7 @@ struct ArticleCard: View {
                 
                 HStack {
                     Text(timeDifference(from: article.publishedAt))
-                    
-                    // TODO: A lot of space between Texts
-                    
+                                    
                     if let author = article.author {
                         Text("•")
                         Text(Utils.displayAuthor(author))
