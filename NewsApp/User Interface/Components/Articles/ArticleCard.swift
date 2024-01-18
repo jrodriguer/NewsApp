@@ -31,7 +31,7 @@ struct ArticleCard: View {
             } else {
                 WrongImage()
             }
-                    
+            
             VStack(alignment: .leading, spacing: 8) {
                 Text(article.source.name)
                     .font(.headline)
@@ -47,7 +47,7 @@ struct ArticleCard: View {
                 
                 HStack {
                     Text(timeDifference(from: article.publishedAt))
-                                    
+                    
                     if let author = article.author {
                         Text("•")
                         Text(Utils.displayAuthor(author))

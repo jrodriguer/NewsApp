@@ -13,7 +13,7 @@ struct HeadersView: View {
         case listView = "List View"
     }
     @State private var selectedViewOption = ViewOption.cardView
-        
+    
     var articles: [Article]
     
     @EnvironmentObject var favorites: Favorites
