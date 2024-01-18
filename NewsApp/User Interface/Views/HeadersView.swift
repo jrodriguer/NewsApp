@@ -18,7 +18,7 @@ struct HeadersView: View {
     
     @EnvironmentObject var favorites: Favorites
     
-    // TODO: Animation translation on cards view, or datapicker
+    // TODO: Add animation translation on cards view, or datapicker
     
     var body: some View {
         VStack {
@@ -54,7 +54,6 @@ struct HeadersView: View {
                 VStack {
                     filterToogle()
                     
-                    // FIXME: Fix content alignment. This's not good, but into View it's OK.
                     if !articles.isEmpty {
                         ForEach(articles) { article in
                             if article.title != "[Removed]" {
@@ -62,6 +61,7 @@ struct HeadersView: View {
                                     ArticleDetail(article: article)
                                 } label: {
                                     ArticleCard(article: article)
+                                        .multilineTextAlignment(.leading)
                                 }
                             }
                         }
@@ -79,7 +79,7 @@ struct HeadersView: View {
     }
     
     private func listView() -> some View {
-        NavigationSplitView {
+        NavigationView {
             VStack {
                 filterToogle()
                 
@@ -103,8 +103,6 @@ struct HeadersView: View {
                 }
             }
             .navigationTitle("Headers")
-        } detail: {
-            Text("Select a Article")
         }
     }
 }
