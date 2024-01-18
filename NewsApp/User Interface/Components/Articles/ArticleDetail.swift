@@ -43,19 +43,7 @@ struct ArticleDetail: View {
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
-                        .multilineTextAlignment(.leading)
-                    
-                        Button {
-                            if favorites.contains(article) {
-                                favorites.remove(article)
-                            } else {
-                                favorites.add(article)
-                            }
-                        } label: {
-                            Label("Toggle Favorite", systemImage: favorites.contains(article) ? "star.fill" : "star")
-                                .labelStyle(.iconOnly)
-                                .foregroundStyle(favorites.contains(article) ? .yellow : .gray)
-                        }
+                            .multilineTextAlignment(.leading)
                     }
                     
                     if let author = article.author {
@@ -84,12 +72,20 @@ struct ArticleDetail: View {
                             .lineLimit(nil)
                             .padding(.bottom, 2)
                     }
-                                        
+                    
                     HStack {
                         Link(destination: article.url) {
                             Image(systemName: "link.circle.fill")
                                 .font(.largeTitle)
                         }
+                        Button(favorites.contains(article) ? "Remove from Favorites" : "Add to Favorites") {
+                            if favorites.contains(article) {
+                                favorites.remove(article)
+                            } else {
+                                favorites.add(article)
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
                     }
                 }
                 .padding()
