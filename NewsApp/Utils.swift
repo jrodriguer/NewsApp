@@ -16,7 +16,7 @@ class Utils {
     static func displayAuthor(_ author: String) -> String {
         let authors = author.components(separatedBy: ",")
         if let firstName = authors.first {
-            return firstName.trimmingCharacters(in: .whitespacesAndNewlines) + (authors.count > 1 ? "..." : "")
+            return firstName.trimmingCharacters(in: .whitespacesAndNewlines) + (authors.count > 2 ? "..." : "")
         } else {
             return author
         }
