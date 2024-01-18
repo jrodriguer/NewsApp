@@ -50,9 +50,10 @@ struct ArticleCard: View {
                     
                     // TODO: A lot of space between Texts
                     
-                    Text("•")
-    
-                    Text(Utils.displayAuthor(article.author ?? ""))
+                    if let author = article.author {
+                        Text("•")
+                        Text(Utils.displayAuthor(author))
+                    }
                 }
                 .font(.footnote)
                 .fontWeight(.semibold)
