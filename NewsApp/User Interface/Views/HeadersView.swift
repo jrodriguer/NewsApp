@@ -18,8 +18,8 @@ struct HeadersView: View {
     @EnvironmentObject var favorites: Favorites
     @Namespace var topID
     @Namespace var bottomID
-    @State private var additionalAnimationColor = Color.blue
-        
+    @State var scrollPosition: Int?
+
     var body: some View {
         VStack {
             viewForSelectedOption()
@@ -51,61 +51,70 @@ struct HeadersView: View {
     private func cardView() -> some View {
         NavigationView {
             ScrollViewReader { proxy in
-                ScrollView {
-                    ZStack {
-                        VStack {
-                            filterToogle()
-                            
-                            if !articles.isEmpty {
-                                ForEach(articles) { article in
-                                    if article.title != "[Removed]" {
-                                        NavigationLink {
-                                            ArticleDetail(article: article)
-                                        } label: {
-                                            ArticleCard(article: article)
-                                                .multilineTextAlignment(.leading)
+                GeometryReader { fullView in
+                    ScrollView {
+                        LazyVStack {
+                            VStack {
+                                filterToogle()
+                                
+                                if !articles.isEmpty {
+                                    ForEach(Array(articles.enumerated()), id: \.element.id) { (index, article) in
+                                        if article.title != "[Removed]" {
+                                            NavigationLink {
+                                                ArticleDetail(article: article)
+                                            } label: {
+                                                ArticleCard(article: article)
+                                                    .multilineTextAlignment(.leading)
+                                            }
+                                            // Set the scroll position when the button is tapped
+                                            .id(index)
                                         }
                                     }
+                                    
+                                } else {
+                                    Text("No articles available")
+                                        .foregroundColor(.red)
+                                        .padding()
                                 }
-                                
-                            } else {
-                                Text("No articles available")
-                                    .foregroundColor(.red)
-                                    .padding()
                             }
-                        }
-                        
-                        // TODO: Add button for go to top
-                        
-                        VStack {
-                            Spacer()
                             
-                            HStack {
-                                Spacer()
-                                
-                                Button(action: {
-                                    withAnimation {
-                                        proxy.scrollTo(topID)
+                            // TODO: Add button for go to top, fixed positioned on following scroll location.
+                            
+                            GeometryReader { geo in
+                                VStack {
+                                    Spacer()
+                                    
+                                    HStack {
+                                        Spacer()
+                                        
+                                        Button(action: {
+                                            withAnimation {
+                                                proxy.scrollTo(scrollPosition)
+                                            }
+                                        }, label: {
+                                            Text("")
+                                                .font(.system(.largeTitle))
+                                                .frame(width: 77, height: 70)
+                                                .foregroundColor(Color.white)
+                                                .padding(.bottom, 7)
+                                        })
+                                        .id(bottomID)
+                                        .background(Color.blue)
+                                        .cornerRadius(38.5)
+                                        .padding()
+                                        .shadow(color: Color.black.opacity(0.3),
+                                                radius: 3,
+                                                x: 3,
+                                                y: 3)
+                                        .offset(x: (geo.size.width / 2), y: 0)
                                     }
-                                }, label: {
-                                    Text("")
-                                        .font(.system(.largeTitle))
-                                        .frame(width: 77, height: 70)
-                                        .foregroundColor(Color.white)
-                                        .padding(.bottom, 7)
-                                })
-                                .id(bottomID)
-                                .background(Color.blue)
-                                .cornerRadius(38.5)
-                                .padding()
-                                .shadow(color: Color.black.opacity(0.3),
-                                        radius: 3,
-                                        x: 3,
-                                        y: 3)
+                                }
                             }
                         }
+                        .scrollTargetLayout()
                     }
                 }
+                .scrollPosition(id: $scrollPosition)
                 .navigationTitle("Headers")
             }
         }
