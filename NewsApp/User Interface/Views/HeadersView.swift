@@ -18,9 +18,8 @@ struct HeadersView: View {
     @EnvironmentObject var favorites: Favorites
     @Namespace var topID
     @Namespace var bottomID
-    
-    // TODO: Add animation translation on cards view, or datapicker
-    
+    @State private var additionalAnimationColor = Color.blue
+        
     var body: some View {
         VStack {
             viewForSelectedOption()
@@ -48,9 +47,7 @@ struct HeadersView: View {
             listView()
         }
     }
-    
-    // TODO: Add row for go to first index
-    
+        
     private func cardView() -> some View {
         NavigationView {
             ScrollViewReader { proxy in
@@ -77,6 +74,8 @@ struct HeadersView: View {
                                     .padding()
                             }
                         }
+                        
+                        // TODO: Add button for go to top
                         
                         VStack {
                             Spacer()
