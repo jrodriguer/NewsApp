@@ -45,7 +45,7 @@ struct ArticleCard: View {
                 
                 Divider()
                 
-                HStack {
+                HStack(alignment: .top, spacing: 4) {
                     Text(timeDifference(from: article.publishedAt))
                     
                     if let author = article.author {
