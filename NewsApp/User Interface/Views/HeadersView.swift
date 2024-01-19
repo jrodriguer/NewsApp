@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct HeadersView: View {
+    var articles: [Article]
+    
     enum ViewOption: String, CaseIterable {
         case cardView = "Card View"
         case listView = "List View"
     }
     @State private var selectedViewOption = ViewOption.cardView
-    
-    var articles: [Article]
-    
     @EnvironmentObject var favorites: Favorites
+    @Namespace var topID
+    @Namespace var bottomID
     
     // TODO: Add animation translation on cards view, or datapicker
     
@@ -48,33 +49,66 @@ struct HeadersView: View {
         }
     }
     
+    // TODO: Add row for go to first index
+    
     private func cardView() -> some View {
-        NavigationSplitView {
-            ScrollView {
-                VStack {
-                    filterToogle()
-                    
-                    if !articles.isEmpty {
-                        ForEach(articles) { article in
-                            if article.title != "[Removed]" {
-                                NavigationLink {
-                                    ArticleDetail(article: article)
-                                } label: {
-                                    ArticleCard(article: article)
-                                        .multilineTextAlignment(.leading)
+        NavigationView {
+            ScrollViewReader { proxy in
+                ScrollView {
+                    ZStack {
+                        VStack {
+                            filterToogle()
+                            
+                            if !articles.isEmpty {
+                                ForEach(articles) { article in
+                                    if article.title != "[Removed]" {
+                                        NavigationLink {
+                                            ArticleDetail(article: article)
+                                        } label: {
+                                            ArticleCard(article: article)
+                                                .multilineTextAlignment(.leading)
+                                        }
+                                    }
                                 }
+                                
+                            } else {
+                                Text("No articles available")
+                                    .foregroundColor(.red)
+                                    .padding()
                             }
                         }
-                    } else {
-                        Text("No articles available")
-                            .foregroundColor(.red)
-                            .padding()
+                        
+                        VStack {
+                            Spacer()
+                            
+                            HStack {
+                                Spacer()
+                                
+                                Button(action: {
+                                    withAnimation {
+                                        proxy.scrollTo(topID)
+                                    }
+                                }, label: {
+                                    Text("")
+                                        .font(.system(.largeTitle))
+                                        .frame(width: 77, height: 70)
+                                        .foregroundColor(Color.white)
+                                        .padding(.bottom, 7)
+                                })
+                                .id(bottomID)
+                                .background(Color.blue)
+                                .cornerRadius(38.5)
+                                .padding()
+                                .shadow(color: Color.black.opacity(0.3),
+                                        radius: 3,
+                                        x: 3,
+                                        y: 3)
+                            }
+                        }
                     }
                 }
+                .navigationTitle("Headers")
             }
-            .navigationTitle("Headers")
-        } detail: {
-            Text("Select a Article")
         }
     }
     
