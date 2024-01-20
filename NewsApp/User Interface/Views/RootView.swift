@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     @Environment(ModelData.self) var modelData
-    
+    @EnvironmentObject var favorites: Favorites
     @State private var selectedTab: Tabs = .Headers
     @State private var showModal: Bool = false
     
@@ -22,4 +22,5 @@ struct RootView: View {
 #Preview {
     RootView()
         .environment(ModelData())
+        .environmentObject(Favorites())
 }

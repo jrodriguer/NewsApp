@@ -15,7 +15,10 @@ struct HeadersView: View {
         case listView = "List View"
     }
     @State private var selectedViewOption = ViewOption.cardView
-    @EnvironmentObject var favorites: Favorites
+    
+    @StateObject var favorites = Favorites()
+    @State private var showFavoritesOnly = false
+    
     @Namespace var topID
     @Namespace var bottomID
     @State var scrollPosition: Int?
@@ -24,6 +27,16 @@ struct HeadersView: View {
         VStack {
             viewForSelectedOption()
         }
+    }
+    
+    // TODO: Add favorite filter
+    
+    private var filteredLandmarks: [Article] {
+        //modelData.landmarks.filter { article in
+            //(!showFavoritesOnly || article.isFavorite)
+        //}
+        
+        return []
     }
     
     private func filterToogle() -> some View {
@@ -49,7 +62,7 @@ struct HeadersView: View {
     }
         
     private func cardView() -> some View {
-        NavigationView {
+        NavigationSplitView {
             ScrollViewReader { proxy in
                 GeometryReader { fullView in
                     ScrollView {
@@ -117,6 +130,8 @@ struct HeadersView: View {
                 .scrollPosition(id: $scrollPosition)
                 .navigationTitle("Headers")
             }
+        } detail: {
+            Text("Select a Article")
         }
     }
     
