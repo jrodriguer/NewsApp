@@ -12,7 +12,7 @@ enum Tabs: Int {
     case Favorites
 }
 
-// TODO: Check the Tab Bar always enable.
+// FIXME: Check the Tab Bar always enable, not with Detail View
 
 struct CustomTabBar: View {
     @Binding var selectedTab: Tabs
