@@ -15,7 +15,7 @@ struct RootView: View {
     
     var body: some View {
         CurrentView(currentView: self.$selectedTab)
-        CustomTabBar(selectedTab: $selectedTab, showModal: $showModal)
+        //CustomTabBar(selectedTab: $selectedTab, showModal: $showModal)
     }
 }
 

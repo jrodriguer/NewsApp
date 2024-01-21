@@ -28,9 +28,7 @@ struct HeadersView: View {
             viewForSelectedOption()
         }
     }
-    
-    // TODO: Add favorite filter
-    
+        
     private var filteredArticles: [Article] {
         articles.filter { article in
             (!showFavoritesOnly || favorites.contains(article))
@@ -67,6 +65,7 @@ struct HeadersView: View {
                         LazyVStack {
                             VStack(spacing: 0) {
                                 filterToogle()
+                                
                                 Toggle(isOn: $showFavoritesOnly) {
                                     Text("Favorites only")
                                 }
