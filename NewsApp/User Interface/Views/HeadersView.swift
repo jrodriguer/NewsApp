@@ -22,7 +22,7 @@ struct HeadersView: View {
     @Namespace var topID
     @Namespace var bottomID
     @State var scrollPosition: Int?
-
+    
     var body: some View {
         VStack {
             viewForSelectedOption()
@@ -31,12 +31,10 @@ struct HeadersView: View {
     
     // TODO: Add favorite filter
     
-    private var filteredLandmarks: [Article] {
-        //modelData.landmarks.filter { article in
-            //(!showFavoritesOnly || article.isFavorite)
-        //}
-        
-        return []
+    private var filteredArticles: [Article] {
+        articles.filter { article in
+            (!showFavoritesOnly || favorites.contains(article))
+        }
     }
     
     private func filterToogle() -> some View {
@@ -60,18 +58,26 @@ struct HeadersView: View {
             listView()
         }
     }
-        
+    
     private func cardView() -> some View {
         NavigationSplitView {
             ScrollViewReader { proxy in
                 GeometryReader { fullView in
                     ScrollView {
                         LazyVStack {
-                            VStack {
+                            VStack(spacing: 0) {
                                 filterToogle()
+                                Toggle(isOn: $showFavoritesOnly) {
+                                    Text("Favorites only")
+                                }
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 4)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                                .padding(10)
                                 
-                                if !articles.isEmpty {
-                                    ForEach(Array(articles.enumerated()), id: \.element.id) { (index, article) in
+                                if !filteredArticles.isEmpty {
+                                    ForEach(Array(filteredArticles.enumerated()), id: \.element.id) { (index, article) in
                                         if article.title != "[Removed]" {
                                             NavigationLink {
                                                 ArticleDetail(article: article)
@@ -141,8 +147,12 @@ struct HeadersView: View {
                 filterToogle()
                 
                 List {
-                    if !articles.isEmpty {
-                        ForEach(articles) { article in
+                    Toggle(isOn: $showFavoritesOnly) {
+                        Text("Favorites only")
+                    }
+                    
+                    if !filteredArticles.isEmpty {
+                        ForEach(filteredArticles) { article in
                             if article.title != "[Removed]" {
                                 NavigationLink {
                                     ArticleDetail(article: article)
