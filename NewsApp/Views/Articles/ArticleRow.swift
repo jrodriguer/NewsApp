@@ -20,9 +20,9 @@ struct ArticleRow: View {
             
             if favorites.contains(article) {
                 Spacer()
-                Image(systemName: "star.fill")
+                Image(systemName: "heart.fill")
                     .accessibilityLabel("This is a favorite article")
-                    .foregroundColor(.yellow)
+                        .foregroundColor(.red)
             }
         }
     }
@@ -30,9 +30,7 @@ struct ArticleRow: View {
 
 #Preview {
     let articles = ModelData().news.articles
-    return Group {
-        ArticleRow(article: articles[0])
-        ArticleRow(article: articles[1])
-    }
+    return ArticleRow(article: articles[1])
+
     .environmentObject(Favorites())
 }
