@@ -35,7 +35,7 @@ struct HeadersView: View {
         }
     }
     
-    private func filterToogle() -> some View {
+    private func selectionToogle() -> some View {
         VStack {
             Picker("Select View", selection: $selectedViewOption) {
                 ForEach(ViewOption.allCases, id: \.self) { option in
@@ -64,7 +64,7 @@ struct HeadersView: View {
                     ScrollView {
                         LazyVStack {
                             VStack(spacing: 0) {
-                                filterToogle()
+                                selectionToogle()
                                 
                                 Toggle(isOn: $showFavoritesOnly) {
                                     Text("Favorites only")
@@ -144,7 +144,7 @@ struct HeadersView: View {
     private func listView() -> some View {
         NavigationView {
             VStack {
-                filterToogle()
+                selectionToogle()
                 
                 List {
                     Toggle(isOn: $showFavoritesOnly) {
