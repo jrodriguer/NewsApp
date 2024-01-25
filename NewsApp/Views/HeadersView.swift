@@ -56,7 +56,7 @@ struct HeadersView: View {
     }
     
     private func cardView() -> some View {
-        NavigationSplitView {
+        NavigationView {
             ScrollViewReader { proxy in
                 GeometryReader { fullView in
                     ScrollView {
@@ -132,14 +132,12 @@ struct HeadersView: View {
                 .scrollPosition(id: $scrollPosition)
                 .navigationTitle("Headers")
             }
-        } detail: {
-            Text("Select a Article")
         }
         .environmentObject(favorites)
     }
     
     private func listView() -> some View {
-        NavigationSplitView {
+        NavigationView {
             VStack {
                 selectionToogle()
                 
@@ -174,8 +172,6 @@ struct HeadersView: View {
                 }
             }
             .navigationTitle("Headers")
-        } detail: {
-            Text("Select a Article")
         }
         .environmentObject(favorites)
     }
