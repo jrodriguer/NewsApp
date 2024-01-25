@@ -15,10 +15,8 @@ struct HeadersView: View {
         case listView = "List View"
     }
     @State private var selectedViewOption = ViewOption.cardView
-    
     @StateObject var favorites = Favorites()
     @State private var showFavoritesOnly = false
-    
     @Namespace var topID
     @Namespace var bottomID
     @State var scrollPosition: Int?
@@ -73,9 +71,7 @@ struct HeadersView: View {
                                 .padding(.vertical, 4)
                                 .cornerRadius(10)
                                 .padding(10)
-                                
-                                // FIXME: Contains favorites articles.
-                                
+                                                                
                                 if !filteredArticles.isEmpty {
                                     ForEach(Array(filteredArticles.enumerated()), id: \.element.id) { (index, article) in
                                         if article.title != "[Removed]" {
@@ -159,6 +155,13 @@ struct HeadersView: View {
                                     
                                 } label: {
                                     ArticleRow(article: article)
+                                                                        
+                                    if favorites.contains(article) {
+                                        Spacer()
+                                        Image(systemName: "heart.fill")
+                                            .accessibilityLabel("This is a favorite article")
+                                            .foregroundColor(.red)
+                                    }
                                 }
                             }
                         }
@@ -171,10 +174,10 @@ struct HeadersView: View {
             }
             .navigationTitle("Headers")
         }
+        .environmentObject(favorites)
     }
 }
 
 #Preview {
     HeadersView(articles: ModelData().news.articles)
-        .environmentObject(Favorites())
 }
