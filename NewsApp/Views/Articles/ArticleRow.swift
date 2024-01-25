@@ -10,27 +10,13 @@ import SwiftUI
 struct ArticleRow: View {
     var article: Article
     
-    @StateObject var favorites = Favorites()
-
     var body: some View {
         HStack {
-            Text(article.title)
-            
-            // FIXME: Check article is favorite.
-            
-            if favorites.contains(article) {
-                Spacer()
-                Image(systemName: "heart.fill")
-                    .accessibilityLabel("This is a favorite article")
-                        .foregroundColor(.red)
-            }
+            Text(Utils.displayTitle(article.title))
         }
     }
 }
 
 #Preview {
-    let articles = ModelData().news.articles
-    return ArticleRow(article: articles[1])
-
-    .environmentObject(Favorites())
+    return ArticleRow(article: ModelData().news.articles[1])
 }
