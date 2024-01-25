@@ -141,7 +141,6 @@ struct HeadersView: View {
                             if article.title != "[Removed]" {
                                 NavigationLink {
                                     ArticleDetail(article: article)
-                                    
                                 } label: {
                                     ArticleRow(article: article)
                                     
