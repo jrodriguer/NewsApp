@@ -135,10 +135,11 @@ struct HeadersView: View {
         } detail: {
             Text("Select a Article")
         }
+        .environmentObject(favorites)
     }
     
     private func listView() -> some View {
-        NavigationView {
+        NavigationSplitView {
             VStack {
                 selectionToogle()
                 
@@ -173,6 +174,8 @@ struct HeadersView: View {
                 }
             }
             .navigationTitle("Headers")
+        } detail: {
+            Text("Select a Article")
         }
         .environmentObject(favorites)
     }
