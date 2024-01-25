@@ -58,7 +58,7 @@ struct HeadersView: View {
     private func cardView() -> some View {
         NavigationView {
             ScrollViewReader { proxy in
-                GeometryReader { fullView in
+                GeometryReader { geometry in
                     ScrollView {
                         LazyVStack {
                             VStack(spacing: 0) {
@@ -71,7 +71,7 @@ struct HeadersView: View {
                                 .padding(.vertical, 4)
                                 .cornerRadius(10)
                                 .padding(10)
-                                                                
+                                
                                 if !filteredArticles.isEmpty {
                                     ForEach(Array(filteredArticles.enumerated()), id: \.element.id) { (index, article) in
                                         if article.title != "[Removed]" {
@@ -95,42 +95,32 @@ struct HeadersView: View {
                             
                             // TODO: Add button for go to top, fixed positioned on following scroll location.
                             
-                            GeometryReader { geo in
-                                VStack {
-                                    Spacer()
-                                    
-                                    HStack {
-                                        Spacer()
-                                        
-                                        Button(action: {
-                                            withAnimation {
-                                                proxy.scrollTo(scrollPosition)
-                                            }
-                                        }, label: {
-                                            Text("")
-                                                .font(.system(.largeTitle))
-                                                .frame(width: 77, height: 70)
-                                                .foregroundColor(Color.white)
-                                                .padding(.bottom, 7)
-                                        })
-                                        .id(bottomID)
-                                        .background(Color.blue)
-                                        .cornerRadius(38.5)
-                                        .padding()
-                                        .shadow(color: Color.black.opacity(0.3),
-                                                radius: 3,
-                                                x: 3,
-                                                y: 3)
-                                        .offset(x: (geo.size.width / 2), y: 0)
-                                    }
+                            Button(action: {
+                                withAnimation {
+                                    proxy.scrollTo(0)
                                 }
-                            }
+                            }, label: {
+                                Image(systemName: "arrow.up.circle.fill")
+                                    .font(.system(size: 32))
+                                    .foregroundColor(Color.white)
+                            })
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(38.5)
+                            .padding()
+                            .shadow(color: Color.black.opacity(0.3),
+                                    radius: 3,
+                                    x: 3,
+                                    y: 3)
+                            .zIndex(1)
+                            .opacity(geometry.frame(in: .global).minY > 300 ? 1 : 0)
                         }
                         .scrollTargetLayout()
                     }
+                    .scrollPosition(id: $scrollPosition)
+                    .navigationTitle("Headers")
                 }
-                .scrollPosition(id: $scrollPosition)
-                .navigationTitle("Headers")
             }
         }
         .environmentObject(favorites)
@@ -154,7 +144,7 @@ struct HeadersView: View {
                                     
                                 } label: {
                                     ArticleRow(article: article)
-                                                                        
+                                    
                                     if favorites.contains(article) {
                                         Spacer()
                                         Image(systemName: "heart.fill")
@@ -178,5 +168,5 @@ struct HeadersView: View {
 }
 
 #Preview {
-    HeadersView(articles: ModelData().news.articles)
+    HeadersView(articles: [])
 }
