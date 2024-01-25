@@ -38,7 +38,7 @@ class Favorites: ObservableObject {
         save()
     }
 
-    func save() {
+    private func save() {
         if let encoded = try? JSONEncoder().encode(articles) {
             UserDefaults.standard.set(encoded, forKey: saveKey)
         }
