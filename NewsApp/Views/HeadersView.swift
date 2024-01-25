@@ -28,7 +28,7 @@ struct HeadersView: View {
             viewForSelectedOption()
         }
     }
-        
+    
     private var filteredArticles: [Article] {
         articles.filter { article in
             (!showFavoritesOnly || favorites.contains(article))
@@ -71,9 +71,10 @@ struct HeadersView: View {
                                 }
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 4)
-                                .background(Color(.systemGray6))
                                 .cornerRadius(10)
                                 .padding(10)
+                                
+                                // FIXME: Contains favorites articles.
                                 
                                 if !filteredArticles.isEmpty {
                                     ForEach(Array(filteredArticles.enumerated()), id: \.element.id) { (index, article) in
