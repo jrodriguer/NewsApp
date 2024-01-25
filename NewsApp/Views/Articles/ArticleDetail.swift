@@ -10,7 +10,8 @@ import SwiftUI
 struct ArticleDetail: View {
     var article: Article
     
-    @StateObject var favorites = Favorites()
+    /// Every view the navigation view presents will also gain that Favorites instance to work with.
+    @EnvironmentObject var favorites: Favorites
     
     var body: some View {
         ScrollView {
@@ -86,6 +87,7 @@ struct ArticleDetail: View {
                             }
                         }
                         .buttonStyle(.borderedProminent)
+                        .padding()
                     }
                 }
                 .padding()
@@ -97,6 +99,6 @@ struct ArticleDetail: View {
 }
 
 #Preview {
-    ArticleDetail(article: ModelData().news.articles[10])
+    ArticleDetail(article: ModelData().news.articles[1])
         .environmentObject(Favorites())
 }
