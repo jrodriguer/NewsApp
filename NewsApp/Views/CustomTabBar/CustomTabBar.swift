@@ -12,8 +12,6 @@ enum Tabs: Int {
     case Favorites
 }
 
-// FIXME: Check the Tab Bar always enable, not with Detail View
-
 struct CustomTabBar: View {
     @Binding var selectedTab: Tabs
     @Binding var showModal: Bool
