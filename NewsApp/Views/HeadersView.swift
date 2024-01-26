@@ -144,6 +144,8 @@ struct HeadersView: View {
                                 } label: {
                                     ArticleRow(article: article)
                                     
+                                    // TODO: Move heart image to right of row, alignment all places.
+                                    
                                     if favorites.contains(article) {
                                         Spacer()
                                         Image(systemName: "heart.fill")
