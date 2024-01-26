@@ -11,7 +11,7 @@ struct ArticleRow: View {
     var article: Article
     
     @EnvironmentObject var favorites: Favorites
-
+    
     var body: some View {
         HStack {
             Text(Utils.displayTitle(article.title))
@@ -31,6 +31,13 @@ struct ArticleRow: View {
                     }
                     .tint(.red)
                 }
+            
+            if favorites.contains(article) {
+                Spacer()
+                Image(systemName: "heart.fill")
+                    .accessibilityLabel("This is a favorite article")
+                    .foregroundColor(.red)
+            }
         }
     }
 }

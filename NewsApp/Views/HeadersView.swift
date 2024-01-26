@@ -15,8 +15,10 @@ struct HeadersView: View {
         case listView = "List View"
     }
     @State private var selectedViewOption = ViewOption.cardView
+    
     @StateObject var favorites = Favorites()
     @State private var showFavoritesOnly = false
+    
     @Namespace var topID
     @Namespace var bottomID
     @State var scrollPosition: Int?
@@ -138,22 +140,14 @@ struct HeadersView: View {
                     
                     if !filteredArticles.isEmpty {
                         ForEach(filteredArticles) { article in
-                            if article.title != "[Removed]" {
-                                NavigationLink {
-                                    ArticleDetail(article: article)
-                                } label: {
-                                    ArticleRow(article: article)
-                                    
-                                    // TODO: Move heart image to right of row, alignment all places.
-                                    
-                                    if favorites.contains(article) {
-                                        Spacer()
-                                        Image(systemName: "heart.fill")
-                                            .accessibilityLabel("This is a favorite article")
-                                            .foregroundColor(.red)
+                                if article.title != "[Removed]" {
+                                    NavigationLink {
+                                        ArticleDetail(article: article)
+                                    } label: {
+                                        ArticleRow(article: article)
                                     }
                                 }
-                            }
+                            
                         }
                     } else {
                         Text("No articles available")
@@ -169,5 +163,5 @@ struct HeadersView: View {
 }
 
 #Preview {
-    HeadersView(articles: [])
+    HeadersView(articles: ModelData().news.articles)
 }
