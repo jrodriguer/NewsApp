@@ -140,14 +140,13 @@ struct HeadersView: View {
                     
                     if !filteredArticles.isEmpty {
                         ForEach(filteredArticles) { article in
-                                if article.title != "[Removed]" {
-                                    NavigationLink {
-                                        ArticleDetail(article: article)
-                                    } label: {
-                                        ArticleRow(article: article)
-                                    }
+                            if article.title != "[Removed]" {
+                                NavigationLink {
+                                    ArticleDetail(article: article)
+                                } label: {
+                                    ArticleRow(article: article)
                                 }
-                            
+                            }
                         }
                     } else {
                         Text("No articles available")
