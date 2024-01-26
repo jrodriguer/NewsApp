@@ -10,7 +10,6 @@ import SwiftUI
 struct ArticleDetail: View {
     var article: Article
     
-    /// Every view the navigation view presents will also gain that Favorites instance to work with.
     @EnvironmentObject var favorites: Favorites
     
     var body: some View {
