@@ -10,7 +10,7 @@ import SwiftUI
 struct RootView: View {
     @Environment(ModelData.self) var modelData
     @State private var selectedTab: Tabs = .Headers
-    @State private var showModal: Bool = false
+    //@State private var showModal: Bool = false
     
     var body: some View {
         CurrentView(currentView: self.$selectedTab)
