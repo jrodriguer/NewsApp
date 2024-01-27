@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct HeadersView: View {
     var articles: [Article]
@@ -19,6 +18,11 @@ struct HeadersView: View {
     
     @StateObject var favorites = Favorites()
     @State private var showFavoritesOnly = false
+    private var filteredArticles: [Article] {
+        articles.filter { article in
+            (!showFavoritesOnly || favorites.contains(article))
+        }
+    }
     
     var body: some View {
         VStack {
@@ -26,13 +30,7 @@ struct HeadersView: View {
         }
     }
     
-    private var filteredArticles: [Article] {
-        articles.filter { article in
-            (!showFavoritesOnly || favorites.contains(article))
-        }
-    }
-    
-    private func selectionToogle() -> some View {
+    private func selectionToggle() -> some View {
         VStack {
             Picker("Select View", selection: $selectedViewOption) {
                 ForEach(ViewOption.allCases, id: \.self) { option in
@@ -42,20 +40,6 @@ struct HeadersView: View {
             .pickerStyle(SegmentedPickerStyle())
             .padding()
         }
-    }
-    
-    private func floatingActionButton() -> some View {
-        Button {
-            //
-        } label: {
-            Image(systemName: "plus")
-                .font(.title2.weight(.bold))
-                .foregroundColor(.white)
-                .padding()
-                .background(.orange)
-                .clipShape(Circle())
-        }
-        .padding()
     }
     
     @ViewBuilder
@@ -73,7 +57,7 @@ struct HeadersView: View {
             ScrollViewReader { proxy in
                 ScrollView {
                     VStack(spacing: 0) {
-                        selectionToogle()
+                        selectionToggle()
                         
                         Toggle(isOn: $showFavoritesOnly) {
                             Text("Favorites only")
@@ -113,7 +97,7 @@ struct HeadersView: View {
     private func listView() -> some View {
         NavigationView {
             ZStack(alignment: .bottomTrailing) {
-                selectionToogle()
+                selectionToggle()
                 
                 List {
                     Toggle(isOn: $showFavoritesOnly) {
@@ -137,10 +121,7 @@ struct HeadersView: View {
                     }
                 }
                 
-                // TODO: Add button for go to top, fixed positioned on following scroll location.
-                
-                floatingActionButton()
-                
+                FloatingActionButton()
             }
             .navigationTitle("Headers")
         }
