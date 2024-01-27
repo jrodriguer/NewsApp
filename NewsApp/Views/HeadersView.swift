@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HeadersView: View {
     var articles: [Article]
@@ -18,10 +19,6 @@ struct HeadersView: View {
     
     @StateObject var favorites = Favorites()
     @State private var showFavoritesOnly = false
-    
-    @Namespace var topID
-    @Namespace var bottomID
-    @State var scrollPosition: Int?
     
     var body: some View {
         VStack {
@@ -47,6 +44,20 @@ struct HeadersView: View {
         }
     }
     
+    private func floatingActionButton() -> some View {
+        Button {
+            //
+        } label: {
+            Image(systemName: "plus")
+                .font(.title2.weight(.bold))
+                .foregroundColor(.white)
+                .padding()
+                .background(.orange)
+                .clipShape(Circle())
+        }
+        .padding()
+    }
+    
     @ViewBuilder
     private func viewForSelectedOption() -> some View {
         switch selectedViewOption {
@@ -60,69 +71,40 @@ struct HeadersView: View {
     private func cardView() -> some View {
         NavigationView {
             ScrollViewReader { proxy in
-                GeometryReader { geometry in
-                    ScrollView {
-                        LazyVStack {
-                            VStack(spacing: 0) {
-                                selectionToogle()
-                                
-                                Toggle(isOn: $showFavoritesOnly) {
-                                    Text("Favorites only")
-                                }
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 4)
-                                .cornerRadius(10)
-                                .padding(10)
-                                
-                                if !filteredArticles.isEmpty {
-                                    ForEach(Array(filteredArticles.enumerated()), id: \.element.id) { (index, article) in
-                                        if article.title != "[Removed]" {
-                                            NavigationLink {
-                                                ArticleDetail(article: article)
-                                            } label: {
-                                                ArticleCard(article: article)
-                                                    .multilineTextAlignment(.leading)
-                                            }
-                                            // Set the scroll position when the button is tapped
-                                            .id(index)
-                                        }
+                ScrollView {
+                    VStack(spacing: 0) {
+                        selectionToogle()
+                        
+                        Toggle(isOn: $showFavoritesOnly) {
+                            Text("Favorites only")
+                        }
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 4)
+                        .cornerRadius(10)
+                        .padding(10)
+                        
+                        if !filteredArticles.isEmpty {
+                            ForEach(Array(filteredArticles.enumerated()), id: \.element.id) { (index, article) in
+                                if article.title != "[Removed]" {
+                                    NavigationLink {
+                                        ArticleDetail(article: article)
+                                    } label: {
+                                        ArticleCard(article: article)
+                                            .multilineTextAlignment(.leading)
                                     }
-                                    
-                                } else {
-                                    Text("No articles available")
-                                        .foregroundColor(.red)
-                                        .padding()
+                                    // Set the scroll position when the button is tapped
+                                    .id(index)
                                 }
                             }
-                            
-                            // TODO: Add button for go to top, fixed positioned on following scroll location.
-                            
-                            Button(action: {
-                                withAnimation {
-                                    proxy.scrollTo(0)
-                                }
-                            }, label: {
-                                Image(systemName: "arrow.up.circle.fill")
-                                    .font(.system(size: 32))
-                                    .foregroundColor(Color.white)
-                            })
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(38.5)
-                            .padding()
-                            .shadow(color: Color.black.opacity(0.3),
-                                    radius: 3,
-                                    x: 3,
-                                    y: 3)
-                            .zIndex(1)
-                            .opacity(geometry.frame(in: .global).minY > 300 ? 1 : 0)
+                        } else {
+                            Text("No articles available")
+                                .foregroundColor(.red)
+                                .padding()
                         }
-                        .scrollTargetLayout()
                     }
-                    .scrollPosition(id: $scrollPosition)
-                    .navigationTitle("Headers")
+                    .scrollTargetLayout()
                 }
+                .navigationTitle("Headers")
             }
         }
         .environmentObject(favorites)
@@ -130,7 +112,7 @@ struct HeadersView: View {
     
     private func listView() -> some View {
         NavigationView {
-            VStack {
+            ZStack(alignment: .bottomTrailing) {
                 selectionToogle()
                 
                 List {
@@ -154,6 +136,11 @@ struct HeadersView: View {
                             .padding()
                     }
                 }
+                
+                // TODO: Add button for go to top, fixed positioned on following scroll location.
+                
+                floatingActionButton()
+                
             }
             .navigationTitle("Headers")
         }
