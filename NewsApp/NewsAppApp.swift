@@ -13,7 +13,7 @@ struct NewsAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
+            ContentView()
                 .environment(modelData)
         }
     }
