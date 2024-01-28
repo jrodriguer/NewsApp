@@ -24,6 +24,8 @@ struct HeadersView: View {
         }
     }
     
+    @State var showFab = true
+    
     var body: some View {
         VStack {
             viewForSelectedOption()
@@ -54,42 +56,37 @@ struct HeadersView: View {
     
     private func cardView() -> some View {
         NavigationView {
-            ScrollViewReader { proxy in
-                ScrollView {
-                    VStack(spacing: 0) {
-                        selectionToggle()
-                        
-                        Toggle(isOn: $showFavoritesOnly) {
-                            Text("Favorites only")
-                        }
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 4)
-                        .cornerRadius(10)
-                        .padding(10)
-                        
-                        if !filteredArticles.isEmpty {
-                            ForEach(Array(filteredArticles.enumerated()), id: \.element.id) { (index, article) in
-                                if article.title != "[Removed]" {
-                                    NavigationLink {
-                                        ArticleDetail(article: article)
-                                    } label: {
-                                        ArticleCard(article: article)
-                                            .multilineTextAlignment(.leading)
-                                    }
-                                    // Set the scroll position when the button is tapped
-                                    .id(index)
+            ScrollView {
+                VStack(spacing: 0) {
+                    selectionToggle()
+                    
+                    Toggle(isOn: $showFavoritesOnly) {
+                        Text("Favorites only")
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 4)
+                    .cornerRadius(10)
+                    .padding(10)
+                    
+                    if !filteredArticles.isEmpty {
+                        ForEach(filteredArticles) { article in
+                            if article.title != "[Removed]" {
+                                NavigationLink {
+                                    ArticleDetail(article: article)
+                                } label: {
+                                    ArticleCard(article: article)
+                                        .multilineTextAlignment(.leading)
                                 }
                             }
-                        } else {
-                            Text("No articles available")
-                                .foregroundColor(.red)
-                                .padding()
                         }
+                    } else {
+                        Text("No articles available")
+                            .foregroundColor(.red)
+                            .padding()
                     }
-                    .scrollTargetLayout()
                 }
-                .navigationTitle("Headers")
             }
+            .navigationTitle("Headers")
         }
         .environmentObject(favorites)
     }
@@ -100,6 +97,9 @@ struct HeadersView: View {
                 selectionToggle()
                 
                 List {
+                    
+                    // TODO: Try with VStack and ForEach
+                    
                     Toggle(isOn: $showFavoritesOnly) {
                         Text("Favorites only")
                     }
@@ -111,6 +111,7 @@ struct HeadersView: View {
                                     ArticleDetail(article: article)
                                 } label: {
                                     ArticleRow(article: article)
+                                        .multilineTextAlignment(.leading)
                                 }
                             }
                         }
@@ -120,12 +121,10 @@ struct HeadersView: View {
                             .padding()
                     }
                 }
-                
-                FloatingActionButton()
+                .navigationTitle("Headers")
             }
-            .navigationTitle("Headers")
+            .environmentObject(favorites)
         }
-        .environmentObject(favorites)
     }
 }
 
