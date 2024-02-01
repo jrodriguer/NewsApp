@@ -93,7 +93,7 @@ struct HeadersView: View {
     
     private func listView() -> some View {
         NavigationView {
-            ZStack(alignment: .bottomTrailing) {
+            VStack {
                 selectionToggle()
                 
                 List {
@@ -108,7 +108,6 @@ struct HeadersView: View {
                                     ArticleDetail(article: article)
                                 } label: {
                                     ArticleRow(article: article)
-                                        .multilineTextAlignment(.leading)
                                 }
                             }
                         }
