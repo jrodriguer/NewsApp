@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(ModelData.self) var modelData
     @StateObject var favorites = Favorites()
-    
+
     var body: some View {
         NavigationView {
             VStack {

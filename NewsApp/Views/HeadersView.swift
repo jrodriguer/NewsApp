@@ -16,7 +16,8 @@ struct HeadersView: View {
     }
     @State private var selectedViewOption = ViewOption.cardView
     
-    @StateObject var favorites = Favorites()
+    @EnvironmentObject var favorites: Favorites
+    
     @State private var showFavoritesOnly = false
     private var filteredArticles: [Article] {
         articles.filter { article in
@@ -88,7 +89,6 @@ struct HeadersView: View {
             }
             .navigationTitle("Headers")
         }
-        .environmentObject(favorites)
     }
     
     private func listView() -> some View {
@@ -97,9 +97,6 @@ struct HeadersView: View {
                 selectionToggle()
                 
                 List {
-                    
-                    // TODO: Try with VStack and ForEach
-                    
                     Toggle(isOn: $showFavoritesOnly) {
                         Text("Favorites only")
                     }
@@ -123,11 +120,11 @@ struct HeadersView: View {
                 }
                 .navigationTitle("Headers")
             }
-            .environmentObject(favorites)
         }
     }
 }
 
 #Preview {
     HeadersView(articles: ModelData().news.articles)
+        .environmentObject(Favorites())
 }
