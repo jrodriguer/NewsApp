@@ -96,28 +96,32 @@ struct HeadersView: View {
             VStack {
                 selectionToggle()
                 
-                List {
-                    Toggle(isOn: $showFavoritesOnly) {
-                        Text("Favorites only")
-                    }
-                    
-                    if !filteredArticles.isEmpty {
-                        ForEach(filteredArticles) { article in
-                            if article.title != "[Removed]" {
-                                NavigationLink {
-                                    ArticleDetail(article: article)
-                                } label: {
-                                    ArticleRow(article: article)
+                ZStack(alignment: .bottomTrailing) {
+                    List {
+                        Toggle(isOn: $showFavoritesOnly) {
+                            Text("Favorites only")
+                        }
+                        
+                        if !filteredArticles.isEmpty {
+                            ForEach(filteredArticles) { article in
+                                if article.title != "[Removed]" {
+                                    NavigationLink {
+                                        ArticleDetail(article: article)
+                                    } label: {
+                                        ArticleRow(article: article)
+                                    }
                                 }
                             }
+                        } else {
+                            Text("No articles available")
+                                .foregroundColor(.red)
+                                .padding()
                         }
-                    } else {
-                        Text("No articles available")
-                            .foregroundColor(.red)
-                            .padding()
                     }
+                    .navigationTitle("Headers")
+                    
+                    FloatingActionButton()
                 }
-                .navigationTitle("Headers")
             }
         }
     }
