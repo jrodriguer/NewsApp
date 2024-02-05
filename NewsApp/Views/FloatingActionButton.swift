@@ -15,7 +15,7 @@ struct FloatingActionButton: View {
         Button {
             //
         } label: {
-            Image(systemName: "plus")
+            Image(systemName: "chevron.up")
                 .font(.title2.weight(.bold))
                 .foregroundColor(.white)
                 .padding()
