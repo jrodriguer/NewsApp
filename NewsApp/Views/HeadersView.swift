@@ -56,7 +56,7 @@ struct HeadersView: View {
         }
     }
     
-    fileprivate func cardView() -> some View {
+    private func cardView() -> some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 0) {
@@ -92,7 +92,7 @@ struct HeadersView: View {
         }
     }
     
-    fileprivate func listView() -> some View {
+    private func listView() -> some View {
         NavigationView {
             VStack {
                 selectionToggle()
