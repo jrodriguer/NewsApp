@@ -9,8 +9,6 @@ import SwiftUI
 
 class Favorites: ObservableObject {
     private var articles: Set<UUID>
-
-    // The key we're using to read/write
     private let saveKey = "Favorites"
 
     init() {
