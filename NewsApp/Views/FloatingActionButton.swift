@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct FloatingActionButton: View {
-    @State private var showFloatingActionButton = true
-    @State private var scrollOffset: CGFloat = 0.00
+    var nameIcon: String
     
     var body: some View {
         Button {
             //
         } label: {
-            Image(systemName: "chevron.up")
+            Image(systemName: nameIcon)
                 .font(.title2.weight(.bold))
                 .foregroundColor(.white)
                 .padding()
@@ -28,5 +27,5 @@ struct FloatingActionButton: View {
 }
 
 #Preview {
-    FloatingActionButton()
+    FloatingActionButton(nameIcon: "chevron.up")
 }
