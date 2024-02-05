@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FloatingActionButton: View {
-    @State var showFloatingActionButton = true
-    @State var scrollOffset: CGFloat = 0.00
+    @State private var showFloatingActionButton = true
+    @State private var scrollOffset: CGFloat = 0.00
     
     var body: some View {
         Button {
