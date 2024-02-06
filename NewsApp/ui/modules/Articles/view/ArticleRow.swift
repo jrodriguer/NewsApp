@@ -41,9 +41,3 @@ struct ArticleRow: View {
         }
     }
 }
-/*
-#Preview {
-    ArticleRow(article: ModelData().news.articles[1])
-        .environmentObject(Favorites())
-}
-*/

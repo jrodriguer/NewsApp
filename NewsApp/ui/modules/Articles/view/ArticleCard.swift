@@ -83,8 +83,3 @@ struct ArticleCard: View {
         }
     }
 }
-/*
-#Preview {
-    ArticleCard(article: ModelData().news.articles[1])
-}
-*/

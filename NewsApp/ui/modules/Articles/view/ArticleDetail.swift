@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ArticleDetail: View {
     var article: ArticleApiObject
-    
     @EnvironmentObject var vm: ArticleViewModel
     
     var body: some View {
@@ -96,9 +95,3 @@ struct ArticleDetail: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-/*
-#Preview {
-    ArticleDetail()
-        .environmentObject(vm())
-}
-*/
