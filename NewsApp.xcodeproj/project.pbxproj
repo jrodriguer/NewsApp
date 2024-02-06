@@ -144,7 +144,7 @@
 		8A4E22BB2B4A2BCA006D71C6 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
-				8A8C185C2B71AE66008E3C8C /* Business */,
+				8A8C185C2B71AE66008E3C8C /* business */,
 				8A8C18662B728714008E3C8C /* ui */,
 				8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */,
 				8A8EF23B2B4C61DA00402584 /* Model */,
@@ -192,21 +192,21 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		8A8C185C2B71AE66008E3C8C /* Business */ = {
+		8A8C185C2B71AE66008E3C8C /* business */ = {
 			isa = PBXGroup;
 			children = (
 				8A8C18672B728738008E3C8C /* data */,
-				8A8C185D2B71AEC6008E3C8C /* Services */,
+				8A8C185D2B71AEC6008E3C8C /* services */,
 			);
-			path = Business;
+			path = business;
 			sourceTree = "<group>";
 		};
-		8A8C185D2B71AEC6008E3C8C /* Services */ = {
+		8A8C185D2B71AEC6008E3C8C /* services */ = {
 			isa = PBXGroup;
 			children = (
 				8A8C185F2B71AF0A008E3C8C /* ApiRestManager.swift */,
 			);
-			path = Services;
+			path = services;
 			sourceTree = "<group>";
 		};
 		8A8C18612B728487008E3C8C /* modules */ = {
