@@ -1,14 +1,15 @@
 //
-//  Headers.swift
+//  ArticleView.swift
 //  NewsApp
 //
-//  Created by Julio Rodriguez on 7/1/24.
+//  Created by Julio Rodriguez on 6/2/24.
 //
 
-/*import SwiftUI
+import SwiftUI
 
-struct HeadersView: View {
-    var articles: [ArticleApiObject]
+struct ArticleView: View {
+    //var articles: [ArticleApiObject]
+    @StateObject var vm = ArticleViewModel()
     
     enum ViewOption: String, CaseIterable {
         case cardView = "Card View"
@@ -20,8 +21,8 @@ struct HeadersView: View {
     
     @State private var showFavoritesOnly = false
     private var filteredArticles: [ArticleApiObject] {
-        articles.filter { article in
-            (!showFavoritesOnly || favorites.contains(article))
+        vm.articles.filter { article in
+            (!showFavoritesOnly || vm.contains(article))
         }
     }
     
@@ -108,8 +109,10 @@ struct HeadersView: View {
                                 if article.title != "[Removed]" {
                                     NavigationLink {
                                         ArticleDetail(article: article)
+                                            .environmentObject(vm)
                                     } label: {
                                         ArticleRow(article: article)
+                                            .environmentObject(vm)
                                     }
                                 }
                             }
@@ -175,10 +178,9 @@ struct ViewOffsetKey: PreferenceKey {
     static func reduce(value: inout Value, nextValue: () -> Value) {
         value += nextValue()
     }
+    
 }
 
 #Preview {
-    HeadersView(articles: ModelData().news.articles)
-        .environmentObject(Favorites())
+    ArticleView()
 }
- */

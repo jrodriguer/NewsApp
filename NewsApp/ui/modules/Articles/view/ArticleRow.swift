@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct ArticleRow: View {
-    var article: Article
+    var article: ArticleApiObject
     
-    @EnvironmentObject var favorites: Favorites
+    @EnvironmentObject var vm: ArticleViewModel
     
     var body: some View {
         HStack {
             Text(Utils.displayTitle(article.title))
                 .swipeActions(edge: .leading) {
                     Button {
-                        if favorites.contains(article) {
-                            favorites.remove(article)
+                        if vm.contains(article) {
+                            vm.remove(article)
                         } else {
-                            favorites.add(article)
+                            vm.add(article)
                         }
                     } label: {
-                        if favorites.contains(article) {
+                        if vm.contains(article) {
                             Label("Favorite", systemImage: "heart.slash")
                         } else {
                             Label("Favorite", systemImage: "heart.fill")
@@ -32,7 +32,7 @@ struct ArticleRow: View {
                     .tint(.red)
                 }
             
-            if favorites.contains(article) {
+            if vm.contains(article) {
                 Spacer()
                 Image(systemName: "heart.fill")
                     .accessibilityLabel("This is a favorite article")
@@ -41,8 +41,9 @@ struct ArticleRow: View {
         }
     }
 }
-
+/*
 #Preview {
     ArticleRow(article: ModelData().news.articles[1])
         .environmentObject(Favorites())
 }
+*/

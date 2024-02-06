@@ -20,17 +20,17 @@ class Favorites: ObservableObject {
         }
     }
 
-    func contains(_ article: Article) -> Bool {
+    func contains(_ article: ArticleApiObject) -> Bool {
         articles.contains(article.id)
     }
 
-    func add(_ article: Article) {
-        objectWillChange.send()
+    func add(_ article: ArticleApiObject) {
         articles.insert(article.id)
         save()
+        objectWillChange.send()
     }
 
-    func remove(_ article: Article) {
+    func remove(_ article: ArticleApiObject) {
         objectWillChange.send()
         articles.remove(article.id)
         save()

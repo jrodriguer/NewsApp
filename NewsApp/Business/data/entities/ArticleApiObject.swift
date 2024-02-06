@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Article: Codable, Identifiable {
+struct ArticleApiObject: Codable, Identifiable {
     var id = UUID()
 
     var author: String?
@@ -51,17 +51,4 @@ struct Article: Codable, Identifiable {
     }
 }
 
-extension DateFormatter {
-    static var iso8601Full: DateFormatter = {
-        var formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        return formatter
-    }()
-}
 
-struct TopHeadlines: Codable {
-    var status: String
-    var totalResults: Int
-    var articles: [Article]
-}

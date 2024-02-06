@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/*
 struct ContentView: View {
     @StateObject var favorites = Favorites()
 
@@ -24,3 +24,4 @@ struct ContentView: View {
     ContentView()
         .environment(ModelData())
 }
+*/

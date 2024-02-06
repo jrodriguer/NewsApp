@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ArticleCard: View {
-    let article: Article
+    let article: ArticleApiObject
     
     var body: some View {
         VStack {
@@ -83,7 +83,8 @@ struct ArticleCard: View {
         }
     }
 }
-
+/*
 #Preview {
     ArticleCard(article: ModelData().news.articles[1])
 }
+*/

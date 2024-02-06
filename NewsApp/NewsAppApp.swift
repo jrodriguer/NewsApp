@@ -9,12 +9,13 @@ import SwiftUI
 
 @main
 struct NewsAppApp: App {
-    @State private var modelData = ModelData()
+    
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(ModelData())
+            ArticleView()
+           /* ContentView()
+                .environment(ModelData())*/
         }
     }
 }

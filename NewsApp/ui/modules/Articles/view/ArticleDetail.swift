@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ArticleDetail: View {
-    var article: Article
+    var article: ArticleApiObject
     
-    @EnvironmentObject var favorites: Favorites
+    @EnvironmentObject var vm: ArticleViewModel
     
     var body: some View {
         ScrollView {
@@ -78,11 +78,11 @@ struct ArticleDetail: View {
                             Image(systemName: "link.circle.fill")
                                 .font(.largeTitle)
                         }
-                        Button(favorites.contains(article) ? "Remove from Favorites" : "Add to Favorites") {
-                            if favorites.contains(article) {
-                                favorites.remove(article)
+                        Button(vm.contains(article) ? "Remove from vm" : "Add to vm") {
+                            if vm.contains(article) {
+                                vm.remove(article)
                             } else {
-                                favorites.add(article)
+                                vm.add(article)
                             }
                         }
                         .buttonStyle(.borderedProminent)
@@ -96,8 +96,9 @@ struct ArticleDetail: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-
+/*
 #Preview {
-    ArticleDetail(article: ModelData().news.articles[1])
-        .environmentObject(Favorites())
+    ArticleDetail()
+        .environmentObject(vm())
 }
+*/
