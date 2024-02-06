@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ArticleView: View {
-    //var articles: [ArticleApiObject]
     @StateObject var vm = ArticleViewModel()
     
     enum ViewOption: String, CaseIterable {
