@@ -41,14 +41,6 @@ struct ArticleView: View {
     }
 }
 
-struct ViewOffsetKey: PreferenceKey {
-    typealias Value = CGFloat
-    static var defaultValue = CGFloat.zero
-    static func reduce(value: inout Value, nextValue: () -> Value) {
-        value += nextValue()
-    }
-}
-
 extension ArticleView {
     private var pickerSection: some View {
         VStack {
@@ -97,51 +89,58 @@ extension ArticleView {
     
     private var listSection: some View {
         VStack {
-            VStack {
-                ZStack(alignment: .bottomTrailing) {
+            ZStack(alignment: .bottomTrailing) {
+                List {
+                    Toggle(isOn: $showFavoritesOnly) {
+                        Text("Favorites only")
+                    }
                     
-                    // TODO: Remove arrow from list index.
-                    
-                    List {
-                        Toggle(isOn: $showFavoritesOnly) {
-                            Text("Favorites only")
-                        }
-                        
-                        if !filteredArticles.isEmpty {
-                            ForEach(filteredArticles) { article in
-                                if article.title != "[Removed]" {
-                                    NavigationLink {
-                                        ArticleDetailView(article: article)
-                                            .environmentObject(vm)
-                                    } label: {
-                                        ArticleRowView(article: article)
-                                            .environmentObject(vm)
+                    if !filteredArticles.isEmpty {
+                        ForEach(filteredArticles) { article in
+                            if article.title != "[Removed]" {
+                                ZStack(alignment: .leading) {
+                                    ArticleRowView(article: article)
+                                        .environmentObject(vm)
+                                    
+                                    NavigationLink(destination:
+                                                    ArticleDetailView(article: article)
+                                        .environmentObject(vm)
+                                    ) {
+                                        EmptyView()
                                     }
+                                    .opacity(0.0)
                                 }
+                                .frame(height: 50)
+                                .padding(.horizontal)
+                                .background(Color.white.gradient, in: RoundedRectangle(cornerRadius: 20))
+                                .foregroundColor(.black)
+                                .listRowSeparator(.hidden)
                             }
-                        } else {
-                            Text("No articles available")
-                                .foregroundColor(.red)
-                                .padding()
                         }
+                    } else {
+                        Text("No articles available")
+                            .foregroundColor(.red)
+                            .padding()
                     }
                 }
-            }
-            .background(GeometryReader { geometry in
-                return Color.clear.preference(key: ViewOffsetKey.self,
-                                              value: -geometry.frame(in: .named("scroll")).origin.y)
-            })
-            .onPreferenceChange(ViewOffsetKey.self) { offset in
-                withAnimation {
-                    if offset > 50 {
-                        showFab = offset < scrollOffset
-                    } else  {
-                        showFab = true
-                    }
-                }
-                scrollOffset = offset
+
             }
         }
+        .background(GeometryReader { geometry in
+            return Color.clear.preference(key: ViewOffsetKey.self,
+                                          value: -geometry.frame(in: .named("scroll")).origin.y)
+        })
+        .onPreferenceChange(ViewOffsetKey.self) { offset in
+            withAnimation {
+                if offset > 50 {
+                    showFab = offset < scrollOffset
+                } else  {
+                    showFab = true
+                }
+            }
+            scrollOffset = offset
+        }
+        
         .coordinateSpace(name: "scroll")
         .overlay(
             Group {
@@ -157,6 +156,14 @@ extension ArticleView {
     }
 }
 
- #Preview {
-     ArticleView()
- }
+struct ViewOffsetKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
+    }
+}
+
+#Preview {
+    ArticleView()
+}
