@@ -8,11 +8,13 @@
 import Foundation
 
 class ArticleViewModel: ObservableObject {
-    var apiRest = ApiRestManager()
+    private var apiRest: ApiRestManager
+
     @Published var articles: [ArticleApiObject] = []
     private var articlesIds: Set<UUID> = []
 
-    init() {
+    init(apiRest: ApiRestManager = ApiRestManager()) {
+        self.apiRest = apiRest
         self.loadArticles()
         self.loadFavorites()
     }
