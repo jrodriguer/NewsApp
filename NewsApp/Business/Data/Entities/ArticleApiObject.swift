@@ -1,5 +1,5 @@
 //
-//  Article.swift
+//  ArticleApiObject.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 8/1/24.
@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ArticleApiObject: Codable, Identifiable {
     var id = UUID()
-
+    
     var author: String?
     var title: String
     var description: String?
@@ -50,5 +50,3 @@ struct ArticleApiObject: Codable, Identifiable {
         }
     }
 }
-
-

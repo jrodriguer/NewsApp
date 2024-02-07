@@ -1,5 +1,5 @@
 //
-//  ArticleCard.swift
+//  ArticleCardView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 10/1/24.

@@ -72,10 +72,12 @@ struct ArticleView: View {
                         ForEach(filteredArticles) { article in
                             if article.title != "[Removed]" {
                                 NavigationLink {
-                                    ArticleDetail(article: article)
+                                    ArticleDetailView(article: article)
+                                        .environmentObject(vm)
                                 } label: {
                                     ArticleCardView(article: article)
                                         .multilineTextAlignment(.leading)
+                                        .environmentObject(vm)
                                 }
                             }
                         }
@@ -105,10 +107,10 @@ struct ArticleView: View {
                             ForEach(filteredArticles) { article in
                                 if article.title != "[Removed]" {
                                     NavigationLink {
-                                        ArticleDetail(article: article)
+                                        ArticleDetailView(article: article)
                                             .environmentObject(vm)
                                     } label: {
-                                        ArticleRow(article: article)
+                                        ArticleRowView(article: article)
                                             .environmentObject(vm)
                                     }
                                 }
