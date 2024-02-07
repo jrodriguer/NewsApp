@@ -9,10 +9,11 @@ import SwiftUI
 
 struct FloatingActionButton: View {
     var nameIcon: String
+    var action: () -> Void
     
     var body: some View {
         Button {
-            //
+            action()
         } label: {
             Image(systemName: nameIcon)
                 .font(.title2.weight(.bold))
@@ -27,5 +28,5 @@ struct FloatingActionButton: View {
 }
 
 #Preview {
-    FloatingActionButton(nameIcon: "chevron.up")
+    FloatingActionButton(nameIcon: "chevron.up", action: {})
 }
