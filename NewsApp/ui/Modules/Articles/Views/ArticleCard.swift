@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ArticleCard: View {
+struct ArticleCardView: View {
     let article: ArticleApiObject
     
     var body: some View {

@@ -10,7 +10,7 @@ import Foundation
 class ArticleViewModel: ObservableObject {
     var apiRest = ApiRestManager()
     @Published var articles: [ArticleApiObject] = []
-    private var articlesId: Set<UUID> = []
+    private var articlesIds: Set<UUID> = []
 
     init() {
         self.loadArticles()
@@ -23,22 +23,22 @@ class ArticleViewModel: ObservableObject {
     }
     
     func loadFavorites() {
-        self.articlesId = apiRest.get()
+        self.articlesIds = apiRest.get()
     }
     
     func contains(_ article: ArticleApiObject) -> Bool {
-        articlesId.contains(article.id)
+        articlesIds.contains(article.id)
     }
     
     func add(_ article: ArticleApiObject) {
         objectWillChange.send()
-        articlesId.insert(article.id)
-        apiRest.save(articlesId)
+        articlesIds.insert(article.id)
+        apiRest.save(articlesIds)
     }
     
     func remove(_ article: ArticleApiObject) {
         objectWillChange.send()
-        articlesId.remove(article.id)
-        apiRest.save(articlesId)
+        articlesIds.remove(article.id)
+        apiRest.save(articlesIds)
     }
 }

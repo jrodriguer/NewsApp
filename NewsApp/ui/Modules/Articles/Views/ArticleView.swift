@@ -76,7 +76,7 @@ struct ArticleView: View {
                                 NavigationLink {
                                     ArticleDetail(article: article)
                                 } label: {
-                                    ArticleCard(article: article)
+                                    ArticleCardView(article: article)
                                         .multilineTextAlignment(.leading)
                                 }
                             }
@@ -178,8 +178,4 @@ struct ViewOffsetKey: PreferenceKey {
         value += nextValue()
     }
     
-}
-
-#Preview {
-    ArticleView()
 }
