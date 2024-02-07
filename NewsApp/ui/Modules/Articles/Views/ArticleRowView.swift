@@ -14,6 +14,9 @@ struct ArticleRowView: View {
     var body: some View {
         HStack {
             Text(Utils.displayTitle(article.title))
+            
+            //TODO: Move swipe logic to view model.
+            
                 .swipeActions(edge: .leading) {
                     Button {
                         if vm.contains(article) {

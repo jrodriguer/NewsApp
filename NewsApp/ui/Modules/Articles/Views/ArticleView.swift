@@ -49,12 +49,6 @@ struct ViewOffsetKey: PreferenceKey {
     }
 }
 
-/*
- #Preview {
- ArticleView()
- }
- */
-
 extension ArticleView {
     private var pickerSection: some View {
         VStack {
@@ -105,6 +99,9 @@ extension ArticleView {
         VStack {
             VStack {
                 ZStack(alignment: .bottomTrailing) {
+                    
+                    // TODO: Remove arrow from list index.
+                    
                     List {
                         Toggle(isOn: $showFavoritesOnly) {
                             Text("Favorites only")
@@ -158,3 +155,7 @@ extension ArticleView {
         )
     }
 }
+
+ #Preview {
+     ArticleView()
+ }
