@@ -15,7 +15,7 @@ struct ArticleView: View {
         case listView = "List View"
     }
     @State private var selectedViewOption = ViewOption.cardView
-        
+    
     @State private var showFavoritesOnly = false
     private var filteredArticles: [ArticleApiObject] {
         vm.articles.filter { article in
@@ -27,12 +27,36 @@ struct ArticleView: View {
     @State var scrollOffset: CGFloat = 0.00
     
     var body: some View {
-        VStack {
-            viewForSelectedOption()
+        NavigationView {
+            VStack {
+                pickerSection
+                
+                switch selectedViewOption {
+                    case .cardView: cardSection
+                    case .listView: listSection
+                }
+            }
+            .navigationTitle("Headers")
         }
     }
-    
-    private func selectionToggle() -> some View {
+}
+
+struct ViewOffsetKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
+    }
+}
+
+/*
+ #Preview {
+ ArticleView()
+ }
+ */
+
+extension ArticleView {
+    private var pickerSection: some View {
         VStack {
             Picker("Select View", selection: $selectedViewOption) {
                 ForEach(ViewOption.allCases, id: \.self) { option in
@@ -44,59 +68,42 @@ struct ArticleView: View {
         }
     }
     
-    @ViewBuilder
-    private func viewForSelectedOption() -> some View {
-        switch selectedViewOption {
-        case .cardView:
-            cardView()
-        case .listView:
-            listView()
-        }
-    }
-    
-    private func cardView() -> some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 0) {
-                    selectionToggle()
-                    
-                    Toggle(isOn: $showFavoritesOnly) {
-                        Text("Favorites only")
-                    }
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 4)
-                    .cornerRadius(10)
-                    .padding(10)
-                    
-                    if !filteredArticles.isEmpty {
-                        ForEach(filteredArticles) { article in
-                            if article.title != "[Removed]" {
-                                NavigationLink {
-                                    ArticleDetailView(article: article)
-                                        .environmentObject(vm)
-                                } label: {
-                                    ArticleCardView(article: article)
-                                        .multilineTextAlignment(.leading)
-                                        .environmentObject(vm)
-                                }
+    private var cardSection: some View {
+        ScrollView {
+            VStack(spacing: 0) {
+                Toggle(isOn: $showFavoritesOnly) {
+                    Text("Favorites only")
+                }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 4)
+                .cornerRadius(10)
+                .padding(10)
+                
+                if !filteredArticles.isEmpty {
+                    ForEach(filteredArticles) { article in
+                        if article.title != "[Removed]" {
+                            NavigationLink {
+                                ArticleDetailView(article: article)
+                                    .environmentObject(vm)
+                            } label: {
+                                ArticleCardView(article: article)
+                                    .multilineTextAlignment(.leading)
+                                    .environmentObject(vm)
                             }
                         }
-                    } else {
-                        Text("No articles available")
-                            .foregroundColor(.red)
-                            .padding()
                     }
+                } else {
+                    Text("No articles available")
+                        .foregroundColor(.red)
+                        .padding()
                 }
             }
-            .navigationTitle("Headers")
         }
     }
     
-    private func listView() -> some View {
-        NavigationView {
+    private var listSection: some View {
+        VStack {
             VStack {
-                selectionToggle()
-                
                 ZStack(alignment: .bottomTrailing) {
                     List {
                         Toggle(isOn: $showFavoritesOnly) {
@@ -121,8 +128,6 @@ struct ArticleView: View {
                                 .padding()
                         }
                     }
-                    .navigationTitle("Headers")
-                    
                 }
             }
             .background(GeometryReader { geometry in
@@ -144,44 +149,12 @@ struct ArticleView: View {
         .overlay(
             Group {
                 if showFab {
-                    createFab()
+                    FloatingActionButton(nameIcon: "chevron.up") {
+                        print("click button")
+                    }
                 }
             },
             alignment: Alignment.bottomTrailing
         )
     }
-    
-    fileprivate func createFab() -> some View {
-        Button(action: {
-            //
-        }, label: {
-            Image(systemName: "chevron.up")
-                .font(.title)
-                .foregroundColor(.white)
-                .frame(width: 40, height: 40, alignment: .center)
-        })
-        .padding(8)
-        .background(Color.blue)
-        .cornerRadius(15)
-        .padding(8)
-        .shadow(radius: 3,
-                x: 3,
-                y: 3)
-        .transition(.scale)
-    }
 }
-
-struct ViewOffsetKey: PreferenceKey {
-    typealias Value = CGFloat
-    static var defaultValue = CGFloat.zero
-    static func reduce(value: inout Value, nextValue: () -> Value) {
-        value += nextValue()
-    }
-    
-}
-
-/*
-#Preview {
-    ArticleView()
-}
-*/
