@@ -15,9 +15,7 @@ struct ArticleView: View {
         case listView = "List View"
     }
     @State private var selectedViewOption = ViewOption.cardView
-    
-    @EnvironmentObject var favorites: Favorites
-    
+        
     @State private var showFavoritesOnly = false
     private var filteredArticles: [ArticleApiObject] {
         vm.articles.filter { article in
@@ -179,3 +177,9 @@ struct ViewOffsetKey: PreferenceKey {
     }
     
 }
+
+/*
+#Preview {
+    ArticleView()
+}
+*/
