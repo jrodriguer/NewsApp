@@ -9,10 +9,10 @@ import Foundation
 
 class ArticleViewModel: ObservableObject {
     private var apiRest: ApiRestManager
-
+    
     @Published var articles: [ArticleApiObject] = []
     private var articlesIds: Set<UUID> = []
-
+    
     init(apiRest: ApiRestManager = ApiRestManager()) {
         self.apiRest = apiRest
         self.loadArticles()
@@ -21,7 +21,7 @@ class ArticleViewModel: ObservableObject {
     
     func loadArticles() {
         do {
-            let news: ListApiObject<ArticleApiObject> = apiRest.load("TopHeadLines.json")
+            let news: ListApiObject<ArticleApiObject> = try apiRest.load("TopHeadLines.json")
             self.articles = news.articles
         } catch {
             print("Error loading articles: \(error.localizedDescription)")
@@ -30,7 +30,7 @@ class ArticleViewModel: ObservableObject {
     
     func loadFavorites() {
         do {
-            self.articlesIds = apiRest.get()
+            self.articlesIds = try apiRest.get()
         } catch {
             print("Error loading favorites: \(error.localizedDescription)")
         }
