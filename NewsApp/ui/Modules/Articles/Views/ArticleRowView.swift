@@ -33,6 +33,7 @@ struct ArticleRowView: View {
                     }
                     .tint(.red)
                 }
+            //
             
             if vm.contains(article) {
                 Spacer()
