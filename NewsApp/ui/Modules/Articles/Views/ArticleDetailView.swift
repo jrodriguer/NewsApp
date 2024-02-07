@@ -77,7 +77,7 @@ struct ArticleDetailView: View {
                             Image(systemName: "link.circle.fill")
                                 .font(.largeTitle)
                         }
-                        Button(vm.contains(article) ? "Remove from vm" : "Add to vm") {
+                        Button(vm.contains(article) ? "Remove from Favorites" : "Add to Favorites") {
                             if vm.contains(article) {
                                 vm.remove(article)
                             } else {
