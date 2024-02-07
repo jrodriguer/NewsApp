@@ -40,3 +40,8 @@ struct ArticleRowView: View {
         }
     }
 }
+
+#Preview {
+    ArticleRowView(article: ArticleViewModel().articles[1])
+        .environmentObject(ArticleViewModel())
+}
