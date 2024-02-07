@@ -147,6 +147,7 @@ extension ArticleView {
             Group {
                 if showFab {
                     FloatingActionButton(nameIcon: "chevron.up") {
+                        // TODO: Go to first index.
                         print("click button")
                     }
                 }
