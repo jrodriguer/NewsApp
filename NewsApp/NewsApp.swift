@@ -1,5 +1,5 @@
 //
-//  NewsAppApp.swift
+//  NewsApp.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 7/1/24.
