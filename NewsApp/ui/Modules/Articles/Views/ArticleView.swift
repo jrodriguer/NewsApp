@@ -32,8 +32,8 @@ struct ArticleView: View {
                 pickerSection
                 
                 switch selectedViewOption {
-                    case .cardView: cardSection
-                    case .listView: listSection
+                case .cardView: cardSection
+                case .listView: listSection
                 }
             }
             .navigationTitle("Headers")
@@ -68,10 +68,10 @@ extension ArticleView {
                 if !filteredArticles.isEmpty {
                     ForEach(filteredArticles) { article in
                         if article.title != "[Removed]" {
-                            NavigationLink {
-                                ArticleDetailView(article: article)
-                                    .environmentObject(vm)
-                            } label: {
+                            NavigationLink(destination: 
+                                            ArticleDetailView(article: article)
+                                .environmentObject(vm)
+                            ) {
                                 ArticleCardView(article: article)
                                     .multilineTextAlignment(.leading)
                                     .environmentObject(vm)
@@ -118,7 +118,7 @@ extension ArticleView {
                             .padding()
                     }
                 }
-
+                
             }
         }
         .background(GeometryReader { geometry in
