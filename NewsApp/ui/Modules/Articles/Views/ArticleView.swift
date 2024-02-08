@@ -110,11 +110,6 @@ extension ArticleView {
                                     }
                                     .opacity(0.0)
                                 }
-                                .frame(height: 50)
-                                .padding(.horizontal)
-                                .background(Color.white.gradient, in: RoundedRectangle(cornerRadius: 20))
-                                .foregroundColor(.black)
-                                .listRowSeparator(.hidden)
                             }
                         }
                     } else {
