@@ -118,7 +118,6 @@ extension ArticleView {
                             .padding()
                     }
                 }
-                
             }
         }
         .background(GeometryReader { geometry in
