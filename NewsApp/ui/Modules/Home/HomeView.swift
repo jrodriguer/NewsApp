@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var selectedTab: Tabs = .Headers
+    @State private var showModal: Bool = false
+    
     var body: some View {
-        ArticleView()
+        NavigationView {
+            VStack {
+                CurrentView(currentView: $selectedTab)
+                CustomTabBar(selectedTab: $selectedTab, showModal: $showModal)
+            }
+        }
     }
 }
 
