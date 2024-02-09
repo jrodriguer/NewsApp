@@ -27,17 +27,15 @@ struct ArticleView: View {
     @State var scrollOffset: CGFloat = 0.00
     
     var body: some View {
-        NavigationView {
-            VStack {
-                pickerSection
-                
-                switch selectedViewOption {
-                case .cardView: cardSection
-                case .listView: listSection
-                }
+        VStack {
+            pickerSection
+            
+            switch selectedViewOption {
+            case .cardView: cardSection
+            case .listView: listSection
             }
-            .navigationTitle("Headers")
         }
+        .navigationTitle("Headers")
     }
 }
 
