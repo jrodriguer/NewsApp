@@ -59,4 +59,14 @@ class ArticleViewModel: ObservableObject {
             print("Error removing articles: \(error.localizedDescription)")
         }
     }
+    
+    func swipeFavorite(_ article: ArticleApiObject) {
+        objectWillChange.send()
+        
+        if contains(article) {
+            remove(article)
+        } else {
+            add(article)
+        }
+    }
 }

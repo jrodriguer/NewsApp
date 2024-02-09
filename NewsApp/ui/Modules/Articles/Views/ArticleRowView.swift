@@ -14,16 +14,17 @@ struct ArticleRowView: View {
     var body: some View {
         HStack {
             Text(Utils.displayTitle(article.title))
-            
-            //TODO: Move swipe logic to view model.
-            
                 .swipeActions(edge: .leading) {
                     Button {
+                        
+                        // FIXME: Try move the logic to model.
+
                         if vm.contains(article) {
                             vm.remove(article)
                         } else {
                             vm.add(article)
                         }
+                        
                     } label: {
                         if vm.contains(article) {
                             Label("Favorite", systemImage: "heart.slash")
@@ -33,7 +34,6 @@ struct ArticleRowView: View {
                     }
                     .tint(.red)
                 }
-            //
             
             if vm.contains(article) {
                 Spacer()
