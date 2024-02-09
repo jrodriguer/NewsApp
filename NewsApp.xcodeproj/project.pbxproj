@@ -31,6 +31,7 @@
 		8AD6123A2B76D6CF00D2D8CC /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612392B76D6CF00D2D8CC /* CustomTabBar.swift */; };
 		8AD6123C2B76D8D400D2D8CC /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123B2B76D8D400D2D8CC /* TabBarButton.swift */; };
 		8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItem.swift */; };
+		8AD612422B76E09200D2D8CC /* CurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612412B76E09200D2D8CC /* CurrentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		8AD612392B76D6CF00D2D8CC /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		8AD6123B2B76D8D400D2D8CC /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModalTabBarItem.swift; sourceTree = "<group>"; };
+		8AD612412B76E09200D2D8CC /* CurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			children = (
 				8A8C186E2B728C6A008E3C8C /* Home */,
 				8A9CFC8C2B4EC5E100F70B13 /* Articles */,
+				8AD612412B76E09200D2D8CC /* CurrentView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				8A8EF2362B4C166400402584 /* ArticleApiObject.swift in Sources */,
 				8A8C18652B7285A3008E3C8C /* ArticleViewModel.swift in Sources */,
 				8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItem.swift in Sources */,
+				8AD612422B76E09200D2D8CC /* CurrentView.swift in Sources */,
 				8A0357AA2B65264800BE5435 /* FloatingActionButton.swift in Sources */,
 				8A8C18702B728C85008E3C8C /* HomeView.swift in Sources */,
 				8A8E75E72B5830B30063E6FD /* Utils.swift in Sources */,
