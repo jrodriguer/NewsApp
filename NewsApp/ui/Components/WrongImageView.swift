@@ -11,7 +11,7 @@ struct WrongImage: View {
     var body: some View {
         Image(systemName: "photo.circle.fill")
             .resizable()
-            .foregroundColor(.teal)
+            .foregroundColor(.gray)
             .aspectRatio(contentMode: .fit)
             .frame(width: 200, height: 100)
             .padding(.vertical, 10)

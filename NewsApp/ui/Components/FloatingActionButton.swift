@@ -19,7 +19,7 @@ struct FloatingActionButton: View {
                 .font(.title2.weight(.bold))
                 .foregroundColor(.white)
                 .padding()
-                .background(Color(white: 0.4745))
+                .background(.secondary)
                 .clipShape(Circle())
                 .shadow(radius: 5, x: 0, y: 3)
         }
