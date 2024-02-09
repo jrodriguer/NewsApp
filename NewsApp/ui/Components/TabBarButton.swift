@@ -34,5 +34,5 @@ struct TabBarButton: View {
 }
 
 #Preview {
-    TabBarButton(buttonText: "Personal", imageName: "person.crop.circle", isActive: true)
+    TabBarButton(buttonText: "Headers", imageName: "network", isActive: true)
 }
