@@ -6,10 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ArticleViewModel: ObservableObject {
     private var apiRest: ApiRestManager
-    
     @Published var articles: [ArticleApiObject] = []
     private var articlesIds: Set<UUID> = []
     
@@ -21,8 +21,8 @@ class ArticleViewModel: ObservableObject {
     
     func loadArticles() {
         do {
-            let news: ListApiObject<ArticleApiObject> = try apiRest.load("TopHeadLines.json")
-            self.articles = news.articles
+            let list: ListApiObject<ArticleApiObject> = try apiRest.load("TopHeadLines.json")
+            self.articles = list.articles
         } catch {
             print("Error loading articles: \(error.localizedDescription)")
         }
