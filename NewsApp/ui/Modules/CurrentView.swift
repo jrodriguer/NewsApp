@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct CurrentView: View {
+    @Binding var currentView: Tabs
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if self.currentView == .Headers {
+                ArticleView()
+            } else {
+                //FavoritesView()
+            }
+        }
     }
 }
 
 #Preview {
-    CurrentView()
+    CurrentView(currentView: .constant(.Headers))
 }
