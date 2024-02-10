@@ -52,6 +52,8 @@ extension ArticleView {
         }
     }
     
+    // TODO: Print the shadow of the container, focus on the emptiest data.
+    
     private var cardSection: some View {
         ScrollView {
             VStack(spacing: 0) {

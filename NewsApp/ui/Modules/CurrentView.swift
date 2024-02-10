@@ -15,7 +15,7 @@ struct CurrentView: View {
             if self.currentView == .Headers {
                 ArticleView()
             } else {
-                //FavoritesView()
+                // TODO: Add View.
             }
         }
     }
