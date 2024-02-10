@@ -12,8 +12,6 @@ enum Tabs: Int {
     case Personal
 }
 
-// FIXME: TabBar always enable, except into ArticleDetailView.
-
 struct CustomTabBar: View {
     @Binding var selectedTab: Tabs
     @Binding var showModal: Bool
