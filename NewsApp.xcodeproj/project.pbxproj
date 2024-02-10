@@ -79,7 +79,6 @@
 		8AD6123B2B76D8D400D2D8CC /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
 		8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModalTabBarItem.swift; sourceTree = "<group>"; };
 		8AD612412B76E09200D2D8CC /* CurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentView.swift; sourceTree = "<group>"; };
-		8AD612432B76E78200D2D8CC /* RickAndMorty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RickAndMorty.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,7 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				8A8EF2372B4C1F6400402584 /* TopHeadLines.json */,
-				8AD612432B76E78200D2D8CC /* RickAndMorty.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
