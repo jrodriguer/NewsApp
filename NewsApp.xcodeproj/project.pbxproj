@@ -34,6 +34,7 @@
 		8AD612422B76E09200D2D8CC /* CurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612412B76E09200D2D8CC /* CurrentView.swift */; };
 		8AE62B192B784464005DFD77 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B182B784464005DFD77 /* CharacterViewModel.swift */; };
 		8AE62B1B2B784A5A005DFD77 /* CharacterApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1A2B784A5A005DFD77 /* CharacterApiObject.swift */; };
+		8AE62B1D2B793752005DFD77 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1C2B793752005DFD77 /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		8AD612412B76E09200D2D8CC /* CurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentView.swift; sourceTree = "<group>"; };
 		8AE62B182B784464005DFD77 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		8AE62B1A2B784A5A005DFD77 /* CharacterApiObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterApiObject.swift; sourceTree = "<group>"; };
+		8AE62B1C2B793752005DFD77 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				8A8C186C2B728A80008E3C8C /* DateFormatterExtension.swift */,
+				8AE62B1C2B793752005DFD77 /* ColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift in Sources */,
 				8AE62B192B784464005DFD77 /* CharacterViewModel.swift in Sources */,
 				8AD612422B76E09200D2D8CC /* CurrentView.swift in Sources */,
+				8AE62B1D2B793752005DFD77 /* ColorExtension.swift in Sources */,
 				8A0357AA2B65264800BE5435 /* FloatingActionButtonView.swift in Sources */,
 				8AE62B1B2B784A5A005DFD77 /* CharacterApiObject.swift in Sources */,
 				8A8C18702B728C85008E3C8C /* HomeView.swift in Sources */,
