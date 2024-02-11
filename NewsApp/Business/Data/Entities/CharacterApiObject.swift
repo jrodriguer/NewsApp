@@ -2,7 +2,7 @@
 //  CharacterApiObject.swift
 //  NewsApp
 //
-//  Created by Julio Rodriguez on 10/2/24.
+//  Created by Julio Rodriguez on 11/2/24.
 //
 
 import Foundation
@@ -21,7 +21,6 @@ struct RickAndMortyInfo: Codable {
 
 struct CharacterApiObject: Codable, Identifiable {
     var id: Int
-    
     var name: String
     var status: String
     var species: String
@@ -33,19 +32,19 @@ struct CharacterApiObject: Codable, Identifiable {
     var episode: [URL]
     var url: URL
     var created: Date
-
+    
     struct Location: Codable {
         var name: String
         var url: URL
     }
-
+    
     private enum CodingKeys: String, CodingKey {
         case id, name, status, species, type, gender, origin, location, image, episode, url, created
     }
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-
+        
         id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         status = try container.decode(String.self, forKey: .status)
@@ -59,4 +58,5 @@ struct CharacterApiObject: Codable, Identifiable {
         url = try container.decode(URL.self, forKey: .url)
         created = try container.decode(Date.self, forKey: .created)
     }
+
 }

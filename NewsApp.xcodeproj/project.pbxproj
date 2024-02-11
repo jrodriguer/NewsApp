@@ -33,6 +33,7 @@
 		8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItem.swift */; };
 		8AD612422B76E09200D2D8CC /* CurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612412B76E09200D2D8CC /* CurrentView.swift */; };
 		8AE62B192B784464005DFD77 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B182B784464005DFD77 /* CharacterViewModel.swift */; };
+		8AE62B1B2B784A5A005DFD77 /* CharacterApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1A2B784A5A005DFD77 /* CharacterApiObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModalTabBarItem.swift; sourceTree = "<group>"; };
 		8AD612412B76E09200D2D8CC /* CurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentView.swift; sourceTree = "<group>"; };
 		8AE62B182B784464005DFD77 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
+		8AE62B1A2B784A5A005DFD77 /* CharacterApiObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterApiObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 			children = (
 				8A8EF2352B4C166400402584 /* ArticleApiObject.swift */,
 				8A8C18692B7287BD008E3C8C /* ListApiObject.swift */,
+				8AE62B1A2B784A5A005DFD77 /* CharacterApiObject.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				8AE62B192B784464005DFD77 /* CharacterViewModel.swift in Sources */,
 				8AD612422B76E09200D2D8CC /* CurrentView.swift in Sources */,
 				8A0357AA2B65264800BE5435 /* FloatingActionButton.swift in Sources */,
+				8AE62B1B2B784A5A005DFD77 /* CharacterApiObject.swift in Sources */,
 				8A8C18702B728C85008E3C8C /* HomeView.swift in Sources */,
 				8A8E75E72B5830B30063E6FD /* Utils.swift in Sources */,
 				8A9CFC962B4EEF7400F70B13 /* WrongImageView.swift in Sources */,
