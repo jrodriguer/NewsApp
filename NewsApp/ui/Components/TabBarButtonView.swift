@@ -1,5 +1,5 @@
 //
-//  TabBarButton.swift
+//  TabBarButtonView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 9/2/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TabBarButton: View {
+struct TabBarButtonView: View {
     var buttonText: String
     var imageName: String
     var isActive: Bool
@@ -34,5 +34,5 @@ struct TabBarButton: View {
 }
 
 #Preview {
-    TabBarButton(buttonText: "Headers", imageName: "network", isActive: true)
+    TabBarButtonView(buttonText: "Headers", imageName: "network", isActive: true)
 }

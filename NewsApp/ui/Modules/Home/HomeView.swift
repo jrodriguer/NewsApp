@@ -15,7 +15,7 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 CurrentView(currentView: $selectedTab)
-                CustomTabBar(selectedTab: $selectedTab, showModal: $showModal)
+                CustomTabBarView(selectedTab: $selectedTab, showModal: $showModal)
             }
         }
     }

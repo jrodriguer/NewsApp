@@ -139,7 +139,7 @@ extension ArticleView {
         .overlay(
             Group {
                 if showFab {
-                    FloatingActionButton(nameIcon: "chevron.up") {
+                    FloatingActionButtonView(nameIcon: "chevron.up") {
                         // TODO: Go to first index.
                         print("click button")
                     }

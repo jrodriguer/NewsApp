@@ -20,7 +20,7 @@ struct ArticleCardView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     case .failure(_):
-                        WrongImage()
+                        WrongImageView()
                     case .empty:
                         EmptyView()
                     @unknown default:
@@ -29,7 +29,7 @@ struct ArticleCardView: View {
                 }
                 .cornerRadius(10)
             } else {
-                WrongImage()
+                WrongImageView()
             }
             
             VStack(alignment: .leading, spacing: 8) {

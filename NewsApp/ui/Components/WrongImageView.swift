@@ -1,5 +1,5 @@
 //
-//  WrongImage.swift
+//  WrongImageView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 10/1/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WrongImage: View {
+struct WrongImageView: View {
     var body: some View {
         Image(systemName: "photo.circle.fill")
             .resizable()
@@ -20,5 +20,5 @@ struct WrongImage: View {
 }
 
 #Preview {
-    WrongImage()
+    WrongImageView()
 }

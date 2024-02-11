@@ -1,5 +1,5 @@
 //
-//  CustomTabBar.swift
+//  CustomTabBarView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 9/2/24.
@@ -12,7 +12,7 @@ enum Tabs: Int {
     case Personal
 }
 
-struct CustomTabBar: View {
+struct CustomTabBarView: View {
     @Binding var selectedTab: Tabs
     @Binding var showModal: Bool
     
@@ -21,20 +21,20 @@ struct CustomTabBar: View {
             Button {
                 selectedTab = .Headers
             } label: {
-                TabBarButton(buttonText: "Headers", imageName: "network", isActive: selectedTab == .Headers)
+                TabBarButtonView(buttonText: "Headers", imageName: "network", isActive: selectedTab == .Headers)
             }
             .tint(Color(.gray))
             
             Button {
                 //
             } label: {
-                ShowModalTabBarItem(radius: 55) { showModal.toggle() }
+                ShowModalTabBarItemView(radius: 55) { showModal.toggle() }
             }
             
             Button {
                 selectedTab = .Personal
             } label: {
-                TabBarButton(buttonText: "Personal", imageName: "face.smiling", isActive: selectedTab == .Personal)
+                TabBarButtonView(buttonText: "Personal", imageName: "face.smiling", isActive: selectedTab == .Personal)
             }
             .tint(Color(.gray))
         }
@@ -43,5 +43,5 @@ struct CustomTabBar: View {
 }
 
 #Preview {
-    CustomTabBar(selectedTab: .constant(.Headers), showModal: .constant(false))
+    CustomTabBarView(selectedTab: .constant(.Headers), showModal: .constant(false))
 }

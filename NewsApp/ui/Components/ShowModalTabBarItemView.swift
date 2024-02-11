@@ -1,5 +1,5 @@
 //
-//  ShowModalTabBarItem.swift
+//  ShowModalTabBarItemView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 9/2/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ShowModalTabBarItem: View {
+struct ShowModalTabBarItemView: View {
     let radius: CGFloat
     let action: () -> Void
 
@@ -34,7 +34,7 @@ struct ShowModalTabBarItem: View {
 
 struct ShowModalTabBarItem_Previews: PreviewProvider {
     static var previews: some View {
-        ShowModalTabBarItem(radius: 55) {
+        ShowModalTabBarItemView(radius: 55) {
             print("Button tapped")
         }
     }

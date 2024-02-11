@@ -1,5 +1,5 @@
 //
-//  FloatingActionButton.swift
+//  FloatingActionButtonView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 27/1/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FloatingActionButton: View {
+struct FloatingActionButtonView: View {
     var nameIcon: String
     var action: () -> Void
     
@@ -28,5 +28,5 @@ struct FloatingActionButton: View {
 }
 
 #Preview {
-    FloatingActionButton(nameIcon: "chevron.up", action: {})
+    FloatingActionButtonView(nameIcon: "chevron.up", action: {})
 }

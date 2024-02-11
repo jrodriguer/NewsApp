@@ -22,7 +22,7 @@ struct ArticleDetailView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                         case .failure(_):
-                            WrongImage()
+                            WrongImageView()
                         case .empty:
                             EmptyView()
                         @unknown default:
@@ -33,7 +33,7 @@ struct ArticleDetailView: View {
                     .cornerRadius(10)
                     .padding()
                 } else {
-                    WrongImage()
+                    WrongImageView()
                 }
                 
                 VStack(alignment: .leading, spacing: 8) {
