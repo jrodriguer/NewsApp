@@ -32,10 +32,8 @@ struct ShowModalTabBarItemView: View {
     }
 }
 
-struct ShowModalTabBarItem_Previews: PreviewProvider {
-    static var previews: some View {
-        ShowModalTabBarItemView(radius: 55) {
-            print("Button tapped")
-        }
+#Preview {
+    ShowModalTabBarItemView(radius: 55) {
+        print("Button tapped")
     }
 }
