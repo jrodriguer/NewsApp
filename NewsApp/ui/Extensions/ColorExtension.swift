@@ -8,4 +8,12 @@
 import SwiftUI
 
 extension Color {
+    static let colorTheme = ColorPalette()
+}
+
+struct ColorPalette {
+    let main = Color("Main")
+    let secondary = Color("Secondary")
+    let ternary = Color("Ternary")
+    let detail = Color("Detail")
 }
