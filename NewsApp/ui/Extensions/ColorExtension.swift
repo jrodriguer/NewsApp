@@ -16,4 +16,5 @@ struct ColorPalette {
     let secondary = Color("Secondary")
     let ternary = Color("Ternary")
     let detail = Color("Detail")
+    let gray = Color("Gray")
 }
