@@ -34,7 +34,6 @@
 		8AE62B192B784464005DFD77 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B182B784464005DFD77 /* CharacterViewModel.swift */; };
 		8AE62B1B2B784A5A005DFD77 /* CharacterApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1A2B784A5A005DFD77 /* CharacterApiObject.swift */; };
 		8AE62B1D2B793752005DFD77 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1C2B793752005DFD77 /* ColorExtension.swift */; };
-		8AE62B242B7A8384005DFD77 /* ListApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B232B7A8384005DFD77 /* ListApiObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +83,6 @@
 		8AE62B182B784464005DFD77 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		8AE62B1A2B784A5A005DFD77 /* CharacterApiObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterApiObject.swift; sourceTree = "<group>"; };
 		8AE62B1C2B793752005DFD77 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		8AE62B232B7A8384005DFD77 /* ListApiObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListApiObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,7 +240,6 @@
 			children = (
 				8A8EF2352B4C166400402584 /* ArticleApiObject.swift */,
 				8AE62B1A2B784A5A005DFD77 /* CharacterApiObject.swift */,
-				8AE62B232B7A8384005DFD77 /* ListApiObject.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -462,7 +459,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AE62B242B7A8384005DFD77 /* ListApiObject.swift in Sources */,
 				8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */,
 				8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */,
 				8A8C18602B71AF0A008E3C8C /* ApiRestManager.swift in Sources */,

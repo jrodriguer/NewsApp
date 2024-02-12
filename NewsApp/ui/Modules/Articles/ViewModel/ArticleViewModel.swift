@@ -21,8 +21,8 @@ class ArticleViewModel: ObservableObject {
     
     func loadArticles() {
         do {
-            let list: ListApiObject<ArticleApiObject> = try apiRest.load("TopHeadLines.json")
-            self.articles = list.items
+            let list: ArticleListApiObject<ArticleApiObject> = try apiRest.load("TopHeadLines.json")
+            self.articles = list.articles
         } catch {
             print("Error loading articles: \(error.localizedDescription)")
         }
