@@ -38,6 +38,7 @@ struct CustomTabBarView: View {
             }
             .tint(Color(.gray))
         }
+        .background(Color(.main))
         .frame(height: 82)
     }
 }
