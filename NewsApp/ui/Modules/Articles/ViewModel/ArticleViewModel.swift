@@ -32,7 +32,7 @@ class ArticleViewModel: ObservableObject {
         articlesIds.contains(article.id)
     }
     
-    func add(_ article: ArticleApiObject) throws {
+    func add(_ article: ArticleApiObject) {
         objectWillChange.send()
         articlesIds.insert(article.id)
         apiRest.save(articlesIds)
