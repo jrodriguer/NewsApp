@@ -19,12 +19,10 @@ class ArticleViewModel: ObservableObject {
         self.loadFavorites()
     }
     
-    // TODO: Try connect to NewsAPI.
-    
     func loadArticles() {
         do {
             let list: ListApiObject<ArticleApiObject> = try apiRest.load("TopHeadLines.json")
-            self.articles = list.articles
+            self.articles = list.items
         } catch {
             print("Error loading articles: \(error.localizedDescription)")
         }

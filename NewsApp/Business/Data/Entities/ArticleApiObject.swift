@@ -8,12 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct ListApiObject<T: Codable>: Codable {
-    var status: String
-    var totalResults: Int
-    var articles: [T]
-}
-
 struct ArticleApiObject: Codable, Identifiable {
     var id = UUID()
     

@@ -7,18 +7,6 @@
 
 import Foundation
 
-struct RickAndMortyListApiObject<T: Codable>: Codable {
-    var info: RickAndMortyInfo
-    var results: [T]
-}
-
-struct RickAndMortyInfo: Codable {
-    var count: Int
-    var pages: Int
-    var next: String?
-    var prev: String?
-}
-
 struct CharacterApiObject: Codable, Identifiable {
     var id: Int
     var name: String
