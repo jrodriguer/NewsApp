@@ -20,6 +20,7 @@ class ArticleViewModel: ObservableObject {
     }
     
     func loadArticles() {
+        // TODO: Woking on private params for API request.
         // TODO: Load following page break way, &page=<Int>.
         
         let endpoint = Endpoint(url: "https://newsapi.org/v2/top-headlines?country=us&apiKey=978764b3fe6b412f8517a7d9c0a1e140")
@@ -37,7 +38,7 @@ class ArticleViewModel: ObservableObject {
     }
     
     func loadFavorites() {
-        self.articlesIds = apiRest.get()
+        self.articlesIds = apiRest.getFavorites()
     }
     
     func contains(_ article: ArticleApiObject) -> Bool {
@@ -47,12 +48,12 @@ class ArticleViewModel: ObservableObject {
     func add(_ article: ArticleApiObject) {
         objectWillChange.send()
         articlesIds.insert(article.id)
-        apiRest.save(articlesIds)
+        apiRest.saveFavorite(articlesIds)
     }
     
     func remove(_ article: ArticleApiObject) {
         objectWillChange.send()
         articlesIds.remove(article.id)
-        apiRest.save(articlesIds)
+        apiRest.saveFavorite(articlesIds)
     }
 }

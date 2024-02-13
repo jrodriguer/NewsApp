@@ -41,13 +41,13 @@ class ApiRestManager {
         }
     }*/
     
-    func save(_ id: Set<UUID>) {
+    func saveFavorite(_ id: Set<UUID>) {
         if let encoded = try? JSONEncoder().encode(id) {
             UserDefaults.standard.set(encoded, forKey: saveKey)
         }
     }
     
-    func get() -> Set<UUID> {
+    func getFavorites() -> Set<UUID> {
         if let savedIDs = UserDefaults.standard.data(forKey: saveKey),
            let decodedIDs = try? JSONDecoder().decode(Set<UUID>.self, from: savedIDs) {
             return decodedIDs
