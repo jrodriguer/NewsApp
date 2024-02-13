@@ -52,7 +52,7 @@ extension ArticleView {
         }
     }
     
-    // TODO: Print the shadow of the container, focus on the emptiest data.
+    // TODO: Loading view for API load article list.
     
     private var cardSection: some View {
         ScrollView {
@@ -141,6 +141,7 @@ extension ArticleView {
                 if showFab {
                     FloatingActionButtonView(nameIcon: "chevron.up") {
                         // TODO: Go to first index.
+                        
                         print("click button")
                     }
                 }
