@@ -9,8 +9,17 @@ import Foundation
 
 class ApiRestManager {
     private let saveKey = "Favorites"
+    private let networkService: NetworkService
 
-    func load<T: Decodable>(_ filename: String) -> T {
+    init(networkService: NetworkService = .shared) {
+        self.networkService = networkService
+    }
+    
+    func loadList<T: Decodable>(_ endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void) {
+        networkService.request(endpoint, completion: completion)
+    }
+    
+    /*func load<T: Decodable>(_ filename: String) -> T {
         let data: Data
         
         guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
@@ -30,7 +39,7 @@ class ApiRestManager {
         } catch {
             fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
         }
-    }
+    }*/
     
     func save(_ id: Set<UUID>) {
         if let encoded = try? JSONEncoder().encode(id) {
