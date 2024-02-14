@@ -12,7 +12,7 @@ class CharacterViewModel: ObservableObject {
     private var backendApi: ApiRestManager
     @Published var characters: [CharacterApiObject] = []
     
-    init(backendApi: BackendApi = BackendApi(apiUrl: "rickandmortyapi.com/api/")) {
+    init(backendApi: BackendApi = BackendApi(apiUrl: "rickandmortyapi.com")) {
         self.backendApi = backendApi
         self.loadCharacters()
     }

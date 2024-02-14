@@ -12,7 +12,7 @@ class ArticleViewModel: ObservableObject {
     @Published var articles: [ArticleApiObject] = []
     private var articlesIds: Set<UUID> = []
     
-    init(backendApi: BackendApi = BackendApi(apiUrl: "https://newsapi.org/v2")) {
+    init(backendApi: BackendApi = BackendApi(apiUrl: "https://newsapi.org")) {
         self.backendApi = backendApi
         self.loadArticles()
         self.loadFavorites()

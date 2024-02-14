@@ -10,6 +10,7 @@ import Alamofire
 
 protocol BackendApiProtocol {
     func getArticles() -> DataRequest?
+    func getCharacters() -> DataRequest?
 }
 
 class BackendApi: ApiRestManager, BackendApiProtocol {
@@ -32,7 +33,13 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
     }
     
     func getArticles() -> DataRequest? {
-        let serviceURL = makeUrl(forEndpoint: "/top-headlines")
+        let serviceURL = makeUrl(forEndpoint: "/v2/top-headlines")
+        print("Request URL: \(serviceURL)")
+        return get(service: serviceURL)
+    }
+    
+    func getCharacters() -> DataRequest? {
+        let serviceURL = "/api/character"
         print("Request URL: \(serviceURL)")
         return get(service: serviceURL)
     }
