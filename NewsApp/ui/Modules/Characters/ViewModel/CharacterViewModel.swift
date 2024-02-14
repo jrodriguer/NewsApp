@@ -9,11 +9,11 @@ import Foundation
 import Alamofire
 
 class CharacterViewModel: ObservableObject {
-    private var apiRest: ApiRestManager
+    private var backendApi: ApiRestManager
     @Published var characters: [CharacterApiObject] = []
     
-    init(apiRest: ApiRestManager = ApiRestManager()) {
-        self.apiRest = apiRest
+    init(backendApi: BackendApi = BackendApi(apiUrl: "rickandmortyapi.com/api/")) {
+        self.backendApi = backendApi
         self.loadCharacters()
     }
     

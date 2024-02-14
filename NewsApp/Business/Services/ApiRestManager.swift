@@ -6,53 +6,77 @@
 //
 
 import Foundation
+import Alamofire
 
 class ApiRestManager {
-    private let saveKey = "Favorites"
-    private let networkService: NetworkService
-
-    init(networkService: NetworkService = .shared) {
-        self.networkService = networkService
-    }
+    private var urlService: String
+    private var manager: Session
     
-    func loadList<T: Decodable>(_ endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void) {
-        networkService.request(endpoint, completion: completion)
-    }
-    
-    /*func load<T: Decodable>(_ filename: String) -> T {
-        let data: Data
+    init(url: String,
+         requestRetrier: RequestRetrier? = nil,
+         requestAdapter: RequestAdapter? = nil,
+         eventMonitor: EventMonitor? = nil,
+         urlProtocols: [AnyClass]? = nil) {
+        self.urlService = url
         
-        guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-        else {
-            fatalError("Couldn't find \(filename) in main bundle.")
+        let configuration: URLSessionConfiguration = {
+            let config = URLSessionConfiguration.default
+            config.protocolClasses = urlProtocols
+            return config
+        }()
+        
+        var adapters: [RequestAdapter] = []
+        var retriers: [RequestRetrier] = []
+        var eventMonitors: [EventMonitor] = []
+        
+        if let requestAdapter = requestAdapter {
+            adapters.append(requestAdapter)
         }
-
-        do {
-            data = try Data(contentsOf: file)
-        } catch {
-            fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+        
+        if let requestRetrier = requestRetrier {
+            retriers.append(requestRetrier)
         }
-
-        do {
-            let decoder = JSONDecoder()
-            return try decoder.decode(T.self, from: data)
-        } catch {
-            fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
+        
+        if let eventMonitor = eventMonitor {
+            eventMonitors.append(eventMonitor)
         }
-    }*/
-    
-    func saveFavorite(_ id: Set<UUID>) {
-        if let encoded = try? JSONEncoder().encode(id) {
-            UserDefaults.standard.set(encoded, forKey: saveKey)
-        }
+        
+        let interceptor = Interceptor(adapters: adapters,
+                                      retriers: retriers)
+        
+        self.manager = Session(configuration: configuration,
+                               interceptor: interceptor,
+                               eventMonitors: eventMonitors)
     }
     
-    func getFavorites() -> Set<UUID> {
-        if let savedIDs = UserDefaults.standard.data(forKey: saveKey),
-           let decodedIDs = try? JSONDecoder().decode(Set<UUID>.self, from: savedIDs) {
-            return decodedIDs
-        } else {
-            return []
-        }
+    private func getUrlService(_ service: String) -> String {
+        return self.urlService + service
+    }
+    
+    private func request(service: String,
+                         method: HTTPMethod,
+                         parameters: Parameters? = nil,
+                         encoding: ParameterEncoding,
+                         headers: HTTPHeaders? = nil) -> DataRequest {
+        return manager
+            .request(getUrlService(service),
+                     method: method,
+                     parameters: parameters,
+                     encoding: encoding,
+                     headers: headers)
+            .validate(statusCode: 200..<500)
+            .customValidate()
+    }
+    
+    internal func get(service: String,
+                      parameters: Parameters? = nil,
+                      encoding: ParameterEncoding = URLEncoding.queryString,
+                      headers: HTTPHeaders? = nil) -> DataRequest {
+        
+        return request(service: service,
+                       method: .get,
+                       parameters: parameters,
+                       encoding: encoding,
+                       headers: headers)
     }
 }
