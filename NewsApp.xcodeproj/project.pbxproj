@@ -27,6 +27,7 @@
 		8A9CFC942B4EC7B500F70B13 /* ArticleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC932B4EC7B500F70B13 /* ArticleCardView.swift */; };
 		8A9CFC962B4EEF7400F70B13 /* WrongImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC952B4EEF7400F70B13 /* WrongImageView.swift */; };
 		8AAB4D0B2B76599200C71B36 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAB4D0A2B76599200C71B36 /* Alamofire */; };
+		8ACCFAE22B7D3D5400A33AE0 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCFAE12B7D3D5400A33AE0 /* CharacterView.swift */; };
 		8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */; };
 		8AD6123C2B76D8D400D2D8CC /* TabBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */; };
 		8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */; };
@@ -78,6 +79,7 @@
 		8A9CFC912B4EC61000F70B13 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		8A9CFC932B4EC7B500F70B13 /* ArticleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCardView.swift; sourceTree = "<group>"; };
 		8A9CFC952B4EEF7400F70B13 /* WrongImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongImageView.swift; sourceTree = "<group>"; };
+		8ACCFAE12B7D3D5400A33AE0 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButtonView.swift; sourceTree = "<group>"; };
 		8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModalTabBarItemView.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 		8AE62B162B784444005DFD77 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8ACCFAE12B7D3D5400A33AE0 /* CharacterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				8A8C18602B71AF0A008E3C8C /* ApiRestManager.swift in Sources */,
 				8A9CFC8E2B4EC5F400F70B13 /* ArticleRowView.swift in Sources */,
 				8A9CFC922B4EC61000F70B13 /* ArticleDetailView.swift in Sources */,
+				8ACCFAE22B7D3D5400A33AE0 /* CharacterView.swift in Sources */,
 				8AD6123C2B76D8D400D2D8CC /* TabBarButtonView.swift in Sources */,
 				8A8C186D2B728A80008E3C8C /* DateFormatter.swift in Sources */,
 				8A8EF2362B4C166400402584 /* ArticleApiObject.swift in Sources */,

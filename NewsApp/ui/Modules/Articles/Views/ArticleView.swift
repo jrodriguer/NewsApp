@@ -52,7 +52,7 @@ extension ArticleView {
         }
     }
     
-    // TODO: Loading view for API load article list.
+    // TODO: Loading symbol for API load article list.
     
     private var cardSection: some View {
         ScrollView {
