@@ -31,7 +31,7 @@ struct CharacterApiObject: Identifiable, Decodable {
     var image: URL
     var episode: [URL]
     var url: URL
-    var created: Date
+    var created: String
     
     private enum CodingKeys: String, CodingKey {
         case id, name, status, species, type, gender, origin, location, image, episode, url, created
@@ -51,7 +51,7 @@ struct CharacterApiObject: Identifiable, Decodable {
         image = try container.decode(URL.self, forKey: .image)
         episode = try container.decode([URL].self, forKey: .episode)
         url = try container.decode(URL.self, forKey: .url)
-        created = try container.decode(Date.self, forKey: .created)
+        created = try container.decode(String.self, forKey: .created)
     }
 
 }
