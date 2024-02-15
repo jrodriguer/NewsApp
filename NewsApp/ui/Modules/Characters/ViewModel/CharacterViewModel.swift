@@ -18,12 +18,12 @@ class CharacterViewModel: ObservableObject {
     }
     
     func loadCharacters() {
-        backendApi?.getCharacters()?.responseDecodable(of: [CharacterApiObject].self) { [weak self] response in
+        backendApi?.getCharacters()?.responseDecodable(of: CharacterListApiObject.self) { [weak self] response in
             guard let self = self else { return }
             switch response.result {
-            case .success(let characters):
-                print("Response: \(characters)")
-                self.characters = characters
+            case .success(let apiResponse):
+                print("Response: \(apiResponse.results)")
+                self.characters = apiResponse.results
             case .failure(let error):
                 print("Error: \(String(describing: error))")
                 if let data = response.data, let responseString = String(data: data, encoding: .utf8) {

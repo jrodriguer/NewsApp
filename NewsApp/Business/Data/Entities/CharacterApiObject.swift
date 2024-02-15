@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct CharacterListApiObject<T: Codable>: Codable {
+struct CharacterListApiObject: Decodable {
     var info: Info
-    var results: [T]
+    var results: [CharacterApiObject]
 }
 
 struct Info: Codable {
@@ -19,7 +19,7 @@ struct Info: Codable {
     var prev: String?
 }
 
-struct CharacterApiObject: Codable, Identifiable {
+struct CharacterApiObject: Identifiable, Decodable {
     var id: Int
     var name: String
     var status: String
@@ -32,11 +32,6 @@ struct CharacterApiObject: Codable, Identifiable {
     var episode: [URL]
     var url: URL
     var created: Date
-    
-    struct Location: Codable {
-        var name: String
-        var url: URL
-    }
     
     private enum CodingKeys: String, CodingKey {
         case id, name, status, species, type, gender, origin, location, image, episode, url, created
@@ -59,4 +54,9 @@ struct CharacterApiObject: Codable, Identifiable {
         created = try container.decode(Date.self, forKey: .created)
     }
 
+}
+
+struct Location: Decodable {
+    let name: String
+    let url: String
 }

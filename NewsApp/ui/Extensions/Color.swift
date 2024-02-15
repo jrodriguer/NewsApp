@@ -13,8 +13,7 @@ extension Color {
 
 struct ColorPalette {
     let main = Color("Main")
-    let secondary = Color("Secondary")
-    let ternary = Color("Ternary")
-    let detail = Color("Detail")
-    let gray = Color("Gray")
+    let fontCreme = Color("FontCreme")
+    let ternary = Color("Detail1")
+    let detail = Color("Detail2")
 }

@@ -22,10 +22,10 @@ struct ShowModalTabBarItemView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: radius, height: radius, alignment: .center)
-                .foregroundColor(Color(.detail))
+                .foregroundColor(Color(.main))
                 .background(Color(.white))
                 .cornerRadius(radius/2)
-                .overlay(RoundedRectangle(cornerRadius: radius/2).stroke(Color(.detail), lineWidth: 2))
+                .overlay(RoundedRectangle(cornerRadius: radius/2).stroke(Color(.main), lineWidth: 2))
         }
         .frame(width: radius, height: radius)
         .onTapGesture(perform: action)

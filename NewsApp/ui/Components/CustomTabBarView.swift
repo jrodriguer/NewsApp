@@ -24,7 +24,7 @@ struct CustomTabBarView: View {
                 TabBarButtonView(buttonText: "Headers", imageName: "network", isActive: selectedTab == .Headers)
             }
             .tint(Color(.gray))
-            
+
             Button {
                 //
             } label: {
@@ -38,7 +38,7 @@ struct CustomTabBarView: View {
             }
             .tint(Color(.gray))
         }
-        .background(Color(.main))
+        .background(Color(.white))
         .frame(height: 82)
     }
 }
