@@ -138,7 +138,7 @@ extension ArticleView {
         .coordinateSpace(name: "scroll")
         .overlay(
             Group {
-                if showFab {
+                if showFab, !filteredArticles.isEmpty {
                     FloatingActionButtonView(nameIcon: "chevron.up") {
                         // TODO: Go to first index.
                         
