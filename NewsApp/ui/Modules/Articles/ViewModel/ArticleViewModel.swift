@@ -22,8 +22,8 @@ class ArticleViewModel: ObservableObject {
         backendApi?.getArticles()?.responseDecodable(of: [ArticleApiObject].self) { [weak self] response in
             guard let self = self else { return }
             switch response.result {
-            case .success(let articles):
-                self.articles = articles
+            case .success(let articlesApObject):
+                self.articles = articlesApObject
             case .failure(let error):
                 print("Error: \(String(describing: error))")
                 if let data = response.data, let responseString = String(data: data, encoding: .utf8) {

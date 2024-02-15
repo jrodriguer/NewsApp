@@ -22,7 +22,6 @@ class CharacterViewModel: ObservableObject {
             guard let self = self else { return }
             switch response.result {
             case .success(let apiResponse):
-                print("Response: \(apiResponse.results)")
                 self.characters = apiResponse.results
             case .failure(let error):
                 print("Error: \(String(describing: error))")
