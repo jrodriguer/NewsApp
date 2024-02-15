@@ -25,22 +25,22 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
     
     private func makeUrl(forEndpoint endpoint: String) -> String {
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
-
-        var components = URLComponents(string: apiUrl + endpoint)
-        components?.queryItems = [URLQueryItem(name: "country", value: "us"), URLQueryItem(name: "apiKey", value: apiKey)]
         
+        let baseUrl = apiUrl.hasSuffix("/") ? apiUrl : "\(apiUrl)/"
+        
+        var components = URLComponents(string: baseUrl + endpoint)
+        components?.queryItems = [URLQueryItem(name: "country", value: "us"), URLQueryItem(name: "apiKey", value: apiKey)]
+                
         return components?.url?.absoluteString ?? ""
     }
     
     func getArticles() -> DataRequest? {
-        let serviceURL = makeUrl(forEndpoint: "/v2/top-headlines")
-        print("Request URL: \(serviceURL)")
+        let serviceURL = makeUrl(forEndpoint: "v2/top-headlines")
         return get(service: serviceURL)
     }
     
     func getCharacters() -> DataRequest? {
         let serviceURL = "/api/character"
-        print("Request URL: \(serviceURL)")
         return get(service: serviceURL)
     }
     
