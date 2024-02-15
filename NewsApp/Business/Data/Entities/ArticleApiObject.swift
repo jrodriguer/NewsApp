@@ -47,7 +47,6 @@ struct ArticleApiObject: Codable, Identifiable {
         content = try container.decodeIfPresent(String.self, forKey: .content)
         source = try container.decode(ArticleSource.self, forKey: .source)
         
-        // Decode publishedAt using custom strategy (String to Date)
         let dateString = try container.decode(String.self, forKey: .publishedAt)
         if let date = DateFormatter.iso8601Full.date(from: dateString) {
             publishedAt = date
