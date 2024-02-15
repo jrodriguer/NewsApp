@@ -68,7 +68,7 @@ extension ArticleView {
                 if !filteredArticles.isEmpty {
                     ForEach(filteredArticles) { article in
                         if article.title != "[Removed]" {
-                            NavigationLink(destination: 
+                            NavigationLink(destination:
                                             ArticleDetailView(article: article)
                                 .environmentObject(vm)
                             ) {
