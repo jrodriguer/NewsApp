@@ -1,5 +1,5 @@
 //
-//  NetworkApi.swift
+//  BackendApi.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 13/2/24.
@@ -23,19 +23,11 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
         super.init(url: apiUrl)
     }
     
-    private func makeUrl(forEndpoint endpoint: String) -> String {
-        let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
-        
-        let baseUrl = apiUrl.hasSuffix("/") ? apiUrl : "\(apiUrl)/"
-        
-        var components = URLComponents(string: baseUrl + endpoint)
-        components?.queryItems = [URLQueryItem(name: "country", value: "us"), URLQueryItem(name: "apiKey", value: apiKey)]
-                
-        return components?.url?.absoluteString ?? ""
-    }
-    
     func getArticles() -> DataRequest? {
-        let serviceURL = makeUrl(forEndpoint: "v2/top-headlines")
+        // TODO: Update way for get query params: apiKey, country.
+        
+        let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
+        let serviceURL = "/v2/top-headlines/?country=us&apiKey=\(apiKey)"
         return get(service: serviceURL)
     }
     
