@@ -52,6 +52,8 @@ extension ArticleView {
         }
     }
     
+    //TODO: Add Loading View.
+    
     private var cardSection: some View {
         ScrollView {
             VStack(spacing: 0) {
