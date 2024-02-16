@@ -52,8 +52,6 @@ extension ArticleView {
         }
     }
     
-    // TODO: Loading symbol for API load article list.
-    
     private var cardSection: some View {
         ScrollView {
             VStack(spacing: 0) {
@@ -140,7 +138,7 @@ extension ArticleView {
             Group {
                 if showFab, !filteredArticles.isEmpty {
                     FloatingActionButtonView(nameIcon: "chevron.up") {
-                        // TODO: Go to first index.
+                        // TODO: Go to top.
                         
                         print("click button")
                     }
