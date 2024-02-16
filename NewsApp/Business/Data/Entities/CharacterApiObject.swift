@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CharacterListApiObject: Decodable {
+struct CharacterListApiObject: Codable {
     var info: Info
     var results: [CharacterApiObject]
 }
@@ -19,7 +19,7 @@ struct Info: Codable {
     var prev: String?
 }
 
-struct CharacterApiObject: Identifiable, Decodable {
+struct CharacterApiObject: Identifiable, Codable {
     var id: Int
     var name: String
     var status: String
@@ -56,7 +56,7 @@ struct CharacterApiObject: Identifiable, Decodable {
 
 }
 
-struct Location: Decodable {
+struct Location: Codable {
     let name: String
     let url: String
 }
