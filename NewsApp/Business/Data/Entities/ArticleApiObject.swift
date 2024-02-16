@@ -8,13 +8,13 @@
 import Foundation
 import SwiftUI
 
-struct ArticleListApiObject<T: Codable>: Codable {
+struct ArticleListApiObject: Codable {
     var status: String
     var totalResults: Int
-    var articles: [T]
+    var articles: [ArticleApiObject]
 }
 
-struct ArticleApiObject: Codable, Identifiable {
+struct ArticleApiObject: Identifiable, Codable {
     var id = UUID()
     
     var author: String?
@@ -24,13 +24,7 @@ struct ArticleApiObject: Codable, Identifiable {
     var urlToImage: URL?
     var publishedAt: Date
     var content: String?
-    
     var source: ArticleSource
-    
-    struct ArticleSource: Codable {
-        var id: String?
-        var name: String
-    }
     
     private enum CodingKeys: String, CodingKey {
         case author, title, description, url, urlToImage, publishedAt, content, source
@@ -54,4 +48,9 @@ struct ArticleApiObject: Codable, Identifiable {
             throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
         }
     }
+}
+
+struct ArticleSource: Identifiable, Codable {
+    var id: String?
+    var name: String
 }
