@@ -55,6 +55,8 @@ struct ListSectionView: View {
                                 .padding()
                         }
                     }
+                    .scrollContentBackground(.hidden)
+                    .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
                 }
             }
         }
@@ -77,11 +79,11 @@ struct ListSectionView: View {
         .overlay(
             Group {
                 if showFab, !filteredArticles.isEmpty {
-                    FloatingActionButtonView(nameIcon: "chevron.up") {
+                    /*FloatingActionButtonView(nameIcon: "chevron.up") {
                         // TODO: Go to top.
                         
                         print("click button")
-                    }
+                    }*/
                 }
             },
             alignment: Alignment.bottomTrailing
