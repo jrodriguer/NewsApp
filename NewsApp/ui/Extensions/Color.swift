@@ -8,12 +8,12 @@
 import SwiftUI
 
 extension Color {
-    static let colorTheme = ColorPalette()
+    static let appTheme = AppColorPalette()
 }
 
-struct ColorPalette {
+struct AppColorPalette {
     let main = Color("Main")
-    let fontCreme = Color("FontCreme")
-    let ternary = Color("Detail1")
-    let detail = Color("Detail2")
+    let baseGray = Color("BaseGray")
+    let accent = Color("Accent")
+    let secondaryAccent = Color("SecondaryAccent")
 }
