@@ -15,41 +15,48 @@ struct CardSectionView: View {
             (!showFavoritesOnly || vm.contains(article))
         }
     }
-    
-    //TODO: Add Loading View.
-    
+        
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                Toggle(isOn: $showFavoritesOnly) {
-                    Text("Favorites only")
-                }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 4)
-                .cornerRadius(10)
-                .padding(10)
-                
-                if !filteredArticles.isEmpty {
-                    ForEach(filteredArticles) { article in
-                        if article.title != "[Removed]" {
-                            NavigationLink(destination:
-                                            ArticleDetailView(article: article)
-                                .environmentObject(vm)
-                            ) {
-                                ArticleCardView(article: article)
-                                    .multilineTextAlignment(.leading)
+        if vm.isLoading {
+            ProgressView("Loading...")
+                .progressViewStyle(CircularProgressViewStyle())
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else {
+            ScrollView {
+                VStack(spacing: 0) {
+                    Toggle(isOn: $showFavoritesOnly) {
+                        Text("Favorites only")
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 4)
+                    .cornerRadius(10)
+                    .padding(10)
+                    
+                    if !filteredArticles.isEmpty {
+                        ForEach(filteredArticles) { article in
+                            if article.title != "[Removed]" {
+                                NavigationLink(destination:
+                                                ArticleDetailView(article: article)
                                     .environmentObject(vm)
+                                ) {
+                                    ArticleCardView(article: article)
+                                        .multilineTextAlignment(.leading)
+                                        .environmentObject(vm)
+                                }
                             }
                         }
+                    } else {
+                        Text("No articles available")
+                            .foregroundColor(.red)
+                            .padding()
                     }
-                } else {
-                    Text("No articles available")
-                        .foregroundColor(.red)
-                        .padding()
                 }
             }
         }
     }
+    
+    // TODO: Infinite scroll.
+    
 }
 
 #Preview {

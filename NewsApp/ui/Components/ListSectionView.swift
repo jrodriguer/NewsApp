@@ -18,38 +18,42 @@ struct ListSectionView: View {
     
     @State var showFab = true
     @State var scrollOffset: CGFloat = 0.00
-    
-    //TODO: Add Loading View.
-    
+        
     var body: some View {
         VStack {
             ZStack(alignment: .bottomTrailing) {
-                List {
-                    Toggle(isOn: $showFavoritesOnly) {
-                        Text("Favorites only")
-                    }
-                    
-                    if !filteredArticles.isEmpty {
-                        ForEach(filteredArticles) { article in
-                            if article.title != "[Removed]" {
-                                ZStack(alignment: .leading) {
-                                    ArticleRowView(article: article)
-                                        .environmentObject(vm)
-                                    
-                                    NavigationLink(destination:
-                                                    ArticleDetailView(article: article)
-                                        .environmentObject(vm)
-                                    ) {
-                                        EmptyView()
+                if vm.isLoading {
+                    ProgressView("Loading...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    List {
+                        Toggle(isOn: $showFavoritesOnly) {
+                            Text("Favorites only")
+                        }
+                        
+                        if !filteredArticles.isEmpty {
+                            ForEach(filteredArticles) { article in
+                                if article.title != "[Removed]" {
+                                    ZStack(alignment: .leading) {
+                                        ArticleRowView(article: article)
+                                            .environmentObject(vm)
+                                        
+                                        NavigationLink(destination:
+                                                        ArticleDetailView(article: article)
+                                            .environmentObject(vm)
+                                        ) {
+                                            EmptyView()
+                                        }
+                                        .opacity(0.0)
                                     }
-                                    .opacity(0.0)
                                 }
                             }
+                        } else {
+                            Text("No articles available")
+                                .foregroundColor(.red)
+                                .padding()
                         }
-                    } else {
-                        Text("No articles available")
-                            .foregroundColor(.red)
-                            .padding()
                     }
                 }
             }
@@ -83,6 +87,9 @@ struct ListSectionView: View {
             alignment: Alignment.bottomTrailing
         )
     }
+    
+    // TODO: Infinite scroll.
+
 }
 
 struct ViewOffsetKey: PreferenceKey {
