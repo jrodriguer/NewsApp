@@ -29,6 +29,8 @@ struct ArticleView: View {
 }
 
 extension ArticleView {
+    // TODO: Check default color on real terminal.
+    
     private var pickerSection: some View {
         VStack {
             Picker("Select View", selection: $selectedViewOption) {
