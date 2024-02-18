@@ -11,6 +11,8 @@ struct ArticleDetailView: View {
     var article: ArticleApiObject
     @EnvironmentObject var vm: ArticleViewModel
     
+    // TODO: Ajust to color pattern.
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {

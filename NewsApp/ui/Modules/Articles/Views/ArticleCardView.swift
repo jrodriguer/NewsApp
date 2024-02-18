@@ -10,6 +10,8 @@ import SwiftUI
 struct ArticleCardView: View {
     let article: ArticleApiObject
     
+    // TODO: Ajust to color pattern.
+    
     var body: some View {
         VStack {
             if let imageURL = article.urlToImage {

@@ -11,6 +11,8 @@ struct ArticleRowView: View {
     var article: ArticleApiObject
     @EnvironmentObject var vm: ArticleViewModel
     
+    // TODO: Ajust to color pattern.
+    
     var body: some View {
         HStack {
             Text(Utils.displayTitle(article.title))
