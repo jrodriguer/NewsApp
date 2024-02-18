@@ -11,7 +11,9 @@ class ArticleViewModel: ObservableObject {
     private var backendApi: BackendApi?
     @Published var articles: [ArticleApiObject] = []
     private var articlesIds: Set<UUID> = []
-    
+        
+    @Published var isLoading: Bool = false
+
     init(backendApi: BackendApi = BackendApi(apiUrl: "https://newsapi.org")) {
         self.backendApi = backendApi
         self.loadArticles()
@@ -19,11 +21,14 @@ class ArticleViewModel: ObservableObject {
     }
     
     func loadArticles() {
+        isLoading = true
+
         //FIXME: Mismatch between the expected Swift type during the decoding process.
         //FIXME: Change 'responseJSON' deprecated to 'responseDecodable'.
         
         backendApi?.getArticles()?.responseJSON { [weak self] response in
             guard let self = self else { return }
+            self.isLoading = false
             switch response.result {
             case .success(let value):
                 if let dictionary = value as? [String: Any],
@@ -38,7 +43,6 @@ class ArticleViewModel: ObservableObject {
                 } else {
                     print("Unexpected response format")
                 }
-                
             case .failure(let error):
                 print("Error: \(error)")
             }
