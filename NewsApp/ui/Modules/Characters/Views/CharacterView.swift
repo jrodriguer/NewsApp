@@ -5,31 +5,31 @@
 //  Created by Julio Rodriguez on 14/2/24.
 //
 
+// CharacterView.swift
+
 import SwiftUI
 
 struct CharacterView: View {
     @StateObject var vm = CharacterViewModel()
-    
+
     var body: some View {
-        VStack {
-            ZStack(alignment: .bottomTrailing) {
-                List {
-                    if !vm.characters.isEmpty {
+        NavigationView {
+            VStack {
+                ZStack(alignment: .bottomTrailing) {
+                    List {
                         ForEach(vm.characters) { character in
-                            VStack(alignment: .leading) {
-                                // TODO: Add character name row.
-                                Text(character.name)
+                            Button(action: {
+                            }) {
+                                VStack(alignment: .leading) {
+                                    Text(character.name)
+                                }
                             }
                         }
-                    } else {
-                        Text("No characters available")
-                            .foregroundColor(.red)
-                            .padding()
                     }
-                }
-                .navigationBarTitle("Characters")
-                .onAppear {
-                    vm.loadCharacters()
+                    .navigationBarTitle("Characters")
+                    .onAppear {
+                        vm.loadCharacters()
+                    }
                 }
             }
         }
