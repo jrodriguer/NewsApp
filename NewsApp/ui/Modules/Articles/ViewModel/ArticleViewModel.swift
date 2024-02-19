@@ -11,9 +11,9 @@ class ArticleViewModel: ObservableObject {
     private var backendApi: BackendApi?
     @Published var articles: [ArticleApiObject] = []
     private var articlesIds: Set<UUID> = []
-        
+    
     @Published var isLoading: Bool = false
-
+    
     init(backendApi: BackendApi = BackendApi(apiUrl: "https://newsapi.org")) {
         self.backendApi = backendApi
         self.loadArticles()
@@ -22,27 +22,14 @@ class ArticleViewModel: ObservableObject {
     
     func loadArticles() {
         isLoading = true
-
-        //FIXME: Mismatch between the expected Swift type during the decoding process.
-        //FIXME: Change 'responseJSON' deprecated to 'responseDecodable'.
-        
-        backendApi?.getArticles()?.responseJSON { [weak self] response in
+                
+        backendApi?.getArticles()?.responseDecodable(of: ArticleListApiObject.self) { [weak self] response in
             guard let self = self else { return }
             self.isLoading = false
+            
             switch response.result {
-            case .success(let value):
-                if let dictionary = value as? [String: Any],
-                   let articlesApObject = dictionary["articles"] as? [[String: Any]] {
-                    do {
-                        let jsonData = try JSONSerialization.data(withJSONObject: articlesApObject)
-                        let articles = try JSONDecoder().decode([ArticleApiObject].self, from: jsonData)
-                        self.articles = articles
-                    } catch {
-                        print("Error decoding articles: \(error)")
-                    }
-                } else {
-                    print("Unexpected response format")
-                }
+            case .success(let articlesListApiObject):
+                self.articles = articlesListApiObject.articles
             case .failure(let error):
                 print("Error: \(error)")
             }
