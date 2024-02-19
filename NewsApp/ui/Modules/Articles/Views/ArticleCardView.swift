@@ -36,7 +36,6 @@ struct ArticleCardView: View {
                 Text(article.source.name)
                     .font(.headline)
                     .foregroundColor(.secondary)
-                
                 Text(Utils.displayTitle(article.title))
                     .font(.title)
                     .fontWeight(.bold)
@@ -47,7 +46,6 @@ struct ArticleCardView: View {
                 
                 HStack(alignment: .top, spacing: 4) {
                     Text(timeDifference(from: article.publishedAt))
-                    
                     if let author = article.author {
                         Text("•")
                         Text(Utils.displayAuthor(author))

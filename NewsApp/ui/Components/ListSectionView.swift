@@ -101,7 +101,3 @@ struct ViewOffsetKey: PreferenceKey {
         value += nextValue()
     }
 }
-
-#Preview {
-    ListSectionView()
-}

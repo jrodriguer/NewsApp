@@ -58,7 +58,3 @@ struct CardSectionView: View {
     // TODO: Infinite scroll.
     
 }
-
-#Preview {
-    CardSectionView()
-}

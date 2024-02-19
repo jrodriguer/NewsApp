@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ArticleListApiObject: Codable {
+struct ArticleListApiObject: Decodable {
     var status: String
     var totalResults: Int
     var articles: [ArticleApiObject]

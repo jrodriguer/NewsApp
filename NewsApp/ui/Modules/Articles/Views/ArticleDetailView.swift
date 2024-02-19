@@ -97,8 +97,3 @@ struct ArticleDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-
-#Preview {
-    ArticleDetailView(article: ArticleViewModel().articles[1])
-        .environmentObject(ArticleViewModel())
-}
