@@ -14,25 +14,31 @@ struct ArticleView: View {
         case listView = "List View"
     }
     @State private var selectedViewOption = ViewOption.cardView
-
-    var body: some View {
-        // TODO: Why don't show me the preview navigation title?
-        
-        VStack {
-            pickerSection
-            
-            switch selectedViewOption {
-            case .cardView: CardSectionView()
-            case .listView: ListSectionView()
-            }
+    @State private var showFavoritesOnly = false
+    private var filteredArticles: [ArticleApiObject] {
+        vm.articles.filter { article in
+            (!showFavoritesOnly || vm.contains(article))
         }
-        .navigationTitle("Headers")
+    }
+    @State var showFab = true
+    @State var scrollOffset: CGFloat = 0.00
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                pickerSection
+                
+                switch selectedViewOption {
+                case .cardView: cardSection
+                case .listView: listSection
+                }
+            }
+            .navigationTitle("Headers")
+        }
     }
 }
 
 extension ArticleView {
-    // TODO: Check default color on real terminal.
-    
     private var pickerSection: some View {
         VStack {
             Picker("Select View", selection: $selectedViewOption) {
@@ -43,6 +49,123 @@ extension ArticleView {
             .pickerStyle(SegmentedPickerStyle())
             .padding()
         }
+    }
+    
+    private var cardSection: some View {
+        Group {
+            if vm.isLoading {
+                ProgressView("Loading...")
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                ScrollView {
+                    VStack(spacing: 0) {
+                        Toggle(isOn: $showFavoritesOnly) {
+                            Text("Favorites only")
+                        }
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 4)
+                        .cornerRadius(10)
+                        .padding(10)
+                        
+                        if !filteredArticles.isEmpty {
+                            ForEach(filteredArticles) { article in
+                                if article.title != "[Removed]" {
+                                    NavigationLink(destination:
+                                                    ArticleDetailView(article: article)
+                                        .environmentObject(vm)
+                                    ) {
+                                        ArticleCardView(article: article)
+                                            .multilineTextAlignment(.leading)
+                                            .environmentObject(vm)
+                                    }
+                                }
+                            }
+                        } else {
+                            Text("No articles available")
+                                .foregroundColor(.red)
+                                .padding()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    private var listSection: some View {
+        VStack {
+            ZStack(alignment: .bottomTrailing) {
+                if vm.isLoading {
+                    ProgressView("Loading...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    List {
+                        Toggle(isOn: $showFavoritesOnly) {
+                            Text("Favorites only")
+                        }
+                        
+                        if !filteredArticles.isEmpty {
+                            ForEach(filteredArticles) { article in
+                                if article.title != "[Removed]" {
+                                    ZStack(alignment: .leading) {
+                                        ArticleRowView(article: article)
+                                            .environmentObject(vm)
+                                        
+                                        NavigationLink(destination:
+                                                        ArticleDetailView(article: article)
+                                            .environmentObject(vm)
+                                        ) {
+                                            EmptyView()
+                                        }
+                                        .opacity(0.0)
+                                    }
+                                }
+                            }
+                        } else {
+                            Text("No articles available")
+                                .foregroundColor(.red)
+                                .padding()
+                        }
+                    }
+                    .scrollContentBackground(.hidden)
+                    .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
+                }
+            }
+        }
+        .background(GeometryReader { geometry in
+            return Color.clear.preference(key: ViewOffsetKey.self,
+                                          value: -geometry.frame(in: .named("scroll")).origin.y)
+        })
+        .onPreferenceChange(ViewOffsetKey.self) { offset in
+            withAnimation {
+                if offset > 50 {
+                    showFab = offset < scrollOffset
+                } else  {
+                    showFab = true
+                }
+            }
+            scrollOffset = offset
+        }
+        .coordinateSpace(name: "scroll")
+        .overlay(
+            Group {
+                if showFab, !filteredArticles.isEmpty {
+                    FloatingActionButtonView(nameIcon: "chevron.up") {
+                        // TODO: Go to top.
+                        print("click button")
+                    }
+                }
+            },
+            alignment: Alignment.bottomTrailing
+        )
+    }
+}
+
+struct ViewOffsetKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
     }
 }
 
