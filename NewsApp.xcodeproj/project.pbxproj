@@ -33,7 +33,6 @@
 		8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */; };
 		8AD6123C2B76D8D400D2D8CC /* TabBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */; };
 		8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */; };
-		8AD612422B76E09200D2D8CC /* CurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612412B76E09200D2D8CC /* CurrentView.swift */; };
 		8AE62B192B784464005DFD77 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B182B784464005DFD77 /* CharacterViewModel.swift */; };
 		8AE62B1B2B784A5A005DFD77 /* CharacterApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1A2B784A5A005DFD77 /* CharacterApiObject.swift */; };
 		8AE62B1D2B793752005DFD77 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1C2B793752005DFD77 /* Color.swift */; };
@@ -87,7 +86,6 @@
 		8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButtonView.swift; sourceTree = "<group>"; };
 		8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModalTabBarItemView.swift; sourceTree = "<group>"; };
-		8AD612412B76E09200D2D8CC /* CurrentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentView.swift; sourceTree = "<group>"; };
 		8AE62B182B784464005DFD77 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		8AE62B1A2B784A5A005DFD77 /* CharacterApiObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterApiObject.swift; sourceTree = "<group>"; };
 		8AE62B1C2B793752005DFD77 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 			children = (
 				8AE62B152B784434005DFD77 /* Characters */,
 				8A9CFC8C2B4EC5E100F70B13 /* Articles */,
-				8AD612412B76E09200D2D8CC /* CurrentView.swift */,
 				8A8C186E2B728C6A008E3C8C /* Home */,
 			);
 			path = Modules;
@@ -497,7 +494,6 @@
 				8A8C18652B7285A3008E3C8C /* ArticleViewModel.swift in Sources */,
 				8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift in Sources */,
 				8AE62B192B784464005DFD77 /* CharacterViewModel.swift in Sources */,
-				8AD612422B76E09200D2D8CC /* CurrentView.swift in Sources */,
 				8AE62B1D2B793752005DFD77 /* Color.swift in Sources */,
 				8A0357AA2B65264800BE5435 /* FloatingActionButtonView.swift in Sources */,
 				8AE62B1B2B784A5A005DFD77 /* CharacterApiObject.swift in Sources */,

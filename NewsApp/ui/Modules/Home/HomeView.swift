@@ -14,7 +14,12 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                CurrentView(currentView: $selectedTab)
+                if selectedTab == .Headers {
+                    ArticleView()
+                } else {
+                    CharacterView()
+                }
+                
                 CustomTabBarView(selectedTab: $selectedTab, showModal: $showModal)
             }
         }
