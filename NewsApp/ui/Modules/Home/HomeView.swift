@@ -12,17 +12,12 @@ struct HomeView: View {
     @State private var showModal: Bool = false
     
     var body: some View {
-        NavigationView {
-            VStack {
-                if selectedTab == .Headers {
-                    ArticleView()
-                } else {
-                    CharacterView()
-                }
-                
-                CustomTabBarView(selectedTab: $selectedTab, showModal: $showModal)
-            }
+        if selectedTab == .Headers {
+            ArticleView()
+        } else {
+            CharacterView()
         }
+        CustomTabBarView(selectedTab: $selectedTab, showModal: $showModal)
     }
 }
 
