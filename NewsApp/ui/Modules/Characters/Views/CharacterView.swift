@@ -11,28 +11,31 @@ import SwiftUI
 
 struct CharacterView: View {
     @StateObject var vm = CharacterViewModel()
+    @State private var searchText = ""
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
-                ZStack(alignment: .bottomTrailing) {
-                    List {
-                        ForEach(vm.characters) { character in
-                            Button(action: {
-                            }) {
-                                VStack(alignment: .leading) {
-                                    Text(character.name)
-                                }
+                List {
+                    ForEach(vm.characters.filter { character in
+                        searchText.isEmpty || character.name.contains(searchText)
+                    }) { character in
+                        Button(action: {
+                            //
+                        }) {
+                            VStack(alignment: .leading) {
+                                Text(character.name)
                             }
                         }
                     }
-                    .navigationBarTitle("Characters")
-                    .onAppear {
-                        vm.loadCharacters()
-                    }
+                }
+                .navigationBarTitle("Characters")
+                .onAppear {
+                    vm.loadCharacters()
                 }
             }
         }
+        .searchable(text: $searchText)
     }
 }
 
