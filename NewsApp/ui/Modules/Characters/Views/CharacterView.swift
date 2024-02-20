@@ -36,7 +36,8 @@ struct CharacterView: View {
                     }) { character in
                         ZStack(alignment: .leading) {
                             Text(character.name)
-                            NavigationLink(destination: Text(character.name)
+                            NavigationLink(destination: 
+                                            CharacterDetailView(character: character)
                             ) {
                                 EmptyView()
                             }
