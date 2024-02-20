@@ -24,30 +24,27 @@ struct ArticleView: View {
     @State var scrollOffset: CGFloat = 0.00
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
-                pickerSection
-                
+                //menuButton
                 switch selectedViewOption {
                 case .cardView: cardSection
                 case .listView: listSection
                 }
             }
-            .navigationTitle("Headers")
+            .navigationBarTitle("Headers")
         }
     }
 }
 
 extension ArticleView {
-    private var pickerSection: some View {
+    private var menuButton: some View {
         VStack {
-            Picker("Select View", selection: $selectedViewOption) {
-                ForEach(ViewOption.allCases, id: \.self) { option in
-                    Text(option.rawValue).tag(option)
-                }
+            Menu("Options") {
+                Button("Order Now", action: {})
+                Button("Adjust Order", action: {})
+                Button("Cancel", action: {})
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding()
         }
     }
     
@@ -60,13 +57,13 @@ extension ArticleView {
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
-                        Toggle(isOn: $showFavoritesOnly) {
+                        /*Toggle(isOn: $showFavoritesOnly) {
                             Text("Favorites only")
                         }
                         .padding(.horizontal, 12)
                         .padding(.vertical, 4)
                         .cornerRadius(10)
-                        .padding(10)
+                        .padding(10)*/
                         
                         if !filteredArticles.isEmpty {
                             ForEach(filteredArticles) { article in
@@ -100,9 +97,9 @@ extension ArticleView {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List {
-                        Toggle(isOn: $showFavoritesOnly) {
+                        /*Toggle(isOn: $showFavoritesOnly) {
                             Text("Favorites only")
-                        }
+                        }*/
                         
                         if !filteredArticles.isEmpty {
                             ForEach(filteredArticles) { article in
@@ -127,6 +124,7 @@ extension ArticleView {
                                 .padding()
                         }
                     }
+                    .navigationBarTitle("Characters")
                     .scrollContentBackground(.hidden)
                     .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
                 }
@@ -150,10 +148,10 @@ extension ArticleView {
         .overlay(
             Group {
                 if showFab, !filteredArticles.isEmpty {
-                    FloatingActionButtonView(nameIcon: "chevron.up") {
+                    /*FloatingActionButtonView(nameIcon: "chevron.up") {
                         // TODO: Go to top.
                         print("click button")
-                    }
+                    }*/
                 }
             },
             alignment: Alignment.bottomTrailing
