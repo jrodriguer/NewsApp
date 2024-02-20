@@ -45,9 +45,6 @@ struct CharacterView: View {
                     }
                 }
                 .navigationBarTitle("Characters")
-                .onAppear {
-                    vm.loadCharacters()
-                }
             }
         }
         .searchable(text: $searchText)
@@ -69,12 +66,10 @@ struct CharacterView: View {
         }
     }
     
-    // TODO: Add my owner logic.
+    // TODO: Add my own logic.
     
     func runSearch() {
         Task {
-            print("Raw value: \(searchScope.rawValue)")
-
             guard let url = URL(string: "https://hws.dev/\(searchScope.rawValue).json") else { return }
             
             let (data, _) = try await URLSession.shared.data(from: url)
