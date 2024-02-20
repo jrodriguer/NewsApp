@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CharacterListApiObject: Codable {
+struct CharacterListApiObject: Decodable {
     var info: Info
     var results: [CharacterApiObject]
 }
