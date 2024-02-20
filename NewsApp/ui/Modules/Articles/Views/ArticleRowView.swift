@@ -10,17 +10,12 @@ import SwiftUI
 struct ArticleRowView: View {
     var article: ArticleApiObject
     @EnvironmentObject var vm: ArticleViewModel
-    
-    // TODO: Ajust to color pattern.
-    
+        
     var body: some View {
         HStack {
             Text(Utils.displayTitle(article.title))
                 .swipeActions(edge: .leading) {
                     Button {
-                        
-                        // FIXME: Try move the logic to model.
-
                         if vm.contains(article) {
                             vm.remove(article)
                         } else {
@@ -45,9 +40,4 @@ struct ArticleRowView: View {
             }
         }
     }
-}
-
-#Preview {
-    ArticleRowView(article: ArticleViewModel().articles[1])
-        .environmentObject(ArticleViewModel())
 }
