@@ -21,9 +21,7 @@ enum SearchScope: String, CaseIterable {
 
 struct CharacterView: View {
     @StateObject var vm = CharacterViewModel()
-    
     @State private var messages = [Message]()
-    
     @State private var searchText = ""
     @State private var searchScope = SearchScope.inbox
 
@@ -54,9 +52,11 @@ struct CharacterView: View {
                 Text(scope.rawValue.capitalized)
             }
         }
+        //
         .onAppear(perform: runSearch)
         .onSubmit(of: .search, runSearch)
         .onChange(of: searchScope) { runSearch() }
+        
     }
     
     var filteredMessages: [Message] {
