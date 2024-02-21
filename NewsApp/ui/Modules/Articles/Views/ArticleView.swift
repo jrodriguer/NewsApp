@@ -42,8 +42,8 @@ struct ArticleView: View {
                             Button("Oldest First") {  }
                         }
                         
-                        Toggle(isOn: $showFavoritesOnly) {
-                            Text("Favorites only")
+                        Button(!showFavoritesOnly ? "Show me Favorites" : "Show me all Articles") {
+                            showFavoritesOnly.toggle()
                         }
                         
                         Divider()
