@@ -26,28 +26,52 @@ struct ArticleView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                //menuButton
                 switch selectedViewOption {
                 case .cardView: cardSection
                 case .listView: listSection
                 }
             }
             .navigationBarTitle("Headers")
+            .toolbar {
+                ToolbarItem {
+                    // TODO: Menu with option to sort articles alphabetically or temporally, where you can select the display option, toggle to show only favorites.
+                    Menu {
+                        Section("Sort by") {
+                            Button("Alphabetical") {  }
+                            Button("Newest First") {  }
+                            Button("Oldest First") {  }
+                        }
+                        
+                        Toggle(isOn: $showFavoritesOnly) {
+                            Text("Favorites only")
+                        }
+                        
+                        Divider()
+                        
+                        Section("Show items as") {
+                            Button {
+                                //
+                            } label: {
+                                Label("Grid", systemImage: "square.grid.2x2")
+                            }
+                            Button {
+                                //
+                            } label: {
+                                Label("List", systemImage: "list.bullet")
+                            }
+                        }
+                        
+                    } label: {
+                        Label("Menu", systemImage: "ellipsis.circle")
+                    }
+                    .menuOrder(.fixed)
+                }
+            }
         }
     }
 }
 
 extension ArticleView {
-    private var menuButton: some View {
-        VStack {
-            Menu("Options") {
-                Button("Order Now", action: {})
-                Button("Adjust Order", action: {})
-                Button("Cancel", action: {})
-            }
-        }
-    }
-    
     private var cardSection: some View {
         Group {
             if vm.isLoading {
@@ -57,13 +81,7 @@ extension ArticleView {
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
-                        /*Toggle(isOn: $showFavoritesOnly) {
-                            Text("Favorites only")
-                        }
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 4)
-                        .cornerRadius(10)
-                        .padding(10)*/
+                        
                         
                         if !filteredArticles.isEmpty {
                             ForEach(filteredArticles) { article in
@@ -97,10 +115,6 @@ extension ArticleView {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List {
-                        /*Toggle(isOn: $showFavoritesOnly) {
-                            Text("Favorites only")
-                        }*/
-                        
                         if !filteredArticles.isEmpty {
                             ForEach(filteredArticles) { article in
                                 if article.title != "[Removed]" {
