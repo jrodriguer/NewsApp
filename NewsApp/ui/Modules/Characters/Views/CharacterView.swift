@@ -48,6 +48,7 @@ struct CharacterView: View {
         }
         .searchable(text: $searchText)
         .searchScopes($searchScope) {
+            // TODO: Favorite character tracking.
             ForEach(SearchScope.allCases, id: \.self) { scope in
                 Text(scope.rawValue.capitalized)
             }
