@@ -40,7 +40,9 @@ struct ArticleView: View {
                     // TODO: Menu with option to sort articles alphabetically (by source name) or temporally, where you can select the display option, toggle to show only favorites.
                     Menu {
                         Section("Sort by") {
-                            Button("Alphabetical") {  }
+                            Button("Alphabetical") { 
+                                
+                            }
                             Button("Newest First") {  }
                             Button("Oldest First") {  }
                         }
@@ -68,7 +70,8 @@ struct ArticleView: View {
 }
 
 extension ArticleView {
-    // TODO: Add tab selectection.
+    // TODO: Add tab themes.
+    
     private var cardSection: some View {
         Group {
             if vm.isLoading {
@@ -78,8 +81,6 @@ extension ArticleView {
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
-                        
-                        
                         if !filteredArticles.isEmpty {
                             ForEach(filteredArticles) { article in
                                 if article.title != "[Removed]" {
@@ -103,6 +104,7 @@ extension ArticleView {
             }
         }
     }
+    
     private var listSection: some View {
         VStack {
             ZStack(alignment: .bottomTrailing) {
