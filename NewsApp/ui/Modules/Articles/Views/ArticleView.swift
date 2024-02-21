@@ -37,14 +37,24 @@ struct ArticleView: View {
             .navigationBarTitle("Headers")
             .toolbar {
                 ToolbarItem {
-                    // TODO: Menu with option to sort articles alphabetically (by source name) or temporally, where you can select the display option, toggle to show only favorites.
+                    // TODO: Menu with option to sort articles temporally.
                     Menu {
                         Section("Sort by") {
                             Button("Alphabetical") { 
-                                
+                                if !filteredArticles.isEmpty {
+                                    vm.articles.sort { $0.source.name.lowercased() < $1.source.name.lowercased() }
+                                }
                             }
-                            Button("Newest First") {  }
-                            Button("Oldest First") {  }
+                            Button("Newest First") { 
+                                if !filteredArticles.isEmpty {
+                                    vm.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
+                                }
+                            }
+                            Button("Oldest First") { 
+                                if !filteredArticles.isEmpty {
+                                    vm.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
+                                }
+                            }
                         }
                         
                         Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
@@ -55,7 +65,14 @@ struct ArticleView: View {
                         
                         Picker("Select View", selection: $selectedViewOption) {
                             ForEach(ViewOption.allCases, id: \.self) { option in
-                                Text(option.rawValue).tag(option)
+                                //Text(option.rawValue).tag(option)
+                                
+                                Label {
+                                    Text(option.rawValue)
+                                } icon: {
+                                    Image(systemName: option == .cardView ? "square.grid.2x2" : "list.bullet")
+                                }
+                                .tag(option)
                             }
                         }
                         .pickerStyle(.menu)
