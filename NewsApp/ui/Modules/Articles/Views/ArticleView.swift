@@ -9,17 +9,20 @@ import SwiftUI
 
 struct ArticleView: View {
     @StateObject var vm = ArticleViewModel()
+    
     enum ViewOption: String, CaseIterable {
         case cardView = "Card View"
         case listView = "List View"
     }
     @State private var selectedViewOption = ViewOption.cardView
+    
     @State private var showFavoritesOnly = false
     private var filteredArticles: [ArticleApiObject] {
         vm.articles.filter { article in
             (!showFavoritesOnly || vm.contains(article))
         }
     }
+    
     @State var showFab = true
     @State var scrollOffset: CGFloat = 0.00
     
@@ -34,7 +37,7 @@ struct ArticleView: View {
             .navigationBarTitle("Headers")
             .toolbar {
                 ToolbarItem {
-                    // TODO: Menu with option to sort articles alphabetically or temporally, where you can select the display option, toggle to show only favorites.
+                    // TODO: Menu with option to sort articles alphabetically (by source name) or temporally, where you can select the display option, toggle to show only favorites.
                     Menu {
                         Section("Sort by") {
                             Button("Alphabetical") {  }
@@ -42,25 +45,18 @@ struct ArticleView: View {
                             Button("Oldest First") {  }
                         }
                         
-                        Button(!showFavoritesOnly ? "Show me Favorites" : "Show me all Articles") {
+                        Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
                             showFavoritesOnly.toggle()
                         }
                         
                         Divider()
                         
-                        Section("Show items as") {
-                            Button {
-                                //
-                            } label: {
-                                Label("Grid", systemImage: "square.grid.2x2")
-                            }
-                            Button {
-                                //
-                            } label: {
-                                Label("List", systemImage: "list.bullet")
+                        Picker("Select View", selection: $selectedViewOption) {
+                            ForEach(ViewOption.allCases, id: \.self) { option in
+                                Text(option.rawValue).tag(option)
                             }
                         }
-                        
+                        .pickerStyle(.menu)
                     } label: {
                         Label("Menu", systemImage: "ellipsis.circle")
                     }
@@ -72,6 +68,7 @@ struct ArticleView: View {
 }
 
 extension ArticleView {
+    // TODO: Add tab selectection.
     private var cardSection: some View {
         Group {
             if vm.isLoading {
