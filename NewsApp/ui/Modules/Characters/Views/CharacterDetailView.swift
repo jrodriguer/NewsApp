@@ -44,7 +44,6 @@ struct CharacterDetailView: View {
                     }
                     
                     Text("Species: \(character.species)")
-                        //.font(.customCalligraffitti(size: 18))
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
