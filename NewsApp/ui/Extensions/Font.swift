@@ -7,12 +7,8 @@
 
 import SwiftUI
 
-struct Font: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension Font {
+    static func customCalligraffitti(size: CGFloat) -> Font {
+        return Font.custom("RegularGraffitti", size: size)
     }
-}
-
-#Preview {
-    Font()
 }
