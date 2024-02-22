@@ -47,6 +47,9 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
         return get(service: serviceURL)
     }
     
+    // TODO: User.default manager, not API in here.
+    // TODO: Check saveKey, param (enum -> articles or characters).
+    
     func saveFavorite(_ id: Set<UUID>) {
         if let encoded = try? JSONEncoder().encode(id) {
             UserDefaults.standard.set(encoded, forKey: saveKey)

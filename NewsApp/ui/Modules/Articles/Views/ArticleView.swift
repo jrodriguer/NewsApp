@@ -18,6 +18,8 @@ struct ArticleView: View {
     @State private var selectedViewOption = ViewOption.cardView
     
     @State private var showFavoritesOnly = false
+    
+    // TODO: To ArticlesViewModel.
     private var filteredArticles: [ArticleApiObject] {
         vm.articles.filter { article in
             (!showFavoritesOnly || favorites.contains(article))
