@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CharacterDetailView: View {
     var character: CharacterApiObject
+    @EnvironmentObject var vm: CharacterViewModel
+    
+    @State private var index = 0
     
     var body: some View {
         ScrollView {
@@ -27,6 +30,9 @@ struct CharacterDetailView: View {
                         ProgressView()
                     }
                 }
+                .frame(maxHeight: 300)
+                .cornerRadius(10)
+                .padding()
                 
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
@@ -38,6 +44,7 @@ struct CharacterDetailView: View {
                     }
                     
                     Text("Species: \(character.species)")
+                        //.font(.customCalligraffitti(size: 18))
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
@@ -45,11 +52,42 @@ struct CharacterDetailView: View {
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
-                    // TODO: Add more details about the character, e.g., origin, location, etc.
+                    if let origin = character.origin {
+                        Text("Origin: \(origin.name)")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
                     
-                    RelatedArticlesView(character: character)
+                    if let location = character.location {
+                        Text("Location: \(location.name)")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 .padding()
+                
+                VStack {
+                    TabView(selection: $index) {
+                        ForEach((0..<3), id: \.self) { index in
+                            Rectangle()
+                                .fill(Color.pink)
+                                .border(Color.black)
+                                .padding()
+                        }
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    
+                    HStack(spacing: 2) {
+                        ForEach((0..<3), id: \.self) { index in
+                            Circle()
+                                .fill(index == self.index ? Color(.secondaryAccent) : Color(.secondaryAccent).opacity(0.5))
+                                .frame(width: 20, height: 20)
+                        }
+                    }
+                    .padding()
+                }
+                .frame(height: 200)
+                
             }
         }
         .navigationTitle(character.name)
