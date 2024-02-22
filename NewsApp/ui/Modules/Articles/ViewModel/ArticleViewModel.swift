@@ -17,7 +17,6 @@ class ArticleViewModel: ObservableObject {
     init(backendApi: BackendApi = BackendApi(apiUrl: "https://newsapi.org")) {
         self.backendApi = backendApi
         self.loadArticles()
-        self.loadFavorites()
     }
     
     func loadArticles() {
@@ -36,23 +35,5 @@ class ArticleViewModel: ObservableObject {
         }
     }
     
-    func loadFavorites() {
-        self.articlesIds = backendApi?.getFavorites() ?? []
-    }
     
-    func contains(_ article: ArticleApiObject) -> Bool {
-        articlesIds.contains(article.id)
-    }
-    
-    func add(_ article: ArticleApiObject) {
-        objectWillChange.send()
-        articlesIds.insert(article.id)
-        backendApi?.saveFavorite(articlesIds)
-    }
-    
-    func remove(_ article: ArticleApiObject) {
-        objectWillChange.send()
-        articlesIds.remove(article.id)
-        backendApi?.saveFavorite(articlesIds)
-    }
 }
