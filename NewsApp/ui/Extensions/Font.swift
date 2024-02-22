@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Font {
-    static let theme = FontTheme()
+    static let appTheme = FontTheme()
 }
 
 /*
@@ -20,8 +20,8 @@ extension Font {
  Black: 900
  */
 struct FontTheme {
-    func KodeMono400(size: CGFloat) -> Font { return Font.custom("KodeMono-Regular", size: size) }
-    func KodeMono500(size: CGFloat) -> Font { return Font.custom("KodeMono-Medium", size: size) }
-    func KodeMono600(size: CGFloat) -> Font { return Font.custom("KodeMono-SemiBold", size: size) }
-    func KodeMono700(size: CGFloat) -> Font { return Font.custom("KodeMono-Bold", size: size) }
+    func kodeMono400(size: CGFloat) -> Font { return Font.custom("KodeMono-Regular", size: size) }
+    func kodeMono500(size: CGFloat) -> Font { return Font.custom("KodeMono-Medium", size: size) }
+    func kodeMono600(size: CGFloat) -> Font { return Font.custom("KodeMono-SemiBold", size: size) }
+    func kodeMono700(size: CGFloat) -> Font { return Font.custom("KodeMono-Bold", size: size) }
 }
