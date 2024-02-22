@@ -40,6 +40,9 @@ struct ArticleDetailView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 8) {
+                    
+                    // TODO: Add published data.
+                    
                     HStack {
                         Text(Utils.displayTitle(article.title))
                             .font(.title)
