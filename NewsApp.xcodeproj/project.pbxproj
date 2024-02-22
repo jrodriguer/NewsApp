@@ -15,7 +15,7 @@
 		8A4E22D82B4A2BCD006D71C6 /* NewsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22D72B4A2BCD006D71C6 /* NewsAppUITests.swift */; };
 		8A4E22DA2B4A2BCD006D71C6 /* NewsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22D92B4A2BCD006D71C6 /* NewsAppUITestsLaunchTests.swift */; };
 		8A7C4D6E2B876439009E98F6 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C4D6D2B876439009E98F6 /* Favorites.swift */; };
-		8A7C4D722B879096009E98F6 /* Calligraffitti in Resources */ = {isa = PBXBuildFile; fileRef = 8A7C4D712B879096009E98F6 /* Calligraffitti */; };
+		8A7C4D742B879372009E98F6 /* Kode_Mono in Resources */ = {isa = PBXBuildFile; fileRef = 8A7C4D732B879372009E98F6 /* Kode_Mono */; };
 		8A8386722B850B0A00FEC3BD /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8386712B850B0A00FEC3BD /* CharacterDetailView.swift */; };
 		8A8386742B8565BB00FEC3BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A8386732B8565BB00FEC3BD /* GoogleService-Info.plist */; };
 		8A8C18602B71AF0A008E3C8C /* ApiRestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C185F2B71AF0A008E3C8C /* ApiRestManager.swift */; };
@@ -25,7 +25,6 @@
 		8A8C18722B728E15008E3C8C /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C18712B728E15008E3C8C /* ArticleView.swift */; };
 		8A8E75E72B5830B30063E6FD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E75E62B5830B30063E6FD /* Utils.swift */; };
 		8A8EF2362B4C166400402584 /* ArticleApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF2352B4C166400402584 /* ArticleApiObject.swift */; };
-		8A8EF2382B4C1F6400402584 /* TopHeadLines.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A8EF2372B4C1F6400402584 /* TopHeadLines.json */; };
 		8A9CFC8E2B4EC5F400F70B13 /* ArticleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC8D2B4EC5F300F70B13 /* ArticleRowView.swift */; };
 		8A9CFC922B4EC61000F70B13 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC912B4EC61000F70B13 /* ArticleDetailView.swift */; };
 		8A9CFC942B4EC7B500F70B13 /* ArticleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC932B4EC7B500F70B13 /* ArticleCardView.swift */; };
@@ -71,7 +70,7 @@
 		8A4E22D72B4A2BCD006D71C6 /* NewsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppUITests.swift; sourceTree = "<group>"; };
 		8A4E22D92B4A2BCD006D71C6 /* NewsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A7C4D6D2B876439009E98F6 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
-		8A7C4D712B879096009E98F6 /* Calligraffitti */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Calligraffitti; sourceTree = "<group>"; };
+		8A7C4D732B879372009E98F6 /* Kode_Mono */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Kode_Mono; sourceTree = "<group>"; };
 		8A8386712B850B0A00FEC3BD /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		8A8386732B8565BB00FEC3BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A8C185F2B71AF0A008E3C8C /* ApiRestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRestManager.swift; sourceTree = "<group>"; };
@@ -81,7 +80,6 @@
 		8A8C18712B728E15008E3C8C /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		8A8E75E62B5830B30063E6FD /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8A8EF2352B4C166400402584 /* ArticleApiObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleApiObject.swift; sourceTree = "<group>"; };
-		8A8EF2372B4C1F6400402584 /* TopHeadLines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TopHeadLines.json; sourceTree = "<group>"; };
 		8A9CFC8D2B4EC5F300F70B13 /* ArticleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowView.swift; sourceTree = "<group>"; };
 		8A9CFC912B4EC61000F70B13 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		8A9CFC932B4EC7B500F70B13 /* ArticleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCardView.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 				8A8386732B8565BB00FEC3BD /* GoogleService-Info.plist */,
 				8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */,
 				8A4E22C22B4A2BCC006D71C6 /* Preview Content */,
-				8A8EF23C2B4C623400402584 /* Resources */,
 				8A8C18662B728714008E3C8C /* ui */,
 				8A8E75E52B5830950063E6FD /* Utils */,
 			);
@@ -197,7 +194,7 @@
 		8A7C4D702B87904A009E98F6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				8A7C4D712B879096009E98F6 /* Calligraffitti */,
+				8A7C4D732B879372009E98F6 /* Kode_Mono */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -313,14 +310,6 @@
 				8A8E75E62B5830B30063E6FD /* Utils.swift */,
 			);
 			name = Utils;
-			sourceTree = "<group>";
-		};
-		8A8EF23C2B4C623400402584 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8A8EF2372B4C1F6400402584 /* TopHeadLines.json */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		8A9CFC8C2B4EC5E100F70B13 /* Articles */ = {
@@ -478,9 +467,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A4E22C42B4A2BCC006D71C6 /* Preview Assets.xcassets in Resources */,
-				8A7C4D722B879096009E98F6 /* Calligraffitti in Resources */,
+				8A7C4D742B879372009E98F6 /* Kode_Mono in Resources */,
 				8A8386742B8565BB00FEC3BD /* GoogleService-Info.plist in Resources */,
-				8A8EF2382B4C1F6400402584 /* TopHeadLines.json in Resources */,
 				8A4E22C12B4A2BCC006D71C6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -696,7 +684,6 @@
 				DEVELOPMENT_TEAM = X55H9FTVGN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				"INFOPLIST_FILE[sdk=*]" = /Users/juliorodriguez/Documents/NewsApp/NewsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
