@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ArticleView: View {
     @StateObject var vm = ArticleViewModel()
+    @StateObject var favorites = Favorites()
     
     enum ViewOption: String, CaseIterable {
         case cardView = "Card View"
@@ -19,7 +20,7 @@ struct ArticleView: View {
     @State private var showFavoritesOnly = false
     private var filteredArticles: [ArticleApiObject] {
         vm.articles.filter { article in
-            (!showFavoritesOnly || vm.contains(article))
+            (!showFavoritesOnly || favorites.contains(article))
         }
     }
     
@@ -58,12 +59,12 @@ struct ArticleView: View {
                             }
                             Button("Newest First") { 
                                 if !filteredArticles.isEmpty {
-                                    vm.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
+                                    vm.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
                                 }
                             }
                             Button("Oldest First") { 
                                 if !filteredArticles.isEmpty {
-                                    vm.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
+                                    vm.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
                                 }
                             }
                         }
@@ -99,10 +100,12 @@ extension ArticleView {
                                     NavigationLink(destination:
                                                     ArticleDetailView(article: article)
                                         .environmentObject(vm)
+                                        .environmentObject(favorites)
                                     ) {
                                         ArticleCardView(article: article)
                                             .multilineTextAlignment(.leading)
                                             .environmentObject(vm)
+                                            .environmentObject(favorites)
                                     }
                                 }
                             }
@@ -132,10 +135,12 @@ extension ArticleView {
                                     ZStack(alignment: .leading) {
                                         ArticleRowView(article: article)
                                             .environmentObject(vm)
+                                            .environmentObject(favorites)
                                         
                                         NavigationLink(destination:
                                                         ArticleDetailView(article: article)
                                             .environmentObject(vm)
+                                            .environmentObject(favorites)
                                         ) {
                                             EmptyView()
                                         }
