@@ -10,6 +10,7 @@ import SwiftUI
 struct ArticleDetailView: View {
     var article: ArticleApiObject
     @EnvironmentObject var vm: ArticleViewModel
+    @EnvironmentObject var favorites: Favorites
     
     // TODO: Ajust to color pattern.
     
@@ -79,11 +80,11 @@ struct ArticleDetailView: View {
                             Image(systemName: "link.circle.fill")
                                 .font(.largeTitle)
                         }
-                        Button(vm.contains(article) ? "Remove from Favorites" : "Add to Favorites") {
-                            if vm.contains(article) {
-                                vm.remove(article)
+                        Button(favorites.contains(article) ? "Remove from Favorites" : "Add to Favorites") {
+                            if favorites.contains(article) {
+                                favorites.remove(article)
                             } else {
-                                vm.add(article)
+                                favorites.add(article)
                             }
                         }
                         .buttonStyle(.borderedProminent)
