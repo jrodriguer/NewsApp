@@ -48,12 +48,12 @@ struct CharacterView: View {
         }
         .searchable(text: $searchText)
         .searchScopes($searchScope) {
-            // TODO: Favorite character tracking.
+            // TODO: Add the logic for handling these scopes.
             ForEach(SearchScope.allCases, id: \.self) { scope in
                 Text(scope.rawValue.capitalized)
             }
         }
-        //
+        // TODO: Performs a search based on the current search scope.
         .onAppear(perform: runSearch)
         .onSubmit(of: .search, runSearch)
         .onChange(of: searchScope) { runSearch() }
@@ -68,7 +68,8 @@ struct CharacterView: View {
         }
     }
     
-    // TODO: Add my own logic.
+    // TODO: Making an asynchronous network request.
+    // FIXME:  Integrate the provided Rick & Morty API filtering
     
     func runSearch() {
         Task {
