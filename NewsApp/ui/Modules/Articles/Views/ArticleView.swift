@@ -37,8 +37,19 @@ struct ArticleView: View {
             .navigationBarTitle("Headers")
             .toolbar {
                 ToolbarItem {
-                    // TODO: Menu with option to sort articles temporally.
                     Menu {
+                        Picker("View", selection: $selectedViewOption) {
+                            ForEach(ViewOption.allCases, id: \.self) { option in
+                                Label {
+                                    Text(option.rawValue)
+                                } icon: {
+                                    Image(systemName: option == .cardView ? "square.grid.2x2" : "list.bullet")
+                                }
+                                .tag(option)
+                            }
+                        }
+                        .pickerStyle(.menu)
+                        
                         Section("Sort by") {
                             Button("Alphabetical") { 
                                 if !filteredArticles.isEmpty {
@@ -60,22 +71,6 @@ struct ArticleView: View {
                         Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
                             showFavoritesOnly.toggle()
                         }
-                        
-                        Divider()
-                        
-                        Picker("Select View", selection: $selectedViewOption) {
-                            ForEach(ViewOption.allCases, id: \.self) { option in
-                                //Text(option.rawValue).tag(option)
-                                
-                                Label {
-                                    Text(option.rawValue)
-                                } icon: {
-                                    Image(systemName: option == .cardView ? "square.grid.2x2" : "list.bullet")
-                                }
-                                .tag(option)
-                            }
-                        }
-                        .pickerStyle(.menu)
                     } label: {
                         Label("Menu", systemImage: "ellipsis.circle")
                     }
@@ -154,8 +149,8 @@ extension ArticleView {
                                 .padding()
                         }
                     }
-                    .navigationBarTitle("Characters")
-                    .scrollContentBackground(.hidden)
+                    .navigationBarTitle("Headers")
+                    //.scrollContentBackground(.hidden)
                     .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
                 }
             }
