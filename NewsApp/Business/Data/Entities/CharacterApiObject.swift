@@ -26,8 +26,8 @@ struct CharacterApiObject: Identifiable, Codable {
     var species: String
     var type: String?
     var gender: String
-    var origin: Location
-    var location: Location
+    var origin: Location?
+    var location: Location?
     var image: URL
     var episode: [URL]
     var url: URL
