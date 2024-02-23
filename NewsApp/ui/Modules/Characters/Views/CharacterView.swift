@@ -69,14 +69,39 @@ struct CharacterView: View {
     }
     
     // TODO: Making an asynchronous network request.
-    // FIXME:  Integrate the provided Rick & Morty API filtering
+    // FIXME:  Integrate the Rick & Morty API filtering, GET https://rickandmortyapi.com/api/character/?name=rick&status=alive
     
     func runSearch() {
+        
+        // TODO: Run this filter API call when submit filter form options.
+        
         Task {
-            guard let url = URL(string: "https://hws.dev/\(searchScope.rawValue).json") else { return }
+            guard let url = URL(string: "https://rickandmortyapi.com/api/character") else { return }
             
-            let (data, _) = try await URLSession.shared.data(from: url)
-            messages = try JSONDecoder().decode([Message].self, from: data)
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            var queryItems: [URLQueryItem] = []
+            
+            if !searchText.isEmpty {
+                queryItems.append(URLQueryItem(name: "name", value: searchText))
+            }
+            
+            // Add more query parameters as needed (e.g., status, species, type, gender)
+            // Example: queryItems.append(URLQueryItem(name: "status", value: "alive"))
+
+            components?.queryItems = queryItems
+            
+            print("Query items for this call: \(queryItems)")
+            
+            if let filteredURL = components?.url {
+                let (data, _) = try await URLSession.shared.data(from: filteredURL)
+                do {
+                    let characters = try JSONDecoder().decode([CharacterApiObject].self, from: data)
+                    // Update your view model or data source with the filtered characters
+                    vm.characters = characters
+                } catch {
+                    print("Error decoding characters: \(error)")
+                }
+            }
         }
     }
 }
