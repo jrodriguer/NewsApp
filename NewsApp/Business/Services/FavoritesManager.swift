@@ -17,6 +17,8 @@ class FavoritesManager: ObservableObject {
         self.saveKey = saveKey        
     }
     
+    // MARK: UserDefaults settings.
+    
     func saveFavorite(_ id: Set<UUID>) {
         if let encoded = try? JSONEncoder().encode(id) {
             UserDefaults.standard.set(encoded, forKey: saveKey)

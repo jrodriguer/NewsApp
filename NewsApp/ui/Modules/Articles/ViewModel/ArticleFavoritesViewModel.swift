@@ -10,14 +10,6 @@ import Foundation
 class ArticleFavoritesViewModel: ObservableObject {
     private var favoritesManager: FavoritesManager
     private var articlesIds: Set<UUID> = []
-    
-    // An array of all articles available
-    var allArticles: [ArticleApiObject] = []
-    
-    var filteredArticles: [ArticleApiObject] {
-        // Filter the articles based on the favorites
-        return allArticles.filter { contains($0) }
-    }
         
     // TODO: More easy and save, Work on enum for manage saveKeys.
     init(favoritesManager: FavoritesManager = FavoritesManager(saveKey: "Articlefavorites")) {
@@ -43,5 +35,9 @@ class ArticleFavoritesViewModel: ObservableObject {
         objectWillChange.send()
         articlesIds.remove(article.id)
         favoritesManager.saveFavorite(articlesIds)
+    }
+    
+    func filteredArticles(from allArticles: [ArticleApiObject], showFavoritesOnly: Bool) -> [ArticleApiObject] {
+        return showFavoritesOnly ? allArticles.filter { contains($0) } : allArticles
     }
 }
