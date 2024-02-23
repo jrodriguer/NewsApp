@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArticleView: View {
     @StateObject var vm = ArticleViewModel()
-    @StateObject var favorites = Favorites()
+    @StateObject var favorites = ArticleFavoritesViewModel()
     
     enum ViewOption: String, CaseIterable {
         case cardView = "Card View"
@@ -85,14 +85,12 @@ struct ArticleView: View {
 }
 
 extension ArticleView {
-    // TODO: Add tab themes.
-    
     private var cardSection: some View {
         Group {
             if vm.isLoading {
                 ProgressView("Loading...")
                     .progressViewStyle(CircularProgressViewStyle())
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
@@ -163,7 +161,7 @@ extension ArticleView {
             }
         }
         .background(GeometryReader { geometry in
-            return Color.clear.preference(key: ViewOffsetKey.self,
+            Color.clear.preference(key: ViewOffsetKey.self,
                                           value: -geometry.frame(in: .named("scroll")).origin.y)
         })
         .onPreferenceChange(ViewOffsetKey.self) { offset in
@@ -181,7 +179,6 @@ extension ArticleView {
             Group {
                 if showFab, !filteredArticles.isEmpty {
                     /*FloatingActionButtonView(nameIcon: "chevron.up") {
-                        // TODO: Go to top.
                         print("click button")
                     }*/
                 }
