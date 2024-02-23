@@ -72,29 +72,6 @@ struct CharacterDetailView: View {
                     }
                 }
                 .padding()
-                
-                VStack {
-                    TabView(selection: $index) {
-                        ForEach((0..<3), id: \.self) { index in
-                            Rectangle()
-                                .fill(Color.pink)
-                                .border(Color.black)
-                                .padding()
-                        }
-                    }
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                    
-                    HStack(spacing: 2) {
-                        ForEach((0..<3), id: \.self) { index in
-                            Circle()
-                                .fill(index == self.index ? Color(.secondaryAccent) : Color(.secondaryAccent).opacity(0.5))
-                                .frame(width: 20, height: 20)
-                        }
-                    }
-                    .padding()
-                }
-                .frame(height: 200)
-                
             }
         }
         .navigationTitle(character.name)
