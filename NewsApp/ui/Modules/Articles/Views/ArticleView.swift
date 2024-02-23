@@ -18,7 +18,6 @@ struct ArticleView: View {
     @State private var selectedViewOption = ViewOption.cardView
     
     @State private var showFavoritesOnly = false
-    
     private var filteredArticles: [ArticleApiObject] {
         favorites.filteredArticles(from: vm.articles, showFavoritesOnly: showFavoritesOnly)
     }

@@ -11,8 +11,6 @@ struct CharacterDetailView: View {
     var character: CharacterApiObject
     @EnvironmentObject var vm: CharacterViewModel
     
-    @State private var index = 0
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {

@@ -36,4 +36,8 @@ class CharacterFavoritesViewModel: ObservableObject {
         charactersIds.remove(article.id)
         favoritesManager.saveFavorite(charactersIds)
     }
+    
+    func filteredCharacters(from allCharacters: [CharacterApiObject], showFavoritesOnly: Bool) -> [CharacterApiObject] {
+        return showFavoritesOnly ? allCharacters.filter { contains($0) } : allCharacters
+    }
 }
