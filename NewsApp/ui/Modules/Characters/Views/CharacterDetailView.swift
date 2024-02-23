@@ -33,7 +33,7 @@ struct CharacterDetailView: View {
                 .frame(maxHeight: 300)
                 .cornerRadius(10)
                 .padding()
-                
+                                
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text(character.name)
@@ -47,17 +47,25 @@ struct CharacterDetailView: View {
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
+                    Divider()
+                    
                     Text("Status: \(character.status)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
+                    Divider()
+                    
                     if let origin = character.origin {
+                        // TODO: Add link to Location view (from character id).
                         Text("Origin: \(origin.name)")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
                     
+                    Divider()
+                    
                     if let location = character.location {
+                        // TODO: Add link to Location view (from character id).
                         Text("Location: \(location.name)")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
