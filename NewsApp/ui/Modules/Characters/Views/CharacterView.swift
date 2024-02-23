@@ -102,12 +102,26 @@ struct CharacterView: View {
             print("Query items for this call: \(queryItems)")
             
             if let filteredURL = components?.url {
-                let (data, _) = try await URLSession.shared.data(from: filteredURL)
                 do {
-                    let characters = try JSONDecoder().decode([CharacterApiObject].self, from: data)
-                    /// Update view model with the filtered characters.
-                    vm.characters = characters
+                    let (data, _) = try await URLSession.shared.data(from: filteredURL)
+                    print("API Response Data: \(String(data: data, encoding: .utf8) ?? "Unable to convert data to string")")
+                    
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    
+                    if let dictionaryResponse = try? decoder.decode([String: CharacterApiObject].self, from: data) {
+                        /// Handle dictionary response
+                        let characters = Array(dictionaryResponse.values)
+                        /// Update view model with the filtered characters.
+                        vm.characters = characters
+                    } else {
+                        /// Handle array response
+                        let characters = try decoder.decode([CharacterApiObject].self, from: data)
+                        /// Update view model with the filtered characters.
+                        vm.characters = characters
+                    }
                 } catch {
+                    // FIXME: typeMismatch(Swift.Array<Any>, Swift.DecodingError.Context(codingPath: [], debugDescription: "Expected to decode Array<Any> but found a dictionary instead.", underlyingError: nil))
                     print("Error decoding characters: \(error)")
                 }
             }
