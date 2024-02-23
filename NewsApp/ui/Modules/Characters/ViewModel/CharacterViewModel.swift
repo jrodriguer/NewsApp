@@ -11,7 +11,7 @@ import Alamofire
 class CharacterViewModel: ObservableObject {
     private var backendApi: BackendApi?
     @Published var characters: [CharacterApiObject] = []
-    
+
     init(backendApi: BackendApi = BackendApi(apiUrl: "https://rickandmortyapi.com")) {
         self.backendApi = backendApi
         self.loadCharacters()

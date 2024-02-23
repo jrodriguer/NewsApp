@@ -10,8 +10,6 @@ import Foundation
 class ArticleViewModel: ObservableObject {
     private var backendApi: BackendApi?
     @Published var articles: [ArticleApiObject] = []
-    private var articlesIds: Set<UUID> = []
-    
     @Published var isLoading: Bool = false
     
     init(backendApi: BackendApi = BackendApi(apiUrl: "https://newsapi.org")) {
