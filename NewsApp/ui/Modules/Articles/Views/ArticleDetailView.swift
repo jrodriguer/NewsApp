@@ -10,10 +10,8 @@ import SwiftUI
 struct ArticleDetailView: View {
     var article: ArticleApiObject
     @EnvironmentObject var vm: ArticleViewModel
-    @EnvironmentObject var favorites: Favorites
-    
-    // TODO: Ajust to color pattern.
-    
+    @EnvironmentObject var favorites: ArticleFavoritesViewModel
+        
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {

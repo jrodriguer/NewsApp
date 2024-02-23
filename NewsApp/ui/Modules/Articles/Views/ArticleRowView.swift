@@ -10,7 +10,7 @@ import SwiftUI
 struct ArticleRowView: View {
     var article: ArticleApiObject
     @EnvironmentObject var vm: ArticleViewModel
-    @EnvironmentObject var favorites: Favorites
+    @EnvironmentObject var favorites: ArticleFavoritesViewModel
         
     var body: some View {
         HStack {
