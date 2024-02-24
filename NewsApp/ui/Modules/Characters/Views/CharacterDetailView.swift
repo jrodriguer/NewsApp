@@ -69,6 +69,7 @@ struct CharacterDetailView: View {
                             },
                             content: {
                                 HStack {
+                                    //!! TODO: Load data dynamic: type, dimension and residents.
                                     Text("Content")
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
@@ -84,7 +85,7 @@ struct CharacterDetailView: View {
                     
                     //Divider()
                     
-                    //!! TODO: Add link to Location view (from character id), print the following data: type, dimension and residents.
+                    //!! TODO: Add link to Location view (from character id).
                     if let location = character.location {
                         /*Text("Location: \(location.name)")
                             .font(.subheadline)
@@ -98,6 +99,7 @@ struct CharacterDetailView: View {
                             },
                             content: {
                                 HStack {
+                                    //!! TODO: Load data dynamic: type, dimension and residents.
                                     Text("Content")
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)

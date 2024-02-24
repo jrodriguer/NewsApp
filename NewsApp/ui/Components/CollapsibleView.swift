@@ -34,8 +34,8 @@ struct CollapsibleView<Content: View>: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none)
             .clipped()
-            .animation(.easeOut)
-            .transition(.slide)
+            //.animation(.easeOut)
+            //.transition(.slide)
         }
     }
 }
