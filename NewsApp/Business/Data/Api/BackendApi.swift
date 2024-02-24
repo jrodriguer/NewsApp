@@ -43,7 +43,4 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
         let serviceURL = "/api/episode"
         return get(service: serviceURL)
     }
-    
-    // TODO: Check saveKey, param (enum -> articles or characters).
-    
 }

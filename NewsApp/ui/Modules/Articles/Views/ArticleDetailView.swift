@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ArticleDetailView: View {
     var article: ArticleApiObject
-    @EnvironmentObject var vm: ArticleViewModel
     @EnvironmentObject var favorites: ArticleFavoritesViewModel
         
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 if let imageURL = article.urlToImage {
+                    // MARK: For animation -> transaction: .init(animation: .bouncy(duration: 2)).
                     AsyncImage(url: imageURL) { phase in
                         switch phase {
                         case .success(let image):

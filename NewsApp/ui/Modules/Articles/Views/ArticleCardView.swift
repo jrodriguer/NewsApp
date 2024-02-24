@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArticleCardView: View {
     let article: ArticleApiObject
-        
+    
     var body: some View {
         VStack {
             if let imageURL = article.urlToImage {
@@ -55,6 +55,7 @@ struct ArticleCardView: View {
                 .fontWeight(.semibold)
                 .foregroundColor(.secondary)
             }
+            
         }
         .padding(12)
         .background(Color(.baseGray))
