@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CharacterDetailView: View {
     var character: CharacterApiObject
-    @EnvironmentObject var vm: CharacterViewModel
+    @EnvironmentObject var favorites: CharacterFavoritesViewModel
     
     var body: some View {
         ScrollView {
@@ -54,7 +54,6 @@ struct CharacterDetailView: View {
                     Divider()
                     
                     if let origin = character.origin {
-                        // TODO: Add link to Location view (from character id).
                         Text("Origin: \(origin.name)")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
@@ -63,14 +62,28 @@ struct CharacterDetailView: View {
                     Divider()
                     
                     if let location = character.location {
-                        // TODO: Add link to Location view (from character id).
                         Text("Location: \(location.name)")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
                     
-                    // TODO: Add favorite button, same article detail view.
-                    
+                    // TODO: Add link to Location view (from character id).
+
+                    HStack {
+                        Link(destination: character.url) {
+                            Image(systemName: "link.circle.fill")
+                                .font(.largeTitle)
+                        }
+                        Button(favorites.contains(character) ? "Remove from Favorites" : "Add to Favorites") {
+                            if favorites.contains(character) {
+                                favorites.remove(character)
+                            } else {
+                                favorites.add(character)
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .padding()
+                    }
                 }
                 .padding()
             }
@@ -79,3 +92,5 @@ struct CharacterDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+
+// TODO: Add SwifUI Preview.

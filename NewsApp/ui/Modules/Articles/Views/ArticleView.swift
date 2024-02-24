@@ -25,6 +25,8 @@ struct ArticleView: View {
     @State var showFab = true
     @State var scrollOffset: CGFloat = 0.00
     
+    @State private var selectedTab: Int = 0
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -90,6 +92,8 @@ extension ArticleView {
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
+                        // TODO: Add categories handle.
+                        
                         if !filteredArticles.isEmpty {
                             ForEach(filteredArticles) { article in
                                 if article.title != "[Removed]" {
@@ -124,6 +128,8 @@ extension ArticleView {
                         .progressViewStyle(CircularProgressViewStyle())
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
+                    // TODO: Add categories handle.
+                    
                     List {
                         if !filteredArticles.isEmpty {
                             ForEach(filteredArticles) { article in
