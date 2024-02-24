@@ -39,6 +39,11 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
         return get(service: serviceURL)
     }
     
+    func getLocation(id: UUID) -> DataRequest? {
+        let serviceURL = "/api/location/\(id)/"
+        return get(service: serviceURL)
+    }
+    
     func getEpisodes() -> DataRequest? {
         let serviceURL = "/api/episode"
         return get(service: serviceURL)
