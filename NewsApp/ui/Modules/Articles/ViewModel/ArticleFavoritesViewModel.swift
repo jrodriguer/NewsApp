@@ -11,7 +11,6 @@ class ArticleFavoritesViewModel: ObservableObject {
     private var favoritesManager: FavoritesManager
     private var articlesIds: Set<UUID> = []
         
-    // TODO: More easy and save, Work on enum for manage saveKeys.
     init(favoritesManager: FavoritesManager = FavoritesManager(saveKey: FavoriteKey.articleFavorite)) {
         self.favoritesManager = favoritesManager
         self.loadfavoritesManager()

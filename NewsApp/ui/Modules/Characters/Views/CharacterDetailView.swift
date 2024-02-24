@@ -68,6 +68,9 @@ struct CharacterDetailView: View {
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
+                    
+                    // TODO: Add favorite button, same article detail view.
+                    
                 }
                 .padding()
             }
