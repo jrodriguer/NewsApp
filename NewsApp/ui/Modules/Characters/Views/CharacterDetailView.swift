@@ -54,13 +54,6 @@ struct CharacterDetailView: View {
                     
                     Divider()
                     
-                    //!! TODO: Add link to Location view (from character id), print the following data: type, dimension and residents.
-                    /*if let origin = character.origin {
-                     Text("Origin: \(origin.name)")
-                     .font(.subheadline)
-                     .foregroundColor(.secondary)
-                     }*/
-                    
                     if let origin = character.origin {
                         CollapsibleView(
                             label: {
@@ -70,7 +63,7 @@ struct CharacterDetailView: View {
                             },
                             content: {
                                 HStack {
-                                    //!! TODO: Load data dynamic: type, dimension and residents.
+                                    //!! TODO: Load data dynamic.
                                     Text("Content")
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
@@ -81,17 +74,13 @@ struct CharacterDetailView: View {
                                 .background(Color(.baseGray))
                             }
                         )
+                        .onAppear {
+                            vm.getLocationData(for: character)
+                        }
                         .frame(maxWidth: .infinity)
                     }
-                    
-                    //Divider()
-                    
-                    //!! TODO: Add link to Location view (from character id).
+                                        
                     if let location = character.location {
-                        /*Text("Location: \(location.name)")
-                         .font(.subheadline)
-                         .foregroundColor(.secondary)*/
-                        
                         CollapsibleView(
                             label: {
                                 Text("Location: \(location.name)")
@@ -100,7 +89,7 @@ struct CharacterDetailView: View {
                             },
                             content: {
                                 HStack {
-                                    //!! TODO: Load data dynamic: type, dimension and residents.
+                                    //!! TODO: Load data dynamic.
                                     Text("Content")
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
