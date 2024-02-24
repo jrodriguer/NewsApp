@@ -20,9 +20,7 @@ struct Info: Codable {
 }
 
 struct CharacterApiObject: Identifiable, Codable {
-    // MARK: Change type for id propertyo (Int to UUID).
-    var id = UUID()
-
+    var id: Int
     var name: String
     var status: String
     var species: String
@@ -36,14 +34,13 @@ struct CharacterApiObject: Identifiable, Codable {
     var created: String
     
     private enum CodingKeys: String, CodingKey {
-        // MARK: Remove id from coding keys.
-        case name, status, species, type, gender, origin, location, image, episode, url, created
+        case id, name, status, species, type, gender, origin, location, image, episode, url, created
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        //MARK: Remove id decode property, id = try container.decode(Int.self, forKey: .id).
+        id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         status = try container.decode(String.self, forKey: .status)
         species = try container.decode(String.self, forKey: .species)

@@ -12,6 +12,7 @@ protocol BackendApiProtocol {
     func getArticles() -> DataRequest?
     func getCharacters() -> DataRequest?
     func getLocations() -> DataRequest?
+    func getLocation(id: Int) -> DataRequest?
 }
 
 class BackendApi: ApiRestManager, BackendApiProtocol {
@@ -39,8 +40,8 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
         return get(service: serviceURL)
     }
     
-    func getLocation(id: UUID) -> DataRequest? {
-        let serviceURL = "/api/location/\(id)/"
+    func getLocation(id: Int) -> DataRequest? {
+        let serviceURL = "/api/location/\(id)"
         return get(service: serviceURL)
     }
     
