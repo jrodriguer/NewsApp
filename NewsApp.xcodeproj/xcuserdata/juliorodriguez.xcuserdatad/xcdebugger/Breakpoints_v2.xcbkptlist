@@ -65,6 +65,21 @@
                   endingLineNumber = "92"
                   offsetFromSymbolStart = "1880">
                </Location>
+               <Location
+                  uuid = "E03309EE-7378-4F4A-8816-0ECBCD108729 - 8bdd130beb5c1c8e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in NewsApp.CharacterView.runSearch() -&gt; ()"
+                  moduleName = "NewsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juliorodriguez/Documents/NewsApp/NewsApp/ui/Modules/Characters/Views/CharacterView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "988">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -82,6 +97,38 @@
             endingLineNumber = "103"
             landmarkName = "runSearch()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6901DA28-F593-498F-9466-7038E2234003 - 8bdd130beb5c1c0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in NewsApp.CharacterView.runSearch() -&gt; ()"
+                  moduleName = "NewsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juliorodriguez/Documents/NewsApp/NewsApp/ui/Modules/Characters/Views/CharacterView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "1504">
+               </Location>
+               <Location
+                  uuid = "6901DA28-F593-498F-9466-7038E2234003 - 8bdd130beb5c1c0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in NewsApp.CharacterView.runSearch() -&gt; ()"
+                  moduleName = "NewsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juliorodriguez/Documents/NewsApp/NewsApp/ui/Modules/Characters/Views/CharacterView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "1880">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
