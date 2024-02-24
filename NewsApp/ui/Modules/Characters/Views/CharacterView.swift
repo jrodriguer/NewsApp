@@ -73,7 +73,7 @@ struct CharacterView: View {
         // TODO: Performs a search based on the current search scope.
         .onChange(of: searchScope, runSearch)
         // TODO: Making an asynchronous network request: .onSubmit(of: .search, runSearch)
-        
+        //! TODO: Infine scroll.
     }
     
     var filteredMessages: [Message] {

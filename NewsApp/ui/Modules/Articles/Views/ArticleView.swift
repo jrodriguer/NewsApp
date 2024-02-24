@@ -92,7 +92,7 @@ extension ArticleView {
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
-                        // TODO: Add categories handle.
+                        //! TODO: Add categories handle.
                         
                         if !filteredArticles.isEmpty {
                             ForEach(filteredArticles) { article in
@@ -109,6 +109,9 @@ extension ArticleView {
                                     }
                                 }
                             }
+                            
+                            //! TODO: Infine scroll.
+                            
                         } else {
                             Text("No articles available")
                                 .foregroundColor(.red)
@@ -128,7 +131,7 @@ extension ArticleView {
                         .progressViewStyle(CircularProgressViewStyle())
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    // TODO: Add categories handle.
+                    //! TODO: Add categories handle.
                     
                     List {
                         if !filteredArticles.isEmpty {
@@ -150,6 +153,9 @@ extension ArticleView {
                                     }
                                 }
                             }
+                            
+                            //! TODO: Infine scroll.
+                            
                         } else {
                             Text("No articles available")
                                 .foregroundColor(.red)

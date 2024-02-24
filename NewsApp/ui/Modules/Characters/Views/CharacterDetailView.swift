@@ -67,7 +67,7 @@ struct CharacterDetailView: View {
                             .foregroundColor(.secondary)
                     }
                     
-                    // TODO: Add link to Location view (from character id).
+                    //!! TODO: Add link to Location view (from character id).
 
                     HStack {
                         Link(destination: character.url) {
