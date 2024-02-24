@@ -21,18 +21,23 @@ class CharacterFavoritesViewModel: ObservableObject {
     }
     
     func contains(_ article: CharacterApiObject) -> Bool {
-        charactersIds.contains(article.id)
+        // FIXME: Cannot convert value of type 'Int' to expected argument type 'UUID'
+        //charactersIds.contains(article.id)
+        
+        return false
     }
     
     func add(_ article: CharacterApiObject) {
         objectWillChange.send()
-        charactersIds.insert(article.id)
+        // FIXME: Cannot convert value of type 'Int' to expected argument type 'UUID'
+        //charactersIds.insert(article.id)
         favoritesManager.saveFavorite(charactersIds)
     }
     
     func remove(_ article: CharacterApiObject) {
         objectWillChange.send()
-        charactersIds.remove(article.id)
+        // FIXME: Cannot convert value of type 'Int' to expected argument type 'UUID'
+        //charactersIds.remove(article.id)
         favoritesManager.saveFavorite(charactersIds)
     }
     
