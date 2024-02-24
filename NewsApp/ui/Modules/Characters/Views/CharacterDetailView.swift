@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CharacterDetailView: View {
     var character: CharacterApiObject
+    @EnvironmentObject var vm: CharacterViewModel
     @EnvironmentObject var favorites: CharacterFavoritesViewModel
     
     var body: some View {
@@ -31,7 +32,7 @@ struct CharacterDetailView: View {
                 .frame(maxHeight: 300)
                 .cornerRadius(10)
                 .padding()
-                                
+                
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text(character.name)
@@ -55,10 +56,10 @@ struct CharacterDetailView: View {
                     
                     //!! TODO: Add link to Location view (from character id), print the following data: type, dimension and residents.
                     /*if let origin = character.origin {
-                        Text("Origin: \(origin.name)")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }*/
+                     Text("Origin: \(origin.name)")
+                     .font(.subheadline)
+                     .foregroundColor(.secondary)
+                     }*/
                     
                     if let origin = character.origin {
                         CollapsibleView(
@@ -88,8 +89,8 @@ struct CharacterDetailView: View {
                     //!! TODO: Add link to Location view (from character id).
                     if let location = character.location {
                         /*Text("Location: \(location.name)")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)*/
+                         .font(.subheadline)
+                         .foregroundColor(.secondary)*/
                         
                         CollapsibleView(
                             label: {
@@ -110,6 +111,9 @@ struct CharacterDetailView: View {
                                 .background(Color(.baseGray))
                             }
                         )
+                        .onAppear {
+                            vm.getLocationData(for: character)
+                        }
                         .frame(maxWidth: .infinity)
                     }
                     
