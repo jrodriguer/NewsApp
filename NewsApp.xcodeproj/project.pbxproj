@@ -38,6 +38,7 @@
 		8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */; };
 		8AD6123C2B76D8D400D2D8CC /* TabBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */; };
 		8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */; };
+		8AD804C22B8A42ED00DE501A /* SwiftOpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD804C12B8A42ED00DE501A /* SwiftOpenAI */; };
 		8AE62B192B784464005DFD77 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B182B784464005DFD77 /* CharacterViewModel.swift */; };
 		8AE62B1B2B784A5A005DFD77 /* CharacterApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1A2B784A5A005DFD77 /* CharacterApiObject.swift */; };
 		8AE62B1D2B793752005DFD77 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1C2B793752005DFD77 /* Color.swift */; };
@@ -109,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AD804C22B8A42ED00DE501A /* SwiftOpenAI in Frameworks */,
 				8AAB4D0B2B76599200C71B36 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,6 +387,7 @@
 			name = NewsApp;
 			packageProductDependencies = (
 				8AAB4D0A2B76599200C71B36 /* Alamofire */,
+				8AD804C12B8A42ED00DE501A /* SwiftOpenAI */,
 			);
 			productName = NewsApp;
 			productReference = 8A4E22B92B4A2BCA006D71C6 /* NewsApp.app */;
@@ -461,6 +464,7 @@
 			packageReferences = (
 				8AAB4D092B76599200C71B36 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8A8386752B85662F00FEC3BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8AD804C02B8A42ED00DE501A /* XCRemoteSwiftPackageReference "SwiftOpenAI" */,
 			);
 			productRefGroup = 8A4E22BA2B4A2BCA006D71C6 /* Products */;
 			projectDirPath = "";
@@ -883,6 +887,14 @@
 				minimumVersion = 5.8.1;
 			};
 		};
+		8AD804C02B8A42ED00DE501A /* XCRemoteSwiftPackageReference "SwiftOpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftBeta/SwiftOpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -890,6 +902,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AAB4D092B76599200C71B36 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		8AD804C12B8A42ED00DE501A /* SwiftOpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AD804C02B8A42ED00DE501A /* XCRemoteSwiftPackageReference "SwiftOpenAI" */;
+			productName = SwiftOpenAI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
