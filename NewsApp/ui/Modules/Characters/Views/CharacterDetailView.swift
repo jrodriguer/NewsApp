@@ -42,33 +42,75 @@ struct CharacterDetailView: View {
                     }
                     
                     Text("Species: \(character.species)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                        .font(.body)
+                        .foregroundColor(.primary)
                     
                     Divider()
                     
                     Text("Status: \(character.status)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                        .font(.body)
+                        .foregroundColor(.primary)
                     
                     Divider()
                     
-                    if let origin = character.origin {
+                    //!! TODO: Add link to Location view (from character id), print the following data: type, dimension and residents.
+                    /*if let origin = character.origin {
                         Text("Origin: \(origin.name)")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
+                    }*/
+                    
+                    if let origin = character.origin {
+                        CollapsibleView(
+                            label: {
+                                Text("Origin: \(origin.name)")
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                            },
+                            content: {
+                                HStack {
+                                    Text("Content")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                    Spacer()
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color(.baseGray))
+                            }
+                        )
+                        .frame(maxWidth: .infinity)
                     }
                     
-                    Divider()
+                    //Divider()
                     
+                    //!! TODO: Add link to Location view (from character id), print the following data: type, dimension and residents.
                     if let location = character.location {
-                        Text("Location: \(location.name)")
+                        /*Text("Location: \(location.name)")
                             .font(.subheadline)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondary)*/
+                        
+                        CollapsibleView(
+                            label: {
+                                Text("Location: \(location.name)")
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                            },
+                            content: {
+                                HStack {
+                                    Text("Content")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                    Spacer()
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color(.baseGray))
+                            }
+                        )
+                        .frame(maxWidth: .infinity)
                     }
                     
-                    //!! TODO: Add link to Location view (from character id).
-
                     HStack {
                         Link(destination: character.url) {
                             Image(systemName: "link.circle.fill")
