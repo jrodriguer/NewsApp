@@ -72,6 +72,8 @@ struct CharacterDetailView: View {
                             content: {
                                 HStack {
                                     //!! TODO: Load data dynamic.
+                                    //!! MARK: There is not enough data.
+                                    
                                     Text("Content")
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
@@ -89,10 +91,15 @@ struct CharacterDetailView: View {
                     }
                     
                     HStack {
-                        Link(destination: character.url) {
-                            Image(systemName: "link.circle.fill")
-                                .font(.largeTitle)
+                        if let wikiURL = URL(string: "https://rickandmorty.fandom.com/wiki/\(character.name)?so=search") {
+                            Link(destination: wikiURL) {
+                                Image(systemName: "link.circle.fill")
+                                    .font(.largeTitle)
+                            }
+                        } else {
+                            Text("Invalid URL")
                         }
+                        
                         Button(favorites.contains(character) ? "Remove from Favorites" : "Add to Favorites") {
                             if favorites.contains(character) {
                                 favorites.remove(character)
