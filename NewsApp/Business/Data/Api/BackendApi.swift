@@ -30,6 +30,12 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
         return get(service: serviceURL)
     }
     
+    func getCategoryArticles() -> DataRequest? {
+        //! TODO: Add articles from an category.
+        let serviceURL = ""
+        return get(service: serviceURL)
+    }
+    
     func getCharacters() -> DataRequest? {
         let serviceURL = "/api/character"
         return get(service: serviceURL)

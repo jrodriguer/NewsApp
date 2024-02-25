@@ -11,6 +11,17 @@ struct ArticleView: View {
     @StateObject var vm = ArticleViewModel()
     @StateObject var favorites = ArticleFavoritesViewModel()
     
+    enum Category: String, CaseIterable {
+        case business = "business"
+        case technology = "technology"
+        case health = "health"
+        case sports = "sports"
+        case entertainment = "entertainment"
+        case general = "general"
+        case science = "science"
+    }
+    @State private var selectedCategoryIndex = 0
+    
     enum ViewOption: String, CaseIterable {
         case cardView = "Card View"
         case listView = "List View"
@@ -25,11 +36,24 @@ struct ArticleView: View {
     @State var showFab = true
     @State var scrollOffset: CGFloat = 0.00
     
-    @State private var selectedTab: Int = 0
-    
     var body: some View {
         NavigationStack {
             VStack {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 16) {
+                        ForEach(0..<Category.allCases.count) { index in
+                            Button(action: {
+                                selectedCategoryIndex = index
+                            }) {
+                                Text(Category.allCases[index].rawValue)
+                                    .font(.headline)
+                                    .foregroundColor(selectedCategoryIndex == index ? .primary : .secondary)
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+
                 switch selectedViewOption {
                 case .cardView: cardSection
                 case .listView: listSection
@@ -92,8 +116,6 @@ extension ArticleView {
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
-                        //! TODO: Add categories handle.
-                        
                         if !filteredArticles.isEmpty {
                             ForEach(filteredArticles) { article in
                                 if article.title != "[Removed]" {
@@ -109,9 +131,6 @@ extension ArticleView {
                                     }
                                 }
                             }
-                            
-                            //! TODO: Infine scroll.
-                            
                         } else {
                             Text("No articles available")
                                 .foregroundColor(.red)
@@ -131,8 +150,6 @@ extension ArticleView {
                         .progressViewStyle(CircularProgressViewStyle())
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    //! TODO: Add categories handle.
-                    
                     List {
                         if !filteredArticles.isEmpty {
                             ForEach(filteredArticles) { article in
@@ -153,9 +170,6 @@ extension ArticleView {
                                     }
                                 }
                             }
-                            
-                            //! TODO: Infine scroll.
-                            
                         } else {
                             Text("No articles available")
                                 .foregroundColor(.red)
