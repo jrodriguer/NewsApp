@@ -11,7 +11,7 @@ struct CharacterDetailView: View {
     var character: CharacterApiObject
     @EnvironmentObject var vm: CharacterViewModel
     @EnvironmentObject var favorites: CharacterFavoritesViewModel
-    
+        
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
@@ -55,31 +55,13 @@ struct CharacterDetailView: View {
                     Divider()
                     
                     if let origin = character.origin {
-                        CollapsibleView(
-                            label: {
-                                Text("Origin: \(origin.name)")
-                                    .font(.body)
-                                    .foregroundColor(.primary)
-                            },
-                            content: {
-                                HStack {
-                                    //!! TODO: Load data dynamic.
-                                    Text("Content")
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                    Spacer()
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color(.baseGray))
-                            }
-                        )
-                        .onAppear {
-                            vm.getLocationData(for: character)
-                        }
-                        .frame(maxWidth: .infinity)
+                        Text("Origin: \(origin.name)")
+                            .font(.body)
+                            .foregroundColor(.primary)
                     }
-                                        
+                    
+                    Divider()
+                    
                     if let location = character.location {
                         CollapsibleView(
                             label: {
