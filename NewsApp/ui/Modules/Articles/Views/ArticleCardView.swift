@@ -45,7 +45,8 @@ struct ArticleCardView: View {
                 Divider()
                 
                 HStack(alignment: .top, spacing: 4) {
-                    Text(timeDifference(from: article.publishedAt))
+                    Text(Utils.timeDifference(from: article.publishedAt))
+                    
                     if let author = article.author {
                         Text("•")
                         Text(Utils.displayAuthor(author))
@@ -61,24 +62,5 @@ struct ArticleCardView: View {
         .background(Color(.baseGray))
         .cornerRadius(10)
         .padding(10)
-    }
-    
-    private func timeDifference(from date: Date) -> String {
-        let currentDate = Date()
-        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date, to: currentDate)
-        
-        if let year = components.year, year > 0 {
-            return "\(year) year\(year == 1 ? "" : "s") ago"
-        } else if let month = components.month, month > 0 {
-            return "\(month) month\(month == 1 ? "" : "s") ago"
-        } else if let day = components.day, day > 0 {
-            return "\(day) day\(day == 1 ? "" : "s") ago"
-        } else if let hour = components.hour, hour > 0 {
-            return "\(hour) hour\(hour == 1 ? "" : "s") ago"
-        } else if let minute = components.minute, minute > 0 {
-            return "\(minute) minute\(minute == 1 ? "" : "s") ago"
-        } else {
-            return "Just now"
-        }
     }
 }

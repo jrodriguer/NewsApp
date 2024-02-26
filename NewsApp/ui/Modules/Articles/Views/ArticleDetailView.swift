@@ -38,9 +38,6 @@ struct ArticleDetailView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    
-                    // TODO: Add published data.
-                    
                     HStack {
                         Text(Utils.displayTitle(article.title))
                             .font(.title)
@@ -49,10 +46,18 @@ struct ArticleDetailView: View {
                             .multilineTextAlignment(.leading)
                     }
                     
-                    if let author = article.author {
-                        Text(author)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+                    HStack {
+                        if let author = article.author {
+                            Text(author)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        if let author = article.author {
+                            Text(Utils.timeDifference(from: article.publishedAt))
+                            Text("•")
+                            Text(Utils.displayAuthor(author))
+                        }
                     }
                     
                     if let description = article.description {
