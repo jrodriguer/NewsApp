@@ -24,7 +24,7 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
     }
     
     func getArticles() -> DataRequest? {
-        //! TODO: Update way for get query params: apiKey, country.
+        // TODO: Update way for get query params: apiKey, country.
         
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
         let serviceURL: String = "/v2/top-headlines/?country=us&apiKey=\(apiKey)"
@@ -32,7 +32,7 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
     }
     
     func getCategoryArticles(category: String) -> DataRequest? {
-        //! TODO: Update way for get query params: apiKey, country.
+        // TODO: Update way for get query params: apiKey, country.
 
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
         let serviceURL: String = "/v2/top-headlines/?country=us&category=\(category)&apiKey=\(apiKey)"

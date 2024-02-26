@@ -7,32 +7,27 @@
 
 import SwiftUI
 
+enum Category: String, CaseIterable {
+    case business = "business"
+    case entertainment = "entertainment"
+    case general = "general"
+    case health = "health"
+    case science = "science"
+    case sports = "sports"
+    case technology = "technology"
+}
+
+enum ViewOption: String, CaseIterable {
+    case cardView = "Card View"
+    case listView = "List View"
+}
+
 struct ArticleView: View {
     @StateObject var vm = ArticleViewModel()
     @StateObject var favorites = ArticleFavoritesViewModel()
-    
-    enum Category: String, CaseIterable {
-        case business = "business"
-        case entertainment = "entertainment"
-        case general = "general"
-        case health = "health"
-        case science = "science"
-        case sports = "sports"
-        case technology = "technology"
-    }
     @State private var selectedCategory = Category.business
-    
-    enum ViewOption: String, CaseIterable {
-        case cardView = "Card View"
-        case listView = "List View"
-    }
     @State private var selectedViewOption = ViewOption.cardView
-    
     @State private var showFavoritesOnly = false
-    private var filteredArticles: [ArticleApiObject] {
-        favorites.filteredArticles(from: vm.articles, showFavoritesOnly: showFavoritesOnly)
-    }
-    
     @State var showFab = true
     @State var scrollOffset: CGFloat = 0.00
     
@@ -81,17 +76,17 @@ struct ArticleView: View {
                         
                         Section("Sort by") {
                             Button("Alphabetical") { 
-                                if !filteredArticles.isEmpty {
+                                if !searchResult.isEmpty {
                                     vm.articles.sort { $0.source.name.lowercased() < $1.source.name.lowercased() }
                                 }
                             }
                             Button("Newest First") { 
-                                if !filteredArticles.isEmpty {
+                                if !searchResult.isEmpty {
                                     vm.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
                                 }
                             }
                             Button("Oldest First") { 
-                                if !filteredArticles.isEmpty {
+                                if !searchResult.isEmpty {
                                     vm.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
                                 }
                             }
@@ -108,6 +103,10 @@ struct ArticleView: View {
             }
         }
     }
+    
+    private var searchResult: [ArticleApiObject] {
+        favorites.filteredArticles(from: vm.articles, showFavoritesOnly: showFavoritesOnly)
+    }
 }
 
 extension ArticleView {
@@ -120,8 +119,8 @@ extension ArticleView {
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
-                        if !filteredArticles.isEmpty {
-                            ForEach(filteredArticles) { article in
+                        if !searchResult.isEmpty {
+                            ForEach(searchResult) { article in
                                 if article.title != "[Removed]" {
                                     NavigationLink(destination:
                                                     ArticleDetailView(article: article)
@@ -155,8 +154,8 @@ extension ArticleView {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List {
-                        if !filteredArticles.isEmpty {
-                            ForEach(filteredArticles) { article in
+                        if !searchResult.isEmpty {
+                            ForEach(searchResult) { article in
                                 if article.title != "[Removed]" {
                                     ZStack(alignment: .leading) {
                                         ArticleRowView(article: article)
@@ -203,7 +202,7 @@ extension ArticleView {
         .coordinateSpace(name: "scroll")
         .overlay(
             Group {
-                if showFab, !filteredArticles.isEmpty {
+                if showFab, !searchResult.isEmpty {
                     /*FloatingActionButtonView(nameIcon: "chevron.up") {
                         print("click button")
                     }*/
