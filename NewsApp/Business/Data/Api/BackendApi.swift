@@ -24,35 +24,38 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
     }
     
     func getArticles() -> DataRequest? {
-        // TODO: Update way for get query params: apiKey, country.
+        //! TODO: Update way for get query params: apiKey, country.
+        
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
-        let serviceURL = "/v2/top-headlines/?country=us&apiKey=\(apiKey)"
+        let serviceURL: String = "/v2/top-headlines/?country=us&apiKey=\(apiKey)"
         return get(service: serviceURL)
     }
     
-    func getCategoryArticles() -> DataRequest? {
-        //! TODO: Add articles from an category.
-        let serviceURL = ""
+    func getCategoryArticles(category: String) -> DataRequest? {
+        //! TODO: Update way for get query params: apiKey, country.
+
+        let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
+        let serviceURL: String = "/v2/top-headlines/?country=us&category=\(category)&apiKey=\(apiKey)"
         return get(service: serviceURL)
     }
     
     func getCharacters() -> DataRequest? {
-        let serviceURL = "/api/character"
+        let serviceURL: String = "/api/character"
         return get(service: serviceURL)
     }
     
     func getLocations() -> DataRequest? {
-        let serviceURL = "/api/location"
+        let serviceURL: String = "/api/location"
         return get(service: serviceURL)
     }
     
     func getLocation(id: Int) -> DataRequest? {
-        let serviceURL = "/api/location/\(id)"
+        let serviceURL: String = "/api/location/\(id)"
         return get(service: serviceURL)
     }
     
     func getEpisodes() -> DataRequest? {
-        let serviceURL = "/api/episode"
+        let serviceURL: String = "/api/episode"
         return get(service: serviceURL)
     }
 }

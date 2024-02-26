@@ -13,14 +13,14 @@ struct ArticleView: View {
     
     enum Category: String, CaseIterable {
         case business = "business"
-        case technology = "technology"
-        case health = "health"
-        case sports = "sports"
         case entertainment = "entertainment"
         case general = "general"
+        case health = "health"
         case science = "science"
+        case sports = "sports"
+        case technology = "technology"
     }
-    @State private var selectedCategoryIndex = 0
+    @State private var selectedCategory = Category.business
     
     enum ViewOption: String, CaseIterable {
         case cardView = "Card View"
@@ -41,13 +41,14 @@ struct ArticleView: View {
             VStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) {
-                        ForEach(0..<Category.allCases.count) { index in
+                        ForEach(Category.allCases, id: \.self) { category in
                             Button(action: {
-                                selectedCategoryIndex = index
+                                vm.loadCategoryArticles(category: category.rawValue)
+                                selectedCategory = category
                             }) {
-                                Text(Category.allCases[index].rawValue)
+                                Text(category.rawValue)
                                     .font(.headline)
-                                    .foregroundColor(selectedCategoryIndex == index ? .primary : .secondary)
+                                    .foregroundColor(selectedCategory == category ? .primary : .secondary)
                             }
                         }
                     }
@@ -60,6 +61,9 @@ struct ArticleView: View {
                 }
             }
             .navigationBarTitle("Headers")
+            .onAppear {
+                vm.loadCategoryArticles(category: Category.allCases.first?.rawValue ?? "")
+            }
             .toolbar {
                 ToolbarItem {
                     Menu {
