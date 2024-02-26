@@ -33,7 +33,19 @@ class CharacterViewModel: ObservableObject {
         }
     }
     
-    func getLocationData(for character: CharacterApiObject) {        
+    func downloadWikiData() {
+        // TODO: Grouping HTTP requests in a session.
+        do {
+            let url = URL(string: "https://rickandmorty.fandom.com/wiki/Rick_Sanchez?so=search")!
+            // Loading the contents of the URL suing the Data type.
+            let data = try Data(contentsOf: url)
+            print("Data from R&M Wiki: \(data)")
+        } catch {
+            print("Erro on downloading data with ")
+        }
+    }
+
+    func getLocationData(for character: CharacterApiObject) {
         backendApi?.getLocation(id: character.id)?
             .responseDecodable(of: Location.self) { response in
                 switch response.result {
