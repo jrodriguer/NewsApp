@@ -11,36 +11,39 @@ enum FavoriteKey: String {
     case articleFavorite, characterFavorite
 }
 
-class FavoritesViewModel<T: Codable>: ObservableObject {
-    private var items: T?
+class FavoritesViewModel<T: Codable & Hashable & Identifiable>: ObservableObject {
+    private var favorite: T?
     
-    func loadFavorites(_ saveKey: FavoriteKey) -> T? {
-        if let storedItems = UserDefaultsManager<T>.getItems(saveKey),
-           let decodedItems = try? JSONDecoder().decode(T.self, from: storedItems) {
-            items = decodedItems
-            return items
+    func loadFavorite(_ saveKey: FavoriteKey) -> T? {
+        if let storedItem = UserDefaultsManager<T>.getItem(saveKey),
+           let decodedItem = try? JSONDecoder().decode(T.self, from: storedItem) {
+            favorite = decodedItem
+            return favorite
         } else {
             return nil
         }
     }
     
-    func contains(_ article: ArticleApiObject) -> Bool {
-        itemsIds.contains(article.id)
+    func contains(_ value: T) -> Bool {
+        guard let favorite = favorite else { return false }
+        return favorite == value
     }
     
-    func add(_ article: ArticleApiObject) {
+    func add(_ saveKey: FavoriteKey, value: T) {
         objectWillChange.send()
-        itemsIds.insert(article.id)
-        favoritesManager.saveFavorite(articlesIds)
+        // favorite.insert(value.id)
+        UserDefaultsManager<T>.saveFavorite(saveKey, data: value)
     }
     
-    func remove(_ article: ArticleApiObject) {
+    func remove(_ saveKey: FavoriteKey, value: T) {
+        // TODO: Add logic for remove particular item.
+        
         objectWillChange.send()
-        itemsIds.remove(article.id)
-        favoritesManager.saveFavorite(articlesIds)
+        //favorite.remove(value.id)
+        UserDefaultsManager<T>.saveFavorite(saveKey, data: value)
     }
     
-    func filteredArticles(from allArticles: [ArticleApiObject], showFavoritesOnly: Bool) -> [ArticleApiObject] {
-        return showFavoritesOnly ? allArticles.filter { contains($0) } : allArticles
+    func filtered(from allItems: [T], showFavoritesOnly: Bool) -> [T] {
+        return showFavoritesOnly ? allItems.filter { contains($0) } : allItems
     }
 }
