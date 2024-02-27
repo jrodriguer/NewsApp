@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserDefaultsManager<T: Encodable>: ObservableObject {
+class UserDefaultsManager<T: Codable>: ObservableObject {
     static func saveFavorite(_ saveKey: FavoriteKey, data: T) {
         /*
          if let encoded = try? JSONEncoder().encode(id) {
@@ -24,13 +24,6 @@ class UserDefaultsManager<T: Encodable>: ObservableObject {
     }
     
     static func getItems(_ saveKey: FavoriteKey) -> Data? {
-        /*if let savedIDs = UserDefaults.standard.data(forKey: saveKey.rawValue),
-           let decodedIDs = try? JSONDecoder().decode(Set<UUID>.self, from: savedIDs) {
-            return decodedIDs
-        } else {
-            return []
-        }*/
-        
         return UserDefaults.standard.data(forKey: saveKey.rawValue)
     }
 }
