@@ -20,8 +20,8 @@ enum SearchScope: String, CaseIterable {
 }
 
 struct CharacterView: View {
-    @StateObject var vm = CharacterViewModel()
-    @State var favorites = CharacterFavoritesViewModel()
+    @StateObject private var vm = CharacterViewModel()
+    @State private var favorites = CharacterFavoritesViewModel()
     @State private var messages = [Message]()
     @State private var searchText = ""
     @State private var searchScope = SearchScope.inbox
