@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol BackendApiProtocol {
-    func getArticles() -> DataRequest?
+    func getArticles(category: Category?) -> DataRequest?
     func getCharacters() -> DataRequest?
     func getLocations() -> DataRequest?
     func getLocation(id: Int) -> DataRequest?
@@ -22,20 +22,13 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
         self.apiUrl = apiUrl
         super.init(url: apiUrl)
     }
-    
-    func getArticles() -> DataRequest? {
-        // TODO: Update way for get query params: apiKey, country.
         
+    func getArticles(category: Category?) -> DataRequest? {
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
-        let serviceURL: String = "/v2/top-headlines/?country=us&apiKey=\(apiKey)"
-        return get(service: serviceURL)
-    }
-    
-    func getCategoryArticles(category: String) -> DataRequest? {
-        // TODO: Update way for get query params: apiKey, country.
-
-        let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
-        let serviceURL: String = "/v2/top-headlines/?country=us&category=\(category)&apiKey=\(apiKey)"
+        var serviceURL: String = "/v2/top-headlines/?country=us&apiKey=\(apiKey)"
+        if let category = category {
+            serviceURL += "&category=\(category.rawValue)"
+        }
         return get(service: serviceURL)
     }
     

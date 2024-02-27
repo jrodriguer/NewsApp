@@ -17,26 +17,10 @@ class ArticleViewModel: ObservableObject {
         self.loadArticles()
     }
     
-    func loadArticles() {
+    func loadArticles(category: Category? = nil) {
         isLoading = true
                 
-        backendApi?.getArticles()?.responseDecodable(of: ArticleListApiObject.self) { [weak self] response in
-            guard let self = self else { return }
-            self.isLoading = false
-            
-            switch response.result {
-            case .success(let articlesListApiObject):
-                self.articles = articlesListApiObject.articles
-            case .failure(let error):
-                print("Error: \(error)")
-            }
-        }
-    }
-    
-    func loadCategoryArticles(category: String) {
-        isLoading = true
-
-        backendApi?.getCategoryArticles(category: category)?.responseDecodable(of: ArticleListApiObject.self) { [weak self] response in
+        backendApi?.getArticles(category: category)?.responseDecodable(of: ArticleListApiObject.self) { [weak self] response in
             guard let self = self else { return }
             self.isLoading = false
             

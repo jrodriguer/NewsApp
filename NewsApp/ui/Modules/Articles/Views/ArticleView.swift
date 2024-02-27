@@ -38,8 +38,8 @@ struct ArticleView: View {
                     HStack(spacing: 16) {
                         ForEach(Category.allCases, id: \.self) { category in
                             Button(action: {
-                                vm.loadCategoryArticles(category: category.rawValue)
                                 selectedCategory = category
+                                vm.loadArticles(category: selectedCategory)
                             }) {
                                 Text(category.rawValue)
                                     .font(.headline)
@@ -57,7 +57,7 @@ struct ArticleView: View {
             }
             .navigationBarTitle("Headers")
             .onAppear {
-                vm.loadCategoryArticles(category: Category.allCases.first?.rawValue ?? "")
+                vm.loadArticles(category: selectedCategory)
             }
             .toolbar {
                 ToolbarItem {
@@ -180,7 +180,6 @@ extension ArticleView {
                         }
                     }
                     .navigationBarTitle("Headers")
-                    //.scrollContentBackground(.hidden)
                     .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
                 }
             }
