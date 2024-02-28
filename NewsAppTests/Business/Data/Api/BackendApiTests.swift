@@ -22,7 +22,7 @@ class BackendApiTests: XCTestCase {
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
         let apiEndpoint: String = "https://newsapi.org/v2/top-headlines/?country=us&apiKey=\(apiKey)"
         
-        let sampleJSONData = """
+        let article = """
                 {
                     "status": "ok",
                     "totalResults": 33,
@@ -44,7 +44,7 @@ class BackendApiTests: XCTestCase {
                 }
         """.data(using: .utf8)!
         
-        let expectedArticles = try! JSONDecoder().decode(ArticleListApiObject.self, from: sampleJSONData)
+        let expectedArticles = try! JSONDecoder().decode(ArticleListApiObject.self, from: article)
         let requestExpectation = expectation(description: "Request should finish")
         
         sessionManager
