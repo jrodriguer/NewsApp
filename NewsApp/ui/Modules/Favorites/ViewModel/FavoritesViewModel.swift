@@ -12,6 +12,9 @@ enum FavoriteKey: String {
 }
 
 class FavoritesViewModel<T: Identifiable & Codable>: ObservableObject {
+    
+    //!! TODO: Refactor to array of favorites.
+    
     private var favorite: T?
     
     func loadFavorite(_ saveKey: FavoriteKey) -> T? {

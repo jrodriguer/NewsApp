@@ -38,6 +38,7 @@ struct ArticleView: View {
                     HStack(spacing: 16) {
                         ForEach(Category.allCases, id: \.self) { category in
                             Button(action: {
+                                //!! TODO: Remember the favorites.
                                 selectedCategory = category
                                 vm.loadArticles(category: selectedCategory)
                             }) {
