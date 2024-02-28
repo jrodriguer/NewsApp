@@ -8,13 +8,8 @@
 import Foundation
 
 class UserDefaultsManager<T: Codable>: ObservableObject {
-    static func saveFavorite(_ saveKey: FavoriteKey, data: T) {
-        do {
-            let encoded = try JSONEncoder().encode(data)
-            UserDefaults.standard.set(encoded, forKey: saveKey.rawValue)
-        } catch {
-            print("Error encoding value \(error)")
-        }
+    static func saveItem(_ saveKey: FavoriteKey, data: Data) {
+        UserDefaults.standard.set(data, forKey: saveKey.rawValue)
     }
 
     static func getItem(_ saveKey: FavoriteKey) -> Data? {
