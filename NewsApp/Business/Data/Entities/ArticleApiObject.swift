@@ -15,7 +15,7 @@ struct ArticleListApiObject: Decodable {
 }
 
 struct ArticleApiObject: Identifiable, Codable {
-    var id = UUID()
+    var id: AnyHashable
     
     var author: String?
     var title: String
@@ -47,6 +47,8 @@ struct ArticleApiObject: Identifiable, Codable {
         } else {
             throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
         }
+        
+        self.id = UUID() as AnyHashable
     }
 }
 
@@ -54,3 +56,9 @@ struct ArticleSource: Identifiable, Codable {
     var id: String?
     var name: String
 }
+
+/*extension ArticleApiObject: Equatable {
+    static func == (lhs: ArticleApiObject, rhs: ArticleApiObject) -> Bool {
+        return lhs.id == rhs.id
+    }
+}*/
