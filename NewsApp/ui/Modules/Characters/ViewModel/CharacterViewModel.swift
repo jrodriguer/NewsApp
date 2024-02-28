@@ -11,6 +11,7 @@ import Alamofire
 class CharacterViewModel: ObservableObject {
     private var backendApi: BackendApi?
     @Published var characters: [CharacterApiObject] = []
+    @Published var wikiURL: URL?
     @Published var locationData: Any = {}
 
     init(backendApi: BackendApi = BackendApi(apiUrl: "https://rickandmortyapi.com")) {
@@ -32,27 +33,12 @@ class CharacterViewModel: ObservableObject {
             }
         }
     }
-    
-    func downloadWikiData() {
-        // TODO: Grouping HTTP requests in a session.
-        do {
-            let url = URL(string: "https://rickandmorty.fandom.com/wiki/Rick_Sanchez?so=search")!
-            // Loading the contents of the URL suing the Data type.
-            let data = try Data(contentsOf: url)
-            print("Data from R&M Wiki: \(data)")
-        } catch {
-            print("Erro on downloading data with ")
-        }
-    }
 
-    func getLocationData(for character: CharacterApiObject) {
-        backendApi?.getLocation(id: character.id)?
+    func getLocationData(id: Int) {
+        backendApi?.getLocation(id: id)?
             .responseDecodable(of: Location.self) { response in
                 switch response.result {
                 case .success(let data):
-                    // Update the data in your ViewModel
-                    print("Location data: \(data)")
-                    
                     self.locationData = data
                 case .failure(let error):
                     print("Error fetching location data:", error)

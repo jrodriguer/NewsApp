@@ -8,25 +8,6 @@
 import SwiftUI
 import WebKit
 
-// MARK: Using a WebView or similar process to display the wiki content
-
-struct WebView: UIViewControllerRepresentable {
-    let url: URL
-    
-    func makeUIViewController(context: Context) -> UIViewController {
-        let webView = WKWebView()
-        webView.load(URLRequest(url: url))
-        let viewController = UIViewController()
-        viewController.view = webView
-        return viewController
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        //
-    }
-}
-
-
 struct CharacterDetailView: View {
     var character: CharacterApiObject
     @EnvironmentObject var vm: CharacterViewModel
@@ -90,38 +71,15 @@ struct CharacterDetailView: View {
                         },
                         content: {
                             HStack {                                
-                                /*Text("Content")
+                                Text("Content")
                                  .font(.subheadline)
                                  .foregroundColor(.secondary)
-                                 Spacer()*/
-                                
-                                if showWebView, let wikiURL = vm.wikiURL {
-                                    WebView(url: wikiURL)
-                                        .frame(maxWidth: .infinity, maxHeight: 300)
-                                } else {
-                                    Text("Nothing to show into Web view")
-                                        .foregroundColor(.red)
-                                }
-                                
+                                 
                                 Spacer()
                             }
                             .frame(maxWidth: .infinity)
-                            .onAppear {
-                                // MARK: Calling the async function from SwiftUI view.
-                                Task {
-                                    do {
-                                        if vm.wikiURL == nil {
-                                            try await vm.downloadDataFromWiki(data: character.location.name)
-                                            showWebView = true
-                                        }
-                                    } catch {
-                                        print("Error downloading wiki data: \(error)")
-                                    }
-                                }
-                            }
-                            .onDisappear {
-                                showWebView = false
-                            }
+                            .onAppear { }
+                            .onDisappear { }
                             .padding()
                             .background(Color(.baseGray))
                         }
