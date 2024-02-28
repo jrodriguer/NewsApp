@@ -8,13 +8,13 @@
 import Foundation
 import SwiftUI
 
-struct ArticleListApiObject: Decodable {
+struct ArticleListApiObject: Decodable, Equatable {
     var status: String
     var totalResults: Int
     var articles: [ArticleApiObject]
 }
 
-struct ArticleApiObject: Identifiable, Codable {
+struct ArticleApiObject: Identifiable, Codable, Equatable {
     var id: AnyHashable
     
     var author: String?
@@ -50,15 +50,13 @@ struct ArticleApiObject: Identifiable, Codable {
         
         self.id = UUID() as AnyHashable
     }
+    
+    static func == (lhs: ArticleApiObject, rhs: ArticleApiObject) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 struct ArticleSource: Identifiable, Codable {
     var id: String?
     var name: String
 }
-
-/*extension ArticleApiObject: Equatable {
-    static func == (lhs: ArticleApiObject, rhs: ArticleApiObject) -> Bool {
-        return lhs.id == rhs.id
-    }
-}*/

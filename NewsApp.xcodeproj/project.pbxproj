@@ -30,6 +30,8 @@
 		8A8E75E72B5830B30063E6FD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E75E62B5830B30063E6FD /* Utils.swift */; };
 		8A8EF2362B4C166400402584 /* ArticleApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF2352B4C166400402584 /* ArticleApiObject.swift */; };
 		8A91CBFD2B8FACB800F673C5 /* ApiRestManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91CBFC2B8FACB800F673C5 /* ApiRestManagerTests.swift */; };
+		8A91CBFF2B8FB09600F673C5 /* BackendApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91CBFE2B8FB09600F673C5 /* BackendApiTests.swift */; };
+		8A91CC022B8FB18800F673C5 /* Mocker in Frameworks */ = {isa = PBXBuildFile; productRef = 8A91CC012B8FB18800F673C5 /* Mocker */; };
 		8A9CFC8E2B4EC5F400F70B13 /* ArticleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC8D2B4EC5F300F70B13 /* ArticleRowView.swift */; };
 		8A9CFC922B4EC61000F70B13 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC912B4EC61000F70B13 /* ArticleDetailView.swift */; };
 		8A9CFC942B4EC7B500F70B13 /* ArticleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC932B4EC7B500F70B13 /* ArticleCardView.swift */; };
@@ -91,6 +93,7 @@
 		8A8E75E62B5830B30063E6FD /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8A8EF2352B4C166400402584 /* ArticleApiObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleApiObject.swift; sourceTree = "<group>"; };
 		8A91CBFC2B8FACB800F673C5 /* ApiRestManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRestManagerTests.swift; sourceTree = "<group>"; };
+		8A91CBFE2B8FB09600F673C5 /* BackendApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendApiTests.swift; sourceTree = "<group>"; };
 		8A9CFC8D2B4EC5F300F70B13 /* ArticleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowView.swift; sourceTree = "<group>"; };
 		8A9CFC912B4EC61000F70B13 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		8A9CFC932B4EC7B500F70B13 /* ArticleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCardView.swift; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 			files = (
 				8AD804C22B8A42ED00DE501A /* SwiftOpenAI in Frameworks */,
 				8AAB4D0B2B76599200C71B36 /* Alamofire in Frameworks */,
+				8A91CC022B8FB18800F673C5 /* Mocker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +369,7 @@
 		8A91CBF72B8FAC1600F673C5 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				8A91CBFE2B8FB09600F673C5 /* BackendApiTests.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 			packageProductDependencies = (
 				8AAB4D0A2B76599200C71B36 /* Alamofire */,
 				8AD804C12B8A42ED00DE501A /* SwiftOpenAI */,
+				8A91CC012B8FB18800F673C5 /* Mocker */,
 			);
 			productName = NewsApp;
 			productReference = 8A4E22B92B4A2BCA006D71C6 /* NewsApp.app */;
@@ -524,6 +530,7 @@
 				8AAB4D092B76599200C71B36 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8A8386752B85662F00FEC3BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8AD804C02B8A42ED00DE501A /* XCRemoteSwiftPackageReference "SwiftOpenAI" */,
+				8A91CC002B8FB18800F673C5 /* XCRemoteSwiftPackageReference "Mocker" */,
 			);
 			productRefGroup = 8A4E22BA2B4A2BCA006D71C6 /* Products */;
 			projectDirPath = "";
@@ -605,6 +612,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A91CBFD2B8FACB800F673C5 /* ApiRestManagerTests.swift in Sources */,
+				8A91CBFF2B8FB09600F673C5 /* BackendApiTests.swift in Sources */,
 				8A4E22CE2B4A2BCD006D71C6 /* NewsAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -939,6 +947,14 @@
 				minimumVersion = 10.21.0;
 			};
 		};
+		8A91CC002B8FB18800F673C5 /* XCRemoteSwiftPackageReference "Mocker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WeTransfer/Mocker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.2;
+			};
+		};
 		8AAB4D092B76599200C71B36 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -958,6 +974,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8A91CC012B8FB18800F673C5 /* Mocker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A91CC002B8FB18800F673C5 /* XCRemoteSwiftPackageReference "Mocker" */;
+			productName = Mocker;
+		};
 		8AAB4D0A2B76599200C71B36 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8AAB4D092B76599200C71B36 /* XCRemoteSwiftPackageReference "Alamofire" */;
