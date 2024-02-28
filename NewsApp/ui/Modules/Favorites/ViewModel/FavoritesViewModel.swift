@@ -11,7 +11,7 @@ enum FavoriteKey: String {
     case articleFavorite, characterFavorite
 }
 
-class FavoritesViewModel<T: Codable & Equatable>: ObservableObject {
+class FavoritesViewModel<T: Identifiable & Codable>: ObservableObject {
     private var favorite: T?
     
     func loadFavorite(_ saveKey: FavoriteKey) -> T? {
@@ -26,38 +26,33 @@ class FavoritesViewModel<T: Codable & Equatable>: ObservableObject {
     
     func contains(_ value: T) -> Bool {
         guard let favorite = favorite else { return false }
-        
-        // Identifiable conditional type to make sure that value has an id property that can be used for comparison.
-        if let valueWithId = value as? (any Identifiable), let itemId = valueWithId.id as? T {
-            return favorite == itemId
-        }
-        
-        return false
+        return favorite.id == value.id
     }
     
     func add(_ saveKey: FavoriteKey, value: T) {
         objectWillChange.send()
         
+        favorite = value
         do {
-            let encoded = try JSONEncoder().encode(value)
-            UserDefaultsManager<T>.saveItem(saveKey, data: encoded)
+            let encoded = try JSONEncoder().encode(favorite)
+            UserDefaultsManager<T>.saveItem(saveKey, encoded)
         } catch {
             print("Error encoding value \(error)")
         }
     }
     
     func remove(_ saveKey: FavoriteKey, value: T) {
-        // TODO: Add logic for remove particular item.
-        
         objectWillChange.send()
-        //favorite.remove(value.id)
-        
-        do {
+        /*do {
             let encoded = try JSONEncoder().encode(value)
-            UserDefaultsManager<T>.saveItem(saveKey, data: encoded)
+            UserDefaultsManager<T>.removeItem(saveKey, encoded)
         } catch {
             print("Error encoding value \(error)")
-        }
+        }*/
+        
+        // MARK: Directly delete the object saved in UserDefaults.
+        UserDefaultsManager<T>.removeItem(saveKey)
+        favorite = nil
     }
     
     func filtered(from allItems: [T], showFavoritesOnly: Bool) -> [T] {

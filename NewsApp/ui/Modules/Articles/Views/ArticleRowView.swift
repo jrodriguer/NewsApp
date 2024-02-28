@@ -22,7 +22,6 @@ struct ArticleRowView: View {
                         } else {
                             favorites.add(FavoriteKey.articleFavorite, value: article)
                         }
-                        
                     } label: {
                         if favorites.contains(article) {
                             Label("Favorite", systemImage: "heart.slash")
