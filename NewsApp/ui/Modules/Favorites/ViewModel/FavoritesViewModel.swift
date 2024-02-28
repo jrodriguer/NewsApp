@@ -11,7 +11,7 @@ enum FavoriteKey: String {
     case articleFavorite, characterFavorite
 }
 
-class FavoritesViewModel<T: Codable>: ObservableObject {
+class FavoritesViewModel<T: Codable & Equatable>: ObservableObject {
     private var favorite: T?
     
     func loadFavorite(_ saveKey: FavoriteKey) -> T? {
@@ -29,7 +29,7 @@ class FavoritesViewModel<T: Codable>: ObservableObject {
         
         // Identifiable conditional type to make sure that value has an id property that can be used for comparison.
         if let valueWithId = value as? (any Identifiable), let itemId = valueWithId.id as? T {
-            return favorite == itemId // FIXME: Binary operator '==' cannot be applied to two 'T' operands
+            return favorite == itemId
         }
         
         return false
@@ -37,7 +37,6 @@ class FavoritesViewModel<T: Codable>: ObservableObject {
     
     func add(_ saveKey: FavoriteKey, value: T) {
         objectWillChange.send()
-        // favorite.insert(value.id)
         
         do {
             let encoded = try JSONEncoder().encode(value)
