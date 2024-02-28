@@ -24,7 +24,7 @@ enum ViewOption: String, CaseIterable {
 
 struct ArticleView: View {
     @StateObject var vm = ArticleViewModel()
-    @StateObject var favorites = ArticleFavoritesViewModel()
+    @StateObject var favorites = FavoritesViewModel<ArticleApiObject>()
     @State private var selectedCategory = Category.business
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
@@ -105,7 +105,7 @@ struct ArticleView: View {
     }
     
     private var searchResult: [ArticleApiObject] {
-        favorites.filteredArticles(from: vm.articles, showFavoritesOnly: showFavoritesOnly)
+        favorites.filtered(from: vm.articles, showFavoritesOnly: showFavoritesOnly)
     }
 }
 
@@ -184,6 +184,7 @@ extension ArticleView {
                 }
             }
         }
+        //! TODO: Add navigation button.
         .background(GeometryReader { geometry in
             Color.clear.preference(key: ViewOffsetKey.self,
                                           value: -geometry.frame(in: .named("scroll")).origin.y)

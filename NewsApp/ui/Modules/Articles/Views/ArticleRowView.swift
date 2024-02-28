@@ -10,7 +10,7 @@ import SwiftUI
 struct ArticleRowView: View {
     var article: ArticleApiObject
     @EnvironmentObject var vm: ArticleViewModel
-    @EnvironmentObject var favorites: ArticleFavoritesViewModel
+    @EnvironmentObject var favorites: FavoritesViewModel<ArticleApiObject>
         
     var body: some View {
         HStack {
@@ -18,9 +18,9 @@ struct ArticleRowView: View {
                 .swipeActions(edge: .leading) {
                     Button {
                         if favorites.contains(article) {
-                            favorites.remove(article)
+                            favorites.remove(FavoriteKey.articleFavorite, value: article)
                         } else {
-                            favorites.add(article)
+                            favorites.add(FavoriteKey.articleFavorite, value: article)
                         }
                         
                     } label: {

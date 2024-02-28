@@ -21,7 +21,7 @@ enum SearchScope: String, CaseIterable {
 
 struct CharacterView: View {
     @StateObject private var vm = CharacterViewModel()
-    @State private var favorites = CharacterFavoritesViewModel()
+    @State private var favorites = FavoritesViewModel<CharacterApiObject>()
     @State private var messages = [Message]()
     @State private var searchText = ""
     @State private var searchScope = SearchScope.inbox
@@ -61,7 +61,7 @@ struct CharacterView: View {
         let allCharacters = vm.characters
         switch searchScope {
         case .inbox:
-            return favorites.filteredCharacters(from: allCharacters, showFavoritesOnly: showFavoritesOnly)
+            return favorites.filtered(from: allCharacters, showFavoritesOnly: showFavoritesOnly)
                 .filter { character in
                     searchText.isEmpty || character.name.localizedCaseInsensitiveContains(searchText)
                 }
