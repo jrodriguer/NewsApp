@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ArticleDetailView: View {
     var article: ArticleApiObject
-    @EnvironmentObject var favorites: ArticleFavoritesViewModel
-        
+    @EnvironmentObject var favorites: FavoritesViewModel<ArticleApiObject>
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 if let imageURL = article.urlToImage {
                     // MARK: For animation -> transaction: .init(animation: .bouncy(duration: 2)).
+                    
                     AsyncImage(url: imageURL) { phase in
                         switch phase {
                         case .success(let image):
@@ -86,11 +87,25 @@ struct ArticleDetailView: View {
                             Image(systemName: "link.circle.fill")
                                 .font(.largeTitle)
                         }
-                        Button(favorites.contains(article) ? "Remove from Favorites" : "Add to Favorites") {
+                        Button {
                             if favorites.contains(article) {
-                                favorites.remove(article)
+                                favorites.remove(FavoriteKey.articleFavorite, value: article)
                             } else {
-                                favorites.add(article)
+                                favorites.add(FavoriteKey.articleFavorite, value: article)
+                            }
+                        } label: {
+                            if favorites.contains(article) {
+                                Label {
+                                    Text("Remove from Favorites")
+                                } icon: {
+                                    //
+                                }
+                            } else {
+                                Label {
+                                    Text("Add to Favorites")
+                                } icon: {
+                                    //
+                                }
                             }
                         }
                         .buttonStyle(.borderedProminent)

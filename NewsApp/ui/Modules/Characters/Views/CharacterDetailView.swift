@@ -6,12 +6,34 @@
 //
 
 import SwiftUI
+import WebKit
+
+// MARK: Using a WebView or similar process to display the wiki content
+
+struct WebView: UIViewControllerRepresentable {
+    let url: URL
+    
+    func makeUIViewController(context: Context) -> UIViewController {
+        let webView = WKWebView()
+        webView.load(URLRequest(url: url))
+        let viewController = UIViewController()
+        viewController.view = webView
+        return viewController
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        //
+    }
+}
+
 
 struct CharacterDetailView: View {
     var character: CharacterApiObject
     @EnvironmentObject var vm: CharacterViewModel
-    @EnvironmentObject var favorites: CharacterFavoritesViewModel
-        
+    @EnvironmentObject var favorites: FavoritesViewModel<CharacterApiObject>
+    
+    @State private var showWebView = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
@@ -54,41 +76,58 @@ struct CharacterDetailView: View {
                     
                     Divider()
                     
-                    if let origin = character.origin {
-                        Text("Origin: \(origin.name)")
-                            .font(.body)
-                            .foregroundColor(.primary)
-                    }
+                    Text("Origin: \(character.origin.name)")
+                        .font(.body)
+                        .foregroundColor(.primary)
                     
                     Divider()
                     
-                    if let location = character.location {
-                        CollapsibleView(
-                            label: {
-                                Text("Location: \(location.name)")
-                                    .font(.body)
-                                    .foregroundColor(.primary)
-                            },
-                            content: {
-                                HStack {
-                                    //!! TODO: Load data dynamic.
-                                    //!! MARK: There is not enough data.
-                                    
-                                    Text("Content")
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                    Spacer()
+                    CollapsibleView(
+                        label: {
+                            Text("Location: \(character.location.name)")
+                                .font(.body)
+                                .foregroundColor(.primary)
+                        },
+                        content: {
+                            HStack {                                
+                                /*Text("Content")
+                                 .font(.subheadline)
+                                 .foregroundColor(.secondary)
+                                 Spacer()*/
+                                
+                                if showWebView, let wikiURL = vm.wikiURL {
+                                    WebView(url: wikiURL)
+                                        .frame(maxWidth: .infinity, maxHeight: 300)
+                                } else {
+                                    Text("Nothing to show into Web view")
+                                        .foregroundColor(.red)
                                 }
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color(.baseGray))
+                                
+                                Spacer()
                             }
-                        )
-                        .onAppear {
-                            vm.getLocationData(for: character)
+                            .frame(maxWidth: .infinity)
+                            .onAppear {
+                                // MARK: Calling the async function from SwiftUI view.
+                                Task {
+                                    do {
+                                        if vm.wikiURL == nil {
+                                            try await vm.downloadDataFromWiki(data: character.location.name)
+                                            showWebView = true
+                                        }
+                                    } catch {
+                                        print("Error downloading wiki data: \(error)")
+                                    }
+                                }
+                            }
+                            .onDisappear {
+                                showWebView = false
+                            }
+                            .padding()
+                            .background(Color(.baseGray))
                         }
-                        .frame(maxWidth: .infinity)
-                    }
+                    )
+                    .frame(maxWidth: .infinity)
+                    
                     
                     HStack {
                         if let wikiURL = URL(string: "https://rickandmorty.fandom.com/wiki/\(character.name)?so=search") {
@@ -100,11 +139,25 @@ struct CharacterDetailView: View {
                             Text("Invalid URL")
                         }
                         
-                        Button(favorites.contains(character) ? "Remove from Favorites" : "Add to Favorites") {
+                        Button {
                             if favorites.contains(character) {
-                                favorites.remove(character)
+                                favorites.remove(FavoriteKey.characterFavorite, value: character)
                             } else {
-                                favorites.add(character)
+                                favorites.add(FavoriteKey.characterFavorite, value: character)
+                            }
+                        } label: {
+                            if favorites.contains(character) {
+                                Label {
+                                    Text("Remove from Favorites")
+                                } icon: {
+                                    //
+                                }
+                            } else {
+                                Label {
+                                    Text("Add to Favorites")
+                                } icon: {
+                                    //
+                                }
                             }
                         }
                         .buttonStyle(.borderedProminent)
@@ -118,5 +171,3 @@ struct CharacterDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-
-// TODO: Add SwifUI Preview.
