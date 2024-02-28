@@ -20,7 +20,7 @@ class BackendApiTests: XCTestCase {
         let sessionManager = Session(configuration: configuration)
         
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
-        let apiEndpoint: String = "https://newsapi.org/v2/top-headlines/?country=us&apiKey=\(apiKey)"
+        let apiEndpoint = URL(string: "https://newsapi.org/v2/top-headlines/?country=us&apiKey=\(apiKey)")!
         
         let article = """
                 {
@@ -44,20 +44,24 @@ class BackendApiTests: XCTestCase {
                 }
         """.data(using: .utf8)!
         
-        let expectedArticles = try! JSONDecoder().decode(ArticleListApiObject.self, from: article)
+        let expectedArticle = try! JSONDecoder().decode(ArticleListApiObject.self, from: article)
         let requestExpectation = expectation(description: "Request should finish")
+        
+        let mockedData = try! JSONEncoder().encode(expectedArticle)
+        let mock = Mock(url: apiEndpoint, contentType: .json, statusCode: 200, data: [.get: mockedData])
+        mock.register()
         
         sessionManager
                 .request(apiEndpoint)
                 .responseDecodable(of: ArticleListApiObject.self) { (response) in
-                    /*XCTAssertNil(response.error)
-                    /XCTAssertEqual(response.value, expectedArticles)*/
-                    switch response.result {
+                    XCTAssertNil(response.error)
+                    XCTAssertEqual(response.value, expectedArticle)
+                    /*switch response.result {
                     case .success(let value):
-                        XCTAssertEqual(value, expectedArticles)
+                        XCTAssertEqual(value, expectedArticle)
                     case .failure(let error):
                         XCTFail("Request failed with error: \(error)")
-                    }
+                    }*/
                     requestExpectation.fulfill()
                 }.resume()
 
