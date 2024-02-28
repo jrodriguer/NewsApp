@@ -47,18 +47,10 @@ struct ArticleDetailView: View {
                             .multilineTextAlignment(.leading)
                     }
                     
-                    HStack {
-                        if let author = article.author {
-                            Text(author)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        if let author = article.author {
-                            Text(Utils.timeDifference(from: article.publishedAt))
-                            Text("•")
-                            Text(Utils.displayAuthor(author))
-                        }
+                    if let author = article.author {
+                        Text(author)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
                     }
                     
                     if let description = article.description {
