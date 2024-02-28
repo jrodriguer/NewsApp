@@ -20,7 +20,7 @@ class BackendApiTests: XCTestCase {
         let sessionManager = Session(configuration: configuration)
         
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
-        let apiEndpoint: String = "/v2/top-headlines/?country=us&apiKey=\(apiKey)"
+        let apiEndpoint: String = "https://newsapi.org/v2/top-headlines/?country=us&apiKey=\(apiKey)"
         
         let sampleJSONData = """
                 {
