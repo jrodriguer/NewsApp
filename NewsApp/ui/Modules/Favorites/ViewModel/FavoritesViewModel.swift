@@ -8,7 +8,7 @@
 import Foundation
 
 enum FavoriteKey: String {
-    case articleFavorite, characterFavorite
+    case articleFavorites, characterFavorites
 }
 
 class FavoritesViewModel<T: Identifiable & Codable>: ObservableObject {
@@ -31,20 +31,20 @@ class FavoritesViewModel<T: Identifiable & Codable>: ObservableObject {
     func add(_ saveKey: FavoriteKey, value: T) {
         objectWillChange.send()
         favorites.append(value)
-        saveForite(saveKey, favorites)
+        saveForites(saveKey, favorites)
     }
     
     func remove(_ saveKey: FavoriteKey, value: T) {
         objectWillChange.send()
         favorites.removeAll(where: { $0.id == value.id })
-        saveForite(saveKey, favorites)
+        saveForites(saveKey, favorites)
     }
     
     func filtered(from allItems: [T], showFavoritesOnly: Bool) -> [T] {
         return showFavoritesOnly ? allItems.filter { contains($0) } : allItems
     }
     
-    private func saveForite(_ saveKey: FavoriteKey, _ value: [T]) {
+    private func saveForites(_ saveKey: FavoriteKey, _ value: [T]) {
         do {
             let encoded = try JSONEncoder().encode(favorites)
             UserDefaultsManager<T>.saveItem(saveKey, encoded)

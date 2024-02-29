@@ -99,9 +99,9 @@ struct CharacterDetailView: View {
                         
                         Button {
                             if favorites.contains(character) {
-                                favorites.remove(FavoriteKey.characterFavorite, value: character)
+                                favorites.remove(FavoriteKey.characterFavorites, value: character)
                             } else {
-                                favorites.add(FavoriteKey.characterFavorite, value: character)
+                                favorites.add(FavoriteKey.characterFavorites, value: character)
                             }
                         } label: {
                             if favorites.contains(character) {

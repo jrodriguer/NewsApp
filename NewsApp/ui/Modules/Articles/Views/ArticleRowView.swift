@@ -18,9 +18,9 @@ struct ArticleRowView: View {
                 .swipeActions(edge: .leading) {
                     Button {
                         if favorites.contains(article) {
-                            favorites.remove(FavoriteKey.articleFavorite, value: article)
+                            favorites.remove(FavoriteKey.articleFavorites, value: article)
                         } else {
-                            favorites.add(FavoriteKey.articleFavorite, value: article)
+                            favorites.add(FavoriteKey.articleFavorites, value: article)
                         }
                     } label: {
                         if favorites.contains(article) {
