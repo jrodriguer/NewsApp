@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ArticleListApiObject: Decodable, Equatable {
+struct ArticleListApiObject: Decodable, Encodable, Equatable {
     var status: String
     var totalResults: Int
     var articles: [ArticleApiObject]
@@ -41,11 +41,15 @@ struct ArticleApiObject: Identifiable, Codable, Equatable {
         content = try container.decodeIfPresent(String.self, forKey: .content)
         source = try container.decode(ArticleSource.self, forKey: .source)
         
-        let dateString = try container.decode(String.self, forKey: .publishedAt)
-        if let date = DateFormatter.iso8601Full.date(from: dateString) {
-            publishedAt = date
-        } else {
-            throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
+        do {
+            publishedAt = try container.decode(Date.self, forKey: .publishedAt)
+        } catch {
+            let dateString = try container.decode(String.self, forKey: .publishedAt)
+            if let date = DateFormatter.iso8601Full.date(from: dateString) {
+                publishedAt = date
+            } else {
+                throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
+            }
         }
         
         self.id = UUID() as AnyHashable

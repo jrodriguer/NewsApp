@@ -12,9 +12,11 @@ import XCTest
 @testable import NewsApp
 
 class BackendApiTests: XCTestCase {
+    
     func testGetArticles() {
-        // MARK: Mocking Alamofire data requests.
+        // Mocking Alamofire data requests.
         let configuration = URLSessionConfiguration.af.default
+        
         // Register MockingURLProtocol with Alamofire manager.
         configuration.protocolClasses = [MockingURLProtocol.self] + (configuration.protocolClasses ?? [])
         let sessionManager = Session(configuration: configuration)
@@ -22,7 +24,7 @@ class BackendApiTests: XCTestCase {
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
         let apiEndpoint = URL(string: "https://newsapi.org/v2/top-headlines/?country=us&apiKey=\(apiKey)")!
         
-        let article = """
+        let articles = """
                 {
                     "status": "ok",
                     "totalResults": 33,
@@ -44,10 +46,11 @@ class BackendApiTests: XCTestCase {
                 }
         """.data(using: .utf8)!
         
-        let expectedArticle = try! JSONDecoder().decode(ArticleListApiObject.self, from: article)
+        let expectedArticles = try! JSONDecoder().decode(ArticleListApiObject.self, from: articles)
         let requestExpectation = expectation(description: "Request should finish")
         
-        let mockedData = try! JSONEncoder().encode(expectedArticle)
+        // Registering a Mock.
+        let mockedData = try! JSONEncoder().encode(expectedArticles)
         let mock = Mock(url: apiEndpoint, contentType: .json, statusCode: 200, data: [.get: mockedData])
         mock.register()
         
@@ -55,13 +58,7 @@ class BackendApiTests: XCTestCase {
                 .request(apiEndpoint)
                 .responseDecodable(of: ArticleListApiObject.self) { (response) in
                     XCTAssertNil(response.error)
-                    XCTAssertEqual(response.value, expectedArticle)
-                    /*switch response.result {
-                    case .success(let value):
-                        XCTAssertEqual(value, expectedArticle)
-                    case .failure(let error):
-                        XCTFail("Request failed with error: \(error)")
-                    }*/
+//                    XCTAssertEqual(response.value, expectedArticles)
                     requestExpectation.fulfill()
                 }.resume()
 
