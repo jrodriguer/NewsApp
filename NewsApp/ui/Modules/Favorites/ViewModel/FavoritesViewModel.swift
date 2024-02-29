@@ -12,47 +12,44 @@ enum FavoriteKey: String {
 }
 
 class FavoritesViewModel<T: Identifiable & Codable>: ObservableObject {
+    private var favorites: [T] = []
     
-    //!! TODO: Refactor to array of favorites.
-    
-    private var favorites: [T]? = []
-    
-    func loadFavorite(_ saveKey: FavoriteKey) -> [T]? {
+    func loadFavorite(_ saveKey: FavoriteKey) -> [T] {
         if let storedItems = UserDefaultsManager<[T]>.getItem(saveKey),
            let decodedItems = try? JSONDecoder().decode([T].self, from: storedItems) {
             favorites = decodedItems
             return favorites
         } else {
-            return nil
+            return []
         }
     }
     
     func contains(_ value: T) -> Bool {
-        guard let favorites = favorites else { return false }
         return favorites.contains { $0.id == value.id }
     }
     
     func add(_ saveKey: FavoriteKey, value: T) {
         objectWillChange.send()
-        
-        favorites?.append(value)
-        /*do {
-            let encoded = try JSONEncoder().encode(favorite)
-            UserDefaultsManager<T>.saveItem(saveKey, encoded)
-        } catch {
-            print("Error encoding value \(error)")
-        }*/
+        favorites.append(value)
+        saveForite(saveKey, favorites)
     }
     
     func remove(_ saveKey: FavoriteKey, value: T) {
         objectWillChange.send()
-        
-        // Directly delete the object saved in UserDefaults.
-        /*UserDefaultsManager<T>.removeItem(saveKey)
-        favorites = nil*/
+        favorites.removeAll(where: { $0.id == value.id })
+        saveForite(saveKey, favorites)
     }
     
     func filtered(from allItems: [T], showFavoritesOnly: Bool) -> [T] {
         return showFavoritesOnly ? allItems.filter { contains($0) } : allItems
+    }
+    
+    private func saveForite(_ saveKey: FavoriteKey, _ value: [T]) {
+        do {
+            let encoded = try JSONEncoder().encode(favorites)
+            UserDefaultsManager<T>.saveItem(saveKey, encoded)
+        } catch {
+            print("Error encoding value \(error)")
+        }
     }
 }
