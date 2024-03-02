@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CharacterListApiObject: Decodable {
+struct CharacterListApiObject: Decodable, Encodable {
     var info: Info
     var results: [CharacterApiObject]
 }
