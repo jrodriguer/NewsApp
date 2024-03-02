@@ -1,5 +1,5 @@
 //
-//  ArticleViewModel.swift
+//  ArticlesViewModel.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 6/2/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ArticleViewModel: ObservableObject {
+class ArticlesViewModel: ObservableObject {
     private var backendApi: BackendApi?
     @Published var articles: [ArticleApiObject] = []
     @Published var isLoading: Bool = false

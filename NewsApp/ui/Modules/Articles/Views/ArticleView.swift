@@ -23,7 +23,7 @@ enum ViewOption: String, CaseIterable {
 }
 
 struct ArticleView: View {
-    @StateObject var vm = ArticleViewModel()
+    @StateObject var vm = ArticlesViewModel()
     @StateObject var favorites = FavoritesViewModel<ArticleApiObject>()
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView

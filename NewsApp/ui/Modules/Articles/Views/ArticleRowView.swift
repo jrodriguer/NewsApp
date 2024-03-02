@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArticleRowView: View {
     var article: ArticleApiObject
-    @EnvironmentObject var vm: ArticleViewModel
+    @EnvironmentObject var vm: ArticlesViewModel
     @EnvironmentObject var favorites: FavoritesViewModel<ArticleApiObject>
         
     var body: some View {
