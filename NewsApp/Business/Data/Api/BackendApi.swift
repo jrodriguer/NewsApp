@@ -10,7 +10,12 @@ import Alamofire
 
 protocol BackendApiProtocol {
     func getArticles(category: Category?) -> DataRequest?
-    func getCharacters() -> DataRequest?
+    /*func getCharacters(page: Int,
+                       name: String?,
+                       status: StatusEnum?,
+                       species: String?,
+                       type: String?,
+                       gender: GenderEnum?) -> DataRequest?*/
     func getLocations() -> DataRequest?
     func getLocation(id: Int) -> DataRequest?
 }
@@ -46,6 +51,33 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
         let serviceURL: String = "/api/character"
         return get(service: serviceURL)
     }
+    
+    /*func getCharacters(page: Int,
+                       name: String?,
+                       status: StatusEnum?,
+                       species: String?,
+                       type: String?,
+                       gender: GenderEnum?) -> DataRequest? {
+        
+        var serviceURL: String = "character"
+        serviceURL = serviceURL + "?page=\(page)"
+        
+        let parameterDict: [String: String] = [
+            "name" : name ?? "",
+            "status" : status?.rawValue ?? "",
+            "species" : species ?? "",
+            "type" : type ?? "",
+            "gender" : gender?.rawValue ?? ""
+        ]
+        
+        for (key, value) in parameterDict {
+            if value != "" {
+                serviceURL.append("&"+key+"="+value)
+            }
+        }
+        
+        return self.get(service: serviceURL)
+    }*/
     
     func getLocations() -> DataRequest? {
         let serviceURL: String = "/api/location"
