@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Alamofire
+import Mocker
 
 @testable import NewsApp
 struct MockGenerator {
@@ -29,6 +31,12 @@ struct MockGenerator {
             fatalError("Failed to load 'get_characters' JSON file for testing.")
         }
         return try! JSONDecoder().decode(CharacterListApiObject.self, from: jsonData)
+    }
+    
+    static func createMockSessionManager() -> Session {
+        let configuration = URLSessionConfiguration.af.default
+        configuration.protocolClasses = [MockingURLProtocol.self] + (configuration.protocolClasses ?? [])
+        return Session(configuration: configuration)
     }
     
     static func mockedData<T: Encodable>(for object: T) -> Data {
