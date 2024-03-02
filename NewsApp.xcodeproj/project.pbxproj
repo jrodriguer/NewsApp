@@ -150,16 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				8A1DAC242B8E3C5900259AD3 /* ViewModel */,
-				8A1DAC232B8E3C5100259AD3 /* Views */,
 			);
 			path = Favorites;
-			sourceTree = "<group>";
-		};
-		8A1DAC232B8E3C5100259AD3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		8A1DAC242B8E3C5900259AD3 /* ViewModel */ = {
