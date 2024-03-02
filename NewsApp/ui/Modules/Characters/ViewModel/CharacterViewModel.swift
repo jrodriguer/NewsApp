@@ -11,8 +11,8 @@ import Alamofire
 class CharacterViewModel: ObservableObject {
     private var backendApi: BackendApi?
     @Published var characters: [CharacterApiObject] = []
-    @Published var wikiURL: URL?
     @Published var locationData: Any = {}
+    @Published var isLoading: Bool = false
 
     init(backendApi: BackendApi = BackendApi(apiUrl: "https://rickandmortyapi.com")) {
         self.backendApi = backendApi
@@ -20,6 +20,8 @@ class CharacterViewModel: ObservableObject {
     }
     
     func loadCharacters() {
+        self.isLoading = true
+
         backendApi?.getCharacters()?.responseDecodable(of: CharacterListApiObject.self) { [weak self] response in
             guard let self = self else { return }
             switch response.result {
@@ -30,6 +32,10 @@ class CharacterViewModel: ObservableObject {
                 if let data = response.data, let responseString = String(data: data, encoding: .utf8) {
                     print("Raw response: \(responseString)")
                 }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.isLoading = false
             }
         }
     }

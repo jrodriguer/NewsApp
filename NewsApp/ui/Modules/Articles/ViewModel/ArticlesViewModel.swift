@@ -30,6 +30,10 @@ class ArticlesViewModel: ObservableObject {
             case .failure(let error):
                 print("Error: \(error)")
             }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.isLoading = false
+            }
         }
     }
 }
