@@ -9,11 +9,11 @@ import Foundation
 
 class ArticlesViewModel: ObservableObject {
     // TODO: Wrapper Api protocol with @Inject.
-    private var backendApi: BackendApi?
+    private var backendApi: BackendApiProtocol?
     @Published var articles: [ArticleApiObject] = []
     @Published var isLoading: Bool = false
     
-    init(backendApi: BackendApi = BackendApi(apiUrl: "https://newsapi.org")) {
+    init(backendApi: BackendApiProtocol = BackendApi(apiUrl: "https://newsapi.org")) {
         self.backendApi = backendApi
         self.loadArticles()
     }
