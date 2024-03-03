@@ -25,26 +25,17 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
     
     init(apiUrl: String) {
         self.apiUrl = apiUrl
-        super.init(url: apiUrl, urlProtocols: [PrintProtocol.self])
+        super.init(url: apiUrl)
     }
         
     func getArticles(category: Category?) -> DataRequest? {
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
         var serviceURL: String = "/v2/top-headlines/?country=us&apiKey=\(apiKey)"
+        
         if let category = category {
             serviceURL += "&category=\(category.rawValue)"
         }
-        
-        let request = get(service: serviceURL)
-        
-        request.response { response in
-            if let error = response.error {
-                print("❌ Request failed with error: \(error.localizedDescription)\n")
-            } else {
-                print("✅ Request completed\n")
-            }
-        }
-        return request
+        return get(service: serviceURL)
     }
     
     func getCharacters() -> DataRequest? {
@@ -86,11 +77,6 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
     
     func getLocation(id: Int) -> DataRequest? {
         let serviceURL: String = "/api/location/\(id)"
-        return get(service: serviceURL)
-    }
-    
-    func getEpisodes() -> DataRequest? {
-        let serviceURL: String = "/api/episode"
         return get(service: serviceURL)
     }
 }
