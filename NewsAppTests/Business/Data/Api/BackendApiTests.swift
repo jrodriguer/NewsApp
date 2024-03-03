@@ -12,7 +12,7 @@ import XCTest
 
 @testable import NewsApp
 class BackendApiTests: XCTestCase {
-    func test_BackendApiTests_article_shouldReturnExpectedArticle() {
+    func testArticleListApiObject_ShouldReturnExpectedArticlesList() {
         let sessionManager = MockGenerator.createMockSessionManager()
         
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
@@ -34,14 +34,14 @@ class BackendApiTests: XCTestCase {
             wait(for: [requestExpectation], timeout: 10.0)
     }
     
-    func test_BackendApiTests_character_shouldReturnExpectedCharacter() {
+    func testCharacterListApiObject_ShouldReturnExpectedCharactersList() {
         let sessionManager = MockGenerator.createMockSessionManager()
         
         let apiEndpoint = URL(string: "https://rickandmortyapi.com/api/character")!
-        let expectedCharacters = MockGenerator.characterListApiObject()
+        let expectedCharactersList = MockGenerator.characterListApiObject()
         let requestExpectation = expectation(description: "Request should finish")
                 
-        let mock = Mock(url: apiEndpoint, contentType: .json, statusCode: 200, data: [.get: MockGenerator.mockedData(for: expectedCharacters)])
+        let mock = Mock(url: apiEndpoint, contentType: .json, statusCode: 200, data: [.get: MockGenerator.mockedData(for: expectedCharactersList)])
         mock.register()
         
         sessionManager
