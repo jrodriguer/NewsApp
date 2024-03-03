@@ -35,7 +35,6 @@
 		8A91CBFD2B8FACB800F673C5 /* ApiRestManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91CBFC2B8FACB800F673C5 /* ApiRestManagerTests.swift */; };
 		8A91CBFF2B8FB09600F673C5 /* BackendApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91CBFE2B8FB09600F673C5 /* BackendApiTests.swift */; };
 		8A91CC022B8FB18800F673C5 /* Mocker in Frameworks */ = {isa = PBXBuildFile; productRef = 8A91CC012B8FB18800F673C5 /* Mocker */; };
-		8A9302E32B909798005C69D0 /* PrintProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9302E22B909798005C69D0 /* PrintProtocol.swift */; };
 		8A9CFC8E2B4EC5F400F70B13 /* ArticleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC8D2B4EC5F300F70B13 /* ArticleRowView.swift */; };
 		8A9CFC922B4EC61000F70B13 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC912B4EC61000F70B13 /* ArticleDetailView.swift */; };
 		8A9CFC942B4EC7B500F70B13 /* ArticleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC932B4EC7B500F70B13 /* ArticleCardView.swift */; };
@@ -48,6 +47,7 @@
 		8A9FEC612B93D2000027A3E6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FEC602B93D2000027A3E6 /* Log.swift */; };
 		8A9FEC642B93D2750027A3E6 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9FEC632B93D2750027A3E6 /* SwiftyBeaver */; };
 		8AAB4D0B2B76599200C71B36 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAB4D0A2B76599200C71B36 /* Alamofire */; };
+		8AABBC832B95012000D78C5D /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBC822B95012000D78C5D /* DependencyInjector.swift */; };
 		8ACCFAE22B7D3D5400A33AE0 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCFAE12B7D3D5400A33AE0 /* CharacterView.swift */; };
 		8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */; };
 		8AD6123C2B76D8D400D2D8CC /* TabBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */; };
@@ -108,7 +108,6 @@
 		8A8EF2352B4C166400402584 /* ArticleApiObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleApiObject.swift; sourceTree = "<group>"; };
 		8A91CBFC2B8FACB800F673C5 /* ApiRestManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApiRestManagerTests.swift; path = Services/ApiRestManagerTests.swift; sourceTree = "<group>"; };
 		8A91CBFE2B8FB09600F673C5 /* BackendApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackendApiTests.swift; path = Data/Api/BackendApiTests.swift; sourceTree = "<group>"; };
-		8A9302E22B909798005C69D0 /* PrintProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintProtocol.swift; sourceTree = "<group>"; };
 		8A9CFC8D2B4EC5F300F70B13 /* ArticleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowView.swift; sourceTree = "<group>"; };
 		8A9CFC912B4EC61000F70B13 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		8A9CFC932B4EC7B500F70B13 /* ArticleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCardView.swift; sourceTree = "<group>"; };
@@ -119,6 +118,7 @@
 		8A9FEC5C2B93735D0027A3E6 /* GenderEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderEnum.swift; sourceTree = "<group>"; };
 		8A9FEC5E2B93CF450027A3E6 /* CharactersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModelTests.swift; sourceTree = "<group>"; };
 		8A9FEC602B93D2000027A3E6 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		8AABBC822B95012000D78C5D /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		8ACA94282B86C3C7001CEBD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ACCFAE12B7D3D5400A33AE0 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
@@ -390,6 +390,7 @@
 		8A8E75E52B5830950063E6FD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8AABBC812B95010C00D78C5D /* Dependecies */,
 				8A8E75E62B5830B30063E6FD /* Utils.swift */,
 				8A9FEC602B93D2000027A3E6 /* Log.swift */,
 			);
@@ -423,6 +424,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		8AABBC812B95010C00D78C5D /* Dependecies */ = {
+			isa = PBXGroup;
+			children = (
+				8AABBC822B95012000D78C5D /* DependencyInjector.swift */,
+			);
+			path = Dependecies;
+			sourceTree = "<group>";
+		};
 		8AE62B152B784434005DFD77 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,7 +462,6 @@
 			isa = PBXGroup;
 			children = (
 				8AE62B282B7BDCFC005DFD77 /* BackendApi.swift */,
-				8A9302E22B909798005C69D0 /* PrintProtocol.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -632,11 +640,11 @@
 				8A0357AA2B65264800BE5435 /* FloatingActionButtonView.swift in Sources */,
 				8AE62B1B2B784A5A005DFD77 /* CharacterApiObject.swift in Sources */,
 				8A8C18702B728C85008E3C8C /* HomeView.swift in Sources */,
-				8A9302E32B909798005C69D0 /* PrintProtocol.swift in Sources */,
 				8A8E75E72B5830B30063E6FD /* Utils.swift in Sources */,
 				8A9CFC962B4EEF7400F70B13 /* WrongImageView.swift in Sources */,
 				8AE62B292B7BDCFC005DFD77 /* BackendApi.swift in Sources */,
 				8A8C18722B728E15008E3C8C /* ArticleView.swift in Sources */,
+				8AABBC832B95012000D78C5D /* DependencyInjector.swift in Sources */,
 				8A9CFC942B4EC7B500F70B13 /* ArticleCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
