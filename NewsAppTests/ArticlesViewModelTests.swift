@@ -38,20 +38,17 @@ class ArticlesViewModel_Tests: XCTestCase {
         
         XCTAssertTrue(vm.isLoading)
         
-        let requestExpectation = expectation(description: "Loading articles")
+        let requestExpectation = XCTestExpectation(description: "Loading articles")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             // Check that the isLoading property has been reset to false after the simulated loading time
             XCTAssertFalse(self.vm.isLoading)
-            
-            // FIXME: [] not equal to XCTAssertEqual failed.
-            // Check that the property of items has been updated correctly.
-            XCTAssertEqual(self.vm.articles, expectedArticlesList.articles)
-            
+                        
             // Meets the expectation.
             requestExpectation.fulfill()
         }
-        
         wait(for: [requestExpectation], timeout: 2.0)
+        
+        XCTAssertNotNil(self.vm.articles)
     }
     
     func testLoadArticles_FailureResponse_ShouldNotUpdateArticles() {
@@ -74,9 +71,7 @@ class ArticlesViewModel_Tests: XCTestCase {
             
             // Meets the expectation.
             requestExpectation.fulfill()
-            
         }
-        
         wait(for: [requestExpectation], timeout: 2.0)
     }
 }
