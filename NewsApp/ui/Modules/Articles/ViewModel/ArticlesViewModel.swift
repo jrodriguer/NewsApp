@@ -8,6 +8,7 @@
 import Foundation
 
 class ArticlesViewModel: ObservableObject {
+    // TODO: Wrapper Api protocol with @Inject.
     private var backendApi: BackendApi?
     @Published var articles: [ArticleApiObject] = []
     @Published var isLoading: Bool = false
