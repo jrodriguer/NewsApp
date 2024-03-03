@@ -9,28 +9,19 @@ import Foundation
 import Mocker
 import Alamofire
 import XCTest
-@testable import NewsApp
 
+@testable import NewsApp
 class BackendApiTests: XCTestCase {
-    
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    
     func test_BackendApiTests_article_shouldReturnExpectedArticle() {
         let sessionManager = MockGenerator.createMockSessionManager()
         
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
         let apiEndpoint = URL(string: "https://newsapi.org/v2/top-headlines/?country=us&apiKey=\(apiKey)")!
         
-        let expectedArticles = MockGenerator.articleListApiObject()
+        let expectedArticlesList = MockGenerator.articleListApiObject()
         let requestExpectation = expectation(description: "Request should finish")
                 
-        let mock = Mock(url: apiEndpoint, contentType: .json, statusCode: 200, data: [.get: MockGenerator.mockedData(for: expectedArticles)])
+        let mock = Mock(url: apiEndpoint, contentType: .json, statusCode: 200, data: [.get: MockGenerator.mockedData(for: expectedArticlesList)])
         mock.register()
         
         sessionManager
