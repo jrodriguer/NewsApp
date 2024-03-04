@@ -11,12 +11,12 @@ import Mocker
 
 @testable import NewsApp
 class ArticlesViewModel_Tests: XCTestCase {
+    var setup = MockDependencies()
     var vm = ArticlesViewModel()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let mockApi = BackendApi(apiUrl: "https://mocked.api")
-        vm = ArticlesViewModel(backendApi: mockApi)
+        vm = ArticlesViewModel()
     }
     
     override func tearDownWithError() throws {

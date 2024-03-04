@@ -10,6 +10,7 @@ import XCTest
 
 @testable import NewsApp
 class CharactersViewModel_Tests: XCTestCase {
+    var setup = MockDependencies()
     var vm = CharacterViewModel()
 
     override func setUpWithError() throws { }
