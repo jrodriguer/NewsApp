@@ -9,14 +9,12 @@ import Foundation
 import Alamofire
 
 class CharacterViewModel: ObservableObject {
-    // TODO: Wrapper Api protocol with @Inject.
-    private var backendApi: BackendApi?
+    @Inject var backendApi: BackendApiProtocol?
     @Published var characters: [CharacterApiObject] = []
     @Published var locationData: Any = {}
     @Published var isLoading: Bool = false
-
-    init(backendApi: BackendApi = BackendApi(apiUrl: "https://rickandmortyapi.com")) {
-        self.backendApi = backendApi
+    
+    init() {
         self.loadCharacters()
     }
     
