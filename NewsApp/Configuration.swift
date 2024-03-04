@@ -6,3 +6,37 @@
 //
 
 import Foundation
+
+/// A utility for handling configuration values from the Info.plist file.
+enum Configuration {
+    enum Key: String {
+        case API_URL
+    }
+    
+    /// Retrieve a typed value for a specific configuration key from the Info.plist file.
+    ///
+    /// - Parameter key: The configuration key.
+    /// - Returns: The typed value for the specified key, or nil if not found or conversion fails.
+    static func value<T>(for key: Key) -> T? where T: LosslessStringConvertible {
+        guard let object = Bundle.main.object(forInfoDictionaryKey: key.rawValue) else {
+            Log.warning(tag: Configuration.self, message: "Value not found for key: \(key.rawValue)")
+            return nil
+        }
+        
+        switch object {
+        case let value as T:
+            Log.info(tag: Configuration.self, message: "Value retrieved for key \(key.rawValue): \(value)")
+            return value
+        case let string as String:
+            guard let value = T(string) else {
+                Log.warning(tag: Configuration.self, message: "Failed to convert string to \(T.self) for key \(key.rawValue)")
+                return nil
+            }
+            Log.info(tag: Configuration.self, message: "Value retrieved for key \(key.rawValue): \(value)")
+            return value
+        default:
+            Log.warning(tag: Configuration.self, message: "Unexpected type encountered for key \(key.rawValue)")
+            return nil
+        }
+    }
+}
