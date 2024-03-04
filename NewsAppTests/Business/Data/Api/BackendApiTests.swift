@@ -19,7 +19,7 @@ class BackendApiTests: XCTestCase {
         let apiEndpoint = URL(string: "https://newsapi.org/v2/top-headlines/?country=us&apiKey=\(apiKey)")!
         
         let expectedArticlesList = MockGenerator.articleListApiObject()
-        let requestExpectation = expectation(description: "Request should finish")
+        let requestExpectation = self.expectation(description: "Request should finish")
                 
         let mock = Mock(url: apiEndpoint, contentType: .json, statusCode: 200, data: [.get: MockGenerator.mockedData(for: expectedArticlesList)])
         mock.register()
