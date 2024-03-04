@@ -10,6 +10,7 @@ import Alamofire
 
 protocol BackendApiProtocol {
     func getArticles(category: Category?) -> DataRequest?
+    func getCharacters() -> DataRequest?
     /*func getCharacters(page: Int,
                        name: String?,
                        status: Status?,
