@@ -12,10 +12,10 @@ protocol BackendApiProtocol {
     func getArticles(category: Category?) -> DataRequest?
     /*func getCharacters(page: Int,
                        name: String?,
-                       status: StatusEnum?,
+                       status: Status?,
                        species: String?,
                        type: String?,
-                       gender: GenderEnum?) -> DataRequest?*/
+                       gender: Gender?) -> DataRequest?*/
     func getLocations() -> DataRequest?
     func getLocation(id: Int) -> DataRequest?
 }
@@ -45,10 +45,10 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
     
     /*func getCharacters(page: Int,
                        name: String?,
-                       status: StatusEnum?,
+                       status: Status?,
                        species: String?,
                        type: String?,
-                       gender: GenderEnum?) -> DataRequest? {
+                       gender: Gender?) -> DataRequest? {
         
         var serviceURL: String = "character"
         serviceURL = serviceURL + "?page=\(page)"
