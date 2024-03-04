@@ -17,7 +17,7 @@ class Dependencies {
     /// Instance register using @Provider.
     private func injectDependencies() {
         if let apiUrl: String = Configuration.value(for: .API_URL) {
-            @Provider var auth = BackendApi(apiUrl: apiUrl) as BackendApiProtocol
+            @Provider var api = BackendApi(apiUrl: apiUrl) as BackendApiProtocol
         }
     }
 }
