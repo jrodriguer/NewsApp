@@ -49,6 +49,8 @@
 		8AAB4D0B2B76599200C71B36 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAB4D0A2B76599200C71B36 /* Alamofire */; };
 		8AABBC832B95012000D78C5D /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBC822B95012000D78C5D /* DependencyInjector.swift */; };
 		8AABBC872B95BB0C00D78C5D /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBC862B95BB0C00D78C5D /* Dependencies.swift */; };
+		8AABBC892B95DAEB00D78C5D /* ProcessInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBC882B95DAEB00D78C5D /* ProcessInfo.swift */; };
+		8AABBC8B2B95E25D00D78C5D /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBC8A2B95E25D00D78C5D /* Configuration.swift */; };
 		8ACCFAE22B7D3D5400A33AE0 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCFAE12B7D3D5400A33AE0 /* CharacterView.swift */; };
 		8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */; };
 		8AD6123C2B76D8D400D2D8CC /* TabBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */; };
@@ -121,6 +123,8 @@
 		8A9FEC602B93D2000027A3E6 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		8AABBC822B95012000D78C5D /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		8AABBC862B95BB0C00D78C5D /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		8AABBC882B95DAEB00D78C5D /* ProcessInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessInfo.swift; sourceTree = "<group>"; };
+		8AABBC8A2B95E25D00D78C5D /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		8ACA94282B86C3C7001CEBD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ACCFAE12B7D3D5400A33AE0 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
@@ -395,6 +399,7 @@
 				8AABBC812B95010C00D78C5D /* Dependecies */,
 				8A8E75E62B5830B30063E6FD /* Utils.swift */,
 				8A9FEC602B93D2000027A3E6 /* Log.swift */,
+				8AABBC8A2B95E25D00D78C5D /* Configuration.swift */,
 			);
 			name = Utils;
 			path = ..;
@@ -422,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				8A9FEC5A2B93733A0027A3E6 /* StringExtension.swift */,
+				8AABBC882B95DAEB00D78C5D /* ProcessInfo.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -646,7 +652,9 @@
 				8A8C18702B728C85008E3C8C /* HomeView.swift in Sources */,
 				8A8E75E72B5830B30063E6FD /* Utils.swift in Sources */,
 				8A9CFC962B4EEF7400F70B13 /* WrongImageView.swift in Sources */,
+				8AABBC8B2B95E25D00D78C5D /* Configuration.swift in Sources */,
 				8AE62B292B7BDCFC005DFD77 /* BackendApi.swift in Sources */,
+				8AABBC892B95DAEB00D78C5D /* ProcessInfo.swift in Sources */,
 				8A8C18722B728E15008E3C8C /* ArticleView.swift in Sources */,
 				8AABBC832B95012000D78C5D /* DependencyInjector.swift in Sources */,
 				8A9CFC942B4EC7B500F70B13 /* ArticleCardView.swift in Sources */,
@@ -820,7 +828,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NewsApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X55H9FTVGN;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_TESTING_SEARCH_PATHS = YES;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -851,7 +859,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NewsApp/Preview Content\"";
 				DEVELOPMENT_TEAM = X55H9FTVGN;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_TESTING_SEARCH_PATHS = YES;
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

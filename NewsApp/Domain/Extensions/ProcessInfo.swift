@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension ProcessInfo {
+    static var IS_UNIT_TESTING: Bool {
+        return processInfo.environment["IS_UNIT_TESTING"] == "TRUE"
+    }
+}
