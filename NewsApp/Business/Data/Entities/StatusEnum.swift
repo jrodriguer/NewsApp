@@ -1,5 +1,5 @@
 //
-//  StatusEnum.swift
+//  Status.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 2/3/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum StatusEnum: String, CaseIterable, Identifiable {
+enum Status: String, CaseIterable, Identifiable {
     case none = ""
     case alive = "alive"
     case dead = "dead"
@@ -16,7 +16,7 @@ enum StatusEnum: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
 }
 
-extension StatusEnum {
+extension Status {
     var value: String {
         get {
             if self == .none { return "none".localizedString() }
