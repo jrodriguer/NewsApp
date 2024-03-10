@@ -23,20 +23,15 @@ enum Configuration {
             return nil
         }
         
-        switch object {
-        case let value as T:
-            Log.info(tag: Configuration.self, message: "Value retrieved for key \(key.rawValue): \(value)")
-            return value
-        case let string as String:
-            guard let value = T(string) else {
+        if let stringValue = object as? String {
+            guard let value = T(stringValue.trimmingCharacters(in: .whitespaces)) else {
                 Log.warning(tag: Configuration.self, message: "Failed to convert string to \(T.self) for key \(key.rawValue)")
                 return nil
             }
             Log.info(tag: Configuration.self, message: "Value retrieved for key \(key.rawValue): \(value)")
             return value
-        default:
-            Log.warning(tag: Configuration.self, message: "Unexpected type encountered for key \(key.rawValue)")
-            return nil
         }
+        Log.warning(tag: Configuration.self, message: "Unexpected type encountered for key \(key.rawValue)")
+        return nil
     }
 }
