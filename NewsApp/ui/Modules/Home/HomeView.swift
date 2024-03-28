@@ -14,8 +14,6 @@ struct HomeView: View {
     var body: some View {
         if selectedTab == .Headers {
             ArticleView()
-        } else {
-            CharacterView()
         }
         CustomTabBarView(selectedTab: $selectedTab, showModal: $showModal)
     }
