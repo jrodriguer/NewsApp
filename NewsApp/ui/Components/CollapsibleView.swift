@@ -10,7 +10,6 @@ import SwiftUI
 struct CollapsibleView<Content: View>: View {
     @State var label: () -> Text
     @State var content: () -> Content
-    
     @State private var collapsed: Bool = true
     
     var body: some View {
@@ -34,8 +33,6 @@ struct CollapsibleView<Content: View>: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none)
             .clipped()
-            //.animation(.easeOut)
-            //.transition(.slide)
         }
     }
 }
