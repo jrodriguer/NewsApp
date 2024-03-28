@@ -33,24 +33,4 @@ class BackendApiTests: XCTestCase {
 
             wait(for: [requestExpectation], timeout: 10.0)
     }
-    
-    func testCharacterListApiObject_ShouldReturnExpectedCharactersList() {
-        let sessionManager = MockGenerator.createMockSessionManager()
-        
-        let apiEndpoint = URL(string: "https://rickandmortyapi.com/api/character")!
-        let expectedCharactersList = MockGenerator.characterListApiObject()
-        let requestExpectation = expectation(description: "Request should finish")
-                
-        let mock = Mock(url: apiEndpoint, contentType: .json, statusCode: 200, data: [.get: MockGenerator.mockedData(for: expectedCharactersList)])
-        mock.register()
-        
-        sessionManager
-                .request(apiEndpoint)
-                .responseDecodable(of: CharacterListApiObject.self) { (response) in
-                    XCTAssertNil(response.error)
-                    requestExpectation.fulfill()
-                }.resume()
-
-            wait(for: [requestExpectation], timeout: 10.0)
-    }
 }

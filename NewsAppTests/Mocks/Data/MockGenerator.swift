@@ -49,14 +49,6 @@ struct MockGenerator {
         }
     }
     
-    static func characterListApiObject() -> CharacterListApiObject {
-        guard let path = Bundle.main.path(forResource: "get_characters", ofType: "json"),
-              let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
-            fatalError("Failed to load 'get_characters' JSON file for testing.")
-        }
-        return try! JSONDecoder().decode(CharacterListApiObject.self, from: jsonData)
-    }
-    
     static func createMockSessionManager() -> Session {
         let configuration = URLSessionConfiguration.af.default
         configuration.protocolClasses = [MockingURLProtocol.self] + (configuration.protocolClasses ?? [])
