@@ -64,3 +64,38 @@ struct ArticleSource: Identifiable, Codable {
     let id: String?
     let name: String
 }
+
+extension ArticleApiObject {
+    static let mockArticle: ArticleApiObject = {
+        let mockArticleData = """
+            {
+                "author": "John Doe",
+                "title": "Mock Article",
+                "description": "This is a mock article",
+                "url": "https://example.com",
+                "urlToImage": "https://example.com/image.jpg",
+                "publishedAt": "2022-01-01T00:00:00Z",
+                "content": "Mock content for preview purposes",
+                "source": {
+                    "id": "mock_source_id",
+                    "name": "Mock Source"
+                }
+            }
+            """.data(using: .utf8)!
+        
+        do {
+            let decoder = JSONDecoder()
+            let mockArticle = try decoder.decode(ArticleApiObject.self, from: mockArticleData)
+            return mockArticle
+        } catch {
+            fatalError("Failed to create mock article: \(error)")
+        }
+    }()
+}
+
+extension ArticleListApiObject {
+    static let mockArticleList: ArticleListApiObject = {
+        let mockList = ArticleListApiObject(status: "ok", totalResults: 1, articles: [ArticleApiObject.mockArticle])
+        return mockList
+    }()
+}
