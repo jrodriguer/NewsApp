@@ -9,27 +9,27 @@ import Foundation
 import SwiftUI
 
 struct ArticleListApiObject: Decodable, Encodable, Equatable {
-    var status: String
-    var totalResults: Int
-    var articles: [ArticleApiObject]
+    let status: String
+    let totalResults: Int
+    let articles: [ArticleApiObject]
 }
 
 struct ArticleApiObject: Identifiable, Codable, Equatable {
-    var id: AnyHashable
+    let id: AnyHashable
     
-    var author: String?
-    var title: String
-    var description: String?
-    var url: URL
-    var urlToImage: URL?
-    var publishedAt: Date
-    var content: String?
-    var source: ArticleSource
+    let author: String?
+    let title: String
+    let description: String?
+    let url: URL
+    let urlToImage: URL?
+    let publishedAt: Date
+    let content: String?
+    let source: ArticleSource
     
     private enum CodingKeys: String, CodingKey {
         case author, title, description, url, urlToImage, publishedAt, content, source
     }
-    
+        
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -61,6 +61,6 @@ struct ArticleApiObject: Identifiable, Codable, Equatable {
 }
 
 struct ArticleSource: Identifiable, Codable {
-    var id: String?
-    var name: String
+    let id: String?
+    let name: String
 }
