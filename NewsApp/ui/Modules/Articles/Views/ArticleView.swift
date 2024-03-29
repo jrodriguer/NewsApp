@@ -38,7 +38,6 @@ struct ArticleView: View {
                     HStack(spacing: 16) {
                         ForEach(Category.allCases, id: \.self) { category in
                             Button(action: {
-                                //!! TODO: Remember the favorites.
                                 selectedCategory = category
                                 vm.loadArticles(category: selectedCategory)
                             }) {
@@ -185,7 +184,6 @@ extension ArticleView {
                 }
             }
         }
-        //! TODO: Add navigation button.
         .background(GeometryReader { geometry in
             Color.clear.preference(key: ViewOffsetKey.self,
                                           value: -geometry.frame(in: .named("scroll")).origin.y)
