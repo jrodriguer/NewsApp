@@ -27,40 +27,45 @@ struct ArticleCardView: View {
                         ProgressView()
                     }
                 }
-                .cornerRadius(10)
             } else {
                 WrongImageView()
             }
             
-            VStack(alignment: .leading, spacing: 8) {
-                Text(article.source.name)
-                    .font(.headline)
-                    .foregroundColor(.secondary)
-                Text(Utils.displayTitle(article.title))
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
-                    .lineLimit(3)
-                
-                Divider()
-                
-                HStack(alignment: .top, spacing: 4) {
-                    Text(Utils.timeDifference(from: article.publishedAt))
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(article.source.name)
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                    Text(Utils.displayTitle(article.title))
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                        .lineLimit(3)
                     
-                    if let author = article.author {
-                        Text("•")
-                        Text(Utils.displayAuthor(author))
+                    Divider()
+                    
+                    HStack(alignment: .top) {
+                        Text(Utils.timeDifference(from: article.publishedAt))
+                        if let author = article.author {
+                            Text("•")
+                            Text(Utils.displayAuthor(author))
+                        }
                     }
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.secondary)
                 }
-                .font(.footnote)
-                .fontWeight(.semibold)
-                .foregroundColor(.secondary)
+                .layoutPriority(100)
+                
+                Spacer()
             }
-            
+            .padding()
         }
-        .padding(12)
-        .background(Color(.baseGray))
         .cornerRadius(10)
-        .padding(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
+        )
+        .padding([.top, .horizontal])
     }
 }
