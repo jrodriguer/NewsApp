@@ -8,7 +8,7 @@
 import Foundation
 
 enum FavoriteKey: String {
-    case articleFavorites, characterFavorites
+    case articleFavorites
 }
 
 class FavoritesViewModel<T: Identifiable & Codable>: ObservableObject {
