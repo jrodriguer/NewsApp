@@ -15,7 +15,6 @@ class DependencyInjector {
     /// - Returns: An instance of the specified type, or nil if not found.
     static func resolve<T>() -> T? {
         guard let t = dependencyList[String(describing: T.self)] as? T else {
-            // TODO: Choose to return an optional value (nil) instead of using fatalError.
             fatalError("No provider register for type: \(T.self)")
         }
         return t
