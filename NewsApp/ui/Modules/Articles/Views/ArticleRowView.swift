@@ -18,9 +18,9 @@ struct ArticleRowView: View {
                 .swipeActions(edge: .leading) {
                     Button {
                         if favorites.contains(article) {
-                            favorites.remove(FavoriteKey.articleFavorites, value: article)
+                            favorites.remove(article)
                         } else {
-                            favorites.add(FavoriteKey.articleFavorites, value: article)
+                            favorites.add(article)
                         }
                     } label: {
                         if favorites.contains(article) {
@@ -45,5 +45,5 @@ struct ArticleRowView: View {
 #Preview {
     ArticleRowView(article: ArticleApiObject.mockArticle)
         .environmentObject(ArticlesViewModel())
-        .environmentObject(FavoritesViewModel<ArticleApiObject>())
+        .environmentObject(FavoritesViewModel<ArticleApiObject>(saveKey:  FavoriteKey.articleFavorites))
 }

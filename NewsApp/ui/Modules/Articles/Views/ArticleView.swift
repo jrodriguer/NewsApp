@@ -24,7 +24,7 @@ enum ViewOption: String, CaseIterable {
 
 struct ArticleView: View {
     @StateObject var vm = ArticlesViewModel()
-    @StateObject var favorites = FavoritesViewModel<ArticleApiObject>()
+    @StateObject var favorites = FavoritesViewModel<ArticleApiObject>(saveKey:  FavoriteKey.articleFavorites)
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
@@ -56,9 +56,9 @@ struct ArticleView: View {
                 }
             }
             .navigationBarTitle("Headers")
-            .onAppear {
-                vm.loadArticles(category: selectedCategory)
-            }
+//            .onAppear {
+//                vm.loadArticles(category: selectedCategory)
+//            }
             .toolbar {
                 ToolbarItem {
                     Menu {
@@ -202,9 +202,7 @@ extension ArticleView {
         .overlay(
             Group {
                 if showFab, !searchResult.isEmpty {
-                    /*FloatingActionButtonView(nameIcon: "chevron.up") {
-                        print("click button")
-                    }*/
+//                    FloatingActionButtonView(nameIcon: "chevron.up") { }
                 }
             },
             alignment: Alignment.bottomTrailing

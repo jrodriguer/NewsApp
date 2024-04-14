@@ -15,8 +15,6 @@ struct ArticleDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 if let imageURL = article.urlToImage {
-                    // MARK: For animation -> transaction: .init(animation: .bouncy(duration: 2)).
-                    
                     AsyncImage(url: imageURL) { phase in
                         switch phase {
                         case .success(let image):
@@ -81,9 +79,9 @@ struct ArticleDetailView: View {
                         }
                         Button {
                             if favorites.contains(article) {
-                                favorites.remove(FavoriteKey.articleFavorites, value: article)
+                                favorites.remove(article)
                             } else {
-                                favorites.add(FavoriteKey.articleFavorites, value: article)
+                                favorites.add(article)
                             }
                         } label: {
                             if favorites.contains(article) {

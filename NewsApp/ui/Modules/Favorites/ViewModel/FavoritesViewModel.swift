@@ -12,9 +12,15 @@ enum FavoriteKey: String {
 }
 
 class FavoritesViewModel<T: Identifiable & Codable>: ObservableObject {
-    private var favorites: [T] = []
+    private var saveKey: FavoriteKey
+    @Published private var favorites: [T] = []
     
-    func loadFavorite(_ saveKey: FavoriteKey) -> [T] {
+    init(saveKey: FavoriteKey) {
+        self.saveKey = saveKey
+        self.favorites = loadFavorites()
+    }
+    
+    private func loadFavorites() -> [T] {
         if let storedItems = UserDefaultsManager<[T]>.getItem(saveKey),
            let decodedItems = try? JSONDecoder().decode([T].self, from: storedItems) {
             favorites = decodedItems
@@ -24,32 +30,32 @@ class FavoritesViewModel<T: Identifiable & Codable>: ObservableObject {
         }
     }
     
-    func contains(_ value: T) -> Bool {
-        return favorites.contains { $0.id == value.id }
-    }
-    
-    func add(_ saveKey: FavoriteKey, value: T) {
-        objectWillChange.send()
-        favorites.append(value)
-        saveForites(saveKey, favorites)
-    }
-    
-    func remove(_ saveKey: FavoriteKey, value: T) {
-        objectWillChange.send()
-        favorites.removeAll(where: { $0.id == value.id })
-        saveForites(saveKey, favorites)
-    }
-    
-    func filtered(from allItems: [T], showFavoritesOnly: Bool) -> [T] {
-        return showFavoritesOnly ? allItems.filter { contains($0) } : allItems
-    }
-    
-    private func saveForites(_ saveKey: FavoriteKey, _ value: [T]) {
+    private func saveForites() {
         do {
             let encoded = try JSONEncoder().encode(favorites)
             UserDefaultsManager<T>.saveItem(saveKey, encoded)
         } catch {
             print("Error encoding value \(error)")
         }
+    }
+    
+    func contains(_ value: T) -> Bool {
+        return favorites.contains { $0.id == value.id }
+    }
+    
+    func add(_ value: T) {
+        objectWillChange.send()
+        favorites.append(value)
+        saveForites()
+    }
+    
+    func remove(_ value: T) {
+        objectWillChange.send()
+        favorites.removeAll(where: { $0.id == value.id })
+        saveForites()
+    }
+    
+    func filtered(from allItems: [T], showFavoritesOnly: Bool) -> [T] {
+        return showFavoritesOnly ? allItems.filter { contains($0) } : allItems
     }
 }
