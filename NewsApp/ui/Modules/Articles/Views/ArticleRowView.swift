@@ -26,7 +26,7 @@ struct ArticleRowView: View {
                         if favorites.contains(article) {
                             Label("Favorite", systemImage: "heart.slash")
                         } else {
-                            Label("Favorite", systemImage: "heart.fill")
+                            Label("Favorite", systemImage: "suit.heart.fill")
                         }
                     }
                     .tint(.red)

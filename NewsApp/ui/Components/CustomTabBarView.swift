@@ -34,7 +34,7 @@ struct CustomTabBarView: View {
             Button {
                 selectedTab = .Personal
             } label: {
-                TabBarButtonView(buttonText: "Characters", imageName: "face.smiling", isActive: selectedTab == .Personal)
+                TabBarButtonView(buttonText: "Favorites", imageName: "suit.heart", isActive: selectedTab == .Personal)
             }
             .tint(Color(.gray))
         }
