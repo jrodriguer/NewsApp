@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import SwiftUI
+
+fileprivate let relativeDateFormatter = RelativeDateTimeFormatter()
 
 struct ArticleListApiObject: Decodable, Encodable, Equatable {
     let status: String
@@ -14,32 +15,73 @@ struct ArticleListApiObject: Decodable, Encodable, Equatable {
     let articles: [ArticleApiObject]
 }
 
-struct ArticleApiObject: Identifiable, Codable, Equatable {
-    let id: AnyHashable
+struct ArticleApiObject {
+    let id: UUID
     
     let author: String?
     let title: String
     let description: String?
-    let url: URL
-    let urlToImage: URL?
+    
+    let url: String
+    let urlToImage: String?
     let publishedAt: Date
     let content: String?
-    let source: ArticleSource
+    
+    let source: Source
     
     private enum CodingKeys: String, CodingKey {
-        case author, title, description, url, urlToImage, publishedAt, content, source
+        case author
+        case title
+        case description
+        case url
+        case urlToImage
+        case publishedAt
+        case content
+        case source
     }
-        
+    
+    var authorField: String {
+        author ?? ""
+    }
+    
+    var descriptionField: String {
+        description ?? ""
+    }
+    
+    var captionField: String {
+        "\(source.name) ‧ \(relativeDateFormatter.localizedString(for: publishedAt, relativeTo: Date()))"
+    }
+    
+    var articleURL: URL {
+        URL(string: url)!
+    }
+    
+    var imageURL: URL? {
+        guard let urlToImage = urlToImage else {
+            return nil
+        }
+        return URL(string: urlToImage)
+    }
+}
+
+extension ArticleApiObject: Codable { }
+extension ArticleApiObject: Equatable { }
+extension ArticleApiObject: Identifiable { }
+
+extension ArticleApiObject {
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = UUID()
         
         author = try container.decodeIfPresent(String.self, forKey: .author)
         title = try container.decode(String.self, forKey: .title)
         description = try container.decodeIfPresent(String.self, forKey: .description)
-        url = try container.decode(URL.self, forKey: .url)
-        urlToImage = try container.decodeIfPresent(URL.self, forKey: .urlToImage)
+        url = try container.decode(String.self, forKey: .url)
+        urlToImage = try container.decodeIfPresent(String.self, forKey: .urlToImage)
         content = try container.decodeIfPresent(String.self, forKey: .content)
-        source = try container.decode(ArticleSource.self, forKey: .source)
+        source = try container.decode(Source.self, forKey: .source)
         
         do {
             publishedAt = try container.decode(Date.self, forKey: .publishedAt)
@@ -51,19 +93,15 @@ struct ArticleApiObject: Identifiable, Codable, Equatable {
                 throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
             }
         }
-        
-        self.id = UUID() as AnyHashable
-    }
-    
-    static func == (lhs: ArticleApiObject, rhs: ArticleApiObject) -> Bool {
-        return lhs.id == rhs.id
     }
 }
 
-struct ArticleSource: Identifiable, Codable {
-    let id: String?
+struct Source {
     let name: String
 }
+
+extension Source: Codable {}
+extension Source: Equatable {}
 
 extension ArticleApiObject {
     static let mockArticle: ArticleApiObject = {
