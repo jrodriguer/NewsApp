@@ -82,17 +82,18 @@ extension ArticleApiObject {
         urlToImage = try container.decodeIfPresent(String.self, forKey: .urlToImage)
         content = try container.decodeIfPresent(String.self, forKey: .content)
         source = try container.decode(Source.self, forKey: .source)
+        publishedAt = try container.decode(Date.self, forKey: .publishedAt)
         
-        do {
-            publishedAt = try container.decode(Date.self, forKey: .publishedAt)
-        } catch {
-            let dateString = try container.decode(String.self, forKey: .publishedAt)
-            if let date = DateFormatter.iso8601Full.date(from: dateString) {
-                publishedAt = date
-            } else {
-                throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
-            }
-        }
+//        do {
+//            publishedAt = try container.decode(Date.self, forKey: .publishedAt)
+//        } catch {
+//            let dateString = try container.decode(String.self, forKey: .publishedAt)
+//            if let date = DateFormatter.iso8601Full.date(from: dateString) {
+//                publishedAt = date
+//            } else {
+//                throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
+//            }
+//        }
     }
 }
 

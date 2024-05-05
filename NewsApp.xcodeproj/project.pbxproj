@@ -31,6 +31,8 @@
 		8A23D5882BE7CFE40046C130 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5872BE7CFE40046C130 /* Category.swift */; };
 		8A23D5892BE7CFE40046C130 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5872BE7CFE40046C130 /* Category.swift */; };
 		8A23D58A2BE7CFE40046C130 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5872BE7CFE40046C130 /* Category.swift */; };
+		8A23D58B2BE7DD870046C130 /* ArticleApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF2352B4C166400402584 /* ArticleApiObject.swift */; };
+		8A23D58C2BE7DD870046C130 /* ArticleApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF2352B4C166400402584 /* ArticleApiObject.swift */; };
 		8A3CD90E2B91DE82005A677C /* get_articles.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A3CD90D2B91DE82005A677C /* get_articles.json */; };
 		8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */; };
 		8A4E22C12B4A2BCC006D71C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */; };
@@ -798,6 +800,7 @@
 				8A23D5852BE7CB240046C130 /* NewsWidget.intentdefinition in Sources */,
 				8A23D55E2BE7B06B0046C130 /* AppIntent.swift in Sources */,
 				8A23D55C2BE7B06B0046C130 /* NewsIOSWidget.swift in Sources */,
+				8A23D58B2BE7DD870046C130 /* ArticleApiObject.swift in Sources */,
 				8A23D55A2BE7B06B0046C130 /* NewsIOSWidgetLiveActivity.swift in Sources */,
 				8A23D5892BE7CFE40046C130 /* Category.swift in Sources */,
 			);
@@ -811,6 +814,7 @@
 				8A23D5862BE7CB240046C130 /* NewsWidget.intentdefinition in Sources */,
 				8A23D5772BE7B19E0046C130 /* AppIntent.swift in Sources */,
 				8A23D5752BE7B19E0046C130 /* NewsMacWidget.swift in Sources */,
+				8A23D58C2BE7DD870046C130 /* ArticleApiObject.swift in Sources */,
 				8A23D5732BE7B19E0046C130 /* NewsMacWidgetLiveActivity.swift in Sources */,
 				8A23D58A2BE7CFE40046C130 /* Category.swift in Sources */,
 			);
