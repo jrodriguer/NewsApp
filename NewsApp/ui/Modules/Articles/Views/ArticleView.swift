@@ -7,16 +7,6 @@
 
 import SwiftUI
 
-enum Category: String, CaseIterable {
-    case business = "Business"
-    case entertainment = "Entertainment"
-    case general = "General"
-    case health = "Health"
-    case science = "Science"
-    case sports = "Sports"
-    case technology = "Technology"
-}
-
 enum ViewOption: String, CaseIterable {
     case cardView = "Card View"
     case listView = "List View"
