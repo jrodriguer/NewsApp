@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct CategoryArticles: Codable {
+    let category: Category
+    let articles: [ArticleApiObject]
+}
