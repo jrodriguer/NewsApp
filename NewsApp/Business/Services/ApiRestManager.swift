@@ -65,7 +65,7 @@ class ApiRestManager {
                      encoding: encoding,
                      headers: headers)
             .validate(statusCode: 200..<500)
-            .customValidate()
+//            .customValidate()
     }
     
     internal func get(service: String,

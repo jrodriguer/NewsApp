@@ -38,6 +38,12 @@
 		8A23D5902BE803E10046C130 /* CategoryArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D58D2BE803E10046C130 /* CategoryArticles.swift */; };
 		8A23D5922BE8BFFD0046C130 /* ArticleWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5912BE8BFFD0046C130 /* ArticleWidgetModel.swift */; };
 		8A23D5932BE8BFFD0046C130 /* ArticleWidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5912BE8BFFD0046C130 /* ArticleWidgetModel.swift */; };
+		8A23D5942BE8EFC90046C130 /* BackendApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B282B7BDCFC005DFD77 /* BackendApi.swift */; };
+		8A23D5952BE8EFCA0046C130 /* BackendApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B282B7BDCFC005DFD77 /* BackendApi.swift */; };
+		8A23D5962BE8F00F0046C130 /* ApiRestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C185F2B71AF0A008E3C8C /* ApiRestManager.swift */; };
+		8A23D5972BE8F0100046C130 /* ApiRestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C185F2B71AF0A008E3C8C /* ApiRestManager.swift */; };
+		8A23D5992BE901460046C130 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8A23D5982BE901460046C130 /* Alamofire */; };
+		8A23D59B2BE9014C0046C130 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8A23D59A2BE9014C0046C130 /* Alamofire */; };
 		8A3CD90E2B91DE82005A677C /* get_articles.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A3CD90D2B91DE82005A677C /* get_articles.json */; };
 		8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */; };
 		8A4E22C12B4A2BCC006D71C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */; };
@@ -202,6 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A23D5992BE901460046C130 /* Alamofire in Frameworks */,
 				8A23D5552BE7B06B0046C130 /* SwiftUI.framework in Frameworks */,
 				8A23D5532BE7B06B0046C130 /* WidgetKit.framework in Frameworks */,
 			);
@@ -211,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A23D59B2BE9014C0046C130 /* Alamofire in Frameworks */,
 				8A23D56E2BE7B19E0046C130 /* SwiftUI.framework in Frameworks */,
 				8A23D56D2BE7B19E0046C130 /* WidgetKit.framework in Frameworks */,
 			);
@@ -612,6 +620,9 @@
 			dependencies = (
 			);
 			name = NewsAppIOSWidgetExtension;
+			packageProductDependencies = (
+				8A23D5982BE901460046C130 /* Alamofire */,
+			);
 			productName = NewsIOSWidgetExtension;
 			productReference = 8A23D5502BE7B06B0046C130 /* NewsAppIOSWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -629,6 +640,9 @@
 			dependencies = (
 			);
 			name = NewsAppMacWidgetExtension;
+			packageProductDependencies = (
+				8A23D59A2BE9014C0046C130 /* Alamofire */,
+			);
 			productName = NewsMacWidgetExtension;
 			productReference = 8A23D56C2BE7B19E0046C130 /* NewsAppMacWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -806,8 +820,10 @@
 				8A23D55E2BE7B06B0046C130 /* AppIntent.swift in Sources */,
 				8A23D55C2BE7B06B0046C130 /* NewsAppIOSWidget.swift in Sources */,
 				8A23D5922BE8BFFD0046C130 /* ArticleWidgetModel.swift in Sources */,
+				8A23D5942BE8EFC90046C130 /* BackendApi.swift in Sources */,
 				8A23D58B2BE7DD870046C130 /* ArticleApiObject.swift in Sources */,
 				8A23D55A2BE7B06B0046C130 /* NewsAppIOSWidgetLiveActivity.swift in Sources */,
+				8A23D5962BE8F00F0046C130 /* ApiRestManager.swift in Sources */,
 				8A23D58F2BE803E10046C130 /* CategoryArticles.swift in Sources */,
 				8A23D5892BE7CFE40046C130 /* Category.swift in Sources */,
 			);
@@ -822,8 +838,10 @@
 				8A23D5772BE7B19E0046C130 /* AppIntent.swift in Sources */,
 				8A23D5752BE7B19E0046C130 /* NewsAppMacWidget.swift in Sources */,
 				8A23D5932BE8BFFD0046C130 /* ArticleWidgetModel.swift in Sources */,
+				8A23D5952BE8EFCA0046C130 /* BackendApi.swift in Sources */,
 				8A23D58C2BE7DD870046C130 /* ArticleApiObject.swift in Sources */,
 				8A23D5732BE7B19E0046C130 /* NewsAppMacWidgetLiveActivity.swift in Sources */,
+				8A23D5972BE8F0100046C130 /* ApiRestManager.swift in Sources */,
 				8A23D5902BE803E10046C130 /* CategoryArticles.swift in Sources */,
 				8A23D58A2BE7CFE40046C130 /* Category.swift in Sources */,
 			);
@@ -973,7 +991,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsIOSWidget/Info.plist;
+				INFOPLIST_FILE = NewsAppIOSWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NewsIOSWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -1057,7 +1075,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsMacWidget/Info.plist;
+				INFOPLIST_FILE = NewsAppMacWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NewsMacWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -1309,6 +1327,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8A23D5982BE901460046C130 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AAB4D092B76599200C71B36 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		8A23D59A2BE9014C0046C130 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AAB4D092B76599200C71B36 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		8A91CC012B8FB18800F673C5 /* Mocker */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8A91CC002B8FB18800F673C5 /* XCRemoteSwiftPackageReference "Mocker" */;
