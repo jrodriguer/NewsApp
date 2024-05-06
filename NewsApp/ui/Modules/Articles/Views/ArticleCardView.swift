@@ -12,7 +12,7 @@ struct ArticleCardView: View {
     
     var body: some View {
         VStack {
-            if let imageURL = article.urlToImage {
+            if let imageURL = article.imageURL {
                 AsyncImage(url: imageURL) { phase in
                     switch phase {
                     case .success(let image):

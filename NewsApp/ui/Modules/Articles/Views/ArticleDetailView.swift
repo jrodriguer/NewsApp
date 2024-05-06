@@ -15,7 +15,7 @@ struct ArticleDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 if let imageURL = article.urlToImage {
-                    AsyncImage(url: imageURL) { phase in
+                    AsyncImage(url: article.imageURL) { phase in
                         switch phase {
                         case .success(let image):
                             image
@@ -73,7 +73,7 @@ struct ArticleDetailView: View {
                     }
                     
                     HStack {
-                        Link(destination: article.url) {
+                        Link(destination: article.articleURL) {
                             Image(systemName: "link.circle.fill")
                                 .font(.largeTitle)
                         }
