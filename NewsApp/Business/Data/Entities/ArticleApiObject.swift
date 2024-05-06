@@ -22,8 +22,8 @@ struct ArticleApiObject {
     let title: String
     let description: String?
     
-    let url: String
-    let urlToImage: String?
+    let url: URL
+    let urlToImage: URL?
     let publishedAt: Date
     let content: String?
     
@@ -53,14 +53,14 @@ struct ArticleApiObject {
     }
     
     var articleURL: URL {
-        URL(string: url)!
+        url
     }
     
     var imageURL: URL? {
         guard let urlToImage = urlToImage else {
             return nil
         }
-        return URL(string: urlToImage)
+        return urlToImage
     }
 }
 
@@ -78,8 +78,8 @@ extension ArticleApiObject {
         author = try container.decodeIfPresent(String.self, forKey: .author)
         title = try container.decode(String.self, forKey: .title)
         description = try container.decodeIfPresent(String.self, forKey: .description)
-        url = try container.decode(String.self, forKey: .url)
-        urlToImage = try container.decodeIfPresent(String.self, forKey: .urlToImage)
+        url = try container.decode(URL.self, forKey: .url)
+        urlToImage = try container.decodeIfPresent(URL.self, forKey: .urlToImage)
         content = try container.decodeIfPresent(String.self, forKey: .content)
         source = try container.decode(Source.self, forKey: .source)
         publishedAt = try container.decode(Date.self, forKey: .publishedAt)
