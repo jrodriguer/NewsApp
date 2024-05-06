@@ -1,6 +1,6 @@
 //
-//  NewsIOSWidgetLiveActivity.swift
-//  NewsIOSWidget
+//  NewsAppMacWidgetLiveActivity.swift
+//  NewsAppMacWidget
 //
 //  Created by Julio Rodriguez on 5/5/24.
 //
@@ -9,7 +9,7 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
-struct NewsIOSWidgetAttributes: ActivityAttributes {
+struct NewsAppMacWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
         var emoji: String
@@ -19,9 +19,9 @@ struct NewsIOSWidgetAttributes: ActivityAttributes {
     var name: String
 }
 
-struct NewsIOSWidgetLiveActivity: Widget {
+struct NewsAppMacWidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: NewsIOSWidgetAttributes.self) { context in
+        ActivityConfiguration(for: NewsAppMacWidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
             VStack {
                 Text("Hello \(context.state.emoji)")
@@ -56,25 +56,25 @@ struct NewsIOSWidgetLiveActivity: Widget {
     }
 }
 
-extension NewsIOSWidgetAttributes {
-    fileprivate static var preview: NewsIOSWidgetAttributes {
-        NewsIOSWidgetAttributes(name: "World")
+extension NewsAppMacWidgetAttributes {
+    fileprivate static var preview: NewsAppMacWidgetAttributes {
+        NewsAppMacWidgetAttributes(name: "World")
     }
 }
 
-extension NewsIOSWidgetAttributes.ContentState {
-    fileprivate static var smiley: NewsIOSWidgetAttributes.ContentState {
-        NewsIOSWidgetAttributes.ContentState(emoji: "😀")
+extension NewsAppMacWidgetAttributes.ContentState {
+    fileprivate static var smiley: NewsAppMacWidgetAttributes.ContentState {
+        NewsAppMacWidgetAttributes.ContentState(emoji: "😀")
      }
      
-     fileprivate static var starEyes: NewsIOSWidgetAttributes.ContentState {
-         NewsIOSWidgetAttributes.ContentState(emoji: "🤩")
+     fileprivate static var starEyes: NewsAppMacWidgetAttributes.ContentState {
+         NewsAppMacWidgetAttributes.ContentState(emoji: "🤩")
      }
 }
 
-#Preview("Notification", as: .content, using: NewsIOSWidgetAttributes.preview) {
-   NewsIOSWidgetLiveActivity()
+#Preview("Notification", as: .content, using: NewsAppMacWidgetAttributes.preview) {
+   NewsAppMacWidgetLiveActivity()
 } contentStates: {
-    NewsIOSWidgetAttributes.ContentState.smiley
-    NewsIOSWidgetAttributes.ContentState.starEyes
+    NewsAppMacWidgetAttributes.ContentState.smiley
+    NewsAppMacWidgetAttributes.ContentState.starEyes
 }

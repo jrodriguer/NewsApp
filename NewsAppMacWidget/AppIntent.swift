@@ -1,6 +1,6 @@
 //
 //  AppIntent.swift
-//  NewsMacWidget
+//  NewsAppMacWidget
 //
 //  Created by Julio Rodriguez on 5/5/24.
 //

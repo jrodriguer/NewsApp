@@ -11,20 +11,20 @@
 		8A1DAC262B8E3C6F00259AD3 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAC252B8E3C6F00259AD3 /* FavoritesViewModel.swift */; };
 		8A23D5532BE7B06B0046C130 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A23D5522BE7B06B0046C130 /* WidgetKit.framework */; };
 		8A23D5552BE7B06B0046C130 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A23D5542BE7B06B0046C130 /* SwiftUI.framework */; };
-		8A23D5582BE7B06B0046C130 /* NewsIOSWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5572BE7B06B0046C130 /* NewsIOSWidgetBundle.swift */; };
-		8A23D55A2BE7B06B0046C130 /* NewsIOSWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5592BE7B06B0046C130 /* NewsIOSWidgetLiveActivity.swift */; };
-		8A23D55C2BE7B06B0046C130 /* NewsIOSWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D55B2BE7B06B0046C130 /* NewsIOSWidget.swift */; };
+		8A23D5582BE7B06B0046C130 /* NewsAppIOSWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5572BE7B06B0046C130 /* NewsAppIOSWidgetBundle.swift */; };
+		8A23D55A2BE7B06B0046C130 /* NewsAppIOSWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5592BE7B06B0046C130 /* NewsAppIOSWidgetLiveActivity.swift */; };
+		8A23D55C2BE7B06B0046C130 /* NewsAppIOSWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D55B2BE7B06B0046C130 /* NewsAppIOSWidget.swift */; };
 		8A23D55E2BE7B06B0046C130 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D55D2BE7B06B0046C130 /* AppIntent.swift */; };
 		8A23D5602BE7B06C0046C130 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A23D55F2BE7B06C0046C130 /* Assets.xcassets */; };
-		8A23D5642BE7B06C0046C130 /* NewsIOSWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A23D5502BE7B06B0046C130 /* NewsIOSWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8A23D5642BE7B06C0046C130 /* NewsAppIOSWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A23D5502BE7B06B0046C130 /* NewsAppIOSWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8A23D56D2BE7B19E0046C130 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A23D5522BE7B06B0046C130 /* WidgetKit.framework */; };
 		8A23D56E2BE7B19E0046C130 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A23D5542BE7B06B0046C130 /* SwiftUI.framework */; };
-		8A23D5712BE7B19E0046C130 /* NewsMacWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5702BE7B19E0046C130 /* NewsMacWidgetBundle.swift */; };
-		8A23D5732BE7B19E0046C130 /* NewsMacWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5722BE7B19E0046C130 /* NewsMacWidgetLiveActivity.swift */; };
-		8A23D5752BE7B19E0046C130 /* NewsMacWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5742BE7B19E0046C130 /* NewsMacWidget.swift */; };
+		8A23D5712BE7B19E0046C130 /* NewsAppMacWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5702BE7B19E0046C130 /* NewsAppMacWidgetBundle.swift */; };
+		8A23D5732BE7B19E0046C130 /* NewsAppMacWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5722BE7B19E0046C130 /* NewsAppMacWidgetLiveActivity.swift */; };
+		8A23D5752BE7B19E0046C130 /* NewsAppMacWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5742BE7B19E0046C130 /* NewsAppMacWidget.swift */; };
 		8A23D5772BE7B19E0046C130 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5762BE7B19E0046C130 /* AppIntent.swift */; };
 		8A23D5792BE7B19F0046C130 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A23D5782BE7B19F0046C130 /* Assets.xcassets */; };
-		8A23D57D2BE7B19F0046C130 /* NewsMacWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A23D56C2BE7B19E0046C130 /* NewsMacWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8A23D57D2BE7B19F0046C130 /* NewsAppMacWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A23D56C2BE7B19E0046C130 /* NewsAppMacWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8A23D5842BE7CB240046C130 /* NewsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5832BE7CB240046C130 /* NewsWidget.intentdefinition */; };
 		8A23D5852BE7CB240046C130 /* NewsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5832BE7CB240046C130 /* NewsWidget.intentdefinition */; };
 		8A23D5862BE7CB240046C130 /* NewsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8A23D5832BE7CB240046C130 /* NewsWidget.intentdefinition */; };
@@ -121,8 +121,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				8A23D5642BE7B06C0046C130 /* NewsIOSWidgetExtension.appex in Embed Foundation Extensions */,
-				8A23D57D2BE7B19F0046C130 /* NewsMacWidgetExtension.appex in Embed Foundation Extensions */,
+				8A23D5642BE7B06C0046C130 /* NewsAppIOSWidgetExtension.appex in Embed Foundation Extensions */,
+				8A23D57D2BE7B19F0046C130 /* NewsAppMacWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,19 +132,19 @@
 /* Begin PBXFileReference section */
 		8A0357A92B65264800BE5435 /* FloatingActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButtonView.swift; sourceTree = "<group>"; };
 		8A1DAC252B8E3C6F00259AD3 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
-		8A23D5502BE7B06B0046C130 /* NewsIOSWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NewsIOSWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A23D5502BE7B06B0046C130 /* NewsAppIOSWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NewsAppIOSWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A23D5522BE7B06B0046C130 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8A23D5542BE7B06B0046C130 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		8A23D5572BE7B06B0046C130 /* NewsIOSWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsIOSWidgetBundle.swift; sourceTree = "<group>"; };
-		8A23D5592BE7B06B0046C130 /* NewsIOSWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsIOSWidgetLiveActivity.swift; sourceTree = "<group>"; };
-		8A23D55B2BE7B06B0046C130 /* NewsIOSWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsIOSWidget.swift; sourceTree = "<group>"; };
+		8A23D5572BE7B06B0046C130 /* NewsAppIOSWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppIOSWidgetBundle.swift; sourceTree = "<group>"; };
+		8A23D5592BE7B06B0046C130 /* NewsAppIOSWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppIOSWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		8A23D55B2BE7B06B0046C130 /* NewsAppIOSWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppIOSWidget.swift; sourceTree = "<group>"; };
 		8A23D55D2BE7B06B0046C130 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		8A23D55F2BE7B06C0046C130 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A23D5612BE7B06C0046C130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A23D56C2BE7B19E0046C130 /* NewsMacWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NewsMacWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A23D5702BE7B19E0046C130 /* NewsMacWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMacWidgetBundle.swift; sourceTree = "<group>"; };
-		8A23D5722BE7B19E0046C130 /* NewsMacWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMacWidgetLiveActivity.swift; sourceTree = "<group>"; };
-		8A23D5742BE7B19E0046C130 /* NewsMacWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMacWidget.swift; sourceTree = "<group>"; };
+		8A23D56C2BE7B19E0046C130 /* NewsAppMacWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NewsAppMacWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A23D5702BE7B19E0046C130 /* NewsAppMacWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppMacWidgetBundle.swift; sourceTree = "<group>"; };
+		8A23D5722BE7B19E0046C130 /* NewsAppMacWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppMacWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		8A23D5742BE7B19E0046C130 /* NewsAppMacWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppMacWidget.swift; sourceTree = "<group>"; };
 		8A23D5762BE7B19E0046C130 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		8A23D5782BE7B19F0046C130 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A23D57A2BE7B19F0046C130 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -270,40 +270,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8A23D5562BE7B06B0046C130 /* NewsIOSWidget */ = {
+		8A23D5562BE7B06B0046C130 /* NewsAppIOSWidget */ = {
 			isa = PBXGroup;
 			children = (
-				8A23D5572BE7B06B0046C130 /* NewsIOSWidgetBundle.swift */,
-				8A23D5592BE7B06B0046C130 /* NewsIOSWidgetLiveActivity.swift */,
-				8A23D55B2BE7B06B0046C130 /* NewsIOSWidget.swift */,
+				8A23D5572BE7B06B0046C130 /* NewsAppIOSWidgetBundle.swift */,
+				8A23D5592BE7B06B0046C130 /* NewsAppIOSWidgetLiveActivity.swift */,
+				8A23D55B2BE7B06B0046C130 /* NewsAppIOSWidget.swift */,
 				8A23D55D2BE7B06B0046C130 /* AppIntent.swift */,
 				8A23D55F2BE7B06C0046C130 /* Assets.xcassets */,
 				8A23D5612BE7B06C0046C130 /* Info.plist */,
 			);
-			path = NewsIOSWidget;
+			path = NewsAppIOSWidget;
 			sourceTree = "<group>";
 		};
-		8A23D56F2BE7B19E0046C130 /* NewsMacWidget */ = {
+		8A23D56F2BE7B19E0046C130 /* NewsAppMacWidget */ = {
 			isa = PBXGroup;
 			children = (
-				8A23D5702BE7B19E0046C130 /* NewsMacWidgetBundle.swift */,
-				8A23D5722BE7B19E0046C130 /* NewsMacWidgetLiveActivity.swift */,
-				8A23D5742BE7B19E0046C130 /* NewsMacWidget.swift */,
+				8A23D5702BE7B19E0046C130 /* NewsAppMacWidgetBundle.swift */,
+				8A23D5722BE7B19E0046C130 /* NewsAppMacWidgetLiveActivity.swift */,
+				8A23D5742BE7B19E0046C130 /* NewsAppMacWidget.swift */,
 				8A23D5762BE7B19E0046C130 /* AppIntent.swift */,
 				8A23D5782BE7B19F0046C130 /* Assets.xcassets */,
 				8A23D57A2BE7B19F0046C130 /* Info.plist */,
 			);
-			path = NewsMacWidget;
+			path = NewsAppMacWidget;
 			sourceTree = "<group>";
 		};
-		8A23D5802BE7C5FD0046C130 /* NewsWidgetShared */ = {
+		8A23D5802BE7C5FD0046C130 /* NewsAppWidgetShared */ = {
 			isa = PBXGroup;
 			children = (
 				8A23D5822BE7C62F0046C130 /* Views */,
 				8A23D5812BE7C6230046C130 /* Models */,
 				8A23D5832BE7CB240046C130 /* NewsWidget.intentdefinition */,
 			);
-			path = NewsWidgetShared;
+			path = NewsAppWidgetShared;
 			sourceTree = "<group>";
 		};
 		8A23D5812BE7C6230046C130 /* Models */ = {
@@ -324,12 +324,12 @@
 		8A4E22B02B4A2BCA006D71C6 = {
 			isa = PBXGroup;
 			children = (
-				8A23D5802BE7C5FD0046C130 /* NewsWidgetShared */,
+				8A23D5802BE7C5FD0046C130 /* NewsAppWidgetShared */,
 				8A4E22BB2B4A2BCA006D71C6 /* NewsApp */,
 				8A4E22CC2B4A2BCD006D71C6 /* NewsAppTests */,
 				8A4E22D62B4A2BCD006D71C6 /* NewsAppUITests */,
-				8A23D5562BE7B06B0046C130 /* NewsIOSWidget */,
-				8A23D56F2BE7B19E0046C130 /* NewsMacWidget */,
+				8A23D5562BE7B06B0046C130 /* NewsAppIOSWidget */,
+				8A23D56F2BE7B19E0046C130 /* NewsAppMacWidget */,
 				8A23D5512BE7B06B0046C130 /* Frameworks */,
 				8A4E22BA2B4A2BCA006D71C6 /* Products */,
 			);
@@ -341,8 +341,8 @@
 				8A4E22B92B4A2BCA006D71C6 /* NewsApp.app */,
 				8A4E22C92B4A2BCD006D71C6 /* NewsAppTests.xctest */,
 				8A4E22D32B4A2BCD006D71C6 /* NewsAppUITests.xctest */,
-				8A23D5502BE7B06B0046C130 /* NewsIOSWidgetExtension.appex */,
-				8A23D56C2BE7B19E0046C130 /* NewsMacWidgetExtension.appex */,
+				8A23D5502BE7B06B0046C130 /* NewsAppIOSWidgetExtension.appex */,
+				8A23D56C2BE7B19E0046C130 /* NewsAppMacWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -601,9 +601,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8A23D54F2BE7B06B0046C130 /* NewsIOSWidgetExtension */ = {
+		8A23D54F2BE7B06B0046C130 /* NewsAppIOSWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A23D5672BE7B06C0046C130 /* Build configuration list for PBXNativeTarget "NewsIOSWidgetExtension" */;
+			buildConfigurationList = 8A23D5672BE7B06C0046C130 /* Build configuration list for PBXNativeTarget "NewsAppIOSWidgetExtension" */;
 			buildPhases = (
 				8A23D54C2BE7B06B0046C130 /* Sources */,
 				8A23D54D2BE7B06B0046C130 /* Frameworks */,
@@ -613,14 +613,14 @@
 			);
 			dependencies = (
 			);
-			name = NewsIOSWidgetExtension;
+			name = NewsAppIOSWidgetExtension;
 			productName = NewsIOSWidgetExtension;
-			productReference = 8A23D5502BE7B06B0046C130 /* NewsIOSWidgetExtension.appex */;
+			productReference = 8A23D5502BE7B06B0046C130 /* NewsAppIOSWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		8A23D56B2BE7B19E0046C130 /* NewsMacWidgetExtension */ = {
+		8A23D56B2BE7B19E0046C130 /* NewsAppMacWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A23D57E2BE7B19F0046C130 /* Build configuration list for PBXNativeTarget "NewsMacWidgetExtension" */;
+			buildConfigurationList = 8A23D57E2BE7B19F0046C130 /* Build configuration list for PBXNativeTarget "NewsAppMacWidgetExtension" */;
 			buildPhases = (
 				8A23D5682BE7B19E0046C130 /* Sources */,
 				8A23D5692BE7B19E0046C130 /* Frameworks */,
@@ -630,9 +630,9 @@
 			);
 			dependencies = (
 			);
-			name = NewsMacWidgetExtension;
+			name = NewsAppMacWidgetExtension;
 			productName = NewsMacWidgetExtension;
-			productReference = 8A23D56C2BE7B19E0046C130 /* NewsMacWidgetExtension.appex */;
+			productReference = 8A23D56C2BE7B19E0046C130 /* NewsAppMacWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		8A4E22B82B4A2BCA006D71C6 /* NewsApp */ = {
@@ -749,8 +749,8 @@
 				8A4E22B82B4A2BCA006D71C6 /* NewsApp */,
 				8A4E22C82B4A2BCD006D71C6 /* NewsAppTests */,
 				8A4E22D22B4A2BCD006D71C6 /* NewsAppUITests */,
-				8A23D54F2BE7B06B0046C130 /* NewsIOSWidgetExtension */,
-				8A23D56B2BE7B19E0046C130 /* NewsMacWidgetExtension */,
+				8A23D54F2BE7B06B0046C130 /* NewsAppIOSWidgetExtension */,
+				8A23D56B2BE7B19E0046C130 /* NewsAppMacWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -805,13 +805,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A23D5582BE7B06B0046C130 /* NewsIOSWidgetBundle.swift in Sources */,
+				8A23D5582BE7B06B0046C130 /* NewsAppIOSWidgetBundle.swift in Sources */,
 				8A23D5852BE7CB240046C130 /* NewsWidget.intentdefinition in Sources */,
 				8A23D55E2BE7B06B0046C130 /* AppIntent.swift in Sources */,
-				8A23D55C2BE7B06B0046C130 /* NewsIOSWidget.swift in Sources */,
+				8A23D55C2BE7B06B0046C130 /* NewsAppIOSWidget.swift in Sources */,
 				8A23D5922BE8BFFD0046C130 /* ArticleWidgetModel.swift in Sources */,
 				8A23D58B2BE7DD870046C130 /* ArticleApiObject.swift in Sources */,
-				8A23D55A2BE7B06B0046C130 /* NewsIOSWidgetLiveActivity.swift in Sources */,
+				8A23D55A2BE7B06B0046C130 /* NewsAppIOSWidgetLiveActivity.swift in Sources */,
 				8A23D58F2BE803E10046C130 /* CategoryArticles.swift in Sources */,
 				8A23D5892BE7CFE40046C130 /* Category.swift in Sources */,
 			);
@@ -821,13 +821,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A23D5712BE7B19E0046C130 /* NewsMacWidgetBundle.swift in Sources */,
+				8A23D5712BE7B19E0046C130 /* NewsAppMacWidgetBundle.swift in Sources */,
 				8A23D5862BE7CB240046C130 /* NewsWidget.intentdefinition in Sources */,
 				8A23D5772BE7B19E0046C130 /* AppIntent.swift in Sources */,
-				8A23D5752BE7B19E0046C130 /* NewsMacWidget.swift in Sources */,
+				8A23D5752BE7B19E0046C130 /* NewsAppMacWidget.swift in Sources */,
 				8A23D5932BE8BFFD0046C130 /* ArticleWidgetModel.swift in Sources */,
 				8A23D58C2BE7DD870046C130 /* ArticleApiObject.swift in Sources */,
-				8A23D5732BE7B19E0046C130 /* NewsMacWidgetLiveActivity.swift in Sources */,
+				8A23D5732BE7B19E0046C130 /* NewsAppMacWidgetLiveActivity.swift in Sources */,
 				8A23D5902BE803E10046C130 /* CategoryArticles.swift in Sources */,
 				8A23D58A2BE7CFE40046C130 /* Category.swift in Sources */,
 			);
@@ -898,12 +898,12 @@
 /* Begin PBXTargetDependency section */
 		8A23D5632BE7B06C0046C130 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8A23D54F2BE7B06B0046C130 /* NewsIOSWidgetExtension */;
+			target = 8A23D54F2BE7B06B0046C130 /* NewsAppIOSWidgetExtension */;
 			targetProxy = 8A23D5622BE7B06C0046C130 /* PBXContainerItemProxy */;
 		};
 		8A23D57C2BE7B19F0046C130 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8A23D56B2BE7B19E0046C130 /* NewsMacWidgetExtension */;
+			target = 8A23D56B2BE7B19E0046C130 /* NewsAppMacWidgetExtension */;
 			targetProxy = 8A23D57B2BE7B19F0046C130 /* PBXContainerItemProxy */;
 		};
 		8A4E22CB2B4A2BCD006D71C6 /* PBXTargetDependency */ = {
@@ -1227,7 +1227,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8A23D5672BE7B06C0046C130 /* Build configuration list for PBXNativeTarget "NewsIOSWidgetExtension" */ = {
+		8A23D5672BE7B06C0046C130 /* Build configuration list for PBXNativeTarget "NewsAppIOSWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A23D5662BE7B06C0046C130 /* Dev */,
@@ -1235,7 +1235,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Dev;
 		};
-		8A23D57E2BE7B19F0046C130 /* Build configuration list for PBXNativeTarget "NewsMacWidgetExtension" */ = {
+		8A23D57E2BE7B19F0046C130 /* Build configuration list for PBXNativeTarget "NewsAppMacWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A23D57F2BE7B19F0046C130 /* Dev */,

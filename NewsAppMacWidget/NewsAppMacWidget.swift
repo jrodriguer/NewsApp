@@ -1,6 +1,6 @@
 //
-//  NewsMacWidget.swift
-//  NewsMacWidget
+//  NewsAppMacWidget.swift
+//  NewsAppMacWidget
 //
 //  Created by Julio Rodriguez on 5/5/24.
 //
@@ -37,7 +37,7 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationAppIntent
 }
 
-struct NewsMacWidgetEntryView : View {
+struct NewsAppMacWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
@@ -51,12 +51,12 @@ struct NewsMacWidgetEntryView : View {
     }
 }
 
-struct NewsMacWidget: Widget {
-    let kind: String = "NewsMacWidget"
+struct NewsAppMacWidget: Widget {
+    let kind: String = "NewsAppMacWidget"
 
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            NewsMacWidgetEntryView(entry: entry)
+            NewsAppMacWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
     }
@@ -77,7 +77,7 @@ extension ConfigurationAppIntent {
 }
 
 #Preview(as: .systemSmall) {
-    NewsMacWidget()
+    NewsAppMacWidget()
 } timeline: {
     SimpleEntry(date: .now, configuration: .smiley)
     SimpleEntry(date: .now, configuration: .starEyes)
