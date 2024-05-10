@@ -122,7 +122,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>2</integer>
+			<integer>4</integer>
 			<key>INIntentName</key>
 			<string>SelectCategory</string>
 			<key>INIntentParameters</key>
@@ -141,7 +141,7 @@
 					<key>INIntentParameterEnumTypeNamespace</key>
 					<string>rWMuzg</string>
 					<key>INIntentParameterName</key>
-					<string>Category</string>
+					<string>category</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -160,7 +160,7 @@
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
 							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${Category}’.</string>
+							<string>There are ${count} options matching ‘${category}’.</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
 							<string>GfyHzC</string>
 							<key>INIntentParameterPromptDialogType</key>
@@ -170,7 +170,7 @@
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
 							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Just to confirm, you wanted ‘${Category}’?</string>
+							<string>Just to confirm, you wanted ‘${category}’?</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
 							<string>F8poAK</string>
 							<key>INIntentParameterPromptDialogType</key>
@@ -178,7 +178,7 @@
 						</dict>
 					</array>
 					<key>INIntentParameterTag</key>
-					<integer>2</integer>
+					<integer>4</integer>
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
 				</dict>
