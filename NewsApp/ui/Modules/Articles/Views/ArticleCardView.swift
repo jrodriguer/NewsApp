@@ -70,6 +70,6 @@ struct ArticleCardView: View {
     }
 }
 
-#Preview {
-    ArticleCardView(article: ArticleApiObject.mockArticle)
-}
+//#Preview {
+//    ArticleCardView(article: ArticleApiObject.mockArticle)
+//}

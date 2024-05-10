@@ -42,8 +42,8 @@ struct ArticleRowView: View {
     }
 }
 
-#Preview {
-    ArticleRowView(article: ArticleApiObject.mockArticle)
-        .environmentObject(ArticlesViewModel())
-        .environmentObject(FavoritesViewModel<ArticleApiObject>(saveKey:  FavoriteKey.articleFavorites))
-}
+//#Preview {
+//    ArticleRowView(article: ArticleApiObject.mockArticle)
+//        .environmentObject(ArticlesViewModel())
+//        .environmentObject(FavoritesViewModel<ArticleApiObject>(saveKey:  FavoriteKey.articleFavorites))
+//}
