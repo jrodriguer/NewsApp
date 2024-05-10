@@ -1,0 +1,45 @@
+{
+    "status": "ok",
+    "totalResults": 3,
+    "articles": [
+        {
+            "source": {
+                "id": "reuters",
+                "name": "Reuters"
+            },
+            "author": "Reuters",
+            "title": "Most South Korea trainee doctors defying pressure to end walkout - Reuters",
+            "description": null,
+            "url": "https://www.reuters.com/world/asia-pacific/most-south-korea-trainee-doctors-defying-pressure-end-walkout-2024-02-29/",
+            "urlToImage": null,
+            "publishedAt": "2024-02-29T07:24:30Z",
+            "content": null
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Yahoo Entertainment"
+            },
+            "author": "Reuters",
+            "title": "Daimler set to spin off truck unit by year end - report",
+            "description": "German carmaker Daimler is on track to spin off Daimler Truck, the world's largest truck and bus maker, by the end of the year, its finance chief was quoted ...",
+            "url": "https://finance.yahoo.com/news/daimler-set-spin-off-truck-105054589.html",
+            "urlToImage": "https://s.yimg.com/uu/api/res/1.2/ZXauUWPZhFnfK_1Rtj68PQ--~B/aD00OTg7dz04MDA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/reuters-finance.com/680be5a97331e78dc8e6514e3f0364f3",
+            "publishedAt": "2021-06-27T10:50:54Z",
+            "content": "BERLIN (Reuters) - German carmaker Daimler is on track to spin off Daimler Truck, the world's largest truck and bus maker, by the end of the year, its finance chief was quoted as saying on Sunday.\r\n\"… [+1078 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Ekonomika.sme.sk"
+            },
+            "author": "SITA",
+            "title": "Tesla sťahuje v Číne zhruba 285-tisíc elektromobilov pre chybu s tempomatmi",
+            "description": "Tesla plánuje vylepšiť softvér tempomatov na diaľku.",
+            "url": "https://ekonomika.sme.sk/c/22690875/tesla-stahuje-v-cine-zhruba-285-tisic-elektromobilov-pre-chybu-s-tempomatmi.html",
+            "urlToImage": "https://m.smedata.sk/api-media/media/image/sme/7/67/6739247/6739247_1200x.jpeg?rev=3",
+            "publishedAt": "2021-06-27T10:47:59Z",
+            "content": "Tesla plánuje vylepi softvér tempomatov na diaku.27. jún 2021 o 12:47 SITA BRATISLAVA. Výrobca elektrických áut Tesla sahuje v íne zhruba 285-tisíc elektromobilov pre chybu s tempomatmi.\r\nV sobotu to… [+1307 chars]"
+        }
+    ]
+}

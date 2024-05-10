@@ -1,5 +1,5 @@
 //
-//  CategoryIntent.swift
+//  Category+Intent.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 6/5/24.
@@ -19,6 +19,5 @@ extension Category {
         case .health: self = .health
         case .unknown: self = .general
         }
-        
     }
 }
