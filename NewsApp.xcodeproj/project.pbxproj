@@ -92,6 +92,12 @@
 		8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */; };
 		8AD6123C2B76D8D400D2D8CC /* TabBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */; };
 		8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */; };
+		8AD9DE2E2BEE6EC80058CD6B /* AticleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9DE2D2BEE6EC80058CD6B /* AticleProvider.swift */; };
+		8AD9DE2F2BEE6EC80058CD6B /* AticleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9DE2D2BEE6EC80058CD6B /* AticleProvider.swift */; };
+		8AD9DE3A2BEE7BE20058CD6B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBC8A2B95E25D00D78C5D /* Configuration.swift */; };
+		8AD9DE3B2BEE7BE20058CD6B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBC8A2B95E25D00D78C5D /* Configuration.swift */; };
+		8AD9DE3C2BEE7BF00058CD6B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FEC602B93D2000027A3E6 /* Log.swift */; };
+		8AD9DE3D2BEE7BF00058CD6B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FEC602B93D2000027A3E6 /* Log.swift */; };
 		8AE62B1D2B793752005DFD77 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1C2B793752005DFD77 /* Color.swift */; };
 		8AE62B292B7BDCFC005DFD77 /* BackendApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B282B7BDCFC005DFD77 /* BackendApi.swift */; };
 		8AE62B2B2B7BF8FB005DFD77 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B2A2B7BF8FB005DFD77 /* DataRequest.swift */; };
@@ -210,6 +216,7 @@
 		8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButtonView.swift; sourceTree = "<group>"; };
 		8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModalTabBarItemView.swift; sourceTree = "<group>"; };
+		8AD9DE2D2BEE6EC80058CD6B /* AticleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AticleProvider.swift; sourceTree = "<group>"; };
 		8AE62B1C2B793752005DFD77 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8AE62B282B7BDCFC005DFD77 /* BackendApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendApi.swift; sourceTree = "<group>"; };
 		8AE62B2A2B7BF8FB005DFD77 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
@@ -319,6 +326,7 @@
 			children = (
 				8A23D5812BE7C6230046C130 /* Models */,
 				8A23D5832BE7CB240046C130 /* NewsAppWidget.intentdefinition */,
+				8AD9DE2D2BEE6EC80058CD6B /* AticleProvider.swift */,
 			);
 			path = NewsAppWidgetShared;
 			sourceTree = "<group>";
@@ -839,8 +847,11 @@
 				8A23D55C2BE7B06B0046C130 /* NewsAppIOSWidget.swift in Sources */,
 				8A23D5922BE8BFFD0046C130 /* ArticleWidgetModel.swift in Sources */,
 				8A23D5A02BE947CB0046C130 /* Category+Intent.swift in Sources */,
+				8AD9DE3B2BEE7BE20058CD6B /* Configuration.swift in Sources */,
 				8A23D5942BE8EFC90046C130 /* BackendApi.swift in Sources */,
+				8AD9DE3C2BEE7BF00058CD6B /* Log.swift in Sources */,
 				8A23D58B2BE7DD870046C130 /* ArticleApiObject.swift in Sources */,
+				8AD9DE2E2BEE6EC80058CD6B /* AticleProvider.swift in Sources */,
 				8A23D55A2BE7B06B0046C130 /* NewsAppIOSWidgetLiveActivity.swift in Sources */,
 				8A23D5962BE8F00F0046C130 /* ApiRestManager.swift in Sources */,
 				8A23D58F2BE803E10046C130 /* CategoryArticles.swift in Sources */,
@@ -860,8 +871,11 @@
 				8A23D5752BE7B19E0046C130 /* NewsAppMacWidget.swift in Sources */,
 				8A23D5932BE8BFFD0046C130 /* ArticleWidgetModel.swift in Sources */,
 				8A23D5A12BE947CB0046C130 /* Category+Intent.swift in Sources */,
+				8AD9DE3A2BEE7BE20058CD6B /* Configuration.swift in Sources */,
 				8A23D5952BE8EFCA0046C130 /* BackendApi.swift in Sources */,
+				8AD9DE3D2BEE7BF00058CD6B /* Log.swift in Sources */,
 				8A23D58C2BE7DD870046C130 /* ArticleApiObject.swift in Sources */,
+				8AD9DE2F2BEE6EC80058CD6B /* AticleProvider.swift in Sources */,
 				8A23D5732BE7B19E0046C130 /* NewsAppMacWidgetLiveActivity.swift in Sources */,
 				8A23D5972BE8F0100046C130 /* ApiRestManager.swift in Sources */,
 				8A23D5902BE803E10046C130 /* CategoryArticles.swift in Sources */,
