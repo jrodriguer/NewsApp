@@ -9,11 +9,15 @@ import Foundation
 
 fileprivate let relativeDateFormatter = RelativeDateTimeFormatter()
 
-struct ArticleListApiObject: Decodable, Encodable, Equatable {
+struct ArticleListApiObject {
     let status: String
     let totalResults: Int
     let articles: [ArticleApiObject]
 }
+
+extension ArticleListApiObject: Decodable { }
+extension ArticleListApiObject: Encodable { }
+extension ArticleListApiObject: Equatable { }
 
 struct ArticleApiObject {
     let id: UUID
@@ -38,6 +42,32 @@ struct ArticleApiObject {
         case publishedAt
         case content
         case source
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = UUID()
+        
+        author = try container.decodeIfPresent(String.self, forKey: .author)
+        title = try container.decode(String.self, forKey: .title)
+        description = try container.decodeIfPresent(String.self, forKey: .description)
+        url = try container.decode(URL.self, forKey: .url)
+        urlToImage = try container.decodeIfPresent(URL.self, forKey: .urlToImage)
+        content = try container.decodeIfPresent(String.self, forKey: .content)
+        source = try container.decode(Source.self, forKey: .source)
+        
+        do {
+            publishedAt = try container.decode(Date.self, forKey: .publishedAt)
+        } catch {
+            let dateString = try container.decode(String.self, forKey: .publishedAt)
+            let dateFormatter = ISO8601DateFormatter()
+            if let date = dateFormatter.date(from: dateString) {
+                publishedAt = date
+            } else {
+                throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
+            }
+        }
     }
     
     var authorField: String {
@@ -69,30 +99,21 @@ extension ArticleApiObject: Equatable { }
 extension ArticleApiObject: Identifiable { }
 
 extension ArticleApiObject {
+    static var previewData: [ArticleApiObject] {
+        let previewDataURL = Bundle.main.url(forResource: "news", withExtension: "json")!
+        let data = try! Data(contentsOf: previewDataURL)
+        
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.dateDecodingStrategy = .iso8601
+        
+        let apiResponse = try! jsonDecoder.decode(ArticleListApiObject.self, from: data)
+        return apiResponse.articles
+    }
     
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.id = UUID()
-        
-        author = try container.decodeIfPresent(String.self, forKey: .author)
-        title = try container.decode(String.self, forKey: .title)
-        description = try container.decodeIfPresent(String.self, forKey: .description)
-        url = try container.decode(URL.self, forKey: .url)
-        urlToImage = try container.decodeIfPresent(URL.self, forKey: .urlToImage)
-        content = try container.decodeIfPresent(String.self, forKey: .content)
-        source = try container.decode(Source.self, forKey: .source)
-        
-        do {
-            publishedAt = try container.decode(Date.self, forKey: .publishedAt)
-        } catch {
-            let dateString = try container.decode(String.self, forKey: .publishedAt)
-            let dateFormatter = ISO8601DateFormatter()
-            if let date = dateFormatter.date(from: dateString) {
-                publishedAt = date
-            } else {
-                throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
-            }
+    static var previewCategoryArticles: [CategoryArticles] {
+        let articles = previewData
+        return Category.allCases.map {
+            .init(category: $0, articles: articles.shuffled())
         }
     }
 }
@@ -103,38 +124,3 @@ struct Source {
 
 extension Source: Codable {}
 extension Source: Equatable {}
-
-extension ArticleApiObject {
-    static let mockArticle: ArticleApiObject = {
-        let mockArticleData = """
-            {
-                "author": "John Doe",
-                "title": "Mock Article",
-                "description": "This is a mock article",
-                "url": "https://example.com",
-                "urlToImage": "https://example.com/image.jpg",
-                "publishedAt": "2022-01-01T00:00:00Z",
-                "content": "Mock content for preview purposes",
-                "source": {
-                    "id": "mock_source_id",
-                    "name": "Mock Source"
-                }
-            }
-            """.data(using: .utf8)!
-        
-        do {
-            let decoder = JSONDecoder()
-            let mockArticle = try decoder.decode(ArticleApiObject.self, from: mockArticleData)
-            return mockArticle
-        } catch {
-            fatalError("Failed to create mock article: \(error)")
-        }
-    }()
-}
-
-extension ArticleListApiObject {
-    static let mockArticleList: ArticleListApiObject = {
-        let mockList = ArticleListApiObject(status: "ok", totalResults: 1, articles: [ArticleApiObject.mockArticle])
-        return mockList
-    }()
-}
