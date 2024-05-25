@@ -311,7 +311,6 @@
 		8A23D5802BE7C5FD0046C130 /* NewsAppWidgetShared */ = {
 			isa = PBXGroup;
 			children = (
-				8A23D5822BE7C62F0046C130 /* Views */,
 				8A23D5812BE7C6230046C130 /* Models */,
 				8A23D5832BE7CB240046C130 /* NewsWidget.intentdefinition */,
 			);
@@ -326,13 +325,6 @@
 				8A23D59F2BE947CB0046C130 /* CategoryIntent.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		8A23D5822BE7C62F0046C130 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		8A4E22B02B4A2BCA006D71C6 = {
