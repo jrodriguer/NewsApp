@@ -40,6 +40,32 @@ struct ArticleApiObject {
         case source
     }
     
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = UUID()
+        
+        author = try container.decodeIfPresent(String.self, forKey: .author)
+        title = try container.decode(String.self, forKey: .title)
+        description = try container.decodeIfPresent(String.self, forKey: .description)
+        url = try container.decode(URL.self, forKey: .url)
+        urlToImage = try container.decodeIfPresent(URL.self, forKey: .urlToImage)
+        content = try container.decodeIfPresent(String.self, forKey: .content)
+        source = try container.decode(Source.self, forKey: .source)
+        
+        do {
+            publishedAt = try container.decode(Date.self, forKey: .publishedAt)
+        } catch {
+            let dateString = try container.decode(String.self, forKey: .publishedAt)
+            let dateFormatter = ISO8601DateFormatter()
+            if let date = dateFormatter.date(from: dateString) {
+                publishedAt = date
+            } else {
+                throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
+            }
+        }
+    }
+    
     var authorField: String {
         author ?? ""
     }
@@ -67,35 +93,6 @@ struct ArticleApiObject {
 extension ArticleApiObject: Codable { }
 extension ArticleApiObject: Equatable { }
 extension ArticleApiObject: Identifiable { }
-
-extension ArticleApiObject {
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.id = UUID()
-        
-        author = try container.decodeIfPresent(String.self, forKey: .author)
-        title = try container.decode(String.self, forKey: .title)
-        description = try container.decodeIfPresent(String.self, forKey: .description)
-        url = try container.decode(URL.self, forKey: .url)
-        urlToImage = try container.decodeIfPresent(URL.self, forKey: .urlToImage)
-        content = try container.decodeIfPresent(String.self, forKey: .content)
-        source = try container.decode(Source.self, forKey: .source)
-        
-        do {
-            publishedAt = try container.decode(Date.self, forKey: .publishedAt)
-        } catch {
-            let dateString = try container.decode(String.self, forKey: .publishedAt)
-            let dateFormatter = ISO8601DateFormatter()
-            if let date = dateFormatter.date(from: dateString) {
-                publishedAt = date
-            } else {
-                throw DecodingError.dataCorruptedError(forKey: .publishedAt, in: container, debugDescription: "Date string does not match format expected by formatter.")
-            }
-        }
-    }
-}
 
 struct Source {
     let name: String
