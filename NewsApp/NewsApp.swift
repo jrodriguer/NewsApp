@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct NewsApp: App {
     
-    // MARK: UIApplicationDelegateAdaptor property wrapper to tell SwiftUI it should use your AppDelegate class.
+    // UIApplicationDelegateAdaptor property wrapper to tell SwiftUI it should use your AppDelegate class.
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {

@@ -18,7 +18,6 @@ struct MockGenerator {
                 let jsonData = try JSONDecoder().decode(ArticleListApiObject.self, from: data)
                 return jsonData
             } else {
-                // FIXME: If not found file.
                 let articles = """
                         {
                             "status": "ok",
