@@ -12,6 +12,21 @@ import XCTest
 
 @testable import NewsApp
 class BackendApiTests: XCTestCase {
+    private var setup = MockDependencies()
+    private var vm = ArticlesViewModel()
+    
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+    
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    func testArticlesViewModel_service_shouldBeInjectedAndNotBeNil() {
+        XCTAssertNotNil(vm.backendApi)
+    }
+    
     func testArticleListApiObject_ShouldReturnExpectedArticlesList() {
         let sessionManager = MockGenerator.createMockSessionManager()
         
