@@ -10,15 +10,20 @@ import Alamofire
 import Mocker
 
 @testable import NewsApp
+
 struct MockGenerator {
+    static func loadJsonFile(name: String, type: String) -> Data? {
+        guard let filePath = Bundle.main.path(forResource: name, ofType: type) else {
+            return nil
+        }
+        return try? Data(contentsOf: URL(fileURLWithPath: filePath))
+    }
+    
     static func articleListApiObject() -> ArticleListApiObject {
-        do {
-            if let path = Bundle.main.path(forResource: "news", ofType: "json") {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path))
-                let jsonData = try JSONDecoder().decode(ArticleListApiObject.self, from: data)
-                return jsonData
-            } else {
-                let articles = """
+        if let data = loadJsonFile(name: "news", type: "json") {
+            return decodeJson(data: data)
+        } else {
+            let news = """
                         {
                             "status": "ok",
                             "totalResults": 33,
@@ -38,13 +43,16 @@ struct MockGenerator {
                                 }
                             ]
                         }
-                """.data(using: .utf8)!
-                
-                let jsonData = try JSONDecoder().decode(ArticleListApiObject.self, from: articles)
-                return jsonData
-            }
+                    """.data(using: .utf8)!
+            return decodeJson(data: news)
+        }
+    }
+    
+    static func decodeJson(data: Data) -> ArticleListApiObject {
+        do {
+            return try JSONDecoder().decode(ArticleListApiObject.self, from: data)
         } catch {
-            fatalError("Failed to load 'news' JSON file for testing.")
+            fatalError("Failed to decode JSON data: \(error.localizedDescription)")
         }
     }
     
