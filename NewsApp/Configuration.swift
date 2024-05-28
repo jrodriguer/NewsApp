@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// A utility for handling configuration values from the Info.plist file.
 enum Configuration {
     enum Key: String {
         case API_URL
