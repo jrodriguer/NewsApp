@@ -13,7 +13,7 @@ import Mocker
 struct MockGenerator {
     static func articleListApiObject() -> ArticleListApiObject {
         do {
-            if let path = Bundle.main.path(forResource: "get_articles", ofType: "json") {
+            if let path = Bundle.main.path(forResource: "news", ofType: "json") {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path))
                 let jsonData = try JSONDecoder().decode(ArticleListApiObject.self, from: data)
                 return jsonData
@@ -45,7 +45,7 @@ struct MockGenerator {
                 return jsonData
             }
         } catch {
-            fatalError("Failed to load 'get_articles' JSON file for testing.")
+            fatalError("Failed to load 'news' JSON file for testing.")
         }
     }
     
