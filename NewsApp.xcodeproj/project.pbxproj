@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8A0357AA2B65264800BE5435 /* FloatingActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0357A92B65264800BE5435 /* FloatingActionButtonView.swift */; };
 		8A1DAC262B8E3C6F00259AD3 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAC252B8E3C6F00259AD3 /* FavoritesViewModel.swift */; };
+		8A30D3712C071B9300A09B9D /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A3CD90D2B91DE82005A677C /* news.json */; };
 		8A3CD90E2B91DE82005A677C /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A3CD90D2B91DE82005A677C /* news.json */; };
 		8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */; };
 		8A4E22C12B4A2BCC006D71C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */; };
@@ -551,6 +552,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A30D3712C071B9300A09B9D /* news.json in Resources */,
 				8A4E22C42B4A2BCC006D71C6 /* Preview Assets.xcassets in Resources */,
 				8A7C4D742B879372009E98F6 /* Kode_Mono in Resources */,
 				8A8386742B8565BB00FEC3BD /* GoogleService-Info.plist in Resources */,
