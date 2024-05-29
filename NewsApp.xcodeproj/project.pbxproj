@@ -49,7 +49,6 @@
 		8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */; };
 		8AD6123C2B76D8D400D2D8CC /* TabBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */; };
 		8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */; };
-		8AD804C22B8A42ED00DE501A /* SwiftOpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD804C12B8A42ED00DE501A /* SwiftOpenAI */; };
 		8AE62B1D2B793752005DFD77 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1C2B793752005DFD77 /* Color.swift */; };
 		8AE62B292B7BDCFC005DFD77 /* BackendApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B282B7BDCFC005DFD77 /* BackendApi.swift */; };
 		8AE62B2B2B7BF8FB005DFD77 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B2A2B7BF8FB005DFD77 /* DataRequest.swift */; };
@@ -126,7 +125,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AD804C22B8A42ED00DE501A /* SwiftOpenAI in Frameworks */,
 				8AAB4D0B2B76599200C71B36 /* Alamofire in Frameworks */,
 				8A91CC022B8FB18800F673C5 /* Mocker in Frameworks */,
 				8A9FEC642B93D2750027A3E6 /* SwiftyBeaver in Frameworks */,
@@ -453,7 +451,6 @@
 			name = NewsApp;
 			packageProductDependencies = (
 				8AAB4D0A2B76599200C71B36 /* Alamofire */,
-				8AD804C12B8A42ED00DE501A /* SwiftOpenAI */,
 				8A91CC012B8FB18800F673C5 /* Mocker */,
 				8A9FEC632B93D2750027A3E6 /* SwiftyBeaver */,
 			);
@@ -882,11 +879,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AAB4D092B76599200C71B36 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		8AD804C12B8A42ED00DE501A /* SwiftOpenAI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AD804C02B8A42ED00DE501A /* XCRemoteSwiftPackageReference "SwiftOpenAI" */;
-			productName = SwiftOpenAI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
