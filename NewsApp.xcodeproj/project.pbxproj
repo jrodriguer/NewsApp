@@ -333,8 +333,8 @@
 		8A8C18672B728738008E3C8C /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				8AE62B272B7BD02C005DFD77 /* Api */,
-				8A8C18682B728741008E3C8C /* Entities */,
+				8AB07D132C077A34008237C0 /* Remote */,
+				8AB07D122C077A29008237C0 /* Local */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -423,6 +423,30 @@
 				8AABBC972B963BD100D78C5D /* Dev.xcconfig */,
 			);
 			path = Environments;
+			sourceTree = "<group>";
+		};
+		8AB07D122C077A29008237C0 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				8AB07D142C077A72008237C0 /* Entities */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		8AB07D132C077A34008237C0 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				8AE62B272B7BD02C005DFD77 /* Api */,
+				8A8C18682B728741008E3C8C /* Entities */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		8AB07D142C077A72008237C0 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		8AE62B272B7BD02C005DFD77 /* Api */ = {
