@@ -29,13 +29,10 @@ class BackendApiTests: XCTestCase {
     
     func testArticleListApiObject_ShouldReturnExpectedArticlesList() {
         let sessionManager = MockGenerator.createMockSessionManager()
-        
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
         let apiEndpoint = URL(string: "https://newsapi.org/v2/top-headlines/?country=us&apiKey=\(apiKey)")!
-        
         let expectedArticlesList = MockGenerator.articleListApiObject()
         let requestExpectation = self.expectation(description: "Request should finish")
-                
         let mock = Mock(url: apiEndpoint, contentType: .json, statusCode: 200, data: [.get: MockGenerator.mockedData(for: expectedArticlesList)])
         mock.register()
         
