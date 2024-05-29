@@ -19,7 +19,7 @@ class ArticlesViewModel: ObservableObject {
     func loadArticles(category: Category? = nil) {
         isLoading = true
                 
-        backendApi?.getArticles(category: category)?.responseDecodable(of: ArticleListApiObject.self) { [weak self] response in
+        backendApi?.getTopHeadLinesArticles(category: category)?.responseDecodable(of: ArticleListApiObject.self) { [weak self] response in
             guard let self = self else { return }
             self.isLoading = false
             

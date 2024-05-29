@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol BackendApiProtocol {
-    func getArticles(category: Category?) -> DataRequest?
+    func getTopHeadLinesArticles(category: Category?) -> DataRequest?
 }
 
 class BackendApi: ApiRestManager, BackendApiProtocol {
@@ -20,7 +20,7 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
         super.init(url: apiUrl)
     }
         
-    func getArticles(category: Category?) -> DataRequest? {
+    func getTopHeadLinesArticles(category: Category?) -> DataRequest? {
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
         var serviceURL: String = "/v2/top-headlines/?country=us&apiKey=\(apiKey)"
         
