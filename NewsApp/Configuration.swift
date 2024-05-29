@@ -13,9 +13,6 @@ enum Configuration {
     }
     
     /// Retrieve a typed value for a specific configuration key from the Info.plist file.
-    ///
-    /// - Parameter key: The configuration key.
-    /// - Returns: The typed value for the specified key, or nil if not found or conversion fails.
     static func value<T>(for key: Key) -> T? where T: LosslessStringConvertible {
         guard let object = Bundle.main.object(forInfoDictionaryKey: key.rawValue) else {
             Log.warning(tag: Configuration.self, message: "Value not found for key: \(key.rawValue)")
