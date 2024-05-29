@@ -13,7 +13,7 @@ import Mocker
 
 struct MockGenerator {
     static func loadJsonFile(name: String, type: String) -> Data? {
-        guard let filePath = Bundle.main.path(forResource: name, ofType: type) else {
+        guard let filePath: String = Bundle.main.path(forResource: name, ofType: type) else {
             return nil
         }
         return try? Data(contentsOf: URL(fileURLWithPath: filePath))
