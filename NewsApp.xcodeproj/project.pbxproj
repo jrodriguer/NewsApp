@@ -47,7 +47,6 @@
 		8AABBC8B2B95E25D00D78C5D /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBC8A2B95E25D00D78C5D /* Configuration.swift */; };
 		8AABBC8D2B96116D00D78C5D /* MockDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBC8C2B96116D00D78C5D /* MockDependencies.swift */; };
 		8AB07D162C077BB7008237C0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB07D152C077BB7008237C0 /* Category.swift */; };
-		8AB07D182C077F81008237C0 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB07D172C077F81008237C0 /* Article.swift */; };
 		8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */; };
 		8AD6123C2B76D8D400D2D8CC /* TabBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */; };
 		8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */; };
@@ -114,7 +113,6 @@
 		8AABBC8C2B96116D00D78C5D /* MockDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDependencies.swift; sourceTree = "<group>"; };
 		8AABBC972B963BD100D78C5D /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		8AB07D152C077BB7008237C0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		8AB07D172C077F81008237C0 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		8ACA94282B86C3C7001CEBD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButtonView.swift; sourceTree = "<group>"; };
@@ -337,8 +335,9 @@
 		8A8C18672B728738008E3C8C /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				8AB07D132C077A34008237C0 /* Remote */,
-				8AB07D122C077A29008237C0 /* Local */,
+				8AE62B272B7BD02C005DFD77 /* Api */,
+				8AB07D152C077BB7008237C0 /* Category.swift */,
+				8A8C18682B728741008E3C8C /* Entities */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -427,32 +426,6 @@
 				8AABBC972B963BD100D78C5D /* Dev.xcconfig */,
 			);
 			path = Environments;
-			sourceTree = "<group>";
-		};
-		8AB07D122C077A29008237C0 /* Local */ = {
-			isa = PBXGroup;
-			children = (
-				8AB07D142C077A72008237C0 /* Entities */,
-				8AB07D152C077BB7008237C0 /* Category.swift */,
-			);
-			path = Local;
-			sourceTree = "<group>";
-		};
-		8AB07D132C077A34008237C0 /* Remote */ = {
-			isa = PBXGroup;
-			children = (
-				8AE62B272B7BD02C005DFD77 /* Api */,
-				8A8C18682B728741008E3C8C /* Entities */,
-			);
-			path = Remote;
-			sourceTree = "<group>";
-		};
-		8AB07D142C077A72008237C0 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				8AB07D172C077F81008237C0 /* Article.swift */,
-			);
-			path = Entities;
 			sourceTree = "<group>";
 		};
 		8AE62B272B7BD02C005DFD77 /* Api */ = {
@@ -635,7 +608,6 @@
 				8A9CFC962B4EEF7400F70B13 /* WrongImageView.swift in Sources */,
 				8AABBC8B2B95E25D00D78C5D /* Configuration.swift in Sources */,
 				8AE62B292B7BDCFC005DFD77 /* BackendApi.swift in Sources */,
-				8AB07D182C077F81008237C0 /* Article.swift in Sources */,
 				8AABBC892B95DAEB00D78C5D /* ProcessInfo.swift in Sources */,
 				8A8C18722B728E15008E3C8C /* ArticleView.swift in Sources */,
 				8AABBC832B95012000D78C5D /* DependencyInjector.swift in Sources */,
