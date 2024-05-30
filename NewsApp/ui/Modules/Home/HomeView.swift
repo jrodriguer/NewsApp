@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedTab: Tabs = .Headers
+    @State private var selectedTab: Tabs = .News
     @State private var showModal: Bool = false
     
     var body: some View {
-        if selectedTab == .Headers {
+        if selectedTab == .News {
             ArticleView()
         }
         CustomTabBarView(selectedTab: $selectedTab, showModal: $showModal)
