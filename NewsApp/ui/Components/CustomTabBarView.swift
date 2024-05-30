@@ -8,8 +8,8 @@
 import SwiftUI
 
 enum Tabs: Int {
-    case Headers
-    case Personal
+    case News
+    case Favorites
 }
 
 struct CustomTabBarView: View {
@@ -19,9 +19,9 @@ struct CustomTabBarView: View {
     var body: some View {
         HStack {
             Button {
-                selectedTab = .Headers
+                selectedTab = .News
             } label: {
-                TabBarButtonView(buttonText: "Headers", imageName: "network", isActive: selectedTab == .Headers)
+                TabBarButtonView(buttonText: "News", imageName: "network", isActive: selectedTab == .News)
             }
             .tint(Color(.gray))
 
@@ -32,9 +32,9 @@ struct CustomTabBarView: View {
             }
             
             Button {
-                selectedTab = .Personal
+                selectedTab = .Favorites
             } label: {
-                TabBarButtonView(buttonText: "Favorites", imageName: "suit.heart", isActive: selectedTab == .Personal)
+                TabBarButtonView(buttonText: "Favorites", imageName: "suit.heart", isActive: selectedTab == .Favorites)
             }
             .tint(Color(.gray))
         }
@@ -44,5 +44,5 @@ struct CustomTabBarView: View {
 }
 
 #Preview {
-    CustomTabBarView(selectedTab: .constant(.Headers), showModal: .constant(false))
+    CustomTabBarView(selectedTab: .constant(.News), showModal: .constant(false))
 }
