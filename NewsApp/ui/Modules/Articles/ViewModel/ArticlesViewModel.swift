@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ArticlesViewModel: ObservableObject {
+final class ArticlesViewModel: ObservableObject {
     @Inject var backendApi: BackendApiProtocol?
     @Published var articles: [ArticleApiObject] = []
     @Published var isLoading: Bool = false

@@ -153,6 +153,7 @@
 		8A1DAC222B8E3C4800259AD3 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				8AEC0AA72C09434C00308A3E /* Views */,
 				8A1DAC242B8E3C5900259AD3 /* ViewModel */,
 			);
 			path = Favorites;
@@ -434,6 +435,13 @@
 				8AE62B282B7BDCFC005DFD77 /* BackendApi.swift */,
 			);
 			path = Api;
+			sourceTree = "<group>";
+		};
+		8AEC0AA72C09434C00308A3E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
