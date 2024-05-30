@@ -13,13 +13,13 @@ enum ViewOption: String, CaseIterable {
 }
 
 struct ArticleView: View {
-    @StateObject var vm = ArticlesViewModel()
-    @StateObject var favorites = FavoritesViewModel<ArticleApiObject>(saveKey:  FavoriteKey.articleFavorites)
+    @StateObject private var vm = ArticlesViewModel()
+    @StateObject private var favorites = FavoritesViewModel<ArticleApiObject>(saveKey:  FavoriteKey.articleFavorites)
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
-    @State var showFab = true
-    @State var scrollOffset: CGFloat = 0.00
+    @State private var showFab = true
+    @State private var scrollOffset: CGFloat = 0.00
     
     var body: some View {
         NavigationStack {
