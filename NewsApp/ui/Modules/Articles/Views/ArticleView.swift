@@ -45,7 +45,7 @@ struct ArticleView: View {
                 case .listView: listSection
                 }
             }
-            .navigationBarTitle("Headers")
+            .navigationBarTitle("News")
 //            .onAppear {
 //                vm.loadArticles(category: selectedCategory)
 //            }
@@ -169,7 +169,7 @@ extension ArticleView {
                                 .padding()
                         }
                     }
-                    .navigationBarTitle("Headers")
+                    .navigationBarTitle("News")
                     .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
                 }
             }

@@ -34,5 +34,5 @@ struct TabBarButtonView: View {
 }
 
 #Preview {
-    TabBarButtonView(buttonText: "Headers", imageName: "network", isActive: true)
+    TabBarButtonView(buttonText: "News", imageName: "network", isActive: true)
 }
