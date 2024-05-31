@@ -8,20 +8,14 @@
 import Foundation
 import SwiftUI
 
-struct ArticleListApiObject: Decodable, Encodable {
-    let status: String
-    let totalResults: Int
-    let articles: [ArticleApiObject]
-}
-
 struct ArticleApiObject: Identifiable, Codable {
     let id = UUID()
     
     let author: String?
     let title: String
     let description: String?
-    let url: URL
-    let urlToImage: URL?
+    let url: String
+    let urlToImage: String?
     let publishedAt: Date
     let content: String?
     let source: ArticleSource
@@ -36,8 +30,8 @@ struct ArticleApiObject: Identifiable, Codable {
         author = try container.decodeIfPresent(String.self, forKey: .author)
         title = try container.decode(String.self, forKey: .title)
         description = try container.decodeIfPresent(String.self, forKey: .description)
-        url = try container.decode(URL.self, forKey: .url)
-        urlToImage = try container.decodeIfPresent(URL.self, forKey: .urlToImage)
+        url = try container.decode(String.self, forKey: .url)
+        urlToImage = try container.decodeIfPresent(String.self, forKey: .urlToImage)
         content = try container.decodeIfPresent(String.self, forKey: .content)
         source = try container.decode(ArticleSource.self, forKey: .source)
         
@@ -52,8 +46,40 @@ struct ArticleApiObject: Identifiable, Codable {
             }
         }
     }
+    
+    var authorText: String {
+        author ?? ""
+    }
+    
+    var descriptionText: String {
+        description ?? ""
+    }
+
+    var link: URL {
+        URL(string: url)!
+    }
+    
+    var imageURL: URL? {
+        guard let urlToImage = urlToImage else {
+            return nil
+        }
+        return URL(string: urlToImage)
+    }
 }
 
 struct ArticleSource: Codable {
     let name: String
+}
+
+extension ArticleApiObject {
+    static var previewData: [ArticleApiObject] {
+        let previewDataURL = Bundle.main.url(forResource: "news", withExtension: "json")!
+        let data = try! Data(contentsOf: previewDataURL)
+        
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.dateDecodingStrategy = .iso8601
+        
+        let apiResponse = try! jsonDecoder.decode(ArticleListApiObject.self, from: data)
+        return apiResponse.articles
+    }
 }

@@ -12,25 +12,20 @@ struct ArticleCardView: View {
     
     var body: some View {
         VStack {
-            if let imageURL = article.urlToImage {
-                AsyncImage(url: imageURL) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    case .failure(_):
-                        WrongImageView()
-                    case .empty:
-                        EmptyView()
-                    @unknown default:
-                        ProgressView()
-                    }
+            AsyncImage(url: article.imageURL) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                case .failure(_):
+                    WrongImageView()
+                case .empty:
+                    EmptyView()
+                @unknown default:
+                    ProgressView()
                 }
-            } else {
-                WrongImageView()
             }
-            
             HStack {
                 VStack(alignment: .leading) {
                     Text(article.source.name)
@@ -46,10 +41,12 @@ struct ArticleCardView: View {
                     
                     HStack(alignment: .top) {
                         Text(Utils.timeDifference(from: article.publishedAt))
-                        if let author = article.author {
-                            Text("•")
-                            Text(Utils.displayAuthor(author))
-                        }
+//                        if let author = article.author {
+//                            Text("•")
+//                            Text(Utils.displayAuthor(author))
+//                        }
+                        Text("‧")
+                        Text(article.authorText)
                     }
                     .font(.footnote)
                     .fontWeight(.semibold)
@@ -70,6 +67,6 @@ struct ArticleCardView: View {
     }
 }
 
-//#Preview {
-//    ArticleCardView(article: ArticleApiObject.mockArticle)
-//}
+#Preview {
+    ArticleCardView(article: .previewData[0])
+}

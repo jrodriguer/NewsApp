@@ -14,27 +14,23 @@ struct ArticleDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
-                if let imageURL = article.urlToImage {
-                    AsyncImage(url: imageURL) { phase in
-                        switch phase {
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        case .failure(_):
-                            WrongImageView()
-                        case .empty:
-                            EmptyView()
-                        @unknown default:
-                            ProgressView()
-                        }
+                AsyncImage(url: article.imageURL) { phase in
+                    switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    case .failure(_):
+                        WrongImageView()
+                    case .empty:
+                        EmptyView()
+                    @unknown default:
+                        ProgressView()
                     }
-                    .frame(maxHeight: 300)
-                    .cornerRadius(10)
-                    .padding()
-                } else {
-                    WrongImageView()
                 }
+                .frame(maxHeight: 300)
+                .cornerRadius(10)
+                .padding()
                 
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
@@ -45,19 +41,17 @@ struct ArticleDetailView: View {
                             .multilineTextAlignment(.leading)
                     }
                     
-                    if let author = article.author {
-                        Text(author)
+                        Text(article.authorText)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
-                    }
                     
-                    if let description = article.description {
-                        Text(description)
+                    
+                        Text(article.descriptionText)
                             .font(.headline)
                             .foregroundColor(.primary)
                             .lineLimit(nil)
                             .padding(.bottom, 8)
-                    }
+                    
                     
                     if let content = article.content {
                         Text("Content:")
@@ -73,7 +67,7 @@ struct ArticleDetailView: View {
                     }
                     
                     HStack {
-                        Link(destination: article.url) {
+                        Link(destination: article.link) {
                             Image(systemName: "link.circle.fill")
                                 .font(.largeTitle)
                         }
