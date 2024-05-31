@@ -15,13 +15,6 @@ enum Category: String, CaseIterable {
     case sports
     case science
     case health
-    
-    var text: String {
-        if self == .general {
-            return "Top Headlines"
-        }
-        return rawValue.capitalized
-    }
 }
 
 extension Category: Identifiable {
