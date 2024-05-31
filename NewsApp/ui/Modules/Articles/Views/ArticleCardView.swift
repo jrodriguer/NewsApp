@@ -41,10 +41,6 @@ struct ArticleCardView: View {
                     
                     HStack(alignment: .top) {
                         Text(Utils.timeDifference(from: article.publishedAt))
-//                        if let author = article.author {
-//                            Text("•")
-//                            Text(Utils.displayAuthor(author))
-//                        }
                         Text("‧")
                         Text(article.authorText)
                     }
