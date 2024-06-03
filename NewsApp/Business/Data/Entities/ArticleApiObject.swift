@@ -48,7 +48,7 @@ struct ArticleApiObject: Identifiable, Codable {
     }
     
     var authorText: String {
-        author ?? ""
+        "‧ \(author ?? "Not author")"
     }
     
     var descriptionText: String {
