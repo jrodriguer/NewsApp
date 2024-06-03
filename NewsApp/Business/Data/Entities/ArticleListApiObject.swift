@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArticleListApiObject: Decodable {
+struct ArticleListApiObject: Encodable, Decodable {
     let status: String
     let totalResults: Int
     let articles: [ArticleApiObject]
