@@ -41,7 +41,6 @@ struct ArticleCardView: View {
                     
                     HStack(alignment: .top) {
                         Text(Utils.timeDifference(from: article.publishedAt))
-                        Text("‧")
                         Text(article.authorText)
                     }
                     .font(.footnote)
