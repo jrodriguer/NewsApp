@@ -15,6 +15,7 @@ struct ArticleRowView: View {
     var body: some View {
         HStack {
             Text(Utils.displayTitle(article.title))
+                .multilineTextAlignment(.leading)
                 .swipeActions(edge: .leading) {
                     Button {
                         if favorites.contains(article) {
@@ -43,7 +44,3 @@ struct ArticleRowView: View {
         .padding([.top, .bottom])
     }
 }
-
-//#Preview {
-//    ArticleRowView(article: .previewData[0])
-//}
