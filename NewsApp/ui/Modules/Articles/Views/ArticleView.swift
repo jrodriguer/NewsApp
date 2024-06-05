@@ -19,7 +19,7 @@ struct ArticleView: View {
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
     @State private var showFab = true
-    @State private var scrollOffset: CGFloat = 0.00
+    @State private var offset = CGFloat.zero
     
     var body: some View {
         NavigationStack {
@@ -123,42 +123,55 @@ extension ArticleView {
                         .progressViewStyle(CircularProgressViewStyle())
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    ScrollViewReader { proxy in
-                        ScrollView {
-                            VStack {
-                                if !searchResult.isEmpty {
-                                    ForEach(searchResult) { article in
-                                        if article.title != "[Removed]" {
-                                            NavigationLink(destination:
-                                                            ArticleDetailView(article: article)
+                    ScrollView {
+                        VStack {
+                            if !searchResult.isEmpty {
+                                ForEach(searchResult) { article in
+                                    if article.title != "[Removed]" {
+                                        NavigationLink(destination:
+                                                        ArticleDetailView(article: article)
+                                            .environmentObject(vm)
+                                            .environmentObject(favorites)
+                                        ) {
+                                            ArticleRowView(article: article)
                                                 .environmentObject(vm)
                                                 .environmentObject(favorites)
-                                            ) {
-                                                ArticleRowView(article: article)
-                                                    .environmentObject(vm)
-                                                    .environmentObject(favorites)
-                                            }
-                                            .buttonStyle(PlainButtonStyle())
-                                            
-                                            Divider()
                                         }
+                                        .buttonStyle(PlainButtonStyle())
+                                        
+                                        Divider()
                                     }
-                                } else {
-                                    Text("No articles available")
-                                        .foregroundColor(.red)
-                                        .padding()
                                 }
+                            } else {
+                                Text("No articles available")
+                                    .foregroundColor(.red)
+                                    .padding()
                             }
                         }
-                        .padding(10)
-                        .contentMargins(
-                            .vertical, 10,
-                            for: .scrollContent
-                        )
+                        .background(GeometryReader {
+                            Color.clear.preference(key: ViewOffsetKey.self,
+                                                   value: -$0.frame(in: .named("scroll")).origin.y)
+                        })
+                        .onPreferenceChange(ViewOffsetKey.self) { print("offset >> \($0)") }
                     }
+                    .padding(10)
+                    .contentMargins(
+                        .vertical, 10,
+                        for: .scrollContent
+                    )
+                    .coordinateSpace(name: "scroll")
+                    
                 }
             }
         }
+    }
+}
+
+struct ViewOffsetKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
     }
 }
 
