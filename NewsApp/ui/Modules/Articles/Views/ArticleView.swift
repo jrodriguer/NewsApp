@@ -111,7 +111,6 @@ extension ArticleView {
                                 .padding()
                         }
                     }
-                    .padding(.vertical, 10.0)
                 }
             }
         }
@@ -126,41 +125,39 @@ extension ArticleView {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     ScrollViewReader { proxy in
-                        VStack {
-                            ScrollView {
-                                ScrollViewReader { scrollViewReader in
-                                    LazyVStack {
-                                        if !searchResult.isEmpty {
-                                            ForEach(searchResult) { article in
-                                                if article.title != "[Removed]" {
-                                                    ArticleRowView(article: article)
-                                                        .environmentObject(vm)
-                                                        .environmentObject(favorites)
-                                                    
-                                                    NavigationLink(destination:
-                                                                    ArticleDetailView(article: article)
-                                                        .environmentObject(vm)
-                                                        .environmentObject(favorites)
-                                                    ) {
-                                                        EmptyView()
-                                                    }
-                                                    .opacity(0.0)
-                                                }
+                        ScrollView {
+                            VStack {
+                                if !searchResult.isEmpty {
+                                    ForEach(searchResult) { article in
+                                        if article.title != "[Removed]" {
+                                            ArticleRowView(article: article)
+                                                .environmentObject(vm)
+                                                .environmentObject(favorites)
+                                            
+                                            Divider()
+                                            
+                                            NavigationLink(destination:
+                                                            ArticleDetailView(article: article)
+                                                .environmentObject(vm)
+                                                .environmentObject(favorites)
+                                            ) {
+                                                EmptyView()
                                             }
-                                        } else {
-                                            Text("No articles available")
-                                                .foregroundColor(.red)
-                                                .padding()
+                                            .opacity(0.0)
                                         }
                                     }
+                                } else {
+                                    Text("No articles available")
+                                        .foregroundColor(.red)
+                                        .padding()
                                 }
                             }
-                            .contentMargins(
-                                .vertical, 10.0,
-                                for: .scrollContent
-                            )
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding(10)
+                        .contentMargins(
+                            .vertical, 10,
+                            for: .scrollContent
+                        )
                     }
                 }
             }
