@@ -130,20 +130,17 @@ extension ArticleView {
                                 if !searchResult.isEmpty {
                                     ForEach(searchResult) { article in
                                         if article.title != "[Removed]" {
-                                            ArticleRowView(article: article)
-                                                .environmentObject(vm)
-                                                .environmentObject(favorites)
-                                            
-                                            Divider()
-                                            
                                             NavigationLink(destination:
                                                             ArticleDetailView(article: article)
                                                 .environmentObject(vm)
                                                 .environmentObject(favorites)
                                             ) {
-                                                EmptyView()
+                                                ArticleRowView(article: article)
+                                                    .environmentObject(vm)
+                                                    .environmentObject(favorites)
                                             }
-                                            .opacity(0.0)
+                                            
+                                            Divider()
                                         }
                                     }
                                 } else {
