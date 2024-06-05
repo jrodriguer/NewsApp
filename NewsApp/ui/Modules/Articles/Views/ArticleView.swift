@@ -138,6 +138,7 @@ extension ArticleView {
                                                     .environmentObject(vm)
                                                     .environmentObject(favorites)
                                             }
+                                            .buttonStyle(PlainButtonStyle())
                                             
                                             Divider()
                                         }
