@@ -155,37 +155,6 @@ extension ArticleView {
                 }
             }
         }
-//        .background(GeometryReader { geometry in
-//            Color.clear.preference(key: ViewOffsetKey.self,
-//                                          value: -geometry.frame(in: .named("scroll")).origin.y)
-//        })
-//        .onPreferenceChange(ViewOffsetKey.self) { offset in
-//            withAnimation {
-//                if offset > 50 {
-//                    showFab = offset < scrollOffset
-//                } else  {
-//                    showFab = true
-//                }
-//            }
-//            scrollOffset = offset
-//        }
-//        .coordinateSpace(name: "scroll")
-//        .overlay(
-//            Group {
-//                if showFab, !searchResult.isEmpty {
-//                    FloatingActionButtonView(nameIcon: "chevron.up") { }
-//                }
-//            },
-//            alignment: Alignment.bottomTrailing
-//        )
-    }
-}
-
-struct ViewOffsetKey: PreferenceKey {
-    typealias Value = CGFloat
-    static var defaultValue = CGFloat.zero
-    static func reduce(value: inout Value, nextValue: () -> Value) {
-        value += nextValue()
     }
 }
 
