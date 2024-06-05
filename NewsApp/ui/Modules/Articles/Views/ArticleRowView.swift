@@ -39,11 +39,11 @@ struct ArticleRowView: View {
                     .foregroundColor(.red)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.bottom)
     }
 }
 
 //#Preview {
-//    ArticleRowView(article: ArticleApiObject.mockArticle)
-//        .environmentObject(ArticlesViewModel())
-//        .environmentObject(FavoritesViewModel<ArticleApiObject>(saveKey:  FavoriteKey.articleFavorites))
+//    ArticleRowView(article: .previewData[0])
 //}
