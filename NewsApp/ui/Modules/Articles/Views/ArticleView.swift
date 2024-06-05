@@ -46,17 +46,17 @@ struct ArticleView: View {
                         .pickerStyle(.menu)
                         
                         Section("Sort by") {
-                            Button("Alphabetical") { 
+                            Button("Alphabetical") {
                                 if !searchResult.isEmpty {
                                     vm.articles.sort { $0.source.name.lowercased() < $1.source.name.lowercased() }
                                 }
                             }
-                            Button("Newest First") { 
+                            Button("Newest First") {
                                 if !searchResult.isEmpty {
                                     vm.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
                                 }
                             }
-                            Button("Oldest First") { 
+                            Button("Oldest First") {
                                 if !searchResult.isEmpty {
                                     vm.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
                                 }
@@ -116,14 +116,15 @@ extension ArticleView {
     }
     
     private var listSection: some View {
-        VStack {
-            ZStack(alignment: .bottomTrailing) {
-                if vm.isLoading {
-                    ProgressView("Loading...")
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    ScrollView {
+        ZStack(alignment: .bottomTrailing) {
+            if vm.isLoading {
+                ProgressView("Loading...")
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                ScrollView {
+                    ScrollViewReader { proxy in
+                        
                         VStack {
                             if !searchResult.isEmpty {
                                 ForEach(searchResult) { article in
