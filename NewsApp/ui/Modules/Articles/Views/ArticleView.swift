@@ -125,32 +125,38 @@ extension ArticleView {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     ScrollViewReader { proxy in
-                        ScrollView(showsIndicators: false) {
-                            if !searchResult.isEmpty {
-                                ForEach(searchResult) { article in
-                                    if article.title != "[Removed]" {
-                                        ZStack(alignment: .leading) {
-                                            ArticleRowView(article: article)
-                                                .environmentObject(vm)
-                                                .environmentObject(favorites)
-                                            
-                                            NavigationLink(destination:
-                                                            ArticleDetailView(article: article)
-                                                .environmentObject(vm)
-                                                .environmentObject(favorites)
-                                            ) {
-                                                EmptyView()
+                        VStack {
+//                        ScrollView(showsIndicators: false) {
+                            List {
+                                if !searchResult.isEmpty {
+                                    ForEach(searchResult) { article in
+                                        if article.title != "[Removed]" {
+                                            ZStack(alignment: .leading) {
+                                                ArticleRowView(article: article)
+                                                    .environmentObject(vm)
+                                                    .environmentObject(favorites)
+                                                
+                                                NavigationLink(destination:
+                                                                ArticleDetailView(article: article)
+                                                    .environmentObject(vm)
+                                                    .environmentObject(favorites)
+                                                ) {
+                                                    EmptyView()
+                                                }
+                                                .opacity(0.0)
                                             }
-                                            .opacity(0.0)
                                         }
                                     }
+                                } else {
+                                    Text("No articles available")
+                                        .foregroundColor(.red)
+                                        .padding()
                                 }
-                            } else {
-                                Text("No articles available")
-                                    .foregroundColor(.red)
-                                    .padding()
                             }
+                            .frame(maxWidth: .infinity)
+                            .listStyle(.plain)
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
             }
