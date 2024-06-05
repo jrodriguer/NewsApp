@@ -20,6 +20,9 @@ struct ArticleView: View {
     @State private var showFavoritesOnly = false
     @State private var showFab = true
     
+    @Namespace var topID
+    @Namespace var bottomID
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -123,7 +126,7 @@ extension ArticleView {
             } else {
                 ScrollViewReader { proxy in
                     ScrollView {
-                        
+                                                
                         VStack {
                             if !searchResult.isEmpty {
                                 ForEach(searchResult) { article in
@@ -148,6 +151,13 @@ extension ArticleView {
                                     .padding()
                             }
                         }
+                        
+                        FloatingActionButtonView(name: "chevron.up", action: {
+                            withAnimation {
+                                proxy.scrollTo(topID)
+                            }
+                        })
+                        .id(bottomID)
                     }
                     .padding(10)
                     .contentMargins(
