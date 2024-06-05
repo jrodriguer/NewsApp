@@ -39,8 +39,8 @@ struct ArticleRowView: View {
                     .foregroundColor(.red)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.bottom)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .padding([.top, .bottom])
     }
 }
 
