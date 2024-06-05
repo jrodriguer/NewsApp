@@ -19,7 +19,6 @@ struct ArticleView: View {
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
     @State private var showFab = true
-    @State private var offset = CGFloat.zero
     
     var body: some View {
         NavigationStack {
@@ -122,8 +121,8 @@ extension ArticleView {
                     .progressViewStyle(CircularProgressViewStyle())
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                ScrollView {
-                    ScrollViewReader { proxy in
+                ScrollViewReader { proxy in
+                    ScrollView {
                         
                         VStack {
                             if !searchResult.isEmpty {
@@ -149,31 +148,15 @@ extension ArticleView {
                                     .padding()
                             }
                         }
-                        .background(GeometryReader {
-                            Color.clear.preference(key: ViewOffsetKey.self,
-                                                   value: -$0.frame(in: .named("scroll")).origin.y)
-                        })
-                        .onPreferenceChange(ViewOffsetKey.self) { print("offset >> \($0)") }
                     }
                     .padding(10)
                     .contentMargins(
                         .vertical, 10,
                         for: .scrollContent
                     )
-                    .coordinateSpace(name: "scroll")
-                    
-                    FloatingActionButtonView(name: "chevron.baseGray", action: { })
                 }
             }
         }
-    }
-}
-
-struct ViewOffsetKey: PreferenceKey {
-    typealias Value = CGFloat
-    static var defaultValue = CGFloat.zero
-    static func reduce(value: inout Value, nextValue: () -> Value) {
-        value += nextValue()
     }
 }
 
