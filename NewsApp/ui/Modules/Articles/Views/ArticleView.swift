@@ -24,6 +24,10 @@ struct ArticleView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                switch selectedViewOption {
+                case .cardView: cardSection
+                case .listView: listSection
+                }
             }
             .navigationBarTitle("News")
             .toolbar {
