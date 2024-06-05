@@ -19,9 +19,7 @@ struct ArticleView: View {
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
     @State private var showFab = true
-    
-    @Namespace var topID
-    @Namespace var bottomID
+    @State private var offset = CGFloat.zero
 
     var body: some View {
         NavigationStack {
@@ -151,22 +149,44 @@ extension ArticleView {
                                     .padding()
                             }
                         }
-                        
-                        FloatingActionButtonView(name: "chevron.up", action: {
-                            withAnimation {
-                                proxy.scrollTo(topID)
-                            }
+                        // MARK: - GeometryReader to capture the current scroll offset
+                        .background(GeometryReader {
+                            Color.clear.preference(key: ViewOffsetKey.self,
+                                                   value: -$0.frame(in: .named("scroll")).origin.y)
                         })
-                        .id(bottomID)
+                        .onPreferenceChange(ViewOffsetKey.self) { newOffset in
+                            print("offset >> \(newOffset)")
+                            self.offset = newOffset
+                            // Show or hide the FAB based on the scroll position
+                            withAnimation {
+                                showFab = newOffset > 0
+                            }
+                        }
                     }
                     .padding(10)
                     .contentMargins(
                         .vertical, 10,
                         for: .scrollContent
                     )
+                    
+                    if showFab {
+                        FloatingActionButtonView(name: "chevron.up", action: {
+                            withAnimation {
+                                proxy.scrollTo(1)
+                            }
+                        })
+                    }
                 }
             }
         }
+    }
+}
+
+struct ViewOffsetKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
     }
 }
 
