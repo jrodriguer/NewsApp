@@ -124,34 +124,34 @@ extension ArticleView {
                         .progressViewStyle(CircularProgressViewStyle())
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    List {
-                        if !searchResult.isEmpty {
-                            ForEach(searchResult) { article in
-                                if article.title != "[Removed]" {
-                                    ZStack(alignment: .leading) {
-                                        ArticleRowView(article: article)
-                                            .environmentObject(vm)
-                                            .environmentObject(favorites)
-                                        
-                                        NavigationLink(destination:
-                                                        ArticleDetailView(article: article)
-                                            .environmentObject(vm)
-                                            .environmentObject(favorites)
-                                        ) {
-                                            EmptyView()
+                    ScrollViewReader { proxy in
+                        ScrollView(showsIndicators: false) {
+                            if !searchResult.isEmpty {
+                                ForEach(searchResult) { article in
+                                    if article.title != "[Removed]" {
+                                        ZStack(alignment: .leading) {
+                                            ArticleRowView(article: article)
+                                                .environmentObject(vm)
+                                                .environmentObject(favorites)
+                                            
+                                            NavigationLink(destination:
+                                                            ArticleDetailView(article: article)
+                                                .environmentObject(vm)
+                                                .environmentObject(favorites)
+                                            ) {
+                                                EmptyView()
+                                            }
+                                            .opacity(0.0)
                                         }
-                                        .opacity(0.0)
                                     }
                                 }
+                            } else {
+                                Text("No articles available")
+                                    .foregroundColor(.red)
+                                    .padding()
                             }
-                        } else {
-                            Text("No articles available")
-                                .foregroundColor(.red)
-                                .padding()
                         }
                     }
-                    .navigationBarTitle("News")
-                    .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
                 }
             }
         }
