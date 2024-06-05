@@ -99,7 +99,6 @@ extension ArticleView {
                                         .environmentObject(favorites)
                                     ) {
                                         ArticleCardView(article: article)
-                                            .multilineTextAlignment(.leading)
                                             .environmentObject(vm)
                                             .environmentObject(favorites)
                                     }

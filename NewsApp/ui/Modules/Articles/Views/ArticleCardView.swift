@@ -48,6 +48,7 @@ struct ArticleCardView: View {
                     .foregroundColor(.secondary)
                 }
                 .layoutPriority(100)
+                .multilineTextAlignment(.leading)
                 
                 Spacer()
             }
