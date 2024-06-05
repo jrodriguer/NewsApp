@@ -161,6 +161,7 @@ extension ArticleView {
                     )
                     .coordinateSpace(name: "scroll")
                     
+                    FloatingActionButtonView(name: "chevron.baseGray", action: { })
                 }
             }
         }
