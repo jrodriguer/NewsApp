@@ -17,10 +17,17 @@ struct FloatingActionButtonView: View {
         } label: {
             Image(systemName: name)
                 .font(.largeTitle)
-                .frame(width: 70, height: 70)
+                .frame(width: 77, height: 70)
+                .padding(.bottom, 7)
         }
         .background(Color(.baseGray))
+        .cornerRadius(38.5)
         .foregroundStyle(Color.white)
+        .padding()
+        .shadow(color: Color.black.opacity(0.3),
+                radius: 3,
+                x: 3,
+                y: 3)
     }
 }
 
