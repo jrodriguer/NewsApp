@@ -12,19 +12,15 @@ struct FloatingActionButtonView: View {
     var action: () -> Void
     
     var body: some View {
-        HStack {
-            Button {
-                action()
-            } label: {
-                Image(systemName: name)
-                    .font(.largeTitle)
-                    .frame(width: 70, height: 70)
-            }
-            .background(Color(.baseGray))
-            .foregroundStyle(Color.white)
+        Button {
+            action()
+        } label: {
+            Image(systemName: name)
+                .font(.largeTitle)
+                .frame(width: 70, height: 70)
         }
-        .background(Color.gray.brightness(0.4))
-        .cornerRadius(30)
+        .background(Color(.baseGray))
+        .foregroundStyle(Color.white)
     }
 }
 
