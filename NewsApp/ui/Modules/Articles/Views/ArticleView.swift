@@ -148,15 +148,13 @@ extension ArticleView {
                                 }
                             }
                         }
-                        // MARK: - GeometryReader to capture the current scroll offset
+                        // MARK: - Capture current scroll offset
                         .background(GeometryReader {
                             Color.clear.preference(key: ViewOffsetKey.self,
                                                    value: -$0.frame(in: .named("scroll")).origin.y)
                         })
                         .onPreferenceChange(ViewOffsetKey.self) { newOffset in
-                            print("offset >> \(newOffset)")
                             self.offset = newOffset
-                            // Show or hide the FAB based on the scroll position
                             withAnimation {
                                 showFab = newOffset > 0
                             }
