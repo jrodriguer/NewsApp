@@ -123,31 +123,29 @@ extension ArticleView {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ScrollViewReader { proxy in
-                    ScrollView {
-                                                
                         VStack {
-                            if !searchResult.isEmpty {
-                                ForEach(searchResult) { article in
-                                    if article.title != "[Removed]" {
-                                        NavigationLink(destination:
-                                                        ArticleDetailView(article: article)
-                                            .environmentObject(vm)
-                                            .environmentObject(favorites)
-                                        ) {
-                                            ArticleRowView(article: article)
+                            List {
+                                if !searchResult.isEmpty {
+                                    ForEach(searchResult) { article in
+                                        if article.title != "[Removed]" {
+                                            NavigationLink(destination:
+                                                            ArticleDetailView(article: article)
                                                 .environmentObject(vm)
                                                 .environmentObject(favorites)
+                                            ) {
+                                                ArticleRowView(article: article)
+                                                    .environmentObject(vm)
+                                                    .environmentObject(favorites)
+                                            }
+                                            .buttonStyle(PlainButtonStyle())
                                         }
-                                        .buttonStyle(PlainButtonStyle())
-                                        
-                                        Divider()
                                     }
+                                } else {
+                                    Text("No articles available")
+                                        .foregroundColor(.red)
+                                        .padding()
+                                    
                                 }
-                            } else {
-                                Text("No articles available")
-                                    .foregroundColor(.red)
-                                    .padding()
-                                
                             }
                         }
                         // MARK: - GeometryReader to capture the current scroll offset
@@ -163,12 +161,6 @@ extension ArticleView {
                                 showFab = newOffset > 0
                             }
                         }
-                    }
-                    .padding(10)
-                    .contentMargins(
-                        .vertical, 10,
-                        for: .scrollContent
-                    )
                     
                     if showFab {
                         VStack {

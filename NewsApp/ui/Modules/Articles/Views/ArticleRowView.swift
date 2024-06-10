@@ -41,6 +41,5 @@ struct ArticleRowView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        .padding([.top, .bottom])
     }
 }
