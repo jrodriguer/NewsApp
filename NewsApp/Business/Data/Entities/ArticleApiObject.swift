@@ -8,24 +8,34 @@
 import Foundation
 import SwiftUI
 
-struct ArticleApiObject: Identifiable, Codable {
-    let id = UUID()
+struct ArticleApiObject: Codable, Equatable, Identifiable {
+    let id: UUID
+    
+    let source: Source
+    let title: String
+    let url: String
+    let publishedAt: Date
     
     let author: String?
-    let title: String
     let description: String?
-    let url: String
     let urlToImage: String?
-    let publishedAt: Date
     let content: String?
-    let source: ArticleSource
     
     private enum CodingKeys: String, CodingKey {
-        case author, title, description, url, urlToImage, publishedAt, content, source
+        case source,
+             title,
+             url,
+             publishedAt,
+             author,
+             description,
+             urlToImage,
+             content
     }
         
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        id = UUID()
         
         author = try container.decodeIfPresent(String.self, forKey: .author)
         title = try container.decode(String.self, forKey: .title)
@@ -33,7 +43,7 @@ struct ArticleApiObject: Identifiable, Codable {
         url = try container.decode(String.self, forKey: .url)
         urlToImage = try container.decodeIfPresent(String.self, forKey: .urlToImage)
         content = try container.decodeIfPresent(String.self, forKey: .content)
-        source = try container.decode(ArticleSource.self, forKey: .source)
+        source = try container.decode(Source.self, forKey: .source)
         
         do {
             publishedAt = try container.decode(Date.self, forKey: .publishedAt)
@@ -67,10 +77,6 @@ struct ArticleApiObject: Identifiable, Codable {
     }
 }
 
-struct ArticleSource: Codable {
-    let name: String
-}
-
 extension ArticleApiObject {
     static var previewData: [ArticleApiObject] {
         let previewDataURL = Bundle.main.url(forResource: "news", withExtension: "json")!
@@ -82,4 +88,8 @@ extension ArticleApiObject {
         let apiResponse = try! jsonDecoder.decode(ArticleListApiObject.self, from: data)
         return apiResponse.articles
     }
+}
+
+struct Source: Codable, Equatable {
+    let name: String
 }
