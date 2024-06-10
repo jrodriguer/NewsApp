@@ -32,5 +32,5 @@ struct FloatingActionButtonView: View {
 }
 
 #Preview {
-    FloatingActionButtonView(name: "chevron.baseGray", action: {})
+    FloatingActionButtonView(name: "chevron.up", action: {})
 }
