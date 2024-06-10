@@ -8,25 +8,29 @@
 import SwiftUI
 
 struct FloatingActionButtonView: View {
-    var nameIcon: String
+    var name: String
     var action: () -> Void
     
     var body: some View {
         Button {
             action()
         } label: {
-            Image(systemName: nameIcon)
-                .font(.title2.weight(.bold))
-                .foregroundColor(.white)
-                .padding()
-                .background(Color(.baseGray))
-                .clipShape(Circle())
-                .shadow(radius: 5, x: 0, y: 3)
+            Image(systemName: name)
+                .font(.largeTitle)
+                .frame(width: 77, height: 70)
+                .padding(.bottom, 7)
         }
+        .background(Color(.baseGray))
+        .cornerRadius(38.5)
+        .foregroundStyle(Color.white)
         .padding()
+        .shadow(color: Color.black.opacity(0.3),
+                radius: 3,
+                x: 3,
+                y: 3)
     }
 }
 
 #Preview {
-    FloatingActionButtonView(nameIcon: "chevron.up", action: {})
+    FloatingActionButtonView(name: "chevron.up", action: {})
 }

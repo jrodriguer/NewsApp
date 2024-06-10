@@ -18,8 +18,9 @@ struct ArticleView: View {
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
+    @State private var scrollToID: UUID? = nil
     @State private var showFab = true
-    @State private var scrollOffset: CGFloat = 0.00
+    @State private var offset = CGFloat.zero
     
     var body: some View {
         NavigationStack {
@@ -46,17 +47,17 @@ struct ArticleView: View {
                         .pickerStyle(.menu)
                         
                         Section("Sort by") {
-                            Button("Alphabetical") { 
+                            Button("Alphabetical") {
                                 if !searchResult.isEmpty {
                                     vm.articles.sort { $0.source.name.lowercased() < $1.source.name.lowercased() }
                                 }
                             }
-                            Button("Newest First") { 
+                            Button("Newest First") {
                                 if !searchResult.isEmpty {
                                     vm.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
                                 }
                             }
-                            Button("Oldest First") { 
+                            Button("Oldest First") {
                                 if !searchResult.isEmpty {
                                     vm.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
                                 }
@@ -99,7 +100,6 @@ extension ArticleView {
                                         .environmentObject(favorites)
                                     ) {
                                         ArticleCardView(article: article)
-                                            .multilineTextAlignment(.leading)
                                             .environmentObject(vm)
                                             .environmentObject(favorites)
                                     }
@@ -118,43 +118,72 @@ extension ArticleView {
     
     private var listSection: some View {
         VStack {
-            ZStack(alignment: .bottomTrailing) {
-                if vm.isLoading {
-                    ProgressView("Loading...")
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    List {
-                        if !searchResult.isEmpty {
-                            ForEach(searchResult) { article in
-                                if article.title != "[Removed]" {
-                                    ZStack(alignment: .leading) {
-                                        ArticleRowView(article: article)
-                                            .environmentObject(vm)
-                                            .environmentObject(favorites)
-                                        
+            if vm.isLoading {
+                ProgressView("Loading...")
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                ScrollViewReader { proxy in
+                    ZStack(alignment: .bottomTrailing) {
+                        List {
+                            if !searchResult.isEmpty {
+                                ForEach(searchResult) { article in
+                                    if article.title != "[Removed]" {
                                         NavigationLink(destination:
                                                         ArticleDetailView(article: article)
                                             .environmentObject(vm)
                                             .environmentObject(favorites)
                                         ) {
-                                            EmptyView()
+                                            ArticleRowView(article: article)
+                                                .environmentObject(vm)
+                                                .environmentObject(favorites)
+                                                .id(article.id)
                                         }
-                                        .opacity(0.0)
+                                        .buttonStyle(PlainButtonStyle())
                                     }
                                 }
+                            } else {
+                                Text("No articles available")
+                                    .foregroundColor(.red)
+                                    .padding()
                             }
-                        } else {
-                            Text("No articles available")
-                                .foregroundColor(.red)
-                                .padding()
+                        }
+                        
+                        if showFab {
+                            FloatingActionButtonView(name: "chevron.up", action: {
+                                if let firstArticle = searchResult.first {
+                                    scrollToID = firstArticle.id
+                                    DispatchQueue.main.async {
+                                        withAnimation {
+                                            proxy.scrollTo(firstArticle.id, anchor: .top)
+                                        }
+                                    }
+                                }
+                            })
                         }
                     }
-                    .navigationBarTitle("News")
-                    .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
+                    // MARK: - Capture current scroll offset
+                    .background(GeometryReader {
+                        Color.clear.preference(key: ViewOffsetKey.self,
+                                               value: -$0.frame(in: .named("scroll")).origin.y)
+                    })
+                    .onPreferenceChange(ViewOffsetKey.self) { newOffset in
+                        self.offset = newOffset
+                        withAnimation {
+                            showFab = newOffset > -100
+                        }
+                    }
                 }
             }
         }
+    }
+}
+
+struct ViewOffsetKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
     }
 }
 

@@ -15,6 +15,7 @@ struct ArticleRowView: View {
     var body: some View {
         HStack {
             Text(Utils.displayTitle(article.title))
+                .multilineTextAlignment(.leading)
                 .swipeActions(edge: .leading) {
                     Button {
                         if favorites.contains(article) {
@@ -39,11 +40,6 @@ struct ArticleRowView: View {
                     .foregroundColor(.red)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
     }
 }
-
-//#Preview {
-//    ArticleRowView(article: ArticleApiObject.mockArticle)
-//        .environmentObject(ArticlesViewModel())
-//        .environmentObject(FavoritesViewModel<ArticleApiObject>(saveKey:  FavoriteKey.articleFavorites))
-//}
