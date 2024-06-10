@@ -20,7 +20,7 @@ struct ArticleView: View {
     @State private var showFavoritesOnly = false
     @State private var showFab = true
     @State private var offset = CGFloat.zero
-
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -116,59 +116,51 @@ extension ArticleView {
     }
     
     private var listSection: some View {
-        ZStack(alignment: .bottomTrailing) {
+        VStack {
             if vm.isLoading {
                 ProgressView("Loading...")
                     .progressViewStyle(CircularProgressViewStyle())
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ScrollViewReader { proxy in
-                        VStack {
-                            List {
-                                if !searchResult.isEmpty {
-                                    ForEach(searchResult) { article in
-                                        if article.title != "[Removed]" {
-                                            NavigationLink(destination:
-                                                            ArticleDetailView(article: article)
+                    ZStack(alignment: .bottomTrailing) {
+                        List {
+                            if !searchResult.isEmpty {
+                                ForEach(searchResult) { article in
+                                    if article.title != "[Removed]" {
+                                        NavigationLink(destination:
+                                                        ArticleDetailView(article: article)
+                                            .environmentObject(vm)
+                                            .environmentObject(favorites)
+                                        ) {
+                                            ArticleRowView(article: article)
                                                 .environmentObject(vm)
                                                 .environmentObject(favorites)
-                                            ) {
-                                                ArticleRowView(article: article)
-                                                    .environmentObject(vm)
-                                                    .environmentObject(favorites)
-                                            }
-                                            .buttonStyle(PlainButtonStyle())
                                         }
+                                        .buttonStyle(PlainButtonStyle())
                                     }
-                                } else {
-                                    Text("No articles available")
-                                        .foregroundColor(.red)
-                                        .padding()
-                                    
                                 }
+                            } else {
+                                Text("No articles available")
+                                    .foregroundColor(.red)
+                                    .padding()
                             }
                         }
-                        // MARK: - Capture current scroll offset
-                        .background(GeometryReader {
-                            Color.clear.preference(key: ViewOffsetKey.self,
-                                                   value: -$0.frame(in: .named("scroll")).origin.y)
-                        })
-                        .onPreferenceChange(ViewOffsetKey.self) { newOffset in
-                            self.offset = newOffset
-                            withAnimation {
-                                showFab = newOffset > 0
-                            }
+                        
+                        if showFab {
+                            FloatingActionButtonView(name: "chevron.up", action: { })
                         }
-                    
-                    if showFab {
-                        VStack {
-                            HStack {
-                                FloatingActionButtonView(name: "chevron.up", action: {
-                                    withAnimation {
-                                        proxy.scrollTo(1)
-                                    }
-                                })
-                            }
+                    }
+                    // MARK: - Capture current scroll offset
+                    .background(GeometryReader {
+                        Color.clear.preference(key: ViewOffsetKey.self,
+                                               value: -$0.frame(in: .named("scroll")).origin.y)
+                    })
+                    .onPreferenceChange(ViewOffsetKey.self) { newOffset in
+                        self.offset = newOffset
+                        print("offset value is equal to \(offset) and showFab is a \(showFab) value")
+                        withAnimation {
+                            showFab = newOffset < 0
                         }
                     }
                 }
