@@ -18,6 +18,7 @@ struct ArticleView: View {
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
+    @State private var scrollToID: UUID? = nil
     @State private var showFab = true
     @State private var offset = CGFloat.zero
     
@@ -136,6 +137,7 @@ extension ArticleView {
                                             ArticleRowView(article: article)
                                                 .environmentObject(vm)
                                                 .environmentObject(favorites)
+                                                .id(article.id)
                                         }
                                         .buttonStyle(PlainButtonStyle())
                                     }
@@ -147,9 +149,16 @@ extension ArticleView {
                             }
                         }
                         
-                        if showFab {
-                            FloatingActionButtonView(name: "chevron.up", action: { })
-                        }
+                        FloatingActionButtonView(name: "chevron.up", action: {
+                            if let firstArticle = searchResult.first {
+                                scrollToID = firstArticle.id
+                                DispatchQueue.main.async {
+                                    withAnimation {
+                                        proxy.scrollTo(firstArticle.id, anchor: .top)
+                                    }
+                                }
+                            }
+                        })
                     }
                     // MARK: - Capture current scroll offset
                     .background(GeometryReader {
@@ -158,7 +167,6 @@ extension ArticleView {
                     })
                     .onPreferenceChange(ViewOffsetKey.self) { newOffset in
                         self.offset = newOffset
-                        print("offset value is equal to \(offset) and showFab is a \(showFab) value")
                         withAnimation {
                             showFab = newOffset < 0
                         }
