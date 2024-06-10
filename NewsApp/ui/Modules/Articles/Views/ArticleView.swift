@@ -149,16 +149,18 @@ extension ArticleView {
                             }
                         }
                         
-                        FloatingActionButtonView(name: "chevron.up", action: {
-                            if let firstArticle = searchResult.first {
-                                scrollToID = firstArticle.id
-                                DispatchQueue.main.async {
-                                    withAnimation {
-                                        proxy.scrollTo(firstArticle.id, anchor: .top)
+                        if showFab {
+                            FloatingActionButtonView(name: "chevron.up", action: {
+                                if let firstArticle = searchResult.first {
+                                    scrollToID = firstArticle.id
+                                    DispatchQueue.main.async {
+                                        withAnimation {
+                                            proxy.scrollTo(firstArticle.id, anchor: .top)
+                                        }
                                     }
                                 }
-                            }
-                        })
+                            })
+                        }
                     }
                     // MARK: - Capture current scroll offset
                     .background(GeometryReader {
@@ -168,7 +170,7 @@ extension ArticleView {
                     .onPreferenceChange(ViewOffsetKey.self) { newOffset in
                         self.offset = newOffset
                         withAnimation {
-                            showFab = newOffset < 0
+                            showFab = newOffset > -100
                         }
                     }
                 }
