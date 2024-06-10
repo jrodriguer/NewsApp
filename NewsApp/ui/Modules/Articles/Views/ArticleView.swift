@@ -147,6 +147,7 @@ extension ArticleView {
                                 Text("No articles available")
                                     .foregroundColor(.red)
                                     .padding()
+                                
                             }
                         }
                         // MARK: - GeometryReader to capture the current scroll offset
@@ -170,11 +171,15 @@ extension ArticleView {
                     )
                     
                     if showFab {
-                        FloatingActionButtonView(name: "chevron.up", action: {
-                            withAnimation {
-                                proxy.scrollTo(1)
+                        VStack {
+                            HStack {
+                                FloatingActionButtonView(name: "chevron.up", action: {
+                                    withAnimation {
+                                        proxy.scrollTo(1)
+                                    }
+                                })
                             }
-                        })
+                        }
                     }
                 }
             }
