@@ -129,17 +129,21 @@ extension ArticleView {
                             if !searchResult.isEmpty {
                                 ForEach(searchResult) { article in
                                     if article.title != "[Removed]" {
-                                        NavigationLink(destination:
-                                                        ArticleDetailView(article: article)
-                                            .environmentObject(vm)
-                                            .environmentObject(favorites)
-                                        ) {
+                                        ZStack(alignment: .leading) {
                                             ArticleRowView(article: article)
                                                 .environmentObject(vm)
                                                 .environmentObject(favorites)
                                                 .id(article.id)
+                                            
+                                            NavigationLink(destination:
+                                                            ArticleDetailView(article: article)
+                                                .environmentObject(vm)
+                                                .environmentObject(favorites)
+                                            ) {
+                                                EmptyView()
+                                            }
+                                            .opacity(0.0)
                                         }
-                                        .buttonStyle(PlainButtonStyle())
                                     }
                                 }
                             } else {
@@ -148,6 +152,7 @@ extension ArticleView {
                                     .padding()
                             }
                         }
+                        .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
                         
                         if showFab {
                             FloatingActionButtonView(name: "chevron.up", action: {
