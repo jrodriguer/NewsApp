@@ -155,7 +155,7 @@ extension ArticleView {
                         .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
                         
                         if showFab {
-                            FloatingActionButtonView(name: "chevron.up", action: {
+                            FloatingActionButtonView(name: "chevron.up", radius: 55, action: {
                                 if let firstArticle = searchResult.first {
                                     scrollToID = firstArticle.id
                                     DispatchQueue.main.async {

@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct FloatingActionButtonView: View {
-    var name: String
-    var action: () -> Void
+    let name: String
+    let radius: CGFloat
+    let action: () -> Void
     
     var body: some View {
         Button {
@@ -17,20 +18,16 @@ struct FloatingActionButtonView: View {
         } label: {
             Image(systemName: name)
                 .font(.largeTitle)
-                .frame(width: 77, height: 70)
-                .padding(.bottom, 7)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: radius, height: radius, alignment: .center)
         }
-        .background(Color(.baseGray))
-        .cornerRadius(38.5)
         .foregroundStyle(Color.white)
+        .background(Color(.baseGray))
+        .cornerRadius(radius/2)
         .padding()
-        .shadow(color: Color.black.opacity(0.3),
-                radius: 3,
-                x: 3,
-                y: 3)
     }
 }
 
 #Preview {
-    FloatingActionButtonView(name: "chevron.up", action: {})
+    FloatingActionButtonView(name: "chevron.up", radius: 55, action: {})
 }
