@@ -42,6 +42,7 @@ struct ArticleCardView: View {
                     HStack(alignment: .top) {
                         Text(Utils.timeDifference(from: article.publishedAt))
                         Text(article.authorText)
+                            .lineLimit(1)
                     }
                     .font(.footnote)
                     .fontWeight(.semibold)
