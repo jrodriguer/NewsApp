@@ -6,6 +6,7 @@
 	<string>$(API_URL)</string>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>FetchLatestNewsIntent</string>
 		<string>FetchLatestNewsIntentIntent</string>
 	</array>
 	<key>UIAppFonts</key>
