@@ -10,12 +10,10 @@ import XCTest
 import Mocker
 
 @testable import NewsApp
-
-class ArticlesViewModel_Tests: XCTestCase {
-    
+class ArticlesViewModelTests: XCTestCase {
     var setup: MockDependencies!
     var vm: ArticlesViewModel!
-
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
         setup = MockDependencies()

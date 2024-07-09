@@ -12,7 +12,6 @@ import XCTest
 
 @testable import NewsApp
 class BackendApiTests: XCTestCase {
-    
     var setup: MockDependencies!
     var vm: ArticlesViewModel!
     

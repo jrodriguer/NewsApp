@@ -48,6 +48,9 @@
 		8AABBC8B2B95E25D00D78C5D /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBC8A2B95E25D00D78C5D /* Configuration.swift */; };
 		8AABBC8D2B96116D00D78C5D /* MockDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AABBC8C2B96116D00D78C5D /* MockDependencies.swift */; };
 		8AB07D162C077BB7008237C0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB07D152C077BB7008237C0 /* Category.swift */; };
+		8AB592E22C3D5707001E54AD /* FavoritesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB592E12C3D5706001E54AD /* FavoritesViewModelTests.swift */; };
+		8AB592E62C3D67FD001E54AD /* MockUserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB592E52C3D67FD001E54AD /* MockUserDefaultsManager.swift */; };
+		8AB592E82C3D9A3F001E54AD /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB592E72C3D9A3F001E54AD /* MockStorage.swift */; };
 		8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */; };
 		8AD6123C2B76D8D400D2D8CC /* TabBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */; };
 		8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */; };
@@ -115,6 +118,9 @@
 		8AABBC8C2B96116D00D78C5D /* MockDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDependencies.swift; sourceTree = "<group>"; };
 		8AABBC972B963BD100D78C5D /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		8AB07D152C077BB7008237C0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		8AB592E12C3D5706001E54AD /* FavoritesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModelTests.swift; sourceTree = "<group>"; };
+		8AB592E52C3D67FD001E54AD /* MockUserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsManager.swift; sourceTree = "<group>"; };
+		8AB592E72C3D9A3F001E54AD /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
 		8ACA94282B86C3C7001CEBD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AD612392B76D6CF00D2D8CC /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		8AD6123B2B76D8D400D2D8CC /* TabBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButtonView.swift; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				8A9FEC552B9370070027A3E6 /* ArticlesViewModelTests.swift */,
+				8AB592E12C3D5706001E54AD /* FavoritesViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -282,6 +289,8 @@
 			children = (
 				8A7D24332B91D4A4003754DE /* Data */,
 				8AABBC8C2B96116D00D78C5D /* MockDependencies.swift */,
+				8AB592E52C3D67FD001E54AD /* MockUserDefaultsManager.swift */,
+				8AB592E72C3D9A3F001E54AD /* MockStorage.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -647,8 +656,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AB592E22C3D5707001E54AD /* FavoritesViewModelTests.swift in Sources */,
 				8AABBC8D2B96116D00D78C5D /* MockDependencies.swift in Sources */,
 				8A9FEC562B9370070027A3E6 /* ArticlesViewModelTests.swift in Sources */,
+				8AB592E82C3D9A3F001E54AD /* MockStorage.swift in Sources */,
+				8AB592E62C3D67FD001E54AD /* MockUserDefaultsManager.swift in Sources */,
 				8A7D24352B91D4F3003754DE /* MockGenerator.swift in Sources */,
 				8A91CBFF2B8FB09600F673C5 /* BackendApiTests.swift in Sources */,
 				8A4E22CE2B4A2BCD006D71C6 /* NewsAppTests.swift in Sources */,
