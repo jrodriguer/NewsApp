@@ -27,12 +27,12 @@ class ArticlesViewModel_Tests: XCTestCase {
         vm = nil
         try super.tearDownWithError()
     }
-    
-    func testIsLoading_ShouldBeTrue() {
+        
+    func testIsLoading_shouldBeTrue() {
         XCTAssertTrue(vm.isLoading)
     }
     
-    func testLoadArticles_SuccessfullResponse_ShouldUpdateArticles() {
+    func testLoadArticles_successfullResponse_shouldUpdateArticles() {
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
         let apiEndpoint = URL(string: "https://newsapi.org/v2/top-headlines/?country=us&apiKey=\(apiKey)")!
         let expectedArticlesList = MockGenerator.articleListApiObject()
