@@ -32,7 +32,7 @@ class ArticlesViewModel_Tests: XCTestCase {
         XCTAssertTrue(vm.isLoading)
     }
     
-    func testLoadArticles_SuccessfulResponse_ShouldUpdateArticles() {
+    func testLoadArticles_SuccessfullResponse_ShouldUpdateArticles() {
         let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
         let apiEndpoint = URL(string: "https://newsapi.org/v2/top-headlines/?country=us&apiKey=\(apiKey)")!
         let expectedArticlesList = MockGenerator.articleListApiObject()
@@ -51,6 +51,7 @@ class ArticlesViewModel_Tests: XCTestCase {
             // Meets the expectation.
             requestExpectation.fulfill()
         }
+        
         wait(for: [requestExpectation], timeout: 2.0)
         
         XCTAssertNotNil(self.vm.articles)

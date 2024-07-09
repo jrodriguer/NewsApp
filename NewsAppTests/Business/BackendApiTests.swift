@@ -28,7 +28,7 @@ class BackendApiTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func testArticlesViewModel_service_shouldBeInjectedAndNotBeNil() {
+    func testArticlesViewModel_Service_shouldBeInjectedAndNotBeNil() {
         XCTAssertNotNil(vm.backendApi)
     }
     
