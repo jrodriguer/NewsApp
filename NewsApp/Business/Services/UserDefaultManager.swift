@@ -7,7 +7,14 @@
 
 import Foundation
 
-class UserDefaultsManager<T: Codable>: ObservableObject {
+protocol UserDefaultsManagerProtocol {
+    associatedtype T: Codable
+    static func saveItem(_ saveKey: FavoriteKey, _ data: Data)
+    static func removeItem(_ saveKey: FavoriteKey)
+    static func getItem(_ saveKey: FavoriteKey) -> Data?
+}
+
+class UserDefaultsManager<T: Codable>: UserDefaultsManagerProtocol {
     static func saveItem(_ saveKey: FavoriteKey, _ data: Data) {
         UserDefaults.standard.set(data, forKey: saveKey.rawValue)
     }
