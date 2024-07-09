@@ -12,15 +12,20 @@ import Mocker
 @testable import NewsApp
 
 class ArticlesViewModel_Tests: XCTestCase {
-    var setup = MockDependencies()
-    var vm = ArticlesViewModel()
+    
+    var setup: MockDependencies!
+    var vm: ArticlesViewModel!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        setup = MockDependencies()
+        vm = ArticlesViewModel()
     }
     
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        setup = nil
+        vm = nil
+        try super.tearDownWithError()
     }
     
     func testIsLoading_ShouldBeTrue() {
