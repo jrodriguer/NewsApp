@@ -12,15 +12,20 @@ import XCTest
 
 @testable import NewsApp
 class BackendApiTests: XCTestCase {
-    private var setup = MockDependencies()
-    private var vm = ArticlesViewModel()
+    
+    var setup: MockDependencies!
+    var vm: ArticlesViewModel!
     
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        setup = MockDependencies()
+        vm = ArticlesViewModel()
     }
     
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        setup = nil
+        vm = nil
+        try super.tearDownWithError()
     }
     
     func testArticlesViewModel_service_shouldBeInjectedAndNotBeNil() {
@@ -43,6 +48,6 @@ class BackendApiTests: XCTestCase {
                     requestExpectation.fulfill()
                 }.resume()
 
-            wait(for: [requestExpectation], timeout: 10.0)
+        wait(for: [requestExpectation], timeout: 10.0)
     }
 }
