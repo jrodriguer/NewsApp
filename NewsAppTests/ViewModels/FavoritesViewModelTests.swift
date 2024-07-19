@@ -15,7 +15,6 @@ struct MockItem: Identifiable, Codable, Equatable {
 }
 
 final class FavoritesViewModelTests: XCTestCase {
-    
     var setup: MockDependencies!
     var vm: FavoritesViewModel<MockItem>!
 
@@ -33,4 +32,28 @@ final class FavoritesViewModelTests: XCTestCase {
         XCTAssertTrue(vm.filtered(from: [], showFavoritesOnly: true).isEmpty)
     }
     
+    func testAddFavorite() {
+        let item = MockItem(id: UUID(), name: "Test Item")
+        vm.add(item)
+        XCTAssertTrue(vm.contains(item))
+        XCTAssertEqual(vm.filtered(from: [item], showFavoritesOnly: true).count, 1)
+    }
+    
+    func testRemoveFavorite() {
+        let item = MockItem(id: UUID(), name: "Test Item")
+        vm.add(item)
+        XCTAssertTrue(vm.contains(item))
+        vm.remove(item)
+        XCTAssertFalse(vm.contains(item))
+        XCTAssertTrue(vm.filtered(from: [item], showFavoritesOnly: true).isEmpty)
+    }
+    
+    func testFilterFavorites() {
+        let item1 = MockItem(id: UUID(), name: "Item 1")
+        let item2 = MockItem(id: UUID(), name: "Item 2")
+        vm.add(item1)
+        let allItems = [item1, item2]
+        XCTAssertEqual(vm.filtered(from: allItems, showFavoritesOnly: true), [item1])
+        XCTAssertEqual(vm.filtered(from: allItems, showFavoritesOnly: false), allItems)
+    }
 }

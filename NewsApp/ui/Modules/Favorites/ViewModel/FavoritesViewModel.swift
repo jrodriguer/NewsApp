@@ -13,10 +13,10 @@ enum FavoriteKey: String {
 
 class FavoritesViewModel<T: Identifiable & Codable>: ObservableObject {
     private var saveKey: FavoriteKey
-    private var userDefaultsManager: UserDefaultsManager<T>.Type
+    private var userDefaultsManager: any UserDefaultsManagerProtocol.Type
     @Published private var favorites: [T] = []
     
-    init(saveKey: FavoriteKey, userDefaultsManager: UserDefaultsManager<T>.Type = UserDefaultsManager<T>.self) {
+    init(saveKey: FavoriteKey, userDefaultsManager: any UserDefaultsManagerProtocol.Type = UserDefaultsManager<T>.self) {
         self.saveKey = saveKey
         self.userDefaultsManager = userDefaultsManager
         self.favorites = loadFavorites()
