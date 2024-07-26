@@ -56,4 +56,20 @@ final class FavoritesViewModelTests: XCTestCase {
         XCTAssertEqual(vm.filtered(from: allItems, showFavoritesOnly: true), [item1])
         XCTAssertEqual(vm.filtered(from: allItems, showFavoritesOnly: false), allItems)
     }
+    
+    func testAddMultipleFavorites() {
+        let item1 = MockItem(id: UUID(), name: "Item 1")
+        let item2 = MockItem(id: UUID(), name: "Item 2")
+        vm.add(item1)
+        vm.add(item2)
+        XCTAssertTrue(vm.contains(item1))
+        XCTAssertTrue(vm.contains(item2))
+        XCTAssertEqual(vm.filtered(from: [item1, item2], showFavoritesOnly: true).count, 2)
+    }
+    
+    func testRemoveNonExistentFavorite() {
+        let item = MockItem(id: UUID(), name: "Test Item")
+        vm.remove(item)
+        XCTAssertFalse(vm.contains(item))
+    }
 }
