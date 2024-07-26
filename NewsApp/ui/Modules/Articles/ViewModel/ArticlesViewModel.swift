@@ -21,16 +21,15 @@ final class ArticlesViewModel: ObservableObject {
                 
         backendApi?.getTopHeadLinesArticles(category: category)?.responseDecodable(of: ArticleListApiObject.self) { [weak self] response in
             guard let self = self else { return }
-            self.isLoading = false
             
             switch response.result {
             case .success(let articlesListApiObject):
                 self.articles = articlesListApiObject.articles
             case .failure(let error):
-                print("Error: \(error)")
+                Log.error(tag: ArticlesViewModel.self, message: "\(error)")
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.async {
                 self.isLoading = false
             }
         }
