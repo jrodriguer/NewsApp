@@ -23,6 +23,7 @@ struct CustomTabBarView: View {
             } label: {
                 TabBarButtonView(buttonText: "News", imageName: "network", isActive: selectedTab == .News)
             }
+            .accessibilityIdentifier("NewsButton")
             .tint(Color(.gray))
 
             Button {
@@ -30,12 +31,14 @@ struct CustomTabBarView: View {
             } label: {
                 ShowModalTabBarItemView(radius: 55) { showModal.toggle() }
             }
+            .accessibilityIdentifier("ShowModalButton")
             
             Button {
                 selectedTab = .Favorites
             } label: {
                 TabBarButtonView(buttonText: "Favorites", imageName: "suit.heart", isActive: selectedTab == .Favorites)
             }
+            .accessibilityIdentifier("FavoritesButton")
             .tint(Color(.gray))
         }
         .background(Color(.white))

@@ -29,6 +29,7 @@ struct TabBarButtonView: View {
                 Text(buttonText)
             }
             .frame(width: geo.size.width, height: geo.size.height)
+            .accessibilityIdentifier(buttonText)
         }
     }
 }

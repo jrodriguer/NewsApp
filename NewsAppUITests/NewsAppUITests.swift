@@ -42,4 +42,17 @@ final class NewsAppUITests: XCTestCase {
             }
         }
     }
+    
+    func testTabBarComponents() {
+        let newsButton = app.buttons["NewsButton"]
+        let favoritesButton = app.buttons["FavoritesButton"]
+        
+        XCTAssertTrue(newsButton.exists, "The News button should exist")
+        XCTAssertTrue(favoritesButton.exists, "The Favorites button should exist")
+        
+        newsButton.tap()
+        XCTAssertTrue(app.staticTexts["News"].exists, "The News view should be displayed")
+        favoritesButton.tap()
+        XCTAssertTrue(app.staticTexts["Favorites"].exists, "The Favorites view should be displayed")
+    }
 }
