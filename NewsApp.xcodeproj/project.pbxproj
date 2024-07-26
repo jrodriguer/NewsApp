@@ -233,6 +233,7 @@
 		8A4E22D62B4A2BCD006D71C6 /* NewsAppUITests */ = {
 			isa = PBXGroup;
 			children = (
+				8AA196532C53BFCA0080B099 /* ui */,
 				8A4E22D72B4A2BCD006D71C6 /* NewsAppUITests.swift */,
 				8A4E22D92B4A2BCD006D71C6 /* NewsAppUITestsLaunchTests.swift */,
 			);
@@ -438,6 +439,45 @@
 				8AABBC882B95DAEB00D78C5D /* ProcessInfo.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8AA196532C53BFCA0080B099 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				8AA196552C53BFDC0080B099 /* Components */,
+				8AA196542C53BFD60080B099 /* Modules */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		8AA196542C53BFD60080B099 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				8AA196572C53BFED0080B099 /* Articles */,
+				8AA196562C53BFE50080B099 /* Favorites */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		8AA196552C53BFDC0080B099 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8AA196562C53BFE50080B099 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		8AA196572C53BFED0080B099 /* Articles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Articles;
 			sourceTree = "<group>";
 		};
 		8AABBC812B95010C00D78C5D /* Dependecies */ = {
