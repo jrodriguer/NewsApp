@@ -92,6 +92,7 @@ struct ArticleDetailView: View {
                                 }
                             }
                         }
+                        .accessibilityIdentifier("FavoriteButton")
                         .buttonStyle(.borderedProminent)
                         .padding()
                     }
