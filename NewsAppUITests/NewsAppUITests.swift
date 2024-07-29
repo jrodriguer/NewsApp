@@ -55,4 +55,15 @@ final class NewsAppUITests: XCTestCase {
         favoritesButton.tap()
         XCTAssertTrue(app.staticTexts["Favorites"].exists, "The Favorites view should be displayed")
     }
+    
+    func testPlaceFavorite() throws {
+        // Step 1
+        let scrollViewsQuery = app.scrollViews
+        
+        // Step 2
+        
+        
+        // Step 3
+        app.buttons["FavoriteButton"].tap()
+    }
 }
