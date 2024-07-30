@@ -13,6 +13,7 @@ final class NewsAppUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
+        app.launchArguments.append("-ui-test")
         app.launch()
     }
 
