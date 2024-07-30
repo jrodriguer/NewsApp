@@ -11,32 +11,22 @@ final class NewsAppUITests: XCTestCase {
     var app: XCUIApplication!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
         app = XCUIApplication()
         app.launch()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         app = nil
     }
 
     func testExample() throws {
-        // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
             measure(metrics: [XCTApplicationLaunchMetric()]) {
                 XCUIApplication().launch()
             }
@@ -57,13 +47,30 @@ final class NewsAppUITests: XCTestCase {
     }
     
     func testPlaceFavorite() throws {
+        /*
+         Step 1 -> Access the list of articles.
+         Step 2 -> We tap on "Add favorite" button.
+         Step 3 -> Tap the "Add to Favorites" button.
+         Step 4 -> Verify that the article is added to the favorites.
+         */
+        
         // Step 1
-        let scrollViewsQuery = app.scrollViews
-        
+        let articleView = app.otherElements["ArticleView"]
+        XCTAssertTrue(articleView.waitForExistence(timeout: 5), "The article view should be exist")
+
         // Step 2
-        
+        let articleCard = app.scrollViews.otherElements["ArticleCardView_0"]
+        XCTAssertTrue(articleCard.waitForExistence(timeout: 5), "The card article should be exist")
+        articleCard.tap()
         
         // Step 3
-        app.buttons["FavoriteButton"].tap()
+        let addToFavoritesButton = app.buttons["FavoritesButton"]
+        XCTAssertTrue(addToFavoritesButton.waitForExistence(timeout: 5), "The button 'Add to Favorites' should be exist")
+        addToFavoritesButton.tap()
+        
+        // Step 4
+        app.buttons["FavoritesButton"].tap()
+        let favoritedArticle = app.scrollViews.otherElements["ArticleCardView_0"]
+        XCTAssertTrue(favoritedArticle.waitForExistence(timeout: 5), "The article should be into Favorites")
     }
 }
