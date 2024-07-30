@@ -102,7 +102,8 @@ extension ArticleView {
                                         ArticleCardView(article: article)
                                             .environmentObject(vm)
                                             .environmentObject(favorites)
-                                    }
+                                    }                                    
+                                    .accessibilityIdentifier("NavigationLink_\(article.id)")
                                 }
                             }
                         } else {
@@ -142,6 +143,7 @@ extension ArticleView {
                                             ) {
                                                 EmptyView()
                                             }
+                                            .accessibilityIdentifier("NavigationLink_\(article.id)")
                                             .opacity(0.0)
                                         }
                                     }
@@ -165,6 +167,7 @@ extension ArticleView {
                                     }
                                 }
                             })
+                            .accessibilityIdentifier("FabButton")
                         }
                     }
                     // MARK: - Capture current scroll offset

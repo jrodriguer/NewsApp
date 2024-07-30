@@ -14,6 +14,7 @@ struct HomeView: View {
     var body: some View {
         if selectedTab == .News {
             ArticleView()
+                .accessibilityIdentifier("ArticleView")
         }
         CustomTabBarView(selectedTab: $selectedTab, showModal: $showModal)
     }

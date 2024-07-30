@@ -53,6 +53,7 @@ struct ArticleCardView: View {
                 
                 Spacer()
             }
+            accessibilityIdentifier("ArticleCardView_\(article.id)")
             .padding()
         }
         .cornerRadius(10)
