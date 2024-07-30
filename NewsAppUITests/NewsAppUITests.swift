@@ -14,6 +14,7 @@ final class NewsAppUITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments.append("-ui-test")
+        app.launchEnvironment["-ui-test-apiURL"] = "https://newsapi.org/v2"
         app.launch()
     }
 
@@ -24,14 +25,6 @@ final class NewsAppUITests: XCTestCase {
     func testExample() throws {
         let app = XCUIApplication()
         app.launch()
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
     }
     
     func testTabBarComponents() {
