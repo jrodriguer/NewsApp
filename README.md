@@ -64,5 +64,38 @@ The application follows the Model-View-ViewModel (MVVM) pattern:
 5. **Build and Run:**
    Select your target device or simulator and press Cmd + R to build and run the project.
 
+### Usage
 
+## Home Screen
+- Displays top headlines.
+- Tap on a headline to view the full article.
+
+## Categories
+- Select a category to view news articles from that category.
+- Available categories include Business, Entertainment, General, Health, Science, Sports, Technology.
+
+## Favorites
+- Tap the "Add to Favorites" button on an article to save it.
+- Access your favorite articles from the Favorites tab.
+
+## Search
+- Use the search bar to find specific news articles.
+
+## Testing
+The project includes unit tests and UI tests to ensure the app works as expected.
+
+## Running Tests
+1. Unit Tests:
+    To run unit tests, select the NewsApp scheme and press Cmd + U.
+
+2. UI Tests:
+    To run UI tests, select the NewsAppUITests scheme and press Cmd + U.
+
+## Test Coverage
+The test coverage focuses on ensuring the functionality of the ViewModels and the interaction between the views and ViewModels. Additional UI tests are provided to simulate user interactions and validate the UI components.
+
+## Acknowledgements
+- NewsAPI for providing the news data.
+- SwiftUI for the UI framework.
+- The open-source community for their invaluable contributions and resources.
    
