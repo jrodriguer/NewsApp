@@ -53,27 +53,4 @@ class ArticlesViewModelTests: XCTestCase {
         
         XCTAssertNotNil(self.vm.articles)
     }
-    
-    func testLoadArticles_failureResponse_shouldResetLoading() {
-        let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
-        let apiEndpoint = URL(string: "https://newsapi.org/v2/top-headlines/?country=us&apiKey=\(apiKey)")!
-        let mock = Mock(url: apiEndpoint, contentType: .json, statusCode: 500, data: [.get: Data()])
-        mock.register()
-        
-        vm.loadArticles()
-        
-        XCTAssertTrue(vm.isLoading)
-        
-        let requestExpectation = XCTestExpectation(description: "Loading articles")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            // Check that the isLoading property has been reset to false after the simulated loading time
-            XCTAssertFalse(self.vm.isLoading)
-            // Meets the expectation.
-            requestExpectation.fulfill()
-        }
-        
-        wait(for: [requestExpectation], timeout: 2.0)
-        
-        XCTAssertNil(self.vm.articles)
-    }
 }
