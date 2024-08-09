@@ -16,29 +16,25 @@ final class NewsAppUITests: XCTestCase {
 //        app.launchArguments.append("-ui-test")
 //        app.launchEnvironment["-ui-test-apiURL"] = "https://newsapi.org/v2"
         app.launch()
-        
-        let newsButton = app.buttons["NewsButton"]
-        XCTAssertTrue(newsButton.exists, "The News button should exist")
-        newsButton.tap()
     }
 
     override func tearDownWithError() throws {
         app = nil
     }
     
-//    func testTabBarComponents() throws {
-//        let snapshot = try app.snapshot()
-//        let newsButton = app.buttons["NewsButton"]
-//        let favoritesButton = app.buttons["FavoritesButton"]
-//        
-//        XCTAssertTrue(newsButton.exists, "The News button should exist")
-//        XCTAssertTrue(favoritesButton.exists, "The Favorites button should exist")
-//        
-//        newsButton.tap()
-//        XCTAssertTrue(app.staticTexts["News"].exists, "The News view should be displayed")
-//        favoritesButton.tap()
-//        XCTAssertTrue(app.staticTexts["Favorites"].exists, "The Favorites view should be displayed")
-//    }
+    func testTabBarComponents() throws {
+        let snapshot = try app.snapshot()
+        let newsButton = app.buttons["NewsButton"]
+        let favoritesButton = app.buttons["FavoritesButton"]
+        
+        XCTAssertTrue(newsButton.exists, "The News button should exist")
+        XCTAssertTrue(favoritesButton.exists, "The Favorites button should exist")
+        
+        newsButton.tap()
+        XCTAssertTrue(app.staticTexts["News"].exists, "The News view should be displayed")
+        favoritesButton.tap()
+        XCTAssertTrue(app.staticTexts["Favorites"].exists, "The Favorites view should be displayed")
+    }
     
 //    func testPlaceFavorite() throws {
 //        /*
