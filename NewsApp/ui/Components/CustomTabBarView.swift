@@ -27,7 +27,7 @@ struct CustomTabBarView: View {
             .tint(Color(.gray))
 
             Button {
-                
+                showModal.toggle()
             } label: {
                 ShowModalTabBarItemView(radius: 55) { showModal.toggle() }
             }

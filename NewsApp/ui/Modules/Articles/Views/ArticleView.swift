@@ -14,7 +14,7 @@ enum ViewOption: String, CaseIterable {
 
 struct ArticleView: View {
     @StateObject private var vm = ArticlesViewModel()
-    @StateObject private var favorites = FavoritesViewModel<ArticleApiObject>(saveKey:  FavoriteKey.articleFavorites)
+    @StateObject private var favorites = FavoritesViewModel<ArticleApiObject>(saveKey: FavoriteKey.articleFavorites)
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
@@ -32,56 +32,54 @@ struct ArticleView: View {
             }
             .navigationBarTitle("News")
             .toolbar {
-                ToolbarItem {
-                    Menu {
-                        Picker("View", selection: $selectedViewOption) {
-                            ForEach(ViewOption.allCases, id: \.self) { option in
-                                Label {
-                                    Text(option.rawValue)
-                                } icon: {
-                                    Image(systemName: option == .cardView ? "square.grid.2x2" : "list.bullet")
-                                }
-                                .tag(option)
-                            }
-                        }
-                        .pickerStyle(.menu)
-                        
-                        Section("Sort by") {
-                            Button("Alphabetical") {
-                                if !searchResult.isEmpty {
-                                    vm.articles.sort { $0.source.name.lowercased() < $1.source.name.lowercased() }
-                                }
-                            }
-                            Button("Newest First") {
-                                if !searchResult.isEmpty {
-                                    vm.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
-                                }
-                            }
-                            Button("Oldest First") {
-                                if !searchResult.isEmpty {
-                                    vm.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
-                                }
-                            }
-                        }
-                        
-                        Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
-                            showFavoritesOnly.toggle()
-                        }
-                    } label: {
-                        Label("Menu", systemImage: "ellipsis.circle")
-                    }
-                    .menuOrder(.fixed)
-                }
+                toolbarContent
             }
+        }
+    }
+    
+    private var toolbarContent: some ToolbarContent {
+        ToolbarItem {
+            Menu {
+                Picker("View", selection: $selectedViewOption) {
+                    ForEach(ViewOption.allCases, id: \.self) { option in
+                        Label(option.rawValue, systemImage: option == .cardView ? "square.grid.2x2" : "list.bullet")
+                            .tag(option)
+                    }
+                }
+                .pickerStyle(.menu)
+                
+                sortButtons
+                showFavoritesButton
+            } label: {
+                Label("Menu", systemImage: "ellipsis.circle")
+            }
+        }
+    }
+    
+    private var sortButtons: some View {
+        Section("Sort by") {
+            Button("Alphabetical") {
+                vm.articles.sort { $0.source.name.lowercased() < $1.source.name.lowercased() }
+            }
+            Button("Newest First") {
+                vm.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
+            }
+            Button("Oldest First") {
+                vm.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
+            }
+        }
+    }
+    
+    private var showFavoritesButton: some View {
+        Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
+            showFavoritesOnly.toggle()
         }
     }
     
     private var searchResult: [ArticleApiObject] {
         favorites.filtered(from: vm.articles, showFavoritesOnly: showFavoritesOnly)
     }
-}
-
-extension ArticleView {
+    
     private var cardSection: some View {
         Group {
             if vm.isLoading {
@@ -102,7 +100,7 @@ extension ArticleView {
                                         ArticleCardView(article: article)
                                             .environmentObject(vm)
                                             .environmentObject(favorites)
-                                    }                                    
+                                    }
                                     .accessibilityIdentifier("NavigationLink_\(article.id)")
                                 }
                             }
@@ -158,31 +156,38 @@ extension ArticleView {
                         
                         if showFab {
                             FloatingActionButtonView(name: "chevron.up", radius: 55, action: {
-                                if let firstArticle = searchResult.first {
-                                    scrollToID = firstArticle.id
-                                    DispatchQueue.main.async {
-                                        withAnimation {
-                                            proxy.scrollTo(firstArticle.id, anchor: .top)
-                                        }
-                                    }
-                                }
+                                scrollToTop(proxy)
                             })
                             .accessibilityIdentifier("FabButton")
                         }
                     }
-                    // MARK: - Capture current scroll offset
                     .background(GeometryReader {
                         Color.clear.preference(key: ViewOffsetKey.self,
                                                value: -$0.frame(in: .named("scroll")).origin.y)
                     })
                     .onPreferenceChange(ViewOffsetKey.self) { newOffset in
-                        self.offset = newOffset
-                        withAnimation {
-                            showFab = newOffset > -100
-                        }
+                        handleScrollOffset(newOffset)
                     }
                 }
             }
+        }
+    }
+    
+    private func scrollToTop(_ proxy: ScrollViewProxy) {
+        if let firstArticle = searchResult.first {
+            scrollToID = firstArticle.id
+            DispatchQueue.main.async {
+                withAnimation {
+                    proxy.scrollTo(firstArticle.id, anchor: .top)
+                }
+            }
+        }
+    }
+    
+    private func handleScrollOffset(_ newOffset: CGFloat) {
+        offset = newOffset
+        withAnimation {
+            showFab = newOffset > -100
         }
     }
 }

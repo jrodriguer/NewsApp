@@ -15,6 +15,9 @@ struct HomeView: View {
         if selectedTab == .News {
             ArticleView()
                 .accessibilityIdentifier("ArticleView")
+        } else {
+            Text("Favorites view")
+                .accessibilityIdentifier("FavoritesView")
         }
         CustomTabBarView(selectedTab: $selectedTab, showModal: $showModal)
     }
