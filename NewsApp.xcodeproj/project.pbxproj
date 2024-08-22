@@ -156,23 +156,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8A1DAC222B8E3C4800259AD3 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-				8AEC0AA72C09434C00308A3E /* Views */,
-				8A1DAC242B8E3C5900259AD3 /* ViewModel */,
-			);
-			path = Favorites;
-			sourceTree = "<group>";
-		};
-		8A1DAC242B8E3C5900259AD3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				8A1DAC252B8E3C6F00259AD3 /* FavoritesViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		8A4E22B02B4A2BCA006D71C6 = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +179,7 @@
 		8A4E22BB2B4A2BCA006D71C6 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				8AB5F1602C7789D200F41010 /* Modules */,
 				8A7C4D772B8924D6009E98F6 /* AppDelegate.swift */,
 				8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */,
 				8A8C185C2B71AE66008E3C8C /* Business */,
@@ -318,41 +302,10 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		8A8C18612B728487008E3C8C /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				8A1DAC222B8E3C4800259AD3 /* Favorites */,
-				8A9CFC8C2B4EC5E100F70B13 /* Articles */,
-				8A8C186E2B728C6A008E3C8C /* Home */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
-		8A8C18622B72853F008E3C8C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				8A9CFC932B4EC7B500F70B13 /* ArticleCardView.swift */,
-				8A9CFC912B4EC61000F70B13 /* ArticleDetailView.swift */,
-				8A9CFC8D2B4EC5F300F70B13 /* ArticleRowView.swift */,
-				8A8C18712B728E15008E3C8C /* ArticleView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		8A8C18632B728557008E3C8C /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				8A8C18642B7285A3008E3C8C /* ArticlesViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		8A8C18662B728714008E3C8C /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				8A8C18732B7296F8008E3C8C /* Components */,
 				8A8C186B2B728A5C008E3C8C /* Extensions */,
-				8A8C18612B728487008E3C8C /* Modules */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -387,14 +340,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		8A8C186E2B728C6A008E3C8C /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				8A8C186F2B728C85008E3C8C /* HomeView.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		8A8C18732B7296F8008E3C8C /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,15 +363,6 @@
 			);
 			name = Utils;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		8A9CFC8C2B4EC5E100F70B13 /* Articles */ = {
-			isa = PBXGroup;
-			children = (
-				8A8C18632B728557008E3C8C /* ViewModel */,
-				8A8C18622B72853F008E3C8C /* Views */,
-			);
-			path = Articles;
 			sourceTree = "<group>";
 		};
 		8A9FEC592B93731C0027A3E6 /* Extensions */ = {
@@ -454,19 +390,51 @@
 			path = Environments;
 			sourceTree = "<group>";
 		};
+		8AB5F15C2C7788E200F41010 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8AB5F15E2C77890900F41010 /* Views */,
+				8AB5F15D2C77890000F41010 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		8AB5F15D2C77890000F41010 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A8C18642B7285A3008E3C8C /* ArticlesViewModel.swift */,
+				8A1DAC252B8E3C6F00259AD3 /* FavoritesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8AB5F15E2C77890900F41010 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A9CFC932B4EC7B500F70B13 /* ArticleCardView.swift */,
+				8A9CFC912B4EC61000F70B13 /* ArticleDetailView.swift */,
+				8A9CFC8D2B4EC5F300F70B13 /* ArticleRowView.swift */,
+				8A8C18712B728E15008E3C8C /* ArticleView.swift */,
+				8A8C18732B7296F8008E3C8C /* Components */,
+				8A8C186F2B728C85008E3C8C /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8AB5F1602C7789D200F41010 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				8AB5F15C2C7788E200F41010 /* Presentation */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		8AE62B272B7BD02C005DFD77 /* Api */ = {
 			isa = PBXGroup;
 			children = (
 				8AE62B282B7BDCFC005DFD77 /* BackendApi.swift */,
 			);
 			path = Api;
-			sourceTree = "<group>";
-		};
-		8AEC0AA72C09434C00308A3E /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
