@@ -179,10 +179,10 @@
 		8A4E22BB2B4A2BCA006D71C6 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
-				8AB5F1602C7789D200F41010 /* Modules */,
 				8A7C4D772B8924D6009E98F6 /* AppDelegate.swift */,
 				8A8C185C2B71AE66008E3C8C /* Business */,
 				8A7C4D6F2B879029009E98F6 /* Domain */,
+				8AB5F1602C7789D200F41010 /* Modules */,
 				8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */,
 				8A64C1CB2C06398F00BAE6E5 /* Resources */,
 			);
