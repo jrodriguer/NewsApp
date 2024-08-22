@@ -181,14 +181,10 @@
 			children = (
 				8AB5F1602C7789D200F41010 /* Modules */,
 				8A7C4D772B8924D6009E98F6 /* AppDelegate.swift */,
-				8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */,
 				8A8C185C2B71AE66008E3C8C /* Business */,
 				8A7C4D6F2B879029009E98F6 /* Domain */,
-				8A8386732B8565BB00FEC3BD /* GoogleService-Info.plist */,
 				8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */,
-				8A4E22C22B4A2BCC006D71C6 /* Preview Content */,
 				8A64C1CB2C06398F00BAE6E5 /* Resources */,
-				8A8C18662B728714008E3C8C /* ui */,
 			);
 			path = NewsApp;
 			sourceTree = "<group>";
@@ -240,7 +236,12 @@
 		8A64C1CB2C06398F00BAE6E5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */,
+				8A7C4D702B87904A009E98F6 /* Fonts */,
+				8A8386732B8565BB00FEC3BD /* GoogleService-Info.plist */,
+				8ACA94282B86C3C7001CEBD2 /* Info.plist */,
 				8A3CD90D2B91DE82005A677C /* news.json */,
+				8A4E22C22B4A2BCC006D71C6 /* Preview Content */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -249,9 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				8AABBC922B9635FF00D78C5D /* Environments */,
-				8A9FEC592B93731C0027A3E6 /* Extensions */,
-				8A7C4D702B87904A009E98F6 /* Fonts */,
-				8ACA94282B86C3C7001CEBD2 /* Info.plist */,
 				8A8E75E52B5830950063E6FD /* Utils */,
 			);
 			path = Domain;
@@ -300,13 +298,6 @@
 				8A7C4D6D2B876439009E98F6 /* UserDefaultManager.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		8A8C18662B728714008E3C8C /* ui */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ui;
 			sourceTree = "<group>";
 		};
 		8A8C18672B728738008E3C8C /* Data */ = {
@@ -362,13 +353,6 @@
 			);
 			name = Utils;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		8A9FEC592B93731C0027A3E6 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8AABBC812B95010C00D78C5D /* Dependecies */ = {
