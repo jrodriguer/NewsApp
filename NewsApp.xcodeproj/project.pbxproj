@@ -305,7 +305,6 @@
 		8A8C18662B728714008E3C8C /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				8A8C186B2B728A5C008E3C8C /* Extensions */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -332,10 +331,11 @@
 		8A8C186B2B728A5C008E3C8C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8A8C186C2B728A80008E3C8C /* DateFormatter.swift */,
 				8AE62B1C2B793752005DFD77 /* Color.swift */,
 				8AE62B2A2B7BF8FB005DFD77 /* DataRequest.swift */,
+				8A8C186C2B728A80008E3C8C /* DateFormatter.swift */,
 				8A7C4D752B8795DF009E98F6 /* Font.swift */,
+				8AABBC882B95DAEB00D78C5D /* ProcessInfo.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -356,10 +356,9 @@
 		8A8E75E52B5830950063E6FD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				8AABBC812B95010C00D78C5D /* Dependecies */,
-				8A8E75E62B5830B30063E6FD /* Utils.swift */,
-				8A9FEC602B93D2000027A3E6 /* Log.swift */,
 				8AABBC8A2B95E25D00D78C5D /* Configuration.swift */,
+				8AABBC812B95010C00D78C5D /* Dependecies */,
+				8A9FEC602B93D2000027A3E6 /* Log.swift */,
 			);
 			name = Utils;
 			path = ..;
@@ -368,7 +367,6 @@
 		8A9FEC592B93731C0027A3E6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8AABBC882B95DAEB00D78C5D /* ProcessInfo.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -393,8 +391,9 @@
 		8AB5F15C2C7788E200F41010 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				8AB5F15E2C77890900F41010 /* Views */,
+				8AB5F1612C77900A00F41010 /* Utils */,
 				8AB5F15D2C77890000F41010 /* ViewModel */,
+				8AB5F15E2C77890900F41010 /* Views */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -427,6 +426,15 @@
 				8AB5F15C2C7788E200F41010 /* Presentation */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		8AB5F1612C77900A00F41010 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8A8C186B2B728A5C008E3C8C /* Extensions */,
+				8A8E75E62B5830B30063E6FD /* Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		8AE62B272B7BD02C005DFD77 /* Api */ = {
