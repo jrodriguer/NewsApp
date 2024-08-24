@@ -182,8 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				8A7C4D772B8924D6009E98F6 /* AppDelegate.swift */,
-				8A8C185C2B71AE66008E3C8C /* Business */,
-				8A7C4D6F2B879029009E98F6 /* Domain */,
 				8AB5F1602C7789D200F41010 /* Modules */,
 				8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */,
 				8A64C1CB2C06398F00BAE6E5 /* Resources */,
@@ -284,15 +282,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		8A8C185C2B71AE66008E3C8C /* Business */ = {
-			isa = PBXGroup;
-			children = (
-				8A8C18672B728738008E3C8C /* Data */,
-				8A8C185D2B71AEC6008E3C8C /* Services */,
-			);
-			path = Business;
-			sourceTree = "<group>";
-		};
 		8A8C185D2B71AEC6008E3C8C /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +297,7 @@
 				8AE62B272B7BD02C005DFD77 /* Api */,
 				8AB07D152C077BB7008237C0 /* Category.swift */,
 				8A8C18682B728741008E3C8C /* Entities */,
+				8A8C185D2B71AEC6008E3C8C /* Services */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -426,6 +416,8 @@
 		8AB5F1622C7791B900F41010 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				8A8C18672B728738008E3C8C /* Data */,
+				8A7C4D6F2B879029009E98F6 /* Domain */,
 				8AB5F1632C7791DC00F41010 /* NewsModule.swift */,
 				8AB5F15C2C7788E200F41010 /* Presentation */,
 			);
