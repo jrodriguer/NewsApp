@@ -416,9 +416,9 @@
 		8AB5F1622C7791B900F41010 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				8AB5F1632C7791DC00F41010 /* NewsModule.swift */,
 				8A8C18672B728738008E3C8C /* Data */,
 				8A7C4D6F2B879029009E98F6 /* Domain */,
-				8AB5F1632C7791DC00F41010 /* NewsModule.swift */,
 				8AB5F15C2C7788E200F41010 /* Presentation */,
 			);
 			path = News;
