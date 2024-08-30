@@ -2,7 +2,7 @@
 //  Log.swift
 //  NewsApp
 //
-//  Created by Julio Rodriguez on 2/3/24.
+//  Created by Julio Rodriguez on 30/8/24.
 //
 
 import Foundation

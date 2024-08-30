@@ -2,7 +2,7 @@
 //  Configuration.swift
 //  NewsApp
 //
-//  Created by Julio Rodriguez on 4/3/24.
+//  Created by Julio Rodriguez on 30/8/24.
 //
 
 import Foundation
@@ -12,8 +12,9 @@ enum Configuration {
         case API_URL
     }
     
-    /// Retrieve a typed value for a specific configuration key from the Info.plist file.
     static func value<T>(for key: Key) -> T? where T: LosslessStringConvertible {
+        // Retrieve a typed value for a specific configuration key from the Info.plist file.
+        
         guard let object = Bundle.main.object(forInfoDictionaryKey: key.rawValue) else {
             Log.warning(tag: Configuration.self, message: "Value not found for key: \(key.rawValue)")
             return nil
