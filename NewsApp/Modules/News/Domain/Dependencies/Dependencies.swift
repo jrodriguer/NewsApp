@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 class Dependencies {
     init() {
         guard !ProcessInfo.IS_UNIT_TESTING else { return }
