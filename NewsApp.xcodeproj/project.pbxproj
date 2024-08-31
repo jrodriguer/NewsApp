@@ -266,6 +266,9 @@
 		8A7C4D6F2B879029009E98F6 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				8AF720D22C837225000383C2 /* UseCase */,
+				8AF720CF2C837204000383C2 /* Interface */,
+				8AF720CE2C8371FD000383C2 /* Entity */,
 				8A72E96F2C8232A40014A276 /* Configuration */,
 				8A72E96C2C82324D0014A276 /* Dependencies */,
 				8AABBC922B9635FF00D78C5D /* Environments */,
@@ -429,6 +432,35 @@
 				8AE62B282B7BDCFC005DFD77 /* BackendApi.swift */,
 			);
 			path = Api;
+			sourceTree = "<group>";
+		};
+		8AF720CE2C8371FD000383C2 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		8AF720CF2C837204000383C2 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				8AF720D02C83720D000383C2 /* Repository */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		8AF720D02C83720D000383C2 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		8AF720D22C837225000383C2 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
