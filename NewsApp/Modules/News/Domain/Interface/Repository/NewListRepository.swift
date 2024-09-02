@@ -9,5 +9,5 @@ import Foundation
 
 protocol NewListRepository {
     func fetchTopHeadlines() async throws -> [NewDomainListDTO]
-    func searchArticles() async throws -> [NewDomainListDTO]
+    func search(query: String) async throws -> [NewDomainListDTO]
 }
