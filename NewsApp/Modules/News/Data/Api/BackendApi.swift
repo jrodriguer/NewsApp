@@ -10,7 +10,6 @@ import Alamofire
 
 protocol BackendApiProtocol {
     func getTopHeadLinesArticles(category: Category?) -> DataRequest?
-    func getEverythingArticles() -> DataRequest?
 }
 
 class BackendApi: ApiRestManager, BackendApiProtocol {
@@ -28,13 +27,6 @@ class BackendApi: ApiRestManager, BackendApiProtocol {
         if let category = category {
             serviceURL += "&category=\(category.rawValue)"
         }
-        return get(service: serviceURL)
-    }
-    
-    func getEverythingArticles() -> DataRequest? {
-        let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
-        var serviceURL: String = "/v2/everything&apiKey=\(apiKey)"
-        
         return get(service: serviceURL)
     }
 }
