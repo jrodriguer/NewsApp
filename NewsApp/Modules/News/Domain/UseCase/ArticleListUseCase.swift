@@ -14,9 +14,9 @@ protocol ArticleListUseCase {
 
 final class DefaultArticleListUseCase: ArticleListUseCase {
     
-    private let repository: NewListRepository
+    private let repository: ArticleListRepository
     
-    init(repository: NewListRepository) {
+    init(repository: ArticleListRepository) {
         self.repository = repository
     }
     
