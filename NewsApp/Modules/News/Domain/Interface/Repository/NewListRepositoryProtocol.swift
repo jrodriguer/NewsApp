@@ -1,5 +1,5 @@
 //
-//  NewListRepository.swift
+//  NewListRepositoryProtocol.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 2/9/24.
