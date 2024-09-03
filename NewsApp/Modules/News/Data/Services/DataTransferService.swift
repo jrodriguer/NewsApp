@@ -13,11 +13,18 @@ protocol DataTransferService {
 
 final class DefaultDataTransferService: DataTransferService {
     
-    private let networkManager: NetworkManager
-    
-    init(networkManager: NetworkManager) {
-        self.networkManager = networkManager
+    /// Method to fetch data from Network Manager and Decode the data using decode method
+    /// - Parameter request: Network request
+    /// - Returns: Decodable type object
+    func request<T>(request: any NetworkRequest) async throws -> T where T : Decodable {
+        <#code#>
     }
     
-    
+    func decode<T>(data: Data) throws -> T where T : Decodable {
+        do {
+            
+        } catch {
+            throw NetworkError
+        }
+    }
 }
