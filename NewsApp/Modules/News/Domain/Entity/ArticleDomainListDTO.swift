@@ -8,7 +8,7 @@
 import Foundation
 
 struct ArticleDomainListDTO {
-    let newId: Int
+    let id: Int
     let title: String
     let publishedAt: Date
     let author: String
