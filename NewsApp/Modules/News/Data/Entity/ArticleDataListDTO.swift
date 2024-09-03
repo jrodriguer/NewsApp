@@ -59,6 +59,7 @@ struct ArticleDataListDTO: Decodable {
 }
 
 extension ArticleDataListDTO {
+    
     static var previewData: [ArticleApiObject] {
         let previewDataURL = Bundle.main.url(forResource: "news", withExtension: "json")!
         let data = try! Data(contentsOf: previewDataURL)

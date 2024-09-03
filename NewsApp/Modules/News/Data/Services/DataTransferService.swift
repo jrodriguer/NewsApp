@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+protocol DataTransferService {
+    func request<T: Decodable>(request: NetworkRequest) async throws -> T
+}
+
+final class DefaultDataTransferService: DataTransferService {
+    
+    private let networkManager: NetworkManager
+    
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+    }
+    
+    
+}
