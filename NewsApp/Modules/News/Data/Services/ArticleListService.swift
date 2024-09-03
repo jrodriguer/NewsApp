@@ -15,6 +15,10 @@ final class DefaultArticleListService: ArticleListService {
     
     private let apiDataService: DataTransferService
     
+    init(apiDataService: DataTransferService) {
+        self.apiDataService = apiDataService
+    }
+    
     func fetchArticleListFromNetwork() async throws -> ArticlePageDataListDTO {
         <#code#>
     }
