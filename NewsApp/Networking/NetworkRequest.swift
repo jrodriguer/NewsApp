@@ -12,7 +12,7 @@ enum HTTPMethod: String {
 }
 
 protocol NetworkRequest {
-    var path: String {get set}
+    var path: String {get set} // Endpoint
     var method: HTTPMethod {get set}
     var headerParameters: [String: String] {get set}
     var queryParameters: [String: Any] {get set}
