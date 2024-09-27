@@ -76,6 +76,6 @@ extension ArticleDataListDTO {
     }
 }
 
-//struct Source: Codable, Equatable {
-//    let name: String
-//}
+struct Source: Codable, Equatable {
+    let name: String
+}

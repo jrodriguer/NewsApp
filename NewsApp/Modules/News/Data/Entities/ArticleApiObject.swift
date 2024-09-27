@@ -89,7 +89,3 @@ extension ArticleApiObject {
         return apiResponse.articles
     }
 }
-
-struct Source: Codable, Equatable {
-    let name: String
-}
