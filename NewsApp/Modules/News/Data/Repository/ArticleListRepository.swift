@@ -15,11 +15,7 @@ final class DefaultArticleListRepository: ArticleListRepository {
         self.service = service
     }
     
-    func fetchTopHeadlines() async throws -> [ArticleDomainListDTO] {
-//        try await service.fetchArticleListFromNetwork().articles.map { 0$.toDomain() }
-    }
-    
-    func search(query: String) async throws -> [ArticleDomainListDTO] {
-//        <#code#>
+    func fetchArticleList() async throws -> [ArticleDomainListDTO] {
+        return try await service.fetchArticleListFromNetwork().articles.map{ $0.toDomain() }
     }
 }
