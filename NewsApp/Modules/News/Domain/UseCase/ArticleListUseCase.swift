@@ -9,7 +9,6 @@ import Foundation
 
 protocol ArticleListUseCase {
     func fetchNewList() async throws -> [ArticleDomainListDTO]
-    func searchNewList(searched: String) async throws -> [ArticleDomainListDTO]
 }
 
 final class DefaultArticleListUseCase: ArticleListUseCase {
@@ -21,10 +20,6 @@ final class DefaultArticleListUseCase: ArticleListUseCase {
     }
     
     func fetchNewList() async throws -> [ArticleDomainListDTO] {
-        try await repository.fetchTopHeadlines()
-    }
-    
-    func searchNewList(searched: String) async throws -> [ArticleDomainListDTO] {
-        try await repository.search(query: searched)
+        try await repository.fetchArticleList()
     }
 }

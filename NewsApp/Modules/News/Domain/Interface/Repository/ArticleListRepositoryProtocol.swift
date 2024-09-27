@@ -8,6 +8,5 @@
 import Foundation
 
 protocol ArticleListRepository {
-    func fetchTopHeadlines() async throws -> [ArticleDomainListDTO]
-    func search(query: String) async throws -> [ArticleDomainListDTO]
+    func fetchArticleList() async throws -> [ArticleDomainListDTO]
 }

@@ -303,6 +303,7 @@
 		8A72E96F2C8232A40014A276 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				8A72E9722C8232EE0014A276 /* Log.swift */,
 				8A72E9702C8232B10014A276 /* Configuration.swift */,
 			);
 			path = Configuration;
@@ -325,7 +326,6 @@
 				8A72E96F2C8232A40014A276 /* Configuration */,
 				8A72E96C2C82324D0014A276 /* Dependencies */,
 				8AABBC922B9635FF00D78C5D /* Environments */,
-				8A72E9722C8232EE0014A276 /* Log.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
