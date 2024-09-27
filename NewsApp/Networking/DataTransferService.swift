@@ -2,7 +2,7 @@
 //  DataTransferService.swift
 //  NewsApp
 //
-//  Created by Julio Rodriguez on 3/9/24.
+//  Created by Julio Rodriguez on 28/9/24.
 //
 
 import Foundation
@@ -14,8 +14,7 @@ protocol DataTransferService {
 final class DefaultDataTransferService: DataTransferService {
 
     func request<T>(request: any NetworkRequest) async throws -> T where T : Decodable {
-//        let data = try await
-//        return try decode(data: data)
+        
     }
     
     func decode<T>(data: Data) throws -> T where T : Decodable {
