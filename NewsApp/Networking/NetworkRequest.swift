@@ -8,11 +8,13 @@
 import Foundation
 
 enum HTTPMethod: String {
-    case get = "GET"
+    case get     = "GET"
+    case post    = "POST"
+    case put     = "PUT"
 }
 
 protocol NetworkRequest {
-    var path: String {get set} // Endpoint
+    var path: String {get set}
     var method: HTTPMethod {get set}
     var headerParameters: [String: String] {get set}
     var queryParameters: [String: Any] {get set}
@@ -28,10 +30,10 @@ final class DefaultNetworkRequest: NetworkRequest {
     var bodyParameters: [String : Any]
     
     init(path: String, 
-         method: HTTPMethod,
-         headerParameters: [String : String],
-         queryParameters: [String : Any],
-         bodyParameters: [String : Any]) {
+         method: HTTPMethod = .get,
+         headerParameters: [String : String] = [:],
+         queryParameters: [String: Any] = [:],
+         bodyParameters: [String: Any] = [:]) {
         self.path = path
         self.method = method
         self.headerParameters = headerParameters
