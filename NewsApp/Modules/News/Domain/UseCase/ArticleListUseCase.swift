@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ArticleListUseCase {
-    func fetchNewList() async throws -> [ArticleDomainListDTO]
+    func fetchArticleList() async throws -> [ArticleDomainListDTO]
 }
 
 final class DefaultArticleListUseCase: ArticleListUseCase {
@@ -19,7 +19,7 @@ final class DefaultArticleListUseCase: ArticleListUseCase {
         self.repository = repository
     }
     
-    func fetchNewList() async throws -> [ArticleDomainListDTO] {
+    func fetchArticleList() async throws -> [ArticleDomainListDTO] {
         try await repository.fetchArticleList()
     }
 }
