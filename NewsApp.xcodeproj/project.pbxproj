@@ -268,8 +268,9 @@
 			children = (
 				8A4FC96C2CA77A7100B47BBC /* DataTransferService.swift */,
 				8A78C7FE2C873BFA007311AE /* NetworkError.swift */,
-				8A78C7FC2C8739DD007311AE /* NetworkRequest.swift */,
 				8A4FC96E2CA77E7A00B47BBC /* NetworkManager.swift */,
+				8A78C7FC2C8739DD007311AE /* NetworkRequest.swift */,
+				8A7C4D6D2B876439009E98F6 /* UserDefaultManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -364,7 +365,6 @@
 			isa = PBXGroup;
 			children = (
 				8A8C185F2B71AF0A008E3C8C /* ApiRestManager.swift */,
-				8A7C4D6D2B876439009E98F6 /* UserDefaultManager.swift */,
 				8A3E1CA62C8715FE00851895 /* ArticleListService.swift */,
 			);
 			path = Services;
