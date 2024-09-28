@@ -20,7 +20,7 @@ final class DefaultArticleListService: ArticleListService {
     }
     
     func fetchArticleListFromNetwork() async throws -> ArticlePageDataListDTO {
-        let productListNetworkRequest = DefaultNetworkRequest(path: "", method: .get)
+        let productListNetworkRequest = DefaultNetworkRequest(path: EndpointApi.topHeadlines, method: .get)
         return try await apiDataService.request(request: productListNetworkRequest)
     }
 }
