@@ -38,7 +38,6 @@
 		8A7C4D782B8924D6009E98F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C4D772B8924D6009E98F6 /* AppDelegate.swift */; };
 		8A7D24352B91D4F3003754DE /* MockGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D24342B91D4F3003754DE /* MockGenerator.swift */; };
 		8A8386742B8565BB00FEC3BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A8386732B8565BB00FEC3BD /* GoogleService-Info.plist */; };
-		8A8C18602B71AF0A008E3C8C /* ApiRestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C185F2B71AF0A008E3C8C /* ApiRestManager.swift */; };
 		8A8C18652B7285A3008E3C8C /* ArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C18642B7285A3008E3C8C /* ArticlesViewModel.swift */; };
 		8A8C186D2B728A80008E3C8C /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C186C2B728A80008E3C8C /* DateFormatter.swift */; };
 		8A8C18702B728C85008E3C8C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C186F2B728C85008E3C8C /* HomeView.swift */; };
@@ -120,7 +119,6 @@
 		8A7C4D772B8924D6009E98F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A7D24342B91D4F3003754DE /* MockGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGenerator.swift; sourceTree = "<group>"; };
 		8A8386732B8565BB00FEC3BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8A8C185F2B71AF0A008E3C8C /* ApiRestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRestManager.swift; sourceTree = "<group>"; };
 		8A8C18642B7285A3008E3C8C /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
 		8A8C186C2B728A80008E3C8C /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		8A8C186F2B728C85008E3C8C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 		8A8C185D2B71AEC6008E3C8C /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8A8C185F2B71AF0A008E3C8C /* ApiRestManager.swift */,
 				8A3E1CA62C8715FE00851895 /* ArticleListService.swift */,
 			);
 			path = Services;
@@ -678,7 +675,6 @@
 				8A7752CF2B8A8C5300C8F7D4 /* CollapsibleView.swift in Sources */,
 				8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */,
 				8A72E9712C8232B10014A276 /* Configuration.swift in Sources */,
-				8A8C18602B71AF0A008E3C8C /* ApiRestManager.swift in Sources */,
 				8A2CE75F2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift in Sources */,
 				8A7C4D782B8924D6009E98F6 /* AppDelegate.swift in Sources */,
 				8A3E1CA52C87157E00851895 /* ArticleListRepository.swift in Sources */,
