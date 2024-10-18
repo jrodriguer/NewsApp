@@ -17,7 +17,6 @@
 		8A3E1CA52C87157E00851895 /* ArticleListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E1CA42C87157E00851895 /* ArticleListRepository.swift */; };
 		8A3E1CA72C8715FE00851895 /* ArticleListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E1CA62C8715FE00851895 /* ArticleListService.swift */; };
 		8A3E1CAC2C8718CB00851895 /* ArticleDataListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E1CAB2C8718CB00851895 /* ArticleDataListDTO.swift */; };
-		8A40C1F02C09F01B00A17C3B /* ArticleListApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A40C1EF2C09F01B00A17C3B /* ArticleListApiObject.swift */; };
 		8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */; };
 		8A4E22C12B4A2BCC006D71C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */; };
 		8A4E22C42B4A2BCC006D71C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E22C32B4A2BCC006D71C6 /* Preview Assets.xcassets */; };
@@ -43,7 +42,6 @@
 		8A8C18702B728C85008E3C8C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C186F2B728C85008E3C8C /* HomeView.swift */; };
 		8A8C18722B728E15008E3C8C /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C18712B728E15008E3C8C /* ArticleView.swift */; };
 		8A8E75E72B5830B30063E6FD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E75E62B5830B30063E6FD /* Utils.swift */; };
-		8A8EF2362B4C166400402584 /* ArticleApiObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8EF2352B4C166400402584 /* ArticleApiObject.swift */; };
 		8A91CBFF2B8FB09600F673C5 /* BackendApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91CBFE2B8FB09600F673C5 /* BackendApiTests.swift */; };
 		8A91CC022B8FB18800F673C5 /* Mocker in Frameworks */ = {isa = PBXBuildFile; productRef = 8A91CC012B8FB18800F673C5 /* Mocker */; };
 		8A9CFC8E2B4EC5F400F70B13 /* ArticleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC8D2B4EC5F300F70B13 /* ArticleRowView.swift */; };
@@ -94,7 +92,6 @@
 		8A3E1CA42C87157E00851895 /* ArticleListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListRepository.swift; sourceTree = "<group>"; };
 		8A3E1CA62C8715FE00851895 /* ArticleListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListService.swift; sourceTree = "<group>"; };
 		8A3E1CAB2C8718CB00851895 /* ArticleDataListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDataListDTO.swift; sourceTree = "<group>"; };
-		8A40C1EF2C09F01B00A17C3B /* ArticleListApiObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListApiObject.swift; sourceTree = "<group>"; };
 		8A4E22B92B4A2BCA006D71C6 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApp.swift; sourceTree = "<group>"; };
 		8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,7 +120,6 @@
 		8A8C186F2B728C85008E3C8C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8A8C18712B728E15008E3C8C /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		8A8E75E62B5830B30063E6FD /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		8A8EF2352B4C166400402584 /* ArticleApiObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleApiObject.swift; sourceTree = "<group>"; };
 		8A91CBFE2B8FB09600F673C5 /* BackendApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendApiTests.swift; sourceTree = "<group>"; };
 		8A9CFC8D2B4EC5F300F70B13 /* ArticleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRowView.swift; sourceTree = "<group>"; };
 		8A9CFC912B4EC61000F70B13 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
@@ -174,12 +170,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8A3E1CAA2C8718AD00851895 /* Entity */ = {
+		8A3E1CAA2C8718AD00851895 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				8A3E1CAB2C8718CB00851895 /* ArticleDataListDTO.swift */,
+				8AB07D152C077BB7008237C0 /* Category.swift */,
 			);
-			path = Entity;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		8A4E22B02B4A2BCA006D71C6 = {
@@ -368,22 +365,11 @@
 			isa = PBXGroup;
 			children = (
 				8A78C7FB2C87385A007311AE /* Repository */,
-				8A3E1CAA2C8718AD00851895 /* Entity */,
+				8A3E1CAA2C8718AD00851895 /* Entities */,
 				8AE62B272B7BD02C005DFD77 /* Api */,
-				8AB07D152C077BB7008237C0 /* Category.swift */,
-				8A8C18682B728741008E3C8C /* Entities */,
 				8A8C185D2B71AEC6008E3C8C /* Services */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		8A8C18682B728741008E3C8C /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				8A8EF2352B4C166400402584 /* ArticleApiObject.swift */,
-				8A40C1EF2C09F01B00A17C3B /* ArticleListApiObject.swift */,
-			);
-			path = Entities;
 			sourceTree = "<group>";
 		};
 		8A8C186B2B728A5C008E3C8C /* Extensions */ = {
@@ -686,10 +672,8 @@
 				8AB5F1642C7791DC00F41010 /* NewsModule.swift in Sources */,
 				8A72E9752C8234FA0014A276 /* DependencyInjector.swift in Sources */,
 				8AB07D162C077BB7008237C0 /* Category.swift in Sources */,
-				8A8EF2362B4C166400402584 /* ArticleApiObject.swift in Sources */,
 				8A4FC96F2CA77E7A00B47BBC /* NetworkManager.swift in Sources */,
 				8A2CE7662C85D35C00B762D0 /* ArticleListUseCase.swift in Sources */,
-				8A40C1F02C09F01B00A17C3B /* ArticleListApiObject.swift in Sources */,
 				8A8C18652B7285A3008E3C8C /* ArticlesViewModel.swift in Sources */,
 				8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift in Sources */,
 				8AE62B1D2B793752005DFD77 /* Color.swift in Sources */,
