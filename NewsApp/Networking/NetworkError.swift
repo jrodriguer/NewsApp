@@ -8,6 +8,7 @@
 import Foundation
 
 enum NetworkError: Error {
+    case badURL
     case unableToDecode
     case notConnected
     case badHostname
@@ -15,6 +16,7 @@ enum NetworkError: Error {
     
     var description: String {
         switch self {
+        case .badURL: return "Bad URL"
         case .unableToDecode: return "Response can't be decoded"
         case .notConnected: return "The internet connection appears to be offline"
         case .badHostname: return "The specified hostname for this server could not be found"
