@@ -8,16 +8,16 @@
 import Foundation
 
 protocol NetworkConfigurable {
-    var baseURL: URL { get }
+    var baseURL: String { get }
     var headers: [String: String] { get }
 }
 
 class ApiDataNetworkConfig: NetworkConfigurable {
     
-    let baseURL: URL
+    let baseURL: String
     let headers: [String: String]
     
-     init(baseURL: URL,
+     init(baseURL: String,
         headers: [String: String] = [:]) {
         self.baseURL = baseURL
         self.headers = headers
