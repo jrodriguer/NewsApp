@@ -26,6 +26,9 @@
 		8A4FC96F2CA77E7A00B47BBC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FC96E2CA77E7A00B47BBC /* NetworkManager.swift */; };
 		8A4FC9732CA88B8700B47BBC /* EndpointApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FC9722CA88B8700B47BBC /* EndpointApi.swift */; };
 		8A6EAA0E2CC2B0F2008A6226 /* NetworkConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EAA0D2CC2B0F2008A6226 /* NetworkConfigurable.swift */; };
+		8A6EAA102CC2B2FB008A6226 /* NetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EAA0F2CC2B2FB008A6226 /* NetworkSessionManager.swift */; };
+		8A6EAA122CC2E2AB008A6226 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EAA112CC2E2AB008A6226 /* URLSessionProtocol.swift */; };
+		8A6EAA142CC2E30F008A6226 /* URLRequestGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EAA132CC2E30F008A6226 /* URLRequestGenerator.swift */; };
 		8A72E96E2C8232830014A276 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E96D2C8232830014A276 /* Dependencies.swift */; };
 		8A72E9712C8232B10014A276 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E9702C8232B10014A276 /* Configuration.swift */; };
 		8A72E9732C8232EE0014A276 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A72E9722C8232EE0014A276 /* Log.swift */; };
@@ -105,6 +108,9 @@
 		8A4FC96E2CA77E7A00B47BBC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8A4FC9722CA88B8700B47BBC /* EndpointApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointApi.swift; sourceTree = "<group>"; };
 		8A6EAA0D2CC2B0F2008A6226 /* NetworkConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurable.swift; sourceTree = "<group>"; };
+		8A6EAA0F2CC2B2FB008A6226 /* NetworkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManager.swift; sourceTree = "<group>"; };
+		8A6EAA112CC2E2AB008A6226 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		8A6EAA132CC2E30F008A6226 /* URLRequestGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestGenerator.swift; sourceTree = "<group>"; };
 		8A72E96D2C8232830014A276 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		8A72E9702C8232B10014A276 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		8A72E9722C8232EE0014A276 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -266,6 +272,9 @@
 				8A4FC96E2CA77E7A00B47BBC /* NetworkManager.swift */,
 				8A78C7FC2C8739DD007311AE /* NetworkRequest.swift */,
 				8A6EAA0D2CC2B0F2008A6226 /* NetworkConfigurable.swift */,
+				8A6EAA0F2CC2B2FB008A6226 /* NetworkSessionManager.swift */,
+				8A6EAA112CC2E2AB008A6226 /* URLSessionProtocol.swift */,
+				8A6EAA132CC2E30F008A6226 /* URLRequestGenerator.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -661,6 +670,7 @@
 				8A7752CF2B8A8C5300C8F7D4 /* CollapsibleView.swift in Sources */,
 				8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */,
 				8A72E9712C8232B10014A276 /* Configuration.swift in Sources */,
+				8A6EAA102CC2B2FB008A6226 /* NetworkSessionManager.swift in Sources */,
 				8A2CE75F2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift in Sources */,
 				8A7C4D782B8924D6009E98F6 /* AppDelegate.swift in Sources */,
 				8A3E1CA52C87157E00851895 /* ArticleListRepository.swift in Sources */,
@@ -686,6 +696,7 @@
 				8A8C18702B728C85008E3C8C /* HomeView.swift in Sources */,
 				8A8E75E72B5830B30063E6FD /* Utils.swift in Sources */,
 				8A9CFC962B4EEF7400F70B13 /* WrongImageView.swift in Sources */,
+				8A6EAA122CC2E2AB008A6226 /* URLSessionProtocol.swift in Sources */,
 				8A78C7FD2C8739DD007311AE /* NetworkRequest.swift in Sources */,
 				8A4FC9732CA88B8700B47BBC /* EndpointApi.swift in Sources */,
 				8A4FC96D2CA77A7100B47BBC /* DataTransferService.swift in Sources */,
@@ -693,6 +704,7 @@
 				8AABBC892B95DAEB00D78C5D /* ProcessInfo.swift in Sources */,
 				8A8C18722B728E15008E3C8C /* ArticleView.swift in Sources */,
 				8A9CFC942B4EC7B500F70B13 /* ArticleCardView.swift in Sources */,
+				8A6EAA142CC2E30F008A6226 /* URLRequestGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
