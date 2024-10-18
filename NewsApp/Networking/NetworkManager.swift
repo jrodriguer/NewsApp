@@ -16,6 +16,14 @@ protocol NetworkManager {
 
 final class DefaultNetworkManager: NetworkManager {
     
+    private let networkConfig: NetworkConfigurable
+    private let sessionManager: NetworkSessionManager
+    
+    init(networkConfig: NetworkConfigurable, sessionManager: NetworkSessionManager = DefaultNetworkSessionManager()) {
+        self.networkConfig = networkConfig
+        self.sessionManager = sessionManager
+    }
+    
     /// Method to fetch data from Session Manager and validates the data and response
     /// - Parameter request: Network Request
     /// - Returns: Data
