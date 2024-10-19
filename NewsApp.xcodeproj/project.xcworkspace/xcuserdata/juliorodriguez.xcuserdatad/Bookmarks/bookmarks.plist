@@ -3,6 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>top-level-items</key>
-	<array/>
+	<array>
+		<dict>
+			<key>query-specification</key>
+			<dict>
+				<key>match-case</key>
+				<integer>1</integer>
+				<key>query</key>
+				<string>text</string>
+				<key>term</key>
+				<dict>
+					<key>text</key>
+					<string>// TODO:</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>batch-find-query</string>
+		</dict>
+	</array>
 </dict>
 </plist>
