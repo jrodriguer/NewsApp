@@ -67,6 +67,11 @@
 		8AD6123E2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */; };
 		8AE62B1D2B793752005DFD77 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B1C2B793752005DFD77 /* Color.swift */; };
 		8AE62B2B2B7BF8FB005DFD77 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE62B2A2B7BF8FB005DFD77 /* DataRequest.swift */; };
+		8AE9CCF32CC4215B00399F1E /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9CCF22CC4215B00399F1E /* AppDIContainer.swift */; };
+		8AE9CCF52CC4227C00399F1E /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9CCF42CC4227C00399F1E /* AppConfiguration.swift */; };
+		8AE9CCF72CC4266300399F1E /* SharedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9CCF62CC4266300399F1E /* SharedURLSession.swift */; };
+		8AE9CCF92CC426CB00399F1E /* SharedURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9CCF82CC426CB00399F1E /* SharedURLSessionDelegate.swift */; };
+		8AE9CCFB2CC4271000399F1E /* URLAuthenticationChallenge+TrustServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9CCFA2CC4271000399F1E /* URLAuthenticationChallenge+TrustServer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +153,11 @@
 		8AD6123D2B76D91C00D2D8CC /* ShowModalTabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModalTabBarItemView.swift; sourceTree = "<group>"; };
 		8AE62B1C2B793752005DFD77 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8AE62B2A2B7BF8FB005DFD77 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
+		8AE9CCF22CC4215B00399F1E /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		8AE9CCF42CC4227C00399F1E /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		8AE9CCF62CC4266300399F1E /* SharedURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedURLSession.swift; sourceTree = "<group>"; };
+		8AE9CCF82CC426CB00399F1E /* SharedURLSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedURLSessionDelegate.swift; sourceTree = "<group>"; };
+		8AE9CCFA2CC4271000399F1E /* URLAuthenticationChallenge+TrustServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLAuthenticationChallenge+TrustServer.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +285,8 @@
 				8A6EAA0F2CC2B2FB008A6226 /* NetworkSessionManager.swift */,
 				8A6EAA132CC2E30F008A6226 /* URLRequestGenerator.swift */,
 				8A6EAA112CC2E2AB008A6226 /* URLSessionProtocol.swift */,
+				8AE9CCF62CC4266300399F1E /* SharedURLSession.swift */,
+				8AE9CCF82CC426CB00399F1E /* SharedURLSessionDelegate.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -282,6 +294,8 @@
 		8A5967BF2C85FE5A000A9545 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				8AE9CCF22CC4215B00399F1E /* AppDIContainer.swift */,
+				8AE9CCF42CC4227C00399F1E /* AppConfiguration.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -392,6 +406,7 @@
 				8A8C186C2B728A80008E3C8C /* DateFormatter.swift */,
 				8A7C4D752B8795DF009E98F6 /* Font.swift */,
 				8AABBC882B95DAEB00D78C5D /* ProcessInfo.swift */,
+				8AE9CCFA2CC4271000399F1E /* URLAuthenticationChallenge+TrustServer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -668,6 +683,7 @@
 				8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */,
 				8AE62B2B2B7BF8FB005DFD77 /* DataRequest.swift in Sources */,
 				8A7752CF2B8A8C5300C8F7D4 /* CollapsibleView.swift in Sources */,
+				8AE9CCFB2CC4271000399F1E /* URLAuthenticationChallenge+TrustServer.swift in Sources */,
 				8AD6123A2B76D6CF00D2D8CC /* CustomTabBarView.swift in Sources */,
 				8A72E9712C8232B10014A276 /* Configuration.swift in Sources */,
 				8A6EAA102CC2B2FB008A6226 /* NetworkSessionManager.swift in Sources */,
@@ -678,6 +694,7 @@
 				8A3E1CAC2C8718CB00851895 /* ArticleDataListDTO.swift in Sources */,
 				8A6EAA0E2CC2B0F2008A6226 /* NetworkConfigurable.swift in Sources */,
 				8A9CFC922B4EC61000F70B13 /* ArticleDetailView.swift in Sources */,
+				8AE9CCF72CC4266300399F1E /* SharedURLSession.swift in Sources */,
 				8A7C4D762B8795DF009E98F6 /* Font.swift in Sources */,
 				8AD6123C2B76D8D400D2D8CC /* TabBarButtonView.swift in Sources */,
 				8A78C7FF2C873BFA007311AE /* NetworkError.swift in Sources */,
@@ -698,9 +715,12 @@
 				8A9CFC962B4EEF7400F70B13 /* WrongImageView.swift in Sources */,
 				8A6EAA122CC2E2AB008A6226 /* URLSessionProtocol.swift in Sources */,
 				8A78C7FD2C8739DD007311AE /* NetworkRequest.swift in Sources */,
+				8AE9CCF92CC426CB00399F1E /* SharedURLSessionDelegate.swift in Sources */,
 				8A4FC9732CA88B8700B47BBC /* EndpointApi.swift in Sources */,
 				8A4FC96D2CA77A7100B47BBC /* DataTransferService.swift in Sources */,
 				8A72E9732C8232EE0014A276 /* Log.swift in Sources */,
+				8AE9CCF52CC4227C00399F1E /* AppConfiguration.swift in Sources */,
+				8AE9CCF32CC4215B00399F1E /* AppDIContainer.swift in Sources */,
 				8AABBC892B95DAEB00D78C5D /* ProcessInfo.swift in Sources */,
 				8A8C18722B728E15008E3C8C /* ArticleView.swift in Sources */,
 				8A9CFC942B4EC7B500F70B13 /* ArticleCardView.swift in Sources */,
