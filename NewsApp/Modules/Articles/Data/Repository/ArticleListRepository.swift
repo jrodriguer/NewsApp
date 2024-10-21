@@ -20,8 +20,3 @@ final class DefaultArticleListRepository: ArticleListRepository {
         return fetchedArticles
     }
 }
-
-/*
- let articleService = ArticleListService(apiDataService: apiService)
- let repository = DefaultArticleListRepository(service: articleService)
- */

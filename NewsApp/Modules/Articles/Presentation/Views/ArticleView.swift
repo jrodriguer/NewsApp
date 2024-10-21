@@ -12,8 +12,14 @@ enum ViewOption: String, CaseIterable {
     case listView = "List View"
 }
 
-struct ArticleView: View {
-    @StateObject private var vm = ArticlesViewModel()
+struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
+    
+    @ObservedObject private var vm: ViewModel
+    
+    init(vm: ViewModel) {
+        self.vm = vm
+    }
+    
     @StateObject private var favorites = FavoritesViewModel<ArticleApiObject>(saveKey: FavoriteKey.articleFavorites)
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
@@ -21,7 +27,7 @@ struct ArticleView: View {
     @State private var scrollToID: UUID? = nil
     @State private var showFab = true
     @State private var offset = CGFloat.zero
-    
+        
     var body: some View {
         NavigationStack {
             VStack {
@@ -200,6 +206,6 @@ struct ViewOffsetKey: PreferenceKey {
     }
 }
 
-#Preview {
-    ArticleView()
-}
+//#Preview {
+//    ArticleView(apiDataTransferService: )
+//}
