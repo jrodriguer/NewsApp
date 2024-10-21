@@ -9,8 +9,10 @@ import Foundation
 
 final class ArticlesModule {
     
-// TODO: Following hierarchy layers:
-// View -> ViewModel (Presenter)-> Use Case (Domain) -> DI -> Repository (Data)
+    private let apiDataTransferService: DataTransferService
+    
+    init(apiDataTransferService: DataTransferService) {
+        self.apiDataTransferService = apiDataTransferService
+    }
     
 }
-
