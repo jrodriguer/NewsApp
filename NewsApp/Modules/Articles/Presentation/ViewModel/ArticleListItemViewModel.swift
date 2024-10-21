@@ -9,7 +9,7 @@ import Foundation
 
 struct ArticleListItemViewModel: Hashable {
     let id: UUID
-    let title: String
+    let title: String?
     let link: String
     let publishedAt: Date
     let author: String?

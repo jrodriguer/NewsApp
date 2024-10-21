@@ -32,7 +32,8 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     @MainActor func fetchArticles(category: Category? = nil) async {
         do {
             let articleList = try await articleListUseCase.fetchArticleList()
-//            self.articles = 
+            self.articles = self.transformFetchedArticles(articleList)
+            self.isError = false
         } catch {
             self.isError = true
             if let networkError = error as? NetworkError {
@@ -40,6 +41,20 @@ final class ArticleViewModel: ArticleViewModelProtocol {
             } else {
                 self.error = error.localizedDescription
             }
+        }
+    }
+    
+    func transformFetchedArticles(_ articles: [ArticleDomainListDTO]) -> [ArticleListItemViewModel] {
+        return articles.map { article in
+            ArticleListItemViewModel(
+                id: article.articleId,
+                title: article.title ?? "Not title",
+                link: article.url,
+                publishedAt: article.publishedAt,
+                author: article.author ?? "Not author",
+                description: article.description ?? "Not description",
+                image: article.urlToImage
+            )
         }
     }
 }

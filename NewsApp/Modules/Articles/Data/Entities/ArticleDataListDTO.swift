@@ -23,7 +23,6 @@ struct ArticleDataListDTO: Decodable {
     let description: String?
     let urlToImage: String?
     let content: String?
-    
     private enum CodingKeys: String, CodingKey {
         case articleId,
              source,
