@@ -11,6 +11,8 @@ struct HomeView: View {
     @State private var selectedTab: Tabs = .News
     @State private var showModal: Bool = false
     
+    let articleView: ArticleView
+    
     var body: some View {
         if selectedTab == .News {
             ArticleView()
@@ -23,6 +25,6 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+//    HomeView(articleView: ArticleView(apiDataTransferService: )
+//}

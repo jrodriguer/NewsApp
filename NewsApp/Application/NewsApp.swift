@@ -10,12 +10,11 @@ import SwiftUI
 @main
 struct NewsApp: App {
     
-    // UIApplicationDelegateAdaptor property wrapper to tell SwiftUI it should use your AppDelegate class.
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    private let appDIContainer = AppDIContainer()
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            appDIContainer.homeView
         }
     }
 }

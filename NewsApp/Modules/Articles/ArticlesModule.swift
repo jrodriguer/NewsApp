@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class ArticlesModule {
     
@@ -15,4 +16,11 @@ final class ArticlesModule {
         self.apiDataTransferService = apiDataTransferService
     }
     
+    func generateHomeView() -> HomeView {
+        return HomeView(articleView: generateArticleView())
+    }
+    
+    func generateArticleView() -> ArticleView {
+        return ArticleView()
+    }
 }

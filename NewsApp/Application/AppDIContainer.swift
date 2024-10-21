@@ -18,5 +18,8 @@ final class AppDIContainer {
         return DefaultDataTransferService(networkManager: networkManager)
     }()
     
-    
+    lazy var homeView: HomeView = {
+        let articlesModule = ArticlesModule(apiDataTransferService: apiDataTransferService)
+        return articlesModule.generateHomeView()
+    }()
 }
