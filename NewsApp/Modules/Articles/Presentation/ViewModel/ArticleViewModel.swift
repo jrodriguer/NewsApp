@@ -10,6 +10,7 @@ import Foundation
 protocol ArticleViewModelProtocol: ObservableObject {
     var articles: [ArticleListItemViewModel] { get set }
     var isError: Bool {get}
+    var error: String {get}
     var isEmpty: Bool {get}
     func fetchArticles(category: Category?) async
 }
@@ -18,6 +19,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     
     @Published var articles: [ArticleListItemViewModel] = []
     @Published var isError: Bool = false
+    @Published var error: String = ""
     var isEmpty: Bool { return articles.isEmpty }
     private let articleListUseCase: ArticleListUseCase!
     
@@ -25,20 +27,19 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         self.articleListUseCase = useCase
     }
     
-    func fetchArticles(category: Category? = nil) {
-//        backendApi?.getTopHeadLinesArticles(category: category)?.responseDecodable(of: ArticleListApiObject.self) { [weak self] response in
-//            guard let self = self else { return }
-//            
-//            switch response.result {
-//            case .success(let articlesListApiObject):
-//                self.articles = articlesListApiObject.articles
-//            case .failure(let error):
-//                Log.error(tag: ArticleViewModel.self, message: "\(error)")
-//            }
-//            
-//            DispatchQueue.main.async {
-//                self.isLoading = false
-//            }
-//        }
+    /// Fetches articles and catches error if any
+    /// - Parameter category: category case
+    @MainActor func fetchArticles(category: Category? = nil) async {
+        do {
+            let articleList = try await articleListUseCase.fetchArticleList()
+//            self.articles = 
+        } catch {
+            self.isError = true
+            if let networkError = error as? NetworkError {
+                self.error = networkError.description
+            } else {
+                self.error = error.localizedDescription
+            }
+        }
     }
 }

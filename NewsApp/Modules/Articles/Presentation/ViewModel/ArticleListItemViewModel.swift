@@ -8,10 +8,11 @@
 import Foundation
 
 struct ArticleListItemViewModel: Hashable {
-    var id: Int
-    var title: String
-    var description: String
-    var price: String
-    var category: String
-    var image: String
+    let id: UUID
+    let title: String
+    let link: String
+    let publishedAt: Date
+    let author: String?
+    let description: String?
+    let image: String?
 }

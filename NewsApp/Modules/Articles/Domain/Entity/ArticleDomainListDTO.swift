@@ -8,8 +8,12 @@
 import Foundation
 
 struct ArticleDomainListDTO {
-    let id: Int
+    let articleId: UUID
     let title: String
+    let url: String
     let publishedAt: Date
-    let author: String
+    let author: String?
+    let description: String?
+    let urlToImage: String?
+    let content: String?
 }
