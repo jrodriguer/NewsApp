@@ -53,8 +53,15 @@ final class ArticleViewModel: ArticleViewModelProtocol {
                 publishedAt: article.publishedAt.formatted(date: .long, time: .shortened),
                 author: article.author ?? "Not author",
                 description: article.description ?? "Not description",
-                image: article.urlToImage?.absoluteString
+                image: imageURL(article.urlToImage)
             )
         }
+    }
+    
+    private func imageURL(_ url: URL?) -> String? {
+        guard let urlToImage = url else {
+            return nil
+        }
+        return urlToImage.absoluteString
     }
 }
