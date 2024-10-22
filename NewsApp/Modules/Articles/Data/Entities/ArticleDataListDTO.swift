@@ -17,11 +17,11 @@ struct ArticleDataListDTO: Decodable {
     let articleId: UUID
     let source: Source
     let title: String
-    let url: String
+    let url: URL
     let publishedAt: Date
     let author: String?
     let description: String?
-    let urlToImage: String?
+    let urlToImage: URL?
     let content: String?
     private enum CodingKeys: String, CodingKey {
         case articleId,
