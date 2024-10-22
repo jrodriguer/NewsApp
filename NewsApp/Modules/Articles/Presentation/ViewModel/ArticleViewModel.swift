@@ -27,7 +27,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         self.articleListUseCase = useCase
     }
     
-    /// Fetches articles and catches error if any
+    /// Fetches articles, transform and catches error if any
     /// - Parameter category: category case
     @MainActor func fetchArticles(category: Category? = nil) async {
         do {
@@ -49,11 +49,11 @@ final class ArticleViewModel: ArticleViewModelProtocol {
             ArticleListItemViewModel(
                 id: article.articleId,
                 title: article.title ?? "Not title",
-                link: article.url,
-                publishedAt: article.publishedAt,
+                link: article.url.absoluteString,
+                publishedAt: article.publishedAt.formatted(date: .long, time: .shortened),
                 author: article.author ?? "Not author",
                 description: article.description ?? "Not description",
-                image: article.urlToImage
+                image: article.urlToImage?.absoluteString
             )
         }
     }
