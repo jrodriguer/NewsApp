@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ArticleCardView: View {
-    let article: ArticleApiObject
+    
+    let article: ArticleListItemViewModel
     
     var body: some View {
         VStack {
-            AsyncImage(url: article.imageURL) { phase in
+            AsyncImage(url: article.image) { phase in
                 switch phase {
                 case .success(let image):
                     image
@@ -28,7 +29,7 @@ struct ArticleCardView: View {
             }
             HStack {
                 VStack(alignment: .leading) {
-                    Text(article.source.name)
+                    Text(article.source)
                         .font(.headline)
                         .foregroundColor(.secondary)
                     Text(Utils.displayTitle(article.title))
@@ -40,8 +41,8 @@ struct ArticleCardView: View {
                     Divider()
                     
                     HStack(alignment: .top) {
-                        Text(Utils.timeDifference(from: article.publishedAt))
-                        Text(article.authorText)
+                        Text(article.publishedAt)
+                        Text(article.author)
                             .lineLimit(1)
                     }
                     .font(.footnote)
@@ -65,6 +66,6 @@ struct ArticleCardView: View {
     }
 }
 
-#Preview {
-    ArticleCardView(article: .previewData[0])
-}
+//#Preview {
+//    ArticleCardView(article: .previewData[0])
+//}

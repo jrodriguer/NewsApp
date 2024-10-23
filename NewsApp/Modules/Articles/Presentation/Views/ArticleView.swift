@@ -39,6 +39,9 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 toolbarContent
             }
         }
+        .task {
+            await viewModel.fetchArticles()
+        }
     }
     
     private var toolbarContent: some ToolbarContent {
@@ -198,3 +201,7 @@ struct ViewOffsetKey: PreferenceKey {
         value += nextValue()
     }
 }
+
+//#Preview {
+//    ArticleView(viewModel: ArticleViewModel())
+//}

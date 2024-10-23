@@ -14,18 +14,16 @@ struct ArticlePageDataListDTO: Decodable {
 }
 
 struct ArticleDataListDTO: Decodable {
-    let articleId: UUID
     let source: Source
+    let author: String
     let title: String
     let url: URL
     let publishedAt: Date
-    let author: String?
     let description: String?
     let urlToImage: URL?
     let content: String?
     private enum CodingKeys: String, CodingKey {
-        case articleId,
-             source,
+        case source,
              title,
              url,
              publishedAt,
@@ -40,16 +38,18 @@ extension ArticleDataListDTO {
     
     func toDomain() -> ArticleDomainListDTO {
         .init(articleId: UUID(),
+              source: source.name,
+              author: author,
               title: title,
               url: url,
               publishedAt: publishedAt,
-              author: author,
               description: description,
               urlToImage: urlToImage,
               content: content)
     }
 }
 
-struct Source: Codable, Equatable {
+struct Source: Decodable {
+    let id: String
     let name: String
 }

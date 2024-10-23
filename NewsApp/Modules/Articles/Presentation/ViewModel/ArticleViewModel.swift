@@ -12,7 +12,7 @@ protocol ArticleViewModelProtocol: ObservableObject {
     var isError: Bool {get}
     var error: String {get}
     var isEmpty: Bool {get}
-    func fetchArticles(category: Category?) async
+    func fetchArticles() async
 }
 
 final class ArticleViewModel: ArticleViewModelProtocol {
@@ -27,9 +27,9 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         self.articleListUseCase = useCase
     }
     
-    /// Fetches articles, transform and catches error if any
+    /// Fetches articles and catches error if any
     /// - Parameter category: category case
-    @MainActor func fetchArticles(category: Category? = nil) async {
+    @MainActor func fetchArticles() async {
         do {
             let articleList = try await articleListUseCase.fetchArticleList()
             self.articles = self.transformFetchedArticles(articleList)
@@ -44,24 +44,21 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         }
     }
     
-    func transformFetchedArticles(_ articles: [ArticleDomainListDTO]) -> [ArticleListItemViewModel] {
+    /// Maps Articles to ArticleListItemViewModel
+    /// - Parameter articles: array of Articles
+    /// Returns: array of ArticleListItemViewModel
+    private func transformFetchedArticles(_ articles: [ArticleDomainListDTO]) -> [ArticleListItemViewModel] {
         return articles.map { article in
             ArticleListItemViewModel(
                 id: article.articleId,
-                title: article.title ?? "Not title",
+                source: article.source,
+                author: article.author,
+                title: article.title,
                 link: article.url.absoluteString,
                 publishedAt: article.publishedAt.formatted(date: .long, time: .shortened),
-                author: article.author ?? "Not author",
                 description: article.description ?? "Not description",
-                image: imageURL(article.urlToImage)
+                image: article.urlToImage ?? nil
             )
         }
-    }
-    
-    private func imageURL(_ url: URL?) -> String? {
-        guard let urlToImage = url else {
-            return nil
-        }
-        return urlToImage.absoluteString
     }
 }
