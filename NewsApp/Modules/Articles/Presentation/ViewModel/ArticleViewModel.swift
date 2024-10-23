@@ -54,7 +54,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
                 source: article.source,
                 author: article.author,
                 title: article.title,
-                link: article.url.absoluteString,
+                link: article.url,
                 publishedAt: article.publishedAt.formatted(date: .long, time: .shortened),
                 description: article.description ?? "Not description",
                 image: article.urlToImage ?? nil

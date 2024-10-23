@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct ArticleRowView: View {
-    var article: ArticleApiObject
-    @EnvironmentObject var vm: ArticlesViewModel
-    @EnvironmentObject var favorites: FavoritesViewModel<ArticleApiObject>
+    var article: ArticleListItemViewModel
         
     var body: some View {
         HStack {
@@ -18,27 +16,29 @@ struct ArticleRowView: View {
                 .multilineTextAlignment(.leading)
                 .swipeActions(edge: .leading) {
                     Button {
-                        if favorites.contains(article) {
-                            favorites.remove(article)
-                        } else {
-                            favorites.add(article)
-                        }
+//                        if favorites.contains(article) {
+//                            favorites.remove(article)
+//                        } else {
+//                            favorites.add(article)
+//                        }
                     } label: {
-                        if favorites.contains(article) {
-                            Label("Favorite", systemImage: "heart.slash")
-                        } else {
-                            Label("Favorite", systemImage: "suit.heart.fill")
-                        }
+//                        if favorites.contains(article) {
+//                            Label("Favorite", systemImage: "heart.slash")
+//                        } else {
+//                            Label("Favorite", systemImage: "suit.heart.fill")
+//                        }
+                        
+                        Label("Favorite", systemImage: "suit.slash")
                     }
                     .tint(.red)
                 }
             
-            if favorites.contains(article) {
-                Spacer()
-                Image(systemName: "heart.fill")
-                    .accessibilityLabel("This is a favorite article")
-                    .foregroundColor(.red)
-            }
+//            if favorites.contains(article) {
+//                Spacer()
+//                Image(systemName: "heart.fill")
+//                    .accessibilityLabel("This is a favorite article")
+//                    .foregroundColor(.red)
+//            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
     }

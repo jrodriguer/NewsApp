@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct ArticleDetailView: View {
-    var article: ArticleApiObject
-    @EnvironmentObject var favorites: FavoritesViewModel<ArticleApiObject>
-
+    var article: ArticleListItemViewModel
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
-                AsyncImage(url: article.imageURL) { phase in
+                AsyncImage(url: article.image) { phase in
                     switch phase {
                     case .success(let image):
                         image
@@ -41,30 +40,27 @@ struct ArticleDetailView: View {
                             .multilineTextAlignment(.leading)
                     }
                     
-                        Text(article.authorText)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+                    Text(article.author)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    Text(article.description ?? "")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                        .lineLimit(nil)
+                        .padding(.bottom, 8)
                     
-                    
-                        Text(article.descriptionText)
-                            .font(.headline)
-                            .foregroundColor(.primary)
-                            .lineLimit(nil)
-                            .padding(.bottom, 8)
-                    
-                    
-                    if let content = article.content {
-                        Text("Content:")
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .foregroundColor(.primary)
-                        
-                        Text(Utils.displayContent(content))
-                            .font(.body)
-                            .foregroundColor(.primary)
-                            .lineLimit(nil)
-                            .padding(.bottom, 2)
-                    }
+//                    if let content = article.content {
+//                        Text("Content:")
+//                            .font(.headline)
+//                            .fontWeight(.bold)
+//                            .foregroundColor(.primary)
+//                        
+//                        Text(Utils.displayContent(content))
+//                            .font(.body)
+//                            .foregroundColor(.primary)
+//                            .lineLimit(nil)
+//                            .padding(.bottom, 2)
+//                    }
                     
                     HStack {
                         Link(destination: article.link) {
@@ -72,24 +68,26 @@ struct ArticleDetailView: View {
                                 .font(.largeTitle)
                         }
                         Button {
-                            if favorites.contains(article) {
-                                favorites.remove(article)
-                            } else {
-                                favorites.add(article)
-                            }
+//                            if favorites.contains(article) {
+//                                favorites.remove(article)
+//                            } else {
+//                                favorites.add(article)
+//                            }
                         } label: {
-                            if favorites.contains(article) {
-                                Label {
-                                    Text("Remove from Favorites")
-                                } icon: {
-                                    //
-                                }
-                            } else {
-                                Label {
-                                    Text("Add to Favorites")
-                                } icon: {
-                                    //
-                                }
+//                            if favorites.contains(article) {
+//                                Label {
+//                                    Text("Remove from Favorites")
+//                                } icon: { }
+//                            } else {
+//                                Label {
+//                                    Text("Add to Favorites")
+//                                } icon: { }
+//                            }
+                            
+                            Label {
+                                Text("Add to Favorites")
+                            } icon: {
+                                //
                             }
                         }
                         .accessibilityIdentifier("FavoritesButton")
@@ -100,7 +98,7 @@ struct ArticleDetailView: View {
                 .padding()
             }
         }
-        .navigationTitle("Article from \(article.source.name)")
+        .navigationTitle("Article from \(article.source)")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

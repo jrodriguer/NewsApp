@@ -11,11 +11,11 @@ struct HomeView: View {
     @State private var selectedTab: Tabs = .News
     @State private var showModal: Bool = false
     
-    let articleView: ArticleView
+    let articleView: ArticleView<ArticleViewModel>
     
     var body: some View {
         if selectedTab == .News {
-            ArticleView()
+            articleView
                 .accessibilityIdentifier("ArticleView")
         } else {
             Text("Favorites view")

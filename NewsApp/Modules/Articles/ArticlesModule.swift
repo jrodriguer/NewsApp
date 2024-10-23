@@ -20,23 +20,23 @@ final class ArticlesModule {
         return HomeView(articleView: generateArticleView())
     }
     
-    func generateArticleView() -> ArticleView<ArticleViewModel> {
+    private func generateArticleView() -> ArticleView<ArticleViewModel> {
         return ArticleView(viewModel: generateArticleViewModel())
     }
     
-    func generateArticleViewModel() -> ArticleViewModel {
+    private func generateArticleViewModel() -> ArticleViewModel {
         ArticleViewModel(useCase: generateArticleListUseCase())
     }
     
-    func generateArticleListUseCase() -> ArticleListUseCase {
+    private func generateArticleListUseCase() -> ArticleListUseCase {
         DefaultArticleListUseCase(repository: generateArticleListRepository())
     }
     
-    func generateArticleListRepository() -> ArticleListRepository {
+    private func generateArticleListRepository() -> ArticleListRepository {
         DefaultArticleListRepository(service: generateArticleListService())
     }
     
-    func generateArticleListService() -> ArticleListService {
+    private func generateArticleListService() -> ArticleListService {
         DefaultArticleListService(apiDataService: apiDataTransferService)
     }
 }

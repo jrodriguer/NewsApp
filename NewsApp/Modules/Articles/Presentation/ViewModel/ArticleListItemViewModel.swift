@@ -12,7 +12,7 @@ struct ArticleListItemViewModel: Hashable {
     let source: String
     let author: String
     let title: String
-    let link: String
+    let link: URL
     let publishedAt: String
     let description: String?
     let image: URL?
