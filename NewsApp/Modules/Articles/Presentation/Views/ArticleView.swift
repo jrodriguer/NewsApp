@@ -14,19 +14,17 @@ enum ViewOption: String, CaseIterable {
 
 struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
-    @ObservedObject private var vm: ViewModel
-    
-    init(vm: ViewModel) {
-        self.vm = vm
-    }
-    
-    @StateObject private var favorites = FavoritesViewModel<ArticleApiObject>(saveKey: FavoriteKey.articleFavorites)
+    @ObservedObject private var viewModel: ViewModel
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
     @State private var scrollToID: UUID? = nil
     @State private var showFab = true
     @State private var offset = CGFloat.zero
+    
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+    }
         
     var body: some View {
         NavigationStack {
@@ -54,7 +52,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 }
                 .pickerStyle(.menu)
                 
-                sortButtons
+//                sortButtons
                 showFavoritesButton
             } label: {
                 Label("Menu", systemImage: "ellipsis.circle")
@@ -62,19 +60,19 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         }
     }
     
-    private var sortButtons: some View {
-        Section("Sort by") {
-            Button("Alphabetical") {
-                vm.articles.sort { $0.source.name.lowercased() < $1.source.name.lowercased() }
-            }
-            Button("Newest First") {
-                vm.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
-            }
-            Button("Oldest First") {
-                vm.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
-            }
-        }
-    }
+//    private var sortButtons: some View {
+//        Section("Sort by") {
+//            Button("Alphabetical") {
+//                viewModel.articles.sort { $0.source.name.lowercased() < $1.source.name.lowercased() }
+//            }
+//            Button("Newest First") {
+//                viewModel.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
+//            }
+//            Button("Oldest First") {
+//                viewModel.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
+//            }
+//        }
+//    }
     
     private var showFavoritesButton: some View {
         Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
@@ -82,30 +80,28 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         }
     }
     
-    private var searchResult: [ArticleApiObject] {
-        favorites.filtered(from: vm.articles, showFavoritesOnly: showFavoritesOnly)
-    }
+//    private var searchResult: [ArticleListItemViewModel] {
+//        favorites.filtered(from: viewModel.articles, showFavoritesOnly: showFavoritesOnly)
+//    }
     
     private var cardSection: some View {
         Group {
-            if vm.isLoading {
+            if viewModel.isError {
                 ProgressView("Loading...")
                     .progressViewStyle(CircularProgressViewStyle())
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else {
                 ScrollView {
                     VStack(spacing: 0) {
-                        if !searchResult.isEmpty {
-                            ForEach(searchResult) { article in
+                        if !viewModel.articles.isEmpty {
+                            ForEach(viewModel.articles, id: \.id) { article in
                                 if article.title != "[Removed]" {
                                     NavigationLink(destination:
                                                     ArticleDetailView(article: article)
-                                        .environmentObject(vm)
-                                        .environmentObject(favorites)
+                                        .environmentObject(viewModel)
                                     ) {
                                         ArticleCardView(article: article)
-                                            .environmentObject(vm)
-                                            .environmentObject(favorites)
+                                            .environmentObject(viewModel)
                                     }
                                     .accessibilityIdentifier("NavigationLink_\(article.id)")
                                 }
@@ -123,7 +119,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     private var listSection: some View {
         VStack {
-            if vm.isLoading {
+            if viewModel.isError {
                 ProgressView("Loading...")
                     .progressViewStyle(CircularProgressViewStyle())
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -131,19 +127,16 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 ScrollViewReader { proxy in
                     ZStack(alignment: .bottomTrailing) {
                         List {
-                            if !searchResult.isEmpty {
-                                ForEach(searchResult) { article in
+                            if !viewModel.articles.isEmpty {
+                                ForEach(viewModel.articles, id: \.id) { article in
                                     if article.title != "[Removed]" {
                                         ZStack(alignment: .leading) {
                                             ArticleRowView(article: article)
-                                                .environmentObject(vm)
-                                                .environmentObject(favorites)
-                                                .id(article.id)
+                                                .environmentObject(viewModel)
                                             
                                             NavigationLink(destination:
                                                             ArticleDetailView(article: article)
-                                                .environmentObject(vm)
-                                                .environmentObject(favorites)
+                                                .environmentObject(viewModel)
                                             ) {
                                                 EmptyView()
                                             }
@@ -180,7 +173,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     }
     
     private func scrollToTop(_ proxy: ScrollViewProxy) {
-        if let firstArticle = searchResult.first {
+        if let firstArticle = viewModel.articles.first {
             scrollToID = firstArticle.id
             DispatchQueue.main.async {
                 withAnimation {
@@ -205,7 +198,3 @@ struct ViewOffsetKey: PreferenceKey {
         value += nextValue()
     }
 }
-
-//#Preview {
-//    ArticleView(apiDataTransferService: )
-//}

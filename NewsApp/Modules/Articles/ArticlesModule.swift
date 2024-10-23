@@ -21,7 +21,7 @@ final class ArticlesModule {
     }
     
     func generateArticleView() -> ArticleView<ArticleViewModel> {
-        return ArticleView(vm: generateArticleViewModel())
+        return ArticleView(viewModel: generateArticleViewModel())
     }
     
     func generateArticleViewModel() -> ArticleViewModel {
