@@ -51,11 +51,17 @@ final class DefaultURLRequestGenerator: URLRequestGenerator {
         components.scheme = "https"
         components.host = config.baseURL
         components.path = request.path.hasPrefix("/") ? request.path : "/" + request.path
-        components.queryItems = request.queryParameters.map { URLQueryItem(name: $0, value: "\($1)") }
+        
+        var queryParameters = request.queryParameters.map { URLQueryItem(name: $0, value: "\($1)") }
+        queryParameters.append(URLQueryItem(name: "country", value: AppConfiguration.countryCode))
+        queryParameters.append(URLQueryItem(name: "country", value: AppConfiguration.apiKey))
+        components.queryItems = queryParameters
+        
         guard let url = components.url else {
             Log.error(tag: DefaultURLRequestGenerator.self, message: "Failed to create URL from components")
             throw NetworkError.badHostname
         }
+        Log.debug(tag: DefaultURLRequestGenerator.self, message: "URL created: \(url.absoluteString)")
         return url
     }
 }
