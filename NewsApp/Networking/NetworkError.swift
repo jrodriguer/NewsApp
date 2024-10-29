@@ -24,6 +24,7 @@ enum NetworkError: Error {
     case forbidden          // HTTP 403
     case notFound           // HTTP 404
     case serverError        // HTTP 500-599
+    case generic
     
     /// A human-readable description of each error case.
     var description: String {
@@ -36,10 +37,11 @@ enum NetworkError: Error {
         case .notFound: return "Requested resource not found"
         case .serverError: return "Server encountered an error"
         case .timeout: return "Request timed out"
+        case .generic: return "Something went wrong"
         }
     }
     
-    /// Resolves a generic Error or HTTP status code into a specific NetworkError case.
+    /// Resolves network error or HTTP status code into a specific NetworkError case.
     ///
     /// - Parameter error: The error to resolve.
     /// - Returns: A NetworkError case corresponding to the specific error.
@@ -79,5 +81,8 @@ enum NetworkError: Error {
                 break
             }
         }
+        
+        Log.error(tag: NetworkError.self, message: "An unclassified network error ocurrend", error: error)
+        return .generic
     }
 }
