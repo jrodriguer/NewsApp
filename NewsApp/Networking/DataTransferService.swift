@@ -24,6 +24,7 @@ final class DefaultDataTransferService: DataTransferService {
     /// - Returns: Decodable type object
     func request<T>(request: any NetworkRequest) async throws -> T where T : Decodable {
         let data = try await networkManager.fetch(request: request)
+        Log.debug(tag: DataTransferService.self, message: "Data fetched from Network Manager: \(data)")
         return try decode(data: data)
     }
     
@@ -33,6 +34,7 @@ final class DefaultDataTransferService: DataTransferService {
     func decode<T>(data: Data) throws -> T where T : Decodable {
         do {
             let decodedData = try JSONDecoder().decode(T.self, from: data)
+            Log.debug(tag: DataTransferService.self, message: "Data decoded: \(decodedData)")
             return decodedData
         } catch {
             throw NetworkError.unableToDecode
