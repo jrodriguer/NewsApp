@@ -41,13 +41,12 @@ enum NetworkError: Error {
         }
     }
     
-    /// Resolves network error or HTTP status code into a specific NetworkError case.
+    /// Resolves  a generic Error or HTTP status code into a specific NetworkError case.
     ///
     /// - Parameter error: The error to resolve.
     /// - Returns: A NetworkError case corresponding to the specific error.
     static func resolve(error: Error) -> NetworkError {
         let nsError = error as NSError
-        // Map URLError cases first
         let urlErrorCode = URLError.Code(rawValue: nsError.code)
         switch urlErrorCode {
         case .notConnectedToInternet:

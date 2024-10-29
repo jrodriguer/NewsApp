@@ -28,6 +28,36 @@ final class DefaultNetworkManager: NetworkManager {
     /// - Parameter request: Network Request
     /// - Returns: Data
     func fetch(request: NetworkRequest) async throws -> Data {
-        return Data()
+        do {
+            let (data, response) = try await sessionManager.request(with: networkConfig, request: request)
+            guard let response = response as? HTTPURLResponse else {
+                Log.error(tag: DefaultNetworkManager.self, message:"Invalid response format")
+                throw NetworkError.generic
+            }
+            
+            switch response.statusCode {
+            case 200...299:
+                guard let data = data else {
+                    Log.error(tag: DefaultNetworkManager.self, message:"No data received")
+                    throw NetworkError.generic
+                }
+                return data
+            case 401:
+                throw NetworkError.unauthorized
+            case 403:
+                throw NetworkError.forbidden
+            case 404:
+                throw NetworkError.notFound
+            case 500...599:
+                throw NetworkError.serverError
+            default:
+                throw NetworkError.generic
+            }
+        } catch {
+            // Handle and rethrow as NetworkError
+            let networkError = NetworkError.resolve(error: error)
+            Log.error(tag: DefaultNetworkManager.self, message: "Network error occurred", error: networkError)
+            throw networkError
+        }
     }
 }
