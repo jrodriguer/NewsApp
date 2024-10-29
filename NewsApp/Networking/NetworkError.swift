@@ -56,8 +56,10 @@ enum NetworkError: Error {
         case .cannotFindHost:
             Log.error(tag: NetworkError.self, message: "Host not found", error: error)
             return .badHostname
-        default:
+        case .timedOut:
             Log.warning(tag: NetworkError.self, message: "Request timed out")
+            return .timeout
+        default:
             return .generic
         }
     }
