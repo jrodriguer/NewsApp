@@ -16,21 +16,18 @@ import Foundation
 enum NetworkError: Error {
     
     /// Specific network error cases.
-    case badURL
     case unableToDecode
     case notConnected
     case badHostname
+    case timeout            // HTTP timeout
     case unauthorized       // HTTP 401
     case forbidden          // HTTP 403
     case notFound           // HTTP 404
     case serverError        // HTTP 500-599
-    case timeout            // HTTP timeout
-    case generic            // Unclassified error
     
     /// A human-readable description of each error case.
     var description: String {
         switch self {
-        case .badURL: return "Bad URL"
         case .unableToDecode: return "Response can't be decoded"
         case .notConnected: return "The internet connection appears to be offline"
         case .badHostname: return "The specified hostname for this server could not be found"
@@ -39,7 +36,6 @@ enum NetworkError: Error {
         case .notFound: return "Requested resource not found"
         case .serverError: return "Server encountered an error"
         case .timeout: return "Request timed out"
-        case .generic: return "Something went wrong"
         }
     }
     
@@ -48,8 +44,10 @@ enum NetworkError: Error {
     /// - Parameter error: The error to resolve.
     /// - Returns: A NetworkError case corresponding to the specific error.
     static func resolve(error: Error) -> NetworkError {
-        let code = URLError.Code(rawValue: (error as NSError).code)
-        switch code {
+        let nsError = error as NSError
+        // Map URLError cases first
+        let urlErrorCode = URLError.Code(rawValue: nsError.code)
+        switch urlErrorCode {
         case .notConnectedToInternet:
             Log.error(tag: NetworkError.self, message: "No internet connection detected", error: error)
             return .notConnected
@@ -60,7 +58,26 @@ enum NetworkError: Error {
             Log.warning(tag: NetworkError.self, message: "Request timed out")
             return .timeout
         default:
-            return .generic
+            break
+        }
+        
+        if let httResponse = nsError.userInfo["statusCode"] as? Int {
+            switch httResponse {
+            case 401:
+                Log.error(tag: NetworkError.self, message: "Unauthorized access", error: error)
+                return .unauthorized
+            case 403:
+                Log.warning(tag: NetworkError.self, message: "Forbidden access")
+                return .forbidden
+            case 404:
+                Log.info(tag: NetworkError.self, message: "Resource not found")
+                return .notFound
+            case 500...599:
+                Log.error(tag: NetworkError.self, message: "Server encountered an error", error: error)
+                return .serverError
+            default:
+                break
+            }
         }
     }
 }
