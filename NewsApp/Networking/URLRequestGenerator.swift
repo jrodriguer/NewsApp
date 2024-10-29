@@ -50,9 +50,12 @@ final class DefaultURLRequestGenerator: URLRequestGenerator {
         var components = URLComponents()
         components.scheme = "https"
         components.host = config.baseURL
-        components.path = request.path
+        components.path = request.path.hasPrefix("/") ? request.path : "/" + request.path
         components.queryItems = request.queryParameters.map { URLQueryItem(name: $0, value: "\($1)") }
-        guard let url = components.url else { throw NetworkError.badURL }
+        guard let url = components.url else {
+            Log.error(tag: DefaultURLRequestGenerator.self, message: "Failed to create URL from components")
+            throw NetworkError.badHostname
+        }
         return url
     }
 }
