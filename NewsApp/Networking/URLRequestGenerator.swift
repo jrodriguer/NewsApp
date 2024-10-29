@@ -7,20 +7,23 @@
 
 import Foundation
 
+/// Protocol that defines the requirements for generating a URLRequest from network configuration and request information
 protocol URLRequestGenerator {
     func generateURLRequest(with config: NetworkConfigurable, from request: NetworkRequest) throws -> URLRequest
 }
 
 final class DefaultURLRequestGenerator: URLRequestGenerator {
     
-    /// Method to create URLRequest
+    /// Generates a URLRequest with specified network configuration and request data
     /// - Parameters:
-    ///   - config: Network Config
-    ///   - request: Network Request
-    /// - Returns: URLRequest
+    ///   - config: Network configuration
+    ///   - request: Network request information
+    /// - Returns: Configured URLRequest
     func generateURLRequest(with config: NetworkConfigurable, from request: NetworkRequest) throws -> URLRequest {
         let url = try createURL(with: config, from: request)
         var urlRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
+        
+        // Set HTTP method and body if available
         urlRequest.httpMethod = request.method.rawValue
         if !request.bodyParameters.isEmpty {
             do {
@@ -28,7 +31,7 @@ final class DefaultURLRequestGenerator: URLRequestGenerator {
                                                            options: [.prettyPrinted])
                 urlRequest.httpBody = bodyData
             } catch {
-                throw error
+                throw NetworkError.unableToDecode
             }
         }
         config.headers.forEach { key, value in
@@ -37,11 +40,12 @@ final class DefaultURLRequestGenerator: URLRequestGenerator {
         return urlRequest
     }
     
-    /// Method to ceate URL
+    /// Creates and validates a URL from network configuration and request data
     /// - Parameters:
-    ///   - config: Network Config
-    ///   - request: Network Request
-    /// - Returns: URL
+    ///   - config: Network configuration containing base URL and other settings
+    ///   - request: Network request with path and query parameters
+    /// - Returns: Fully composed URL
+    /// - Throws: `NetworkError.badURL` if URL composition fails
     private func createURL(with config: NetworkConfigurable, from request: NetworkRequest) throws -> URL {
         var components = URLComponents()
         components.scheme = "https"
