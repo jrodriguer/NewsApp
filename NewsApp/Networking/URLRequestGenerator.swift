@@ -54,7 +54,7 @@ final class DefaultURLRequestGenerator: URLRequestGenerator {
         
         var queryParameters = request.queryParameters.map { URLQueryItem(name: $0, value: "\($1)") }
         queryParameters.append(URLQueryItem(name: "country", value: AppConfiguration.countryCode))
-        queryParameters.append(URLQueryItem(name: "country", value: AppConfiguration.apiKey))
+        queryParameters.append(URLQueryItem(name: "apiKey", value: AppConfiguration.apiKey))
         components.queryItems = queryParameters
         
         guard let url = components.url else {
