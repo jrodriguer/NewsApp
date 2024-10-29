@@ -50,9 +50,15 @@ enum NetworkError: Error {
     static func resolve(error: Error) -> NetworkError {
         let code = URLError.Code(rawValue: (error as NSError).code)
         switch code {
-        case .notConnectedToInternet: return .notConnected
-        case .cannotFindHost: return .badHostname
-        default: return .generic
+        case .notConnectedToInternet:
+            Log.error(tag: NetworkError.self, message: "No internet connection detected", error: error)
+            return .notConnected
+        case .cannotFindHost:
+            Log.error(tag: NetworkError.self, message: "Host not found", error: error)
+            return .badHostname
+        default:
+            Log.warning(tag: NetworkError.self, message: "Request timed out")
+            return .generic
         }
     }
 }
