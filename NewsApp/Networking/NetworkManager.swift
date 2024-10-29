@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A protocol to encapsulate the necessary network configuration, such as the base URL and any header common to each request.
 protocol NetworkSessionManager {
     func request(with config: NetworkConfigurable, request: NetworkRequest) async throws -> (Data?, URLResponse?)
 }

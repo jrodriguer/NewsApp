@@ -4,9 +4,13 @@
 //
 //  Created by Julio Rodriguez on 28/9/24.
 //
+//  Description:
+//  Acts as a general service to interact with the backend.
+//  It wraps the NetworkManager and facilitates the communication of data to and from the API in an abstract way.
 
 import Foundation
 
+/// Through this interface, the application requests and receives data in a comprehensible and simplified way.
 protocol DataTransferService {
     func request<T: Decodable>(request: NetworkRequest) async throws -> T
 }

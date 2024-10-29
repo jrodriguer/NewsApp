@@ -5,7 +5,7 @@
 //  Created by Julio Rodriguez on 18/10/24.
 //
 //  Description:
-//  Default implementation of `NetworkSessionManager`, which handles data fetching using URLSession
+//  Is responsible for the administration of network sessions and bridges with the URLSession layer.
 //
 
 import Foundation
