@@ -10,71 +10,84 @@ import WidgetKit
 import SwiftUI
 
 struct NewsAppIOSWidgetAttributes: ActivityAttributes {
+    public typealias NewsAppIOSWidgetStatus = ContentState
+    
     public struct ContentState: Codable, Hashable {
-        // Dynamic stateful properties about your activity go here!
-        var emoji: String
+        var source: String
+        var author: String
+        var title: String
+        var publishedRange: ClosedRange<Date> // Period of time in which the articles were published
     }
-
-    // Fixed non-changing properties about your activity go here!
-    var name: String
+    
+    var articleCount: Int
 }
 
 struct NewsAppIOSWidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: NewsAppIOSWidgetAttributes.self) { context in
-            // Lock screen/banner UI goes here
-            VStack {
-                Text("Hello \(context.state.emoji)")
+            VStack(alignment: .leading) {
+                Text("Source: \(context.state.source)")
+                    .font(.headline)
+                Text("Author: \(context.state.author)")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                Text("Title: \(context.state.title)")
+                    .font(.body)
+                    .bold()
+                Text("Published between:")
+                    .font(.footnote)
+                Text("\(context.state.publishedRange.lowerBound.formatted(.dateTime)) - \(context.state.publishedRange.upperBound.formatted(.dateTime))")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
             }
-            .activityBackgroundTint(Color.cyan)
-            .activitySystemActionForegroundColor(Color.black)
-
+            .padding()
         } dynamicIsland: { context in
             DynamicIsland {
-                // Expanded UI goes here.  Compose the expanded UI through
-                // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
+                    Text("Source: \(context.state.source)")
+                        .font(.caption)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
+                    Text("\(context.attributes.articleCount) Articles")
+                        .font(.caption2)
+                        .foregroundColor(.accentColor)
+                }
+                DynamicIslandExpandedRegion(.center) {
+                    Text(context.state.title)
+                        .font(.caption)
+                        .bold()
+                        .lineLimit(1)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom \(context.state.emoji)")
-                    // more content
+                    Text("Published: \(context.state.publishedRange.lowerBound.formatted(.dateTime)) - \(context.state.publishedRange.upperBound.formatted(.dateTime))")
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
                 }
             } compactLeading: {
-                Text("L")
+                Text("\(context.attributes.articleCount) Art.")
+                    .font(.caption2)
             } compactTrailing: {
-                Text("T \(context.state.emoji)")
+                Text(context.state.source.prefix(3))
+                    .font(.caption2)
             } minimal: {
-                Text(context.state.emoji)
+                Text("\(context.state.author.prefix(1))")
+                    .font(.caption2)
             }
-            .widgetURL(URL(string: "http://www.apple.com"))
-            .keylineTint(Color.red)
+            .keylineTint(.accentColor)
         }
     }
 }
 
 extension NewsAppIOSWidgetAttributes {
-    fileprivate static var preview: NewsAppIOSWidgetAttributes {
-        NewsAppIOSWidgetAttributes(name: "World")
-    }
+    fileprivate static let preview: NewsAppIOSWidgetAttributes = NewsAppIOSWidgetAttributes(articleCount: 2)
 }
 
 extension NewsAppIOSWidgetAttributes.ContentState {
-    fileprivate static var smiley: NewsAppIOSWidgetAttributes.ContentState {
-        NewsAppIOSWidgetAttributes.ContentState(emoji: "😀")
-     }
-     
-     fileprivate static var starEyes: NewsAppIOSWidgetAttributes.ContentState {
-         NewsAppIOSWidgetAttributes.ContentState(emoji: "🤩")
-     }
+    fileprivate static let activityState = NewsAppIOSWidgetAttributes.ContentState(source: "The Washington Post", author: "Hannah Docter-Loeb", title: "Americans see disparities in mental and physical care, survey finds - The Washington Post", publishedRange: Date()...Date().addingTimeInterval(15 * 60))
 }
 
 #Preview("Notification", as: .content, using: NewsAppIOSWidgetAttributes.preview) {
-   NewsAppIOSWidgetLiveActivity()
+    NewsAppIOSWidgetLiveActivity()
 } contentStates: {
-    NewsAppIOSWidgetAttributes.ContentState.smiley
-    NewsAppIOSWidgetAttributes.ContentState.starEyes
+    NewsAppIOSWidgetAttributes.ContentState.activityState
 }
