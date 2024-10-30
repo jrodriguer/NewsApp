@@ -40,8 +40,12 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
             }
         }
         .task {
-            await viewModel.fetchArticles()
+            await fetchArticles()
         }
+    }
+    
+    private func fetchArticles() async {
+        await viewModel.fetchArticles()
     }
     
     private var toolbarContent: some ToolbarContent {
@@ -88,25 +92,51 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
 //    }
     
     private var cardSection: some View {
-        Group {
-            if viewModel.isError {
-                ProgressView("Loading...")
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            } else {
-                ScrollView {
-                    VStack(spacing: 0) {
+        ScrollView {
+            VStack(spacing: 0) {
+                if !viewModel.articles.isEmpty {
+                    ForEach(viewModel.articles, id: \.id) { article in
+                        if article.title != "[Removed]" {
+                            NavigationLink(destination:
+                                            ArticleDetailView(article: article)
+                                .environmentObject(viewModel)
+                            ) {
+                                ArticleCardView(article: article)
+                                    .environmentObject(viewModel)
+                            }
+                            .accessibilityIdentifier("NavigationLink_\(article.id)")
+                        }
+                    }
+                } else {
+                    Text("No articles available")
+                        .foregroundColor(.red)
+                        .padding()
+                }
+            }
+        }
+    }
+    
+    private var listSection: some View {
+        VStack {
+            ScrollViewReader { proxy in
+                ZStack(alignment: .bottomTrailing) {
+                    List {
                         if !viewModel.articles.isEmpty {
                             ForEach(viewModel.articles, id: \.id) { article in
                                 if article.title != "[Removed]" {
-                                    NavigationLink(destination:
-                                                    ArticleDetailView(article: article)
-                                        .environmentObject(viewModel)
-                                    ) {
-                                        ArticleCardView(article: article)
+                                    ZStack(alignment: .leading) {
+                                        ArticleRowView(article: article)
                                             .environmentObject(viewModel)
+                                        
+                                        NavigationLink(destination:
+                                                        ArticleDetailView(article: article)
+                                            .environmentObject(viewModel)
+                                        ) {
+                                            EmptyView()
+                                        }
+                                        .accessibilityIdentifier("NavigationLink_\(article.id)")
+                                        .opacity(0.0)
                                     }
-                                    .accessibilityIdentifier("NavigationLink_\(article.id)")
                                 }
                             }
                         } else {
@@ -115,61 +145,21 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                                 .padding()
                         }
                     }
+                    .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
+                    
+                    if showFab {
+                        FloatingActionButtonView(name: "chevron.up", radius: 55, action: {
+                            scrollToTop(proxy)
+                        })
+                        .accessibilityIdentifier("FabButton")
+                    }
                 }
-            }
-        }
-    }
-    
-    private var listSection: some View {
-        VStack {
-            if viewModel.isError {
-                ProgressView("Loading...")
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                ScrollViewReader { proxy in
-                    ZStack(alignment: .bottomTrailing) {
-                        List {
-                            if !viewModel.articles.isEmpty {
-                                ForEach(viewModel.articles, id: \.id) { article in
-                                    if article.title != "[Removed]" {
-                                        ZStack(alignment: .leading) {
-                                            ArticleRowView(article: article)
-                                                .environmentObject(viewModel)
-                                            
-                                            NavigationLink(destination:
-                                                            ArticleDetailView(article: article)
-                                                .environmentObject(viewModel)
-                                            ) {
-                                                EmptyView()
-                                            }
-                                            .accessibilityIdentifier("NavigationLink_\(article.id)")
-                                            .opacity(0.0)
-                                        }
-                                    }
-                                }
-                            } else {
-                                Text("No articles available")
-                                    .foregroundColor(.red)
-                                    .padding()
-                            }
-                        }
-                        .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
-                        
-                        if showFab {
-                            FloatingActionButtonView(name: "chevron.up", radius: 55, action: {
-                                scrollToTop(proxy)
-                            })
-                            .accessibilityIdentifier("FabButton")
-                        }
-                    }
-                    .background(GeometryReader {
-                        Color.clear.preference(key: ViewOffsetKey.self,
-                                               value: -$0.frame(in: .named("scroll")).origin.y)
-                    })
-                    .onPreferenceChange(ViewOffsetKey.self) { newOffset in
-                        handleScrollOffset(newOffset)
-                    }
+                .background(GeometryReader {
+                    Color.clear.preference(key: ViewOffsetKey.self,
+                                           value: -$0.frame(in: .named("scroll")).origin.y)
+                })
+                .onPreferenceChange(ViewOffsetKey.self) { newOffset in
+                    handleScrollOffset(newOffset)
                 }
             }
         }

@@ -17,7 +17,7 @@ protocol DataTransferService {
 
 final class DefaultDataTransferService: DataTransferService {
 
-    private var networkManager: NetworkManager
+    private let networkManager: NetworkManager
     
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
@@ -35,12 +35,17 @@ final class DefaultDataTransferService: DataTransferService {
     /// Method to decode data using JSONDecoder
     /// - Parameter data: Data
     /// - Returns: Decodable type object
-    func decode<T>(data: Data) throws -> T where T : Decodable {
+    private func decode<T>(data: Data) throws -> T where T : Decodable {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
+        // FIXME: The data couldn’t be read because it isn’t in the correct format
         do {
-            let decodedData = try JSONDecoder().decode(T.self, from: data)
+            let decodedData = try decoder.decode(T.self, from: data)
             Log.debug(tag: DataTransferService.self, message: "Data decoded: \(decodedData)")
             return decodedData
         } catch {
+            Log.error(tag: DataTransferService.self, message: "Decoding failed with error: \(error.localizedDescription)")
             throw NetworkError.unableToDecode
         }
     }

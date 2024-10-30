@@ -20,7 +20,8 @@ final class DefaultNetworkManager: NetworkManager {
     private let networkConfig: NetworkConfigurable
     private let sessionManager: NetworkSessionManager
     
-    init(networkConfig: NetworkConfigurable, sessionManager: NetworkSessionManager = DefaultNetworkSessionManager()) {
+    init(networkConfig: NetworkConfigurable,
+         sessionManager: NetworkSessionManager = DefaultNetworkSessionManager()) {
         self.networkConfig = networkConfig
         self.sessionManager = sessionManager
     }
