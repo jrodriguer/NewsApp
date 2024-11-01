@@ -9,6 +9,14 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
+/*
+ A cumplir con una estructura de actividad (activityAttributes, Dynamic data), cuyo contenido
+ sean aquellos datos más descriptivos, pero sin descripción como valor asociado, del artículo.
+ El rango sería aquel periodo de tiempo en el que se publicaron los artículos.
+ Fuera, el número de aquellos artículos volcados en el tiempo indicado. Tiempo que el usuario,
+ otra feature aparte, considerándose esta como cuenta regresiva, indique a escuchar.
+ */
+
 struct NewsAppIOSWidgetAttributes: ActivityAttributes {
     public typealias NewsAppIOSWidgetStatus = ContentState
     
