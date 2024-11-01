@@ -9,7 +9,7 @@ import Foundation
 
 protocol ArticleViewModelProtocol: ObservableObject {
     var articles: [ArticleListItemViewModel] { get set }
-    var isError: Bool {get}
+    var showError: Bool {get}
     var error: String {get}
     var isEmpty: Bool {get}
     func fetchArticles() async
@@ -18,7 +18,7 @@ protocol ArticleViewModelProtocol: ObservableObject {
 final class ArticleViewModel: ArticleViewModelProtocol {
     
     @Published var articles: [ArticleListItemViewModel] = []
-    @Published var isError: Bool = false
+    @Published var showError: Bool = false
     @Published var error: String = ""
     var isEmpty: Bool { return articles.isEmpty }
     private let articleListUseCase: ArticleListUseCase!
@@ -33,9 +33,9 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         do {
             let articleList = try await articleListUseCase.fetchArticleList()
             self.articles = self.transformFetchedArticles(articleList)
-            self.isError = false
+            self.showError = false
         } catch {
-            self.isError = true
+            self.showError = true
             if let networkError = error as? NetworkError {
                 self.error = networkError.description
             } else {
