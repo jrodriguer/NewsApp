@@ -12,7 +12,7 @@ import SwiftUI
 /*
  A cumplir con una estructura de actividad (activityAttributes, Dynamic data), cuyo contenido
  sean aquellos datos más descriptivos, pero sin descripción como valor asociado, del artículo.
- El rango sería aquel periodo de tiempo en el que se publicaron los artículos.
+ El publishedRange sería aquel periodo de tiempo en el que se publicaron los artículos.
  Fuera, el número de aquellos artículos volcados en el tiempo indicado. Tiempo que el usuario,
  otra feature aparte, considerándose esta como cuenta regresiva, indique a escuchar.
  */
@@ -27,7 +27,7 @@ struct NewsAppIOSWidgetAttributes: ActivityAttributes {
         var publishedRange: ClosedRange<Date> // Period of time in which the articles were published
     }
     
-    var articleCount: Int
+    var numberOfArticles: Int
 }
 
 struct NewsAppIOSWidgetLiveActivity: Widget {
@@ -56,7 +56,7 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                         .font(.caption)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("\(context.attributes.articleCount) Articles")
+                    Text("\(context.attributes.numberOfArticles) Articles")
                         .font(.caption2)
                         .foregroundColor(.accentColor)
                 }
@@ -72,7 +72,7 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                         .foregroundColor(.secondary)
                 }
             } compactLeading: {
-                Text("\(context.attributes.articleCount) Art.")
+                Text("\(context.attributes.numberOfArticles) Art.")
                     .font(.caption2)
             } compactTrailing: {
                 Text(context.state.source.prefix(3))
@@ -87,7 +87,7 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
 }
 
 extension NewsAppIOSWidgetAttributes {
-    fileprivate static let preview: NewsAppIOSWidgetAttributes = NewsAppIOSWidgetAttributes(articleCount: 2)
+    fileprivate static let preview: NewsAppIOSWidgetAttributes = NewsAppIOSWidgetAttributes(numberOfArticles: 2)
 }
 
 extension NewsAppIOSWidgetAttributes.ContentState {
