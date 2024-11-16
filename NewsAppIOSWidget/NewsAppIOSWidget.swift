@@ -56,10 +56,14 @@ struct NewsAppIOSWidgetEntryView : View {
 }
 
 struct NewsAppIOSWidget: Widget {
-    let kind: String = "NewsAppIOSWidget"
+    let kind: String = "newsappioswidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
+        AppIntentConfiguration(
+            kind: kind,
+            intent: ConfigurationAppIntent.self,
+            provider: Provider()
+        ) { entry in
             NewsAppIOSWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
