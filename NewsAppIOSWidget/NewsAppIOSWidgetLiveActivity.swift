@@ -7,6 +7,7 @@
 
 import ActivityKit
 import WidgetKit
+import Foundation
 import SwiftUI
 
 /*
@@ -40,11 +41,13 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                 Text("Title: \(context.state.title)")
                     .font(.body)
                     .bold()
-                Text("Published between:")
-                    .font(.footnote)
-                Text("\(context.state.publishedRange.lowerBound.formatted(.dateTime)) - \(context.state.publishedRange.upperBound.formatted(.dateTime))")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                HStack {
+                    Text("Published between:")
+                        .font(.footnote)
+                    Text("\(context.state.publishedRange.lowerBound.formatted(.dateTime)) - \(context.state.publishedRange.upperBound.formatted(.dateTime))")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
             }
             .padding()
         } dynamicIsland: { context in
@@ -70,11 +73,9 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                         .foregroundColor(.secondary)
                 }
             } compactLeading: {
-                Text("\(context.attributes.id) Art.")
-                    .font(.caption2)
+                // TODO: Newspaper user alias (add to feature project).
             } compactTrailing: {
-                Text(context.state.source.prefix(3))
-                    .font(.caption2)
+                // TODO: Symbol by article genre.
             } minimal: {
                 Text("\(context.state.author.prefix(1))")
                     .font(.caption2)
@@ -99,6 +100,12 @@ extension NewsAppIOSWidgetAttributes.ContentState {
 }
 
 #Preview("Dynamic Island Expanded", as: .dynamicIsland(.expanded), using: NewsAppIOSWidgetAttributes.preview) {
+    NewsAppIOSWidgetLiveActivity()
+} contentStates: {
+    NewsAppIOSWidgetAttributes.ContentState.activityState
+}
+
+#Preview("Dynamic Island Compact", as: .dynamicIsland(.compact), using: NewsAppIOSWidgetAttributes.preview) {
     NewsAppIOSWidgetLiveActivity()
 } contentStates: {
     NewsAppIOSWidgetAttributes.ContentState.activityState
