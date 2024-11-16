@@ -24,7 +24,3 @@ struct HomeView: View {
         CustomTabBarView(selectedTab: $selectedTab, showModal: $showModal)
     }
 }
-
-//#Preview {
-//    HomeView(articleView: ArticleView(apiDataTransferService: )
-//}

@@ -191,7 +191,3 @@ struct ViewOffsetKey: PreferenceKey {
         value += nextValue()
     }
 }
-
-//#Preview {
-//    ArticleView(viewModel: ArticleViewModel())
-//}

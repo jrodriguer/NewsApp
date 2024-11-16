@@ -65,7 +65,3 @@ struct ArticleCardView: View {
         .padding([.top, .horizontal])
     }
 }
-
-//#Preview {
-//    ArticleCardView(article: .previewData[0])
-//}
