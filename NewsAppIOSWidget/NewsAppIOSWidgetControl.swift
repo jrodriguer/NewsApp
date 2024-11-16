@@ -10,7 +10,7 @@ import SwiftUI
 import WidgetKit
 
 struct NewsAppIOSWidgetControl: ControlWidget {
-    static let kind: String = "com.juliorodriguez.NewsApp.NewsAppIOSWidget"
+    static let kind: String = "com.juliorodriguez.newsapp.newsappioswidget"
 
     var body: some ControlWidgetConfiguration {
         AppIntentControlConfiguration(
