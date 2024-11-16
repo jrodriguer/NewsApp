@@ -38,9 +38,10 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                 Text("Author: \(context.state.author)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                Text("Title: \(context.state.title)")
+                Text("\(context.state.title)")
                     .font(.body)
                     .bold()
+                    .italic()
                 HStack {
                     Text("Published between:")
                         .font(.footnote)
