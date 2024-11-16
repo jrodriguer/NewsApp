@@ -12,9 +12,7 @@ import SwiftUI
 /*
  A cumplir con una estructura de actividad (activityAttributes, Dynamic data), cuyo contenido
  sean aquellos datos más descriptivos, pero sin descripción como valor asociado, del artículo.
- El publishedRange sería aquel periodo de tiempo en el que se publicaron los artículos.
- Fuera, el número de aquellos artículos volcados en el tiempo indicado. Tiempo que el usuario,
- otra feature aparte, considerándose esta como cuenta regresiva, indique a escuchar.
+ El publishedRange sería aquel periodo de tiempo en el que se publicó el artículo.
  */
 
 struct NewsAppIOSWidgetAttributes: ActivityAttributes {
@@ -24,10 +22,10 @@ struct NewsAppIOSWidgetAttributes: ActivityAttributes {
         var source: String
         var author: String
         var title: String
-        var publishedRange: ClosedRange<Date> // Period of time in which the articles were published
+        var publishedRange: ClosedRange<Date> // Period of time in which the article were published
     }
     
-    var numberOfArticles: Int
+    var id: String
 }
 
 struct NewsAppIOSWidgetLiveActivity: Widget {
@@ -56,7 +54,7 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                         .font(.caption)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("\(context.attributes.numberOfArticles) Articles")
+                    Text("\(context.attributes.id) Articles")
                         .font(.caption2)
                         .foregroundColor(.accentColor)
                 }
@@ -72,7 +70,7 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                         .foregroundColor(.secondary)
                 }
             } compactLeading: {
-                Text("\(context.attributes.numberOfArticles) Art.")
+                Text("\(context.attributes.id) Art.")
                     .font(.caption2)
             } compactTrailing: {
                 Text(context.state.source.prefix(3))
@@ -87,7 +85,7 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
 }
 
 extension NewsAppIOSWidgetAttributes {
-    fileprivate static let preview: NewsAppIOSWidgetAttributes = NewsAppIOSWidgetAttributes(numberOfArticles: 2)
+    fileprivate static let preview: NewsAppIOSWidgetAttributes = NewsAppIOSWidgetAttributes(id: "1")
 }
 
 extension NewsAppIOSWidgetAttributes.ContentState {
@@ -95,6 +93,12 @@ extension NewsAppIOSWidgetAttributes.ContentState {
 }
 
 #Preview("Notification", as: .content, using: NewsAppIOSWidgetAttributes.preview) {
+    NewsAppIOSWidgetLiveActivity()
+} contentStates: {
+    NewsAppIOSWidgetAttributes.ContentState.activityState
+}
+
+#Preview("Dynamic Island Expanded", as: .dynamicIsland(.expanded), using: NewsAppIOSWidgetAttributes.preview) {
     NewsAppIOSWidgetLiveActivity()
 } contentStates: {
     NewsAppIOSWidgetAttributes.ContentState.activityState
