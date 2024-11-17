@@ -12,41 +12,42 @@ import SwiftUI
 struct NewsAppIOSWidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: NewsAppIOSWidgetAttributes.self) { context in
-            VStack(alignment: .leading) {
-                Text("Source: \(context.state.source)")
-                    .font(.headline)
-                Text("Author: \(context.state.author)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                Text("\(context.state.title)")
-                    .font(.body)
-                    .bold()
-                    .italic()
-                HStack {
-                    Text("Published between:")
-                        .font(.footnote)
-                    Text("\(context.state.publishedRange.lowerBound.formatted(.dateTime)) - \(context.state.publishedRange.upperBound.formatted(.dateTime))")
+            
+            VStack(alignment: .leading, spacing: 8) {
+                    Text(context.state.title)
+                        .font(.headline)
+                        .lineLimit(2)
+                    
+                    Text(context.state.source)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    
+                    Text("\(context.state.publishedRange.lowerBound.formatted(.dateTime))")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-            }
             .padding()
+            .padding(.horizontal, 16)
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    Text("Source: \(context.state.source)")
-                        .font(.caption)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(context.state.title)
+                            .font(.headline)
+                            .lineLimit(2)
+                        
+                        Text(context.state.source)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("\(context.attributes.id) Articles")
-                        .font(.caption2)
-                        .foregroundColor(.accentColor)
+                    Text("Published: \(context.state.publishedRange.lowerBound.formatted(.dateTime))")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                 }
                 DynamicIslandExpandedRegion(.center) {
-                    Text(context.state.title)
-                        .font(.caption)
-                        .bold()
-                        .lineLimit(1)
+                    // TODO: Desingn center of Dinamyc Island.
                 }
                 DynamicIslandExpandedRegion(.bottom) {
                     Text("Published: \(context.state.publishedRange.lowerBound.formatted(.dateTime)) - \(context.state.publishedRange.upperBound.formatted(.dateTime))")
@@ -55,11 +56,18 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                 }
             } compactLeading: {
                 // TODO: Newspaper user alias (add to feature project).
+                Image(systemName: "newspaper.fill")
+                        .font(.body)
+                        .foregroundColor(.accentColor)
             } compactTrailing: {
                 // TODO: Symbol by article genre.
+                Text(context.state.source)
+                        .font(.caption)
+                        .lineLimit(1)
             } minimal: {
-                Text("\(context.state.author.prefix(1))")
-                    .font(.caption2)
+                Text("\(context.state.source.prefix(1))")
+                    .font(.body)
+                    .foregroundColor(.accentColor)
             }
             .keylineTint(.accentColor)
         }
@@ -71,7 +79,12 @@ extension NewsAppIOSWidgetAttributes {
 }
 
 extension NewsAppIOSWidgetAttributes.ContentState {
-    fileprivate static let activityState = NewsAppIOSWidgetAttributes.ContentState(source: "The Washington Post", author: "Hannah Docter-Loeb", title: "Americans see disparities in mental and physical care, survey finds - The Washington Post", publishedRange: Date()...Date().addingTimeInterval(15 * 60))
+    fileprivate static let activityState = NewsAppIOSWidgetAttributes.ContentState(
+        source: "The Washington Post",
+        author: "Hannah Docter-Loeb",
+        title: "Americans see disparities in mental and physical care, survey finds - The Washington Post",
+        publishedRange: Date()...Date().addingTimeInterval(15 * 60)
+    )
 }
 
 #Preview("Notification", as: .content, using: NewsAppIOSWidgetAttributes.preview) {
