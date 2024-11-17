@@ -21,7 +21,19 @@ struct NewsAppIOSWidgetAttributes: ActivityAttributes {
         var source: String
         var author: String
         var title: String
-        var publishedRange: ClosedRange<Date> // Period of time in which the article were published
+        var publishedAt: String
+        
+        var publishedDate: Date? {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            return dateFormatter.date(from:publishedAt)!
+        }
+        
+        var minutesSincePublished: Int? {
+            guard let publishedDate = publishedDate else { return nil }
+            return Int(Date().timeIntervalSince(publishedDate) / 60)
+        }
     }
     
     var id: String
