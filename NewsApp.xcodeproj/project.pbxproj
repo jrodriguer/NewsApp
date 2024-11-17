@@ -159,7 +159,6 @@
 		8A6FFE812CE8455E00D1146A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				ArticleWidgetModel.swift,
 				NewsAppIOSWidgetAttributes.swift,
 			);
 			target = 8A4E22B82B4A2BCA006D71C6 /* NewsApp */;
