@@ -14,18 +14,20 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
         ActivityConfiguration(for: NewsAppIOSWidgetAttributes.self) { context in
             
             VStack(alignment: .leading, spacing: 8) {
-                    Text(context.state.title)
-                        .font(.headline)
-                        .lineLimit(2)
-                    
-                    Text(context.state.source)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
-                    Text("\(context.state.publishedRange.lowerBound.formatted(.dateTime))")
+                Text(context.state.title)
+                    .font(.headline)
+                    .lineLimit(2)
+                
+                Text(context.state.source)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                
+                if let minutesSince = context.state.minutesSincePublished {
+                    Text("\(minutesSince) minutes ago")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
+            }
             .padding()
             .padding(.horizontal, 16)
         } dynamicIsland: { context in
@@ -42,25 +44,26 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                     }
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("Published: \(context.state.publishedRange.lowerBound.formatted(.dateTime))")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                    if let minutesSince = context.state.minutesSincePublished {
+                        Text("\(minutesSince) min ago")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 DynamicIslandExpandedRegion(.center) {
-                    // TODO: Desingn center of Dinamyc Island.
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Published: \(context.state.publishedRange.lowerBound.formatted(.dateTime)) - \(context.state.publishedRange.upperBound.formatted(.dateTime))")
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
+                    if let minutesSince = context.state.minutesSincePublished {
+                        Text("\(minutesSince) minutes ago")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             } compactLeading: {
-                // TODO: Newspaper user alias (add to feature project).
                 Image(systemName: "newspaper.fill")
                         .font(.body)
                         .foregroundColor(.accentColor)
             } compactTrailing: {
-                // TODO: Symbol by article genre.
                 Text(context.state.source)
                         .font(.caption)
                         .lineLimit(1)
@@ -83,7 +86,7 @@ extension NewsAppIOSWidgetAttributes.ContentState {
         source: "The Washington Post",
         author: "Hannah Docter-Loeb",
         title: "Americans see disparities in mental and physical care, survey finds - The Washington Post",
-        publishedRange: Date()...Date().addingTimeInterval(15 * 60)
+        publishedAt: "2024-05-27T12:30:00Z"
     )
 }
 
