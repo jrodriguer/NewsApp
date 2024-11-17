@@ -16,4 +16,24 @@ struct ArticleListItemViewModel: Hashable {
     let publishedAt: String
     let description: String?
     let image: URL?
+    
+    init(
+        id: UUID,
+        source: String,
+        author: String,
+        title: String,
+        link: URL,
+        publishedAt: String,
+        description: String,
+        image: URL? = nil
+    ) {
+        self.id = id
+        self.source = source
+        self.author = author
+        self.title = title
+        self.link = link
+        self.publishedAt = publishedAt
+        self.description = description
+        self.image = image
+    }
 }

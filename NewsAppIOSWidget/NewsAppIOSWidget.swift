@@ -36,21 +36,47 @@ struct Provider: AppIntentTimelineProvider {
 //    }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct ArticleEntry: TimelineEntry {
+    enum State {
+        case articles([ArticleWidgetModel])
+        case failure(String)
+    }
+    
     let date: Date
-    let configuration: ConfigurationAppIntent
+    let state: State
+    let category: String
 }
 
 struct NewsAppIOSWidgetEntryView : View {
-    var entry: Provider.Entry
-
+    let entry: ArticleEntry
+    @Environment(\.widgetFamily) private var widgetFamily
+    
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
+        switch entry.state {
+        
+        case .articles(let articles):
+            switch widgetFamily {
+            case .systemSmall, .systemMedium:
+                ArticleThumbnailView(article: articles[0], category: entry.category)
+                    .widgetURL(articles[0].url)
+                
+                
+            case .systemLarge:
+                ArticleEntryWidgetLargeView(articles: articles, category: entry.category)
+                
+            case .systemExtraLarge:
+                ArticleEntryWidgetExtraLargeView(articles: articles, category: entry.category)
+                
 
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
+            default: EmptyView()
+            }
+            
+        
+        case .failure(let error):
+            
+            Text(error.localizedDescription)
+            
+            
         }
     }
 }
