@@ -22,8 +22,8 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 
-                if let minutesSince = context.state.minutesSincePublished {
-                    Text("\(minutesSince) minutes ago")
+                if let timeSince = context.state.timeSincePublished {
+                    Text(timeSince)
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -44,8 +44,8 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                     }
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    if let minutesSince = context.state.minutesSincePublished {
-                        Text("\(minutesSince) min ago")
+                    if let timeSince = context.state.timeSincePublished {
+                        Text(timeSince)
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -53,8 +53,8 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
                 DynamicIslandExpandedRegion(.center) {
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    if let minutesSince = context.state.minutesSincePublished {
-                        Text("\(minutesSince) minutes ago")
+                    if let timeSince = context.state.timeSincePublished {
+                        Text("\(timeSince) time ago")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -86,7 +86,7 @@ extension NewsAppIOSWidgetAttributes.ContentState {
         source: "The Washington Post",
         author: "Hannah Docter-Loeb",
         title: "Americans see disparities in mental and physical care, survey finds - The Washington Post",
-        publishedAt: "2024-05-27T12:30:00Z"
+        publishedAt: "2024-11-01T12:30:00Z"
     )
 }
 

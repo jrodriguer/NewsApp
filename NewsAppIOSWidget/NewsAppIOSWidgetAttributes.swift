@@ -30,9 +30,21 @@ struct NewsAppIOSWidgetAttributes: ActivityAttributes {
             return dateFormatter.date(from:publishedAt)!
         }
         
-        var minutesSincePublished: Int? {
-            guard let publishedDate = publishedDate else { return nil }
-            return Int(Date().timeIntervalSince(publishedDate) / 60)
+        var timeSincePublished: String? {
+            guard let publishedDate = publishedDate else { return "0min" }
+            let timeInterval = Int(Date().timeIntervalSince(publishedDate))
+            
+            let days = timeInterval / 86400
+            let hours = (timeInterval % 86400) / 3600
+            let minutes = (timeInterval % 3600) / 60
+            
+            if timeInterval > days {
+                return "\(days)d"
+            } else if hours > 0 {
+                return "\(hours)h"
+            } else {
+                return "\(minutes)min"
+            }
         }
     }
     
