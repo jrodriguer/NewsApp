@@ -13,64 +13,26 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: NewsAppIOSWidgetAttributes.self) { context in
             
-            VStack(alignment: .leading, spacing: 8) {
-                Text(context.state.title)
-                    .font(.headline)
-                    .lineLimit(2)
-                
-                Text(context.state.source)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                if let timeSince = context.state.timeSincePublished {
-                    Text(timeSince)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .padding()
-            .padding(.horizontal, 16)
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(context.state.title)
-                            .font(.headline)
-                            .lineLimit(2)
-                        
-                        Text(context.state.source)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
+                    
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    if let timeSince = context.state.timeSincePublished {
-                        Text(timeSince)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
+                    
                 }
                 DynamicIslandExpandedRegion(.center) {
+                    
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    if let timeSince = context.state.timeSincePublished {
-                        Text("\(timeSince) time ago")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
+                    
                 }
             } compactLeading: {
-                Image(systemName: "newspaper.fill")
-                        .font(.body)
-                        .foregroundColor(.accentColor)
+                
             } compactTrailing: {
-                Text(context.state.source)
-                        .font(.caption)
-                        .lineLimit(1)
+                
             } minimal: {
-                Text("\(context.state.source.prefix(1))")
-                    .font(.body)
-                    .foregroundColor(.accentColor)
+                
             }
             .keylineTint(.accentColor)
         }
@@ -78,16 +40,16 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
 }
 
 extension NewsAppIOSWidgetAttributes {
-    fileprivate static let preview: NewsAppIOSWidgetAttributes = NewsAppIOSWidgetAttributes(id: "1")
+    fileprivate static let preview: NewsAppIOSWidgetAttributes = NewsAppIOSWidgetAttributes(
+        id: "1",
+        source: "The Washington Post",
+        author: "Hannah Docter-Loeb",
+        title: "Americans see disparities in mental and physical care, survey finds - The Washington Post"
+    )
 }
 
 extension NewsAppIOSWidgetAttributes.ContentState {
-    fileprivate static let activityState = NewsAppIOSWidgetAttributes.ContentState(
-        source: "The Washington Post",
-        author: "Hannah Docter-Loeb",
-        title: "Americans see disparities in mental and physical care, survey finds - The Washington Post",
-        publishedAt: "2024-11-01T12:30:00Z"
-    )
+    fileprivate static let activityState = NewsAppIOSWidgetAttributes.ContentState(publishedAt: "2024-11-01T12:30:00Z")
 }
 
 #Preview("Notification", as: .content, using: NewsAppIOSWidgetAttributes.preview) {

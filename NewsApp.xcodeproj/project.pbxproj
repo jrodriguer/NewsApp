@@ -156,17 +156,18 @@
 			);
 			target = 8A165CF12CD242220058C247 /* NewsAppIOSWidgetExtension */;
 		};
-		8A6FFE812CE8455E00D1146A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		8A391DFF2CFBA35A00141230 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				NewsAppIOSWidgetAttributes.swift,
+				Models/NewsAppIOSWidgetAttributes.swift,
 			);
 			target = 8A4E22B82B4A2BCA006D71C6 /* NewsApp */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8A165CF82CD242220058C247 /* NewsAppIOSWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8A6FFE812CE8455E00D1146A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 8A165D0B2CD242240058C247 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NewsAppIOSWidget; sourceTree = "<group>"; };
+		8A165CF82CD242220058C247 /* NewsAppIOSWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8A165D0B2CD242240058C247 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NewsAppIOSWidget; sourceTree = "<group>"; };
+		8A391DFD2CFBA33F00141230 /* Shared */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8A391DFF2CFBA35A00141230 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Shared; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +214,7 @@
 		8A4E22B02B4A2BCA006D71C6 = {
 			isa = PBXGroup;
 			children = (
+				8A391DFD2CFBA33F00141230 /* Shared */,
 				8A4E22BB2B4A2BCA006D71C6 /* NewsApp */,
 				8A165CF82CD242220058C247 /* NewsAppIOSWidget */,
 				8A165CF32CD242220058C247 /* Frameworks */,
@@ -488,6 +490,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				8A165CF82CD242220058C247 /* NewsAppIOSWidget */,
+				8A391DFD2CFBA33F00141230 /* Shared */,
 			);
 			name = NewsAppIOSWidgetExtension;
 			packageProductDependencies = (
