@@ -9,77 +9,68 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
-/*
- A cumplir con una estructura de actividad (activityAttributes, Dynamic data), cuyo contenido
- sean aquellos datos más descriptivos, pero sin descripción como valor asociado, del artículo.
- El rango sería aquel periodo de tiempo en el que se publicaron los artículos.
- Fuera, el número de aquellos artículos volcados en el tiempo indicado. Tiempo que el usuario,
- otra feature aparte, considerándose esta como cuenta regresiva, indique a escuchar.
- */
-
-struct NewsAppIOSWidgetAttributes: ActivityAttributes {
-    public typealias NewsAppIOSWidgetStatus = ContentState
-    
-    public struct ContentState: Codable, Hashable {
-        var source: String
-        var author: String
-        var title: String
-        var publishedRange: ClosedRange<Date> // Period of time in which the articles were published
-    }
-    
-    var articleCount: Int
-}
-
 struct NewsAppIOSWidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: NewsAppIOSWidgetAttributes.self) { context in
-            VStack(alignment: .leading) {
-                Text("Source: \(context.state.source)")
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text(context.state.title)
                     .font(.headline)
-                Text("Author: \(context.state.author)")
+                    .lineLimit(2)
+                
+                Text(context.state.source)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                Text("Title: \(context.state.title)")
-                    .font(.body)
-                    .bold()
-                Text("Published between:")
-                    .font(.footnote)
-                Text("\(context.state.publishedRange.lowerBound.formatted(.dateTime)) - \(context.state.publishedRange.upperBound.formatted(.dateTime))")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                
+                if let timeSince = context.state.timeSincePublished {
+                    Text(timeSince)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
             .padding()
+            .padding(.horizontal, 16)
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    Text("Source: \(context.state.source)")
-                        .font(.caption)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(context.state.title)
+                            .font(.headline)
+                            .lineLimit(2)
+                        
+                        Text(context.state.source)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("\(context.attributes.articleCount) Articles")
-                        .font(.caption2)
-                        .foregroundColor(.accentColor)
+                    if let timeSince = context.state.timeSincePublished {
+                        Text(timeSince)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 DynamicIslandExpandedRegion(.center) {
-                    Text(context.state.title)
-                        .font(.caption)
-                        .bold()
-                        .lineLimit(1)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Published: \(context.state.publishedRange.lowerBound.formatted(.dateTime)) - \(context.state.publishedRange.upperBound.formatted(.dateTime))")
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
+                    if let timeSince = context.state.timeSincePublished {
+                        Text("\(timeSince) time ago")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             } compactLeading: {
-                Text("\(context.attributes.articleCount) Art.")
-                    .font(.caption2)
+                Image(systemName: "newspaper.fill")
+                        .font(.body)
+                        .foregroundColor(.accentColor)
             } compactTrailing: {
-                Text(context.state.source.prefix(3))
-                    .font(.caption2)
+                Text(context.state.source)
+                        .font(.caption)
+                        .lineLimit(1)
             } minimal: {
-                Text("\(context.state.author.prefix(1))")
-                    .font(.caption2)
+                Text("\(context.state.source.prefix(1))")
+                    .font(.body)
+                    .foregroundColor(.accentColor)
             }
             .keylineTint(.accentColor)
         }
@@ -87,14 +78,31 @@ struct NewsAppIOSWidgetLiveActivity: Widget {
 }
 
 extension NewsAppIOSWidgetAttributes {
-    fileprivate static let preview: NewsAppIOSWidgetAttributes = NewsAppIOSWidgetAttributes(articleCount: 2)
+    fileprivate static let preview: NewsAppIOSWidgetAttributes = NewsAppIOSWidgetAttributes(id: "1")
 }
 
 extension NewsAppIOSWidgetAttributes.ContentState {
-    fileprivate static let activityState = NewsAppIOSWidgetAttributes.ContentState(source: "The Washington Post", author: "Hannah Docter-Loeb", title: "Americans see disparities in mental and physical care, survey finds - The Washington Post", publishedRange: Date()...Date().addingTimeInterval(15 * 60))
+    fileprivate static let activityState = NewsAppIOSWidgetAttributes.ContentState(
+        source: "The Washington Post",
+        author: "Hannah Docter-Loeb",
+        title: "Americans see disparities in mental and physical care, survey finds - The Washington Post",
+        publishedAt: "2024-11-01T12:30:00Z"
+    )
 }
 
 #Preview("Notification", as: .content, using: NewsAppIOSWidgetAttributes.preview) {
+    NewsAppIOSWidgetLiveActivity()
+} contentStates: {
+    NewsAppIOSWidgetAttributes.ContentState.activityState
+}
+
+#Preview("Dynamic Island Expanded", as: .dynamicIsland(.expanded), using: NewsAppIOSWidgetAttributes.preview) {
+    NewsAppIOSWidgetLiveActivity()
+} contentStates: {
+    NewsAppIOSWidgetAttributes.ContentState.activityState
+}
+
+#Preview("Dynamic Island Compact", as: .dynamicIsland(.compact), using: NewsAppIOSWidgetAttributes.preview) {
     NewsAppIOSWidgetLiveActivity()
 } contentStates: {
     NewsAppIOSWidgetAttributes.ContentState.activityState

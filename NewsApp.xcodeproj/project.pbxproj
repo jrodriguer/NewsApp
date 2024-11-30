@@ -16,15 +16,12 @@
 		8A2CE7612C85C7B600B762D0 /* ArticleDomainListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2CE7602C85C7B600B762D0 /* ArticleDomainListDTO.swift */; };
 		8A2CE7662C85D35C00B762D0 /* ArticleListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2CE7652C85D35C00B762D0 /* ArticleListUseCase.swift */; };
 		8A30D3712C071B9300A09B9D /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A3CD90D2B91DE82005A677C /* news.json */; };
-		8A3CD90E2B91DE82005A677C /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A3CD90D2B91DE82005A677C /* news.json */; };
 		8A3E1CA52C87157E00851895 /* ArticleListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E1CA42C87157E00851895 /* ArticleListRepository.swift */; };
 		8A3E1CA72C8715FE00851895 /* ArticleListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E1CA62C8715FE00851895 /* ArticleListService.swift */; };
 		8A3E1CAC2C8718CB00851895 /* ArticleDataListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E1CAB2C8718CB00851895 /* ArticleDataListDTO.swift */; };
 		8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */; };
 		8A4E22C12B4A2BCC006D71C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */; };
 		8A4E22C42B4A2BCC006D71C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E22C32B4A2BCC006D71C6 /* Preview Assets.xcassets */; };
-		8A4E22CE2B4A2BCD006D71C6 /* NewsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22CD2B4A2BCD006D71C6 /* NewsAppTests.swift */; };
-		8A4E22D82B4A2BCD006D71C6 /* NewsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22D72B4A2BCD006D71C6 /* NewsAppUITests.swift */; };
 		8A4FC96D2CA77A7100B47BBC /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FC96C2CA77A7100B47BBC /* DataTransferService.swift */; };
 		8A4FC96F2CA77E7A00B47BBC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FC96E2CA77E7A00B47BBC /* NetworkManager.swift */; };
 		8A4FC9732CA88B8700B47BBC /* EndpointApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FC9722CA88B8700B47BBC /* EndpointApi.swift */; };
@@ -76,20 +73,6 @@
 			remoteGlobalIDString = 8A165CF12CD242220058C247;
 			remoteInfo = NewsAppIOSWidgetExtension;
 		};
-		8A4E22CA2B4A2BCD006D71C6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8A4E22B12B4A2BCA006D71C6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A4E22B82B4A2BCA006D71C6;
-			remoteInfo = NewsApp;
-		};
-		8A4E22D42B4A2BCD006D71C6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8A4E22B12B4A2BCA006D71C6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A4E22B82B4A2BCA006D71C6;
-			remoteInfo = NewsApp;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -123,10 +106,6 @@
 		8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApp.swift; sourceTree = "<group>"; };
 		8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A4E22C32B4A2BCC006D71C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8A4E22C92B4A2BCD006D71C6 /* NewsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A4E22CD2B4A2BCD006D71C6 /* NewsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppTests.swift; sourceTree = "<group>"; };
-		8A4E22D32B4A2BCD006D71C6 /* NewsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A4E22D72B4A2BCD006D71C6 /* NewsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppUITests.swift; sourceTree = "<group>"; };
 		8A4FC96C2CA77A7100B47BBC /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		8A4FC96E2CA77E7A00B47BBC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8A4FC9722CA88B8700B47BBC /* EndpointApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointApi.swift; sourceTree = "<group>"; };
@@ -177,10 +156,17 @@
 			);
 			target = 8A165CF12CD242220058C247 /* NewsAppIOSWidgetExtension */;
 		};
+		8A6FFE812CE8455E00D1146A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				NewsAppIOSWidgetAttributes.swift,
+			);
+			target = 8A4E22B82B4A2BCA006D71C6 /* NewsApp */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8A165CF82CD242220058C247 /* NewsAppIOSWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8A165D0B2CD242240058C247 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NewsAppIOSWidget; sourceTree = "<group>"; };
+		8A165CF82CD242220058C247 /* NewsAppIOSWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8A6FFE812CE8455E00D1146A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 8A165D0B2CD242240058C247 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = NewsAppIOSWidget; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,20 +186,6 @@
 				8AAB4D0B2B76599200C71B36 /* Alamofire in Frameworks */,
 				8A91CC022B8FB18800F673C5 /* Mocker in Frameworks */,
 				8A9FEC642B93D2750027A3E6 /* SwiftyBeaver in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8A4E22C62B4A2BCD006D71C6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8A4E22D02B4A2BCD006D71C6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,8 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				8A4E22BB2B4A2BCA006D71C6 /* NewsApp */,
-				8A4E22CC2B4A2BCD006D71C6 /* NewsAppTests */,
-				8A4E22D62B4A2BCD006D71C6 /* NewsAppUITests */,
 				8A165CF82CD242220058C247 /* NewsAppIOSWidget */,
 				8A165CF32CD242220058C247 /* Frameworks */,
 				8A4E22BA2B4A2BCA006D71C6 /* Products */,
@@ -254,8 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				8A4E22B92B4A2BCA006D71C6 /* NewsApp.app */,
-				8A4E22C92B4A2BCD006D71C6 /* NewsAppTests.xctest */,
-				8A4E22D32B4A2BCD006D71C6 /* NewsAppUITests.xctest */,
 				8A165CF22CD242220058C247 /* NewsAppIOSWidgetExtension.appex */,
 			);
 			name = Products;
@@ -278,22 +246,6 @@
 				8A4E22C32B4A2BCC006D71C6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		8A4E22CC2B4A2BCD006D71C6 /* NewsAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				8A4E22CD2B4A2BCD006D71C6 /* NewsAppTests.swift */,
-			);
-			path = NewsAppTests;
-			sourceTree = "<group>";
-		};
-		8A4E22D62B4A2BCD006D71C6 /* NewsAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8A4E22D72B4A2BCD006D71C6 /* NewsAppUITests.swift */,
-			);
-			path = NewsAppUITests;
 			sourceTree = "<group>";
 		};
 		8A5967BE2C85FE3A000A9545 /* Networking */ = {
@@ -568,42 +520,6 @@
 			productReference = 8A4E22B92B4A2BCA006D71C6 /* NewsApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8A4E22C82B4A2BCD006D71C6 /* NewsAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8A4E22E02B4A2BCD006D71C6 /* Build configuration list for PBXNativeTarget "NewsAppTests" */;
-			buildPhases = (
-				8A4E22C52B4A2BCD006D71C6 /* Sources */,
-				8A4E22C62B4A2BCD006D71C6 /* Frameworks */,
-				8A4E22C72B4A2BCD006D71C6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8A4E22CB2B4A2BCD006D71C6 /* PBXTargetDependency */,
-			);
-			name = NewsAppTests;
-			productName = NewsAppTests;
-			productReference = 8A4E22C92B4A2BCD006D71C6 /* NewsAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		8A4E22D22B4A2BCD006D71C6 /* NewsAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8A4E22E32B4A2BCD006D71C6 /* Build configuration list for PBXNativeTarget "NewsAppUITests" */;
-			buildPhases = (
-				8A4E22CF2B4A2BCD006D71C6 /* Sources */,
-				8A4E22D02B4A2BCD006D71C6 /* Frameworks */,
-				8A4E22D12B4A2BCD006D71C6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8A4E22D52B4A2BCD006D71C6 /* PBXTargetDependency */,
-			);
-			name = NewsAppUITests;
-			productName = NewsAppUITests;
-			productReference = 8A4E22D32B4A2BCD006D71C6 /* NewsAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -619,14 +535,6 @@
 					};
 					8A4E22B82B4A2BCA006D71C6 = {
 						CreatedOnToolsVersion = 15.1;
-					};
-					8A4E22C82B4A2BCD006D71C6 = {
-						CreatedOnToolsVersion = 15.1;
-						TestTargetID = 8A4E22B82B4A2BCA006D71C6;
-					};
-					8A4E22D22B4A2BCD006D71C6 = {
-						CreatedOnToolsVersion = 15.1;
-						TestTargetID = 8A4E22B82B4A2BCA006D71C6;
 					};
 				};
 			};
@@ -651,8 +559,6 @@
 			projectRoot = "";
 			targets = (
 				8A4E22B82B4A2BCA006D71C6 /* NewsApp */,
-				8A4E22C82B4A2BCD006D71C6 /* NewsAppTests */,
-				8A4E22D22B4A2BCD006D71C6 /* NewsAppUITests */,
 				8A165CF12CD242220058C247 /* NewsAppIOSWidgetExtension */,
 			);
 		};
@@ -675,21 +581,6 @@
 				8A7C4D742B879372009E98F6 /* Kode_Mono in Resources */,
 				8A8386742B8565BB00FEC3BD /* GoogleService-Info.plist in Resources */,
 				8A4E22C12B4A2BCC006D71C6 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8A4E22C72B4A2BCD006D71C6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8A3CD90E2B91DE82005A677C /* news.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8A4E22D12B4A2BCD006D71C6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,22 +646,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8A4E22C52B4A2BCD006D71C6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8A4E22CE2B4A2BCD006D71C6 /* NewsAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8A4E22CF2B4A2BCD006D71C6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8A4E22D82B4A2BCD006D71C6 /* NewsAppUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -778,16 +653,6 @@
 			isa = PBXTargetDependency;
 			target = 8A165CF12CD242220058C247 /* NewsAppIOSWidgetExtension */;
 			targetProxy = 8A165D062CD242240058C247 /* PBXContainerItemProxy */;
-		};
-		8A4E22CB2B4A2BCD006D71C6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8A4E22B82B4A2BCA006D71C6 /* NewsApp */;
-			targetProxy = 8A4E22CA2B4A2BCD006D71C6 /* PBXContainerItemProxy */;
-		};
-		8A4E22D52B4A2BCD006D71C6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8A4E22B82B4A2BCA006D71C6 /* NewsApp */;
-			targetProxy = 8A4E22D42B4A2BCD006D71C6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -864,7 +729,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.juliorodriguez.NewsApp.NewsAppIOSWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.juliorodriguez.newsapp.newsappioswidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -953,6 +818,7 @@
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NewsApp/Resources/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -964,51 +830,11 @@
 				);
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.juliorodriguez.NewsApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.juliorodriguez.newsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Dev;
-		};
-		8A4E22E12B4A2BCD006D71C6 /* Dev */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8AABBC972B963BD100D78C5D /* Dev.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X55H9FTVGN;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.juliorodriguez.NewsAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewsApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NewsApp";
-			};
-			name = Dev;
-		};
-		8A4E22E42B4A2BCD006D71C6 /* Dev */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8AABBC972B963BD100D78C5D /* Dev.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X55H9FTVGN;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.juliorodriguez.NewsAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = NewsApp;
 			};
 			name = Dev;
 		};
@@ -1035,22 +861,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A4E22DE2B4A2BCD006D71C6 /* Dev */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Dev;
-		};
-		8A4E22E02B4A2BCD006D71C6 /* Build configuration list for PBXNativeTarget "NewsAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8A4E22E12B4A2BCD006D71C6 /* Dev */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Dev;
-		};
-		8A4E22E32B4A2BCD006D71C6 /* Build configuration list for PBXNativeTarget "NewsAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8A4E22E42B4A2BCD006D71C6 /* Dev */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Dev;

@@ -11,8 +11,6 @@ import SwiftUI
 @main
 struct NewsAppIOSWidgetBundle: WidgetBundle {
     var body: some Widget {
-        NewsAppIOSWidget()
-        NewsAppIOSWidgetControl()
         NewsAppIOSWidgetLiveActivity()
     }
 }

@@ -102,3 +102,22 @@ struct ArticleDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+
+#if DEBUG
+struct ArticleDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        ArticleDetailView(
+            article: ArticleListItemViewModel(
+                id: UUID(),
+                source: "Tech News",
+                author: "Jane Doe",
+                title: "Sample Article",
+                link: URL(string: "https://example.com")!,
+                publishedAt: "2024-11-15",
+                description: "Sample description",
+                image: nil
+            )
+        )
+    }
+}
+#endif
