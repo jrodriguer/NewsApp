@@ -42,7 +42,7 @@ struct ArticleCardView: View {
                     
                     HStack(alignment: .top) {
                         Text(article.publishedAt)
-                        Text(article.author!)
+                        Text(article.author ?? "No author")
                             .lineLimit(1)
                     }
                     .font(.footnote)
@@ -60,8 +60,25 @@ struct ArticleCardView: View {
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
+                .stroke(Color(
+                    .sRGB,
+                    red: 150/255,
+                    green: 150/255,
+                    blue: 150/255,
+                    opacity: 0.1
+                ), lineWidth: 1)
         )
         .padding([.top, .horizontal])
     }
+}
+
+#Preview {
+    ArticleCardView(article: .init(
+        id: UUID(),
+        source: .init(""),
+        title: "Title",
+        link: "url",
+        publishedAt: "",
+        description: ""
+    ))
 }
