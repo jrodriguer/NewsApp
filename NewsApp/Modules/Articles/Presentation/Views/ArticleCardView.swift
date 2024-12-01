@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ArticleCardView: View {
-    
     let article: ArticleListItemViewModel
     
     var body: some View {
@@ -70,15 +69,4 @@ struct ArticleCardView: View {
         )
         .padding([.top, .horizontal])
     }
-}
-
-#Preview {
-    ArticleCardView(article: .init(
-        id: UUID(),
-        source: .init(""),
-        title: "Title",
-        link: "url",
-        publishedAt: "",
-        description: ""
-    ))
 }

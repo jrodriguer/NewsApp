@@ -45,7 +45,3 @@ struct CustomTabBarView: View {
         .frame(height: 82)
     }
 }
-
-#Preview {
-    CustomTabBarView(selectedTab: .constant(.News), showModal: .constant(false))
-}

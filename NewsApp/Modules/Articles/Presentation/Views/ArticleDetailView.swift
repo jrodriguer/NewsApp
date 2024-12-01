@@ -102,18 +102,3 @@ struct ArticleDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-
-#Preview{
-    ArticleDetailView(
-        article: ArticleListItemViewModel(
-            id: UUID(),
-            source: "Tech News",
-            author: "Jane Doe",
-            title: "Sample Article",
-            link: "https://example.com",
-            publishedAt: "2024-11-15",
-            description: "Sample description",
-            image: nil
-        )
-    )
-}

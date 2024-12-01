@@ -31,9 +31,3 @@ struct ShowModalTabBarItemView: View {
         .onTapGesture(perform: action)
     }
 }
-
-#Preview {
-    ShowModalTabBarItemView(radius: 55) {
-        print("Button tapped")
-    }
-}

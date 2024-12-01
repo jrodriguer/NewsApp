@@ -27,7 +27,3 @@ struct FloatingActionButtonView: View {
         .padding()
     }
 }
-
-#Preview {
-    FloatingActionButtonView(name: "chevron.up", radius: 55, action: {})
-}

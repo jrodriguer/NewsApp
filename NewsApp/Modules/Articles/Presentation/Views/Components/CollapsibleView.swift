@@ -36,9 +36,3 @@ struct CollapsibleView<Content: View>: View {
         }
     }
 }
-
-#Preview {
-    CollapsibleView(label: { Text("Title") }) {
-        Text("Content goes here")
-    }
-}

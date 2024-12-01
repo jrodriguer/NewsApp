@@ -33,7 +33,3 @@ struct TabBarButtonView: View {
         }
     }
 }
-
-#Preview {
-    TabBarButtonView(buttonText: "News", imageName: "network", isActive: true)
-}
