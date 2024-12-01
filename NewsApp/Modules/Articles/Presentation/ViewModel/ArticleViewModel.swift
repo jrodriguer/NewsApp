@@ -21,6 +21,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     @Published var showError: Bool = false
     @Published var error: String = ""
     var isEmpty: Bool { return articles.isEmpty }
+    
     private let articleListUseCase: ArticleListUseCase!
     
     init(useCase: ArticleListUseCase) {

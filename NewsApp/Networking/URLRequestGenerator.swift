@@ -23,7 +23,6 @@ final class DefaultURLRequestGenerator: URLRequestGenerator {
         let url = try createURL(with: config, from: request)
         var urlRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
         
-        // Set HTTP method and body if available
         urlRequest.httpMethod = request.method.rawValue
         if !request.bodyParameters.isEmpty {
             do {

@@ -59,7 +59,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 }
                 .pickerStyle(.menu)
                 
-//                sortButtons
+                sortButtons
                 showFavoritesButton
             } label: {
                 Label("Menu", systemImage: "ellipsis.circle")
@@ -67,19 +67,16 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         }
     }
     
-//    private var sortButtons: some View {
-//        Section("Sort by") {
-//            Button("Alphabetical") {
-//                viewModel.articles.sort { $0.source.name.lowercased() < $1.source.name.lowercased() }
-//            }
-//            Button("Newest First") {
+    private var sortButtons: some View {
+        Section("Sort by") {
+            Button("Newest First") {
 //                viewModel.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
-//            }
-//            Button("Oldest First") {
+            }
+            Button("Oldest First") {
 //                viewModel.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
-//            }
-//        }
-//    }
+            }
+        }
+    }
     
     private var showFavoritesButton: some View {
         Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
