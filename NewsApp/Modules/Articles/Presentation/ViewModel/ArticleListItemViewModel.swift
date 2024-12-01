@@ -10,7 +10,7 @@ import Foundation
 struct ArticleListItemViewModel: Hashable {
     let id: UUID
     let source: String
-    let author: String
+    let author: String?
     let title: String
     let link: String
     let publishedAt: String
@@ -20,7 +20,7 @@ struct ArticleListItemViewModel: Hashable {
     init(
         id: UUID,
         source: String,
-        author: String,
+        author: String? = nil,
         title: String,
         link: String,
         publishedAt: String,

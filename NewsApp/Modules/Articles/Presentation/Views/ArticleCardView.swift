@@ -42,7 +42,7 @@ struct ArticleCardView: View {
                     
                     HStack(alignment: .top) {
                         Text(article.publishedAt)
-                        Text(article.author)
+                        Text(article.author!)
                             .lineLimit(1)
                     }
                     .font(.footnote)

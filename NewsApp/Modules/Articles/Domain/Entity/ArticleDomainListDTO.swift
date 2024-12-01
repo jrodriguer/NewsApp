@@ -10,7 +10,7 @@ import Foundation
 struct ArticleDomainListDTO {
     let articleId: UUID
     let source: String
-    let author: String
+    let author: String?
     let title: String
     let url: String
     let publishedAt: Date

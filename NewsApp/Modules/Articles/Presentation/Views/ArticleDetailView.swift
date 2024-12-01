@@ -40,7 +40,7 @@ struct ArticleDetailView: View {
                             .multilineTextAlignment(.leading)
                     }
                     
-                    Text(article.author)
+                    Text(article.author!)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     Text(article.description ?? "")
