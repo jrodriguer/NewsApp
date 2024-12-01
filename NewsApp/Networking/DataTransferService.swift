@@ -45,7 +45,7 @@ final class DefaultDataTransferService: DataTransferService {
             Log.debug(tag: DataTransferService.self, message: "Data decoded: \(decodedData)")
             return decodedData
         } catch {
-            Log.error(tag: DataTransferService.self, message: "Decoding failed with error: \(error.localizedDescription)")
+            Log.error(tag: DataTransferService.self, message: "Decoding failed, error: \(error)")
             throw NetworkError.unableToDecode
         }
     }
