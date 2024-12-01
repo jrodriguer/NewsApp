@@ -35,7 +35,6 @@ struct ArticleDataListDTO: Decodable {
 }
 
 extension ArticleDataListDTO {
-    
     func toDomain() -> ArticleDomainListDTO {
         .init(articleId: UUID(),
               source: source.name,
