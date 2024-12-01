@@ -13,7 +13,7 @@ struct ArticleCardView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: article.image) { phase in
+            AsyncImage(url: URL(string: article.image ?? "")) { phase in
                 switch phase {
                 case .success(let image):
                     image

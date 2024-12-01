@@ -12,20 +12,20 @@ struct ArticleListItemViewModel: Hashable {
     let source: String
     let author: String
     let title: String
-    let link: URL
+    let link: String
     let publishedAt: String
     let description: String?
-    let image: URL?
+    let image: String?
     
     init(
         id: UUID,
         source: String,
         author: String,
         title: String,
-        link: URL,
+        link: String,
         publishedAt: String,
         description: String,
-        image: URL? = nil
+        image: String? = nil
     ) {
         self.id = id
         self.source = source

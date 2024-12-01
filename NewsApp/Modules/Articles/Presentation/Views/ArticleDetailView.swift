@@ -13,7 +13,7 @@ struct ArticleDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
-                AsyncImage(url: article.image) { phase in
+                AsyncImage(url: URL(string: article.image ?? "")) { phase in
                     switch phase {
                     case .success(let image):
                         image
@@ -63,10 +63,10 @@ struct ArticleDetailView: View {
 //                    }
                     
                     HStack {
-                        Link(destination: article.link) {
-                            Image(systemName: "link.circle.fill")
-                                .font(.largeTitle)
-                        }
+//                        Link(destination: article.link) {
+//                            Image(systemName: "link.circle.fill")
+//                                .font(.largeTitle)
+//                        }
                         Button {
 //                            if favorites.contains(article) {
 //                                favorites.remove(article)
@@ -103,21 +103,17 @@ struct ArticleDetailView: View {
     }
 }
 
-#if DEBUG
-struct ArticleDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        ArticleDetailView(
-            article: ArticleListItemViewModel(
-                id: UUID(),
-                source: "Tech News",
-                author: "Jane Doe",
-                title: "Sample Article",
-                link: URL(string: "https://example.com")!,
-                publishedAt: "2024-11-15",
-                description: "Sample description",
-                image: nil
-            )
+#Preview{
+    ArticleDetailView(
+        article: ArticleListItemViewModel(
+            id: UUID(),
+            source: "Tech News",
+            author: "Jane Doe",
+            title: "Sample Article",
+            link: "https://example.com",
+            publishedAt: "2024-11-15",
+            description: "Sample description",
+            image: nil
         )
-    }
+    )
 }
-#endif
