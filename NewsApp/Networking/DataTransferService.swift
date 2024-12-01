@@ -38,11 +38,8 @@ final class DefaultDataTransferService: DataTransferService {
     private func decode<T>(data: Data) throws -> T where T : Decodable {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        
-        // FIXME: The data couldn’t be read because it isn’t in the correct format
         do {
             let decodedData = try decoder.decode(T.self, from: data)
-            Log.debug(tag: DataTransferService.self, message: "Data decoded: \(decodedData)")
             return decodedData
         } catch {
             Log.error(tag: DataTransferService.self, message: "Decoding failed, error: \(error)")
