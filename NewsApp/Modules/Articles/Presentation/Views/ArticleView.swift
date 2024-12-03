@@ -103,6 +103,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                             NavigationLink(value: item) {
                                 ArticleItemView(item: item)
                             }
+                            .accessibilityIdentifier("NavigationLink_\(item.id)")
                         }
                     }
                     .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
@@ -117,43 +118,43 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         VStack {
             ScrollViewReader { proxy in
                 ZStack(alignment: .bottomTrailing) {
-//                    List {
-//                        if !viewModel.articles.isEmpty {
-//                            ForEach(viewModel.articles, id: \.id) { article in
-//                                if article.title != "[Removed]" {
-//                                    ZStack(alignment: .leading) {
-//                                        ArticleRowView(item: article)
-//                                            .environmentObject(viewModel)
-//                                        
-//                                        NavigationLink(destination:
-//                                                        ArticleDetailView(article: article)
-//                                            .environmentObject(viewModel)
-//                                        ) {
-//                                            EmptyView()
-//                                        }
-//                                        .accessibilityIdentifier("NavigationLink_\(article.id)")
-//                                        .opacity(0.0)
-//                                    }
-//                                }
-//                            }
-//                        } else {
-//                            Text("No articles available")
-//                                .foregroundColor(.red)
-//                                .padding()
-//                        }
-//                    }
-//                    .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
-//                    
-//                    if showFab {
-//                        FloatingActionButtonView(name: "chevron.up", radius: 55, action: {
-//                            scrollToTop(proxy)
-//                        })
-//                        .accessibilityIdentifier("FabButton")
-//                    }
+                    List {
+                        if viewModel.shouldShowLoader() {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                        } else {
+                            ForEach(viewModel.articles, id: \.id) { item in
+                                if item.title != "[Removed]" {
+                                    ZStack(alignment: .leading) {
+                                        ArticleRowView(item: item)
+                                            .environmentObject(viewModel)
+                                        
+                                        NavigationLink(destination:
+                                                        ArticleDetailView(item: item)
+                                            .environmentObject(viewModel)
+                                        ) {
+                                            EmptyView()
+                                        }
+                                        .accessibilityIdentifier("NavigationLink_\(item.id)")
+                                        .opacity(0.0)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
+                    
+                    if showFab {
+                        FloatingActionButtonView(name: "chevron.up", radius: 55, action: {
+                            scrollToTop(proxy)
+                        })
+                    }
                 }
                 .background(GeometryReader {
-                    Color.clear.preference(key: ViewOffsetKey.self,
-                                           value: -$0.frame(in: .named("scroll")).origin.y)
+                    Color.clear.preference(
+                        key: ViewOffsetKey.self,
+                        value: -$0.frame(in: .named("scroll")).origin.y
+                    )
                 })
                 .onPreferenceChange(ViewOffsetKey.self) { newOffset in
                     handleScrollOffset(newOffset)
