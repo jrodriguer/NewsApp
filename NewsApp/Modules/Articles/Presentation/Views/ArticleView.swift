@@ -52,9 +52,12 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         ToolbarItem {
             Menu {
                 Picker("View", selection: $selectedViewOption) {
+//                    ForEach(ViewOption.allCases, id: \.self) { option in
+//                        Label(option.rawValue, systemImage: option == .cardView ? "square.grid.2x2" : "list.bullet")
+//                            .tag(option)
+//                    }
                     ForEach(ViewOption.allCases, id: \.self) { option in
-                        Label(option.rawValue, systemImage: option == .cardView ? "square.grid.2x2" : "list.bullet")
-                            .tag(option)
+                        Text(option.rawValue).tag(option)
                     }
                 }
                 .pickerStyle(.menu)
@@ -91,23 +94,20 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     private var cardSection: some View {
         ScrollView {
             VStack(spacing: 0) {
-                if !viewModel.articles.isEmpty {
-                    ForEach(viewModel.articles, id: \.id) { article in
-                        if article.title != "[Removed]" {
-                            NavigationLink(destination:
-                                            ArticleDetailView(article: article)
-                                .environmentObject(viewModel)
-                            ) {
-                                ArticleCardView(article: article)
-                                    .environmentObject(viewModel)
+                if viewModel.shouldShowLoader() {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                } else {
+                    ForEach(viewModel.articles, id: \.id) { item in
+                        if item.title != "[Removed]" {
+                            NavigationLink(value: item) {
+                                ArticleItemView(item: item)
                             }
-                            .accessibilityIdentifier("NavigationLink_\(article.id)")
                         }
                     }
-                } else {
-                    Text("No articles available")
-                        .foregroundColor(.red)
-                        .padding()
+                    .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
+                        ArticleDetailView(item: item)
+                    })
                 }
             }
         }
@@ -117,39 +117,39 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         VStack {
             ScrollViewReader { proxy in
                 ZStack(alignment: .bottomTrailing) {
-                    List {
-                        if !viewModel.articles.isEmpty {
-                            ForEach(viewModel.articles, id: \.id) { article in
-                                if article.title != "[Removed]" {
-                                    ZStack(alignment: .leading) {
-                                        ArticleRowView(article: article)
-                                            .environmentObject(viewModel)
-                                        
-                                        NavigationLink(destination:
-                                                        ArticleDetailView(article: article)
-                                            .environmentObject(viewModel)
-                                        ) {
-                                            EmptyView()
-                                        }
-                                        .accessibilityIdentifier("NavigationLink_\(article.id)")
-                                        .opacity(0.0)
-                                    }
-                                }
-                            }
-                        } else {
-                            Text("No articles available")
-                                .foregroundColor(.red)
-                                .padding()
-                        }
-                    }
-                    .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
-                    
-                    if showFab {
-                        FloatingActionButtonView(name: "chevron.up", radius: 55, action: {
-                            scrollToTop(proxy)
-                        })
-                        .accessibilityIdentifier("FabButton")
-                    }
+//                    List {
+//                        if !viewModel.articles.isEmpty {
+//                            ForEach(viewModel.articles, id: \.id) { article in
+//                                if article.title != "[Removed]" {
+//                                    ZStack(alignment: .leading) {
+//                                        ArticleRowView(item: article)
+//                                            .environmentObject(viewModel)
+//                                        
+//                                        NavigationLink(destination:
+//                                                        ArticleDetailView(article: article)
+//                                            .environmentObject(viewModel)
+//                                        ) {
+//                                            EmptyView()
+//                                        }
+//                                        .accessibilityIdentifier("NavigationLink_\(article.id)")
+//                                        .opacity(0.0)
+//                                    }
+//                                }
+//                            }
+//                        } else {
+//                            Text("No articles available")
+//                                .foregroundColor(.red)
+//                                .padding()
+//                        }
+//                    }
+//                    .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
+//                    
+//                    if showFab {
+//                        FloatingActionButtonView(name: "chevron.up", radius: 55, action: {
+//                            scrollToTop(proxy)
+//                        })
+//                        .accessibilityIdentifier("FabButton")
+//                    }
                 }
                 .background(GeometryReader {
                     Color.clear.preference(key: ViewOffsetKey.self,
