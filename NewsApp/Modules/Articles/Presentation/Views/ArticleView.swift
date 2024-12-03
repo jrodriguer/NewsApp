@@ -52,12 +52,9 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         ToolbarItem {
             Menu {
                 Picker("View", selection: $selectedViewOption) {
-//                    ForEach(ViewOption.allCases, id: \.self) { option in
-//                        Label(option.rawValue, systemImage: option == .cardView ? "square.grid.2x2" : "list.bullet")
-//                            .tag(option)
-//                    }
                     ForEach(ViewOption.allCases, id: \.self) { option in
-                        Text(option.rawValue).tag(option)
+                        Label(option.rawValue, systemImage: option == .cardView ? "square.grid.2x2" : "list.bullet")
+                            .tag(option)
                     }
                 }
                 .pickerStyle(.menu)
@@ -73,10 +70,14 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     private var sortButtons: some View {
         Section("Sort by") {
             Button("Newest First") {
-//                viewModel.articles.sort { $1.publishedAt.timeIntervalSinceNow < $0.publishedAt.timeIntervalSinceNow }
+                viewModel.articles.sort {
+                    $1.publishedStringToDate.timeIntervalSinceNow < $0.publishedStringToDate.timeIntervalSinceNow
+                }
             }
             Button("Oldest First") {
-//                viewModel.articles.sort { $0.publishedAt.timeIntervalSinceNow < $1.publishedAt.timeIntervalSinceNow }
+                viewModel.articles.sort {
+                    $0.publishedStringToDate.timeIntervalSinceNow < $1.publishedStringToDate.timeIntervalSinceNow
+                }
             }
         }
     }
@@ -94,10 +95,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     private var cardSection: some View {
         ScrollView {
             VStack(spacing: 0) {
-                if viewModel.shouldShowLoader() {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                } else {
+                if !viewModel.shouldShowLoader() {
                     ForEach(viewModel.articles, id: \.id) { item in
                         if item.title != "[Removed]" {
                             NavigationLink(value: item) {
@@ -119,10 +117,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
             ScrollViewReader { proxy in
                 ZStack(alignment: .bottomTrailing) {
                     List {
-                        if viewModel.shouldShowLoader() {
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle())
-                        } else {
+                        if !viewModel.shouldShowLoader() {
                             ForEach(viewModel.articles, id: \.id) { item in
                                 if item.title != "[Removed]" {
                                     ZStack(alignment: .leading) {

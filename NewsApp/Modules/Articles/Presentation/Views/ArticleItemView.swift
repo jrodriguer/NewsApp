@@ -13,17 +13,18 @@ struct ArticleItemView: View {
     var body: some View {
         VStack {
             AsyncImage(url: URL(string: item.image ?? "")) { phase in
-                switch phase {
-                case .success(let image):
+                if let image = phase.image {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                case .failure(_):
+                } else if phase.error != nil {
                     WrongImageView()
-                case .empty:
-                    EmptyView()
-                @unknown default:
-                    ProgressView()
+                } else {
+                    VStack(alignment: .center) {
+                        ProgressView()
+                            .frame(alignment: .center)
+                    }
+                    .frame(width: 100, height: 100, alignment: .center)
                 }
             }
             HStack {

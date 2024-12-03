@@ -18,3 +18,7 @@ struct WrongImageView: View {
             .opacity(0.6)
     }
 }
+
+#Preview {
+    WrongImageView()
+}
