@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ArticleDetailView: View {
-    var article: ArticleListItemViewModel
+    var item: ArticleListItemViewModel
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
-                AsyncImage(url: URL(string: article.image ?? "")) { phase in
+                AsyncImage(url: URL(string: item.image ?? "")) { phase in
                     switch phase {
                     case .success(let image):
                         image
@@ -33,48 +33,46 @@ struct ArticleDetailView: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
-                        Text(Utils.displayTitle(article.title))
+                        Text(item.displayTitle)
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
                             .multilineTextAlignment(.leading)
                     }
                     
-                    Text(article.author!)
+                    Text(item.displayAuthor)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
-                    Text(article.description ?? "")
+                    Text(item.description ?? "")
                         .font(.headline)
                         .foregroundColor(.primary)
                         .lineLimit(nil)
                         .padding(.bottom, 8)
                     
-//                    if let content = article.content {
-//                        Text("Content:")
-//                            .font(.headline)
-//                            .fontWeight(.bold)
-//                            .foregroundColor(.primary)
-//                        
-//                        Text(Utils.displayContent(content))
-//                            .font(.body)
-//                            .foregroundColor(.primary)
-//                            .lineLimit(nil)
-//                            .padding(.bottom, 2)
-//                    }
+                    Text("Content:")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                    
+                    Text(item.displayContent)
+                        .font(.body)
+                        .foregroundColor(.primary)
+                        .lineLimit(nil)
+                        .padding(.bottom, 2)
                     
                     HStack {
-//                        Link(destination: article.link) {
-//                            Image(systemName: "link.circle.fill")
-//                                .font(.largeTitle)
-//                        }
+                        Link(destination: URL(string: item.link)!) {
+                            Image(systemName: "link.circle.fill")
+                                .font(.largeTitle)
+                        }
                         Button {
-//                            if favorites.contains(article) {
-//                                favorites.remove(article)
+//                            if favorites.contains(item) {
+//                                favorites.remove(item)
 //                            } else {
-//                                favorites.add(article)
+//                                favorites.add(item)
 //                            }
                         } label: {
-//                            if favorites.contains(article) {
+//                            if favorites.contains(item) {
 //                                Label {
 //                                    Text("Remove from Favorites")
 //                                } icon: { }
@@ -87,7 +85,7 @@ struct ArticleDetailView: View {
                             Label {
                                 Text("Add to Favorites")
                             } icon: {
-                                //
+                                
                             }
                         }
                         .accessibilityIdentifier("FavoritesButton")
@@ -98,7 +96,7 @@ struct ArticleDetailView: View {
                 .padding()
             }
         }
-        .navigationTitle("Article from \(article.source)")
+        .navigationTitle("Article from \(item.source)")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

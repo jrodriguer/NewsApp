@@ -1,5 +1,5 @@
 //
-//  ArticleCardView.swift
+//  ArticleItemView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 10/1/24.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct ArticleCardView: View {
-    let article: ArticleListItemViewModel
+struct ArticleItemView: View {
+    var item: ArticleListItemViewModel
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: article.image ?? "")) { phase in
+            AsyncImage(url: URL(string: item.image ?? "")) { phase in
                 switch phase {
                 case .success(let image):
                     image
@@ -28,10 +28,10 @@ struct ArticleCardView: View {
             }
             HStack {
                 VStack(alignment: .leading) {
-                    Text(article.source)
+                    Text(item.source)
                         .font(.headline)
                         .foregroundColor(.secondary)
-                    Text(Utils.displayTitle(article.title))
+                    Text(item.displayTitle)
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
@@ -40,9 +40,8 @@ struct ArticleCardView: View {
                     Divider()
                     
                     HStack(alignment: .top) {
-                        Text(article.publishedAt)
-                        Text(article.author ?? "No author")
-                            .lineLimit(1)
+                        Text(item.publishedAt)
+                        Text(item.displayAuthor)
                     }
                     .font(.footnote)
                     .fontWeight(.semibold)
@@ -53,7 +52,6 @@ struct ArticleCardView: View {
                 
                 Spacer()
             }
-            accessibilityIdentifier("ArticleCardView_\(article.id)")
             .padding()
         }
         .cornerRadius(10)
