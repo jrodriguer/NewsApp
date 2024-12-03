@@ -96,7 +96,7 @@ struct ArticleDetailView: View {
                 .padding()
             }
         }
-        .navigationTitle("Article from \(item.source)")
+        .navigationTitle("\(item.source)")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

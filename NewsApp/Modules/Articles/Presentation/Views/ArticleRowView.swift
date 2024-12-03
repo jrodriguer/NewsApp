@@ -11,6 +11,7 @@ struct ArticleRowView: View {
     var item: ArticleListItemViewModel
         
     var body: some View {
+        // TODO: More detail info.
         HStack {
             Text(item.displayTitle)
                 .multilineTextAlignment(.leading)

@@ -40,8 +40,11 @@ struct ArticleItemView: View {
                     
                     Divider()
                     
+                    // TODO: More space, re design card footer.
+                    
                     HStack(alignment: .top) {
                         Text(item.publishedAt)
+                        // TODO: Fix author, prevent wrong data or bad formattings.
                         Text(item.displayAuthor)
                     }
                     .font(.footnote)
