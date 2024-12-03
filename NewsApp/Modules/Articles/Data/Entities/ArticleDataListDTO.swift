@@ -40,11 +40,12 @@ extension ArticleDataListDTO {
               source: source.name,
               author: author,
               title: title,
+              description: description,
               url: url,
               publishedAt: publishedAt,
-              description: description,
-              urlToImage: urlToImage,
-              content: content)
+              content: content,
+              urlToImage: urlToImage
+        )
     }
 }
 

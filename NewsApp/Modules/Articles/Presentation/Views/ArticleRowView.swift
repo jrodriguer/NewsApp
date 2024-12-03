@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ArticleRowView: View {
-    var article: ArticleListItemViewModel
+    var item: ArticleListItemViewModel
         
     var body: some View {
         HStack {
-            Text(Utils.displayTitle(article.title))
+            Text(item.displayTitle)
                 .multilineTextAlignment(.leading)
                 .swipeActions(edge: .leading) {
                     Button {

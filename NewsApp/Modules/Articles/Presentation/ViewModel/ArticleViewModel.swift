@@ -9,34 +9,41 @@ import Foundation
 
 protocol ArticleViewModelProtocol: ObservableObject {
     var articles: [ArticleListItemViewModel] { get set }
-    var showError: Bool {get}
+    var isError: Bool {get}
     var error: String {get}
     var isEmpty: Bool {get}
+    func shouldShowLoader() -> Bool
     func fetchArticles() async
 }
 
 final class ArticleViewModel: ArticleViewModelProtocol {
     
-    @Published var articles: [ArticleListItemViewModel] = []
-    @Published var showError: Bool = false
-    @Published var error: String = ""
+    @Published var articles: [ArticleListItemViewModel]
+    @Published var isError: Bool
+    @Published var error: String
+    
     var isEmpty: Bool { return articles.isEmpty }
     
     private let articleListUseCase: ArticleListUseCase!
     
     init(useCase: ArticleListUseCase) {
         self.articleListUseCase = useCase
+        self.articles = []
+        self.isError = false
+        self.error = ""
     }
     
     /// Fetches articles and catches error if any
     /// - Parameter category: category case
     @MainActor func fetchArticles() async {
+        // TODO: Add parameter category.
         do {
             let articleList = try await articleListUseCase.fetchArticleList()
             self.articles = self.transformFetchedArticles(articleList)
-            self.showError = false
+            self.isError = false
+            Log.debug(tag: ArticleViewModel.self, message: "Articles fetched successfully, \(articles.count)")
         } catch {
-            self.showError = true
+            self.isError = true
             if let networkError = error as? NetworkError {
                 self.error = networkError.description
             } else {
@@ -55,11 +62,16 @@ final class ArticleViewModel: ArticleViewModelProtocol {
                 source: article.source,
                 author: article.author,
                 title: article.title,
+                description: article.description,
                 link: article.url,
                 publishedAt: article.publishedAt.formatted(date: .long, time: .shortened),
-                description: article.description ?? "Not description",
-                image: article.urlToImage ?? nil
+                content: article.content,
+                image: article.urlToImage
             )
         }
+    }
+    
+    func shouldShowLoader() -> Bool {
+        return (isEmpty && !isError)
     }
 }

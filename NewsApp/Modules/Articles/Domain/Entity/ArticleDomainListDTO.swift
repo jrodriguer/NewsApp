@@ -12,9 +12,9 @@ struct ArticleDomainListDTO {
     let source: String
     let author: String?
     let title: String
+    let description: String?
     let url: String
     let publishedAt: Date
-    let description: String?
-    let urlToImage: String?
     let content: String?
+    let urlToImage: String?
 }
