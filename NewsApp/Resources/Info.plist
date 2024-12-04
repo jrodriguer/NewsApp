@@ -4,12 +4,5 @@
 <dict>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>KodeMono-Bold.ttf</string>
-		<string>KodeMono-Medium.ttf</string>
-		<string>KodeMono-Regular.ttf</string>
-		<string>KodeMono-SemiBold.ttf</string>
-	</array>
 </dict>
 </plist>
