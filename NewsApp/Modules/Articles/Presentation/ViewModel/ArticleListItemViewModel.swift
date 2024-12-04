@@ -21,13 +21,13 @@ struct ArticleListItemViewModel: Hashable {
     init(
         id: UUID,
         source: String,
-        author: String?,
+        author: String? = nil,
         title: String,
-        description: String?,
+        description: String? = nil,
         link: String,
         publishedAt: String,
-        content: String?,
-        image: String?
+        content: String? = nil,
+        image: String? = nil
     ) {
         self.id = id
         self.source = source
@@ -47,9 +47,11 @@ struct ArticleListItemViewModel: Hashable {
     
     var displayAuthor: String {
         guard let author else { return "" }
+        if author.lowercased().hasPrefix("https://") { return "" }
         let authors = author.components(separatedBy: ",")
         if let firstName = authors.first {
-            return firstName.trimmingCharacters(in: .whitespacesAndNewlines) + (authors.count > 2 ? "..." : "")
+            let localCapitalized = firstName.localizedCapitalized
+            return localCapitalized.trimmingCharacters(in: .whitespacesAndNewlines) + (authors.count > 2 ? "..." : "")
         } else {
             return author
         }
@@ -58,6 +60,14 @@ struct ArticleListItemViewModel: Hashable {
     var displayContent: String {
         guard let content = content else { return "" }
         return content.replacingOccurrences(of: "\\[.*\\]", with: "", options: .regularExpression)
+    }
+    
+    var publishedStringToDate: Date {
+        let dateFormatter = DateFormatter()
+        // TODO: Get locale from user locations configuration.
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let date = dateFormatter.date(from: publishedAt)
+        return date ?? Date()
     }
     
 //    static func timeDifference(from date: Date) -> String {
