@@ -21,12 +21,15 @@ public enum NotoSans: String, CaseIterable {
 }
 
 public struct NotoSansFont {
+
+#if SWIFT_PACKAGE
   public static func registerFonts() {
     NotoSans.allCases.forEach {
-      registerFont(bundle: .module, fontName: $0.rawValue, fontExtension: "ttf")
+        registerFont(bundle: .module, fontName: $0.rawValue, fontExtension: "ttf")
     }
   }
-
+#endif
+    
   fileprivate static func registerFont(bundle: Bundle, fontName: String, fontExtension: String) {
     guard let fontURL = bundle.url(forResource: fontName, withExtension: fontExtension),
           let fontDataProvider = CGDataProvider(url: fontURL as CFURL),

@@ -173,7 +173,6 @@
 				Designs/Color.swift,
 				Designs/Font/Font.swift,
 				Designs/Font/NotoSans.swift,
-				"Designs/Font/View + Extension.swift",
 				Designs/Spacing.swift,
 				Models/NewsAppIOSWidgetAttributes.swift,
 			);

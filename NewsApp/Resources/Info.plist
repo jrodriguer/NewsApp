@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSans-Light</string>
+		<string>NotoSans-ExtraLight</string>
+		<string>NotoSans-Regular</string>
+		<string>NotoSans-Medium</string>
+		<string>NotoSans-SemiBold</string>
+		<string>NotoSans-Bold</string>
+		<string>NotoSans-ExtraBold</string>
+		<string>NotoSans-Thin</string>
+		<string>NotoSans-Black</string>
+	</array>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 </dict>
