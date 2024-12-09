@@ -16,17 +16,19 @@ struct TabBarButtonView: View {
         GeometryReader { geo in
             if isActive {
                 Rectangle()
-                    .foregroundColor(Color(.main))
-                    .frame(width: geo.size.width/2, height: 4)
-                    .padding(.leading, geo.size.width/4)
+                    .foregroundColor(Color.primary)
+                    .frame(width: geo.size.width / 2, height: 4)
+                    .padding(.leading, geo.size.width / 4)
             }
             
-            VStack(alignment: .center, spacing: 4) {
+            VStack(alignment: .center, spacing: Spacing.minimum) {
+                // TODO: Change colors.
                 Image(systemName: imageName)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
                 Text(buttonText)
+                    .foregroundStyle(Color.primary)
             }
             .frame(width: geo.size.width, height: geo.size.height)
             .accessibilityIdentifier(buttonText)

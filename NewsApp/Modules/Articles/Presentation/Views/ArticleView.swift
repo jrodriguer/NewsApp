@@ -137,13 +137,13 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                             }
                         }
                     }
-                    .background(Color(.baseGray).edgesIgnoringSafeArea(.all))
+                    .background(Color.background.edgesIgnoringSafeArea(.all))
                     
-                    if showFab {
-                        FloatingActionButtonView(name: "chevron.up", radius: 55, action: {
-                            scrollToTop(proxy)
-                        })
-                    }
+//                    if showFab {
+//                        FloatingActionButtonView(name: "chevron.up", radius: 55, action: {
+//                            scrollToTop(proxy)
+//                        })
+//                    }
                 }
                 .background(GeometryReader {
                     Color.clear.preference(

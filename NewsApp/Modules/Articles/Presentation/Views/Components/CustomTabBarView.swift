@@ -18,6 +18,7 @@ struct CustomTabBarView: View {
     
     var body: some View {
         HStack {
+            // TODO: Change colors.
             Button {
                 selectedTab = .News
             } label: {
@@ -25,13 +26,6 @@ struct CustomTabBarView: View {
             }
             .accessibilityIdentifier("NewsButton")
             .tint(Color(.gray))
-
-            Button {
-                showModal.toggle()
-            } label: {
-                ShowModalTabBarItemView(radius: 55) { showModal.toggle() }
-            }
-            .accessibilityIdentifier("ShowModalButton")
             
             Button {
                 selectedTab = .Favorites
@@ -39,9 +33,8 @@ struct CustomTabBarView: View {
                 TabBarButtonView(buttonText: "Favorites", imageName: "suit.heart", isActive: selectedTab == .Favorites)
             }
             .accessibilityIdentifier("FavoritesButton")
-            .tint(Color(.gray))
+            .tint(Color.background)
         }
-        .background(Color(.white))
         .frame(height: 82)
     }
 }
