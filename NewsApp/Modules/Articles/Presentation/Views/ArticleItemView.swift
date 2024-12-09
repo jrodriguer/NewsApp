@@ -13,43 +13,48 @@ struct ArticleItemView: View {
     var body: some View {
         VStack {
             AsyncImage(url: URL(string: item.image ?? "")) { phase in
-                if let image = phase.image {
+                switch phase {
+                case .success(let image):
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                } else if phase.error != nil {
+                case .failure:
                     WrongImageView()
-                } else {
-                    VStack(alignment: .center) {
-                        ProgressView()
-                            .frame(alignment: .center)
+                case .empty:
+                    if item.image == nil {
+                        WrongImageView()
+                    } else {
+                        VStack {
+                            ProgressView()
+                        }
+                        .frame(width: 100, height: 100, alignment: .center)
                     }
-                    .frame(width: 100, height: 100, alignment: .center)
+                @unknown default:
+                    WrongImageView()
                 }
             }
+            
             HStack {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: Spacing.small) {
                     Text(item.source)
                         .font(.headline)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(Color.secondary)
                     Text(item.displayTitle)
                         .font(.title)
                         .fontWeight(.bold)
-                        .foregroundColor(.primary)
+                        .foregroundColor(Color.primary)
                         .lineLimit(3)
                     
                     Divider()
-                    
-                    // TODO: More space, re design card footer.
-                    
-                    HStack(alignment: .top) {
-                        Text(item.publishedAt)
-                        // TODO: Fix author, prevent wrong data or bad formattings.
-                        Text(item.displayAuthor)
+                                        
+                    HStack(alignment: .top, spacing: Spacing.small) {
+                        // TODO: Footer relayout.
+//                        Text(item.publishedAt)
+//                        Text(item.displayAuthor)
                     }
                     .font(.footnote)
                     .fontWeight(.semibold)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color.secondary)
                 }
                 .layoutPriority(100)
                 .multilineTextAlignment(.leading)
@@ -61,13 +66,7 @@ struct ArticleItemView: View {
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(
-                    .sRGB,
-                    red: 150/255,
-                    green: 150/255,
-                    blue: 150/255,
-                    opacity: 0.1
-                ), lineWidth: 1)
+                .stroke(Color.secondary.opacity(0.1), lineWidth: 1)
         )
         .padding([.top, .horizontal])
     }

@@ -46,19 +46,17 @@ struct ArticleListItemViewModel: Hashable {
     }
     
     var displayAuthor: String {
-        guard let author else { return "" }
+        guard let author = author, !author.isEmpty else { return "" }
         if author.lowercased().hasPrefix("https://") { return "" }
         let authors = author.components(separatedBy: ",")
         if let firstName = authors.first {
-            let localCapitalized = firstName.localizedCapitalized
-            return localCapitalized.trimmingCharacters(in: .whitespacesAndNewlines) + (authors.count > 2 ? "..." : "")
-        } else {
-            return author
+            return firstName.localizedCapitalized.trimmingCharacters(in: .whitespacesAndNewlines) + (authors.count > 2 ? "..." : "")
         }
+        return author
     }
     
     var displayContent: String {
-        guard let content = content else { return "" }
+        guard let content = content, !content.isEmpty else { return "" }
         return content.replacingOccurrences(of: "\\[.*\\]", with: "", options: .regularExpression)
     }
     

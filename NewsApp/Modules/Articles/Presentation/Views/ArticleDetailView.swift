@@ -12,53 +12,36 @@ struct ArticleDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 12) {
-                AsyncImage(url: URL(string: item.image ?? "")) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    case .failure(_):
-                        WrongImageView()
-                    case .empty:
-                        EmptyView()
-                    @unknown default:
-                        ProgressView()
-                    }
-                }
-                .frame(maxHeight: 300)
-                .cornerRadius(10)
-                .padding()
+            VStack(alignment: .leading, spacing: Spacing.medium) {
+                ImageView(image: item.image)
+                    .frame(maxHeight: 300)
+                    .cornerRadius(10)
+                    .padding(Spacing.medium)
                 
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        Text(item.displayTitle)
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(.primary)
-                            .multilineTextAlignment(.leading)
+                VStack(alignment: .leading, spacing: Spacing.medium) {
+                    Text(item.displayTitle)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                        .multilineTextAlignment(.leading)
+                    
+                    if !item.displayAuthor.isEmpty {
+                        Text(item.displayAuthor)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
                     }
                     
-                    Text(item.displayAuthor)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
                     Text(item.description ?? "")
                         .font(.headline)
                         .foregroundColor(.primary)
                         .lineLimit(nil)
-                        .padding(.bottom, 8)
                     
-                    Text("Content:")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .foregroundColor(.primary)
-                    
-                    Text(item.displayContent)
-                        .font(.body)
-                        .foregroundColor(.primary)
-                        .lineLimit(nil)
-                        .padding(.bottom, 2)
+                    if !item.displayContent.isEmpty {
+                        Text(item.displayContent)
+                            .font(.body)
+                            .foregroundColor(.primary)
+                            .lineLimit(nil)
+                    }
                     
                     HStack {
                         Link(destination: URL(string: item.link)!) {
@@ -93,7 +76,7 @@ struct ArticleDetailView: View {
                         .padding()
                     }
                 }
-                .padding()
+                .padding(Spacing.medium)
             }
         }
         .navigationTitle("\(item.source)")
