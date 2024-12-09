@@ -18,14 +18,13 @@ struct CustomTabBarView: View {
     
     var body: some View {
         HStack {
-            // TODO: Change colors.
             Button {
                 selectedTab = .News
             } label: {
                 TabBarButtonView(buttonText: "News", imageName: "network", isActive: selectedTab == .News)
             }
             .accessibilityIdentifier("NewsButton")
-            .tint(Color(.gray))
+            .tint(.primary)
             
             Button {
                 selectedTab = .Favorites
@@ -33,7 +32,7 @@ struct CustomTabBarView: View {
                 TabBarButtonView(buttonText: "Favorites", imageName: "suit.heart", isActive: selectedTab == .Favorites)
             }
             .accessibilityIdentifier("FavoritesButton")
-            .tint(Color.background)
+            .tint(.primary)
         }
         .frame(height: 82)
     }

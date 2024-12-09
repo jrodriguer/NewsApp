@@ -36,7 +36,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     /// Fetches articles and catches error if any
     /// - Parameter category: category case
     @MainActor func fetchArticles() async {
-        // TODO: Add parameter category.
+        // TODO: Add parameter category (next version).
         do {
             let articleList = try await articleListUseCase.fetchArticleList()
             self.articles = self.transformFetchedArticles(articleList)
