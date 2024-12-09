@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Spacing {
+enum Spacing {
     static let minimum: CGFloat = 4
     static let small: CGFloat = 8
     static let medium: CGFloat = 16
