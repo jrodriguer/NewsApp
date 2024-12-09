@@ -12,8 +12,8 @@ extension Color {
 }
 
 struct AppColorPalette {
-    let main = Color("Main")
-    let baseGray = Color("BaseGray")
+    let primary = Color("Primary")
+    let secondary = Color("Secondary")
     let accent = Color("Accent")
-    let secondaryAccent = Color("SecondaryAccent")
+    let background = Color("Background")
 }
