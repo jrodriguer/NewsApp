@@ -12,7 +12,7 @@ struct ArticleDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: Spacing.medium) {
+            VStack(alignment: .leading) {
                 ImageView(image: item.image)
                     .frame(maxHeight: 300)
                     .cornerRadius(10)
