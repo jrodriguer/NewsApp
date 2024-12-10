@@ -12,48 +12,26 @@ struct ArticleItemView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: item.image ?? "")) { phase in
-                switch phase {
-                case .success(let image):
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                case .failure:
-                    WrongImageView()
-                case .empty:
-                    if item.image == nil {
-                        WrongImageView()
-                    } else {
-                        VStack {
-                            ProgressView()
-                        }
-                        .frame(width: 100, height: 100, alignment: .center)
-                    }
-                @unknown default:
-                    WrongImageView()
-                }
-            }
+            ImageView(image: item.image)
             
             HStack {
                 VStack(alignment: .leading, spacing: Spacing.small) {
                     Text(item.source)
-                        .font(.headline)
+                        .font(.h3)
                         .foregroundColor(Color.secondary)
                     Text(item.displayTitle)
-                        .font(.title)
-                        .fontWeight(.bold)
+                        .font(.h1)
                         .foregroundColor(Color.primary)
                         .lineLimit(3)
                     
                     Divider()
                                         
                     HStack(alignment: .top, spacing: Spacing.small) {
-                        // TODO: Footer relayout.
-//                        Text(item.publishedAt)
-//                        Text(item.displayAuthor)
+                        Text(item.publishedAt)
+                        Text("𐤟")
+                        Text(item.displayAuthor)
                     }
-                    .font(.footnote)
-                    .fontWeight(.semibold)
+                    .font(.ligth)
                     .foregroundColor(Color.secondary)
                 }
                 .layoutPriority(100)

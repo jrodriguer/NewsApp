@@ -44,10 +44,9 @@ struct ArticleRowView: View {
             HStack {
                 Text(item.source)
             }
+            .foregroundColor(.primary)
+            .font(.h2)
             .frame(maxWidth: .infinity, alignment: .trailing)
-            .font(.footnote)
-            .fontWeight(.semibold)
-            .foregroundColor(.secondary)
         }
     }
 }

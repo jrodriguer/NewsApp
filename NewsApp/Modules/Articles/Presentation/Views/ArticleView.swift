@@ -34,7 +34,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 case .listView: listSection
                 }
             }
-            .navigationBarTitle("News")
+            .navigationTitle(Text("News").font(.h1))
             .toolbar {
                 toolbarContent
             }
