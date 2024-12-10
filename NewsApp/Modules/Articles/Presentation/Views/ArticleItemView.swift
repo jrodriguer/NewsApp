@@ -14,34 +14,30 @@ struct ArticleItemView: View {
         VStack {
             ImageView(image: item.image)
             
-            HStack {
-                VStack(alignment: .leading, spacing: Spacing.small) {
-                    Text(item.source)
-                        .font(.h3)
-                        .foregroundColor(Color.secondary)
-                    Text(item.displayTitle)
-                        .font(.h1)
-                        .foregroundColor(Color.primary)
-                        .lineLimit(3)
-                    
-                    Divider()
-                                        
-                    HStack(alignment: .top, spacing: Spacing.small) {
-                        Text(item.publishedAt)
-                        if !item.displayAuthor.isEmpty {
-                            Text("𐤟")
-                            Text(item.displayAuthor)
-                        }
-                    }
-                    .font(.ligth)
+            VStack(alignment: .leading, spacing: Spacing.small) {
+                Text(item.source)
+                    .font(.h2)
                     .foregroundColor(Color.secondary)
-                }
-                .layoutPriority(100)
-                .multilineTextAlignment(.leading)
+                Text(item.displayTitle)
+                    .font(.h1)
+                    .foregroundColor(Color.primary)
+                    .lineLimit(3)
                 
-                Spacer()
+                Divider()
+                
+                HStack(alignment: .top, spacing: Spacing.small) {
+                    Text(item.publishedAt)
+                    if !item.displayAuthor.isEmpty {
+                        Text("𐤟")
+                        Text(item.displayAuthor)
+                    }
+                }
+                .font(.h3)
+                .foregroundColor(Color.secondary)
             }
-            .padding()
+            .layoutPriority(100)
+            .multilineTextAlignment(.leading)
+            .padding(Spacing.medium)
         }
         .cornerRadius(10)
         .overlay(

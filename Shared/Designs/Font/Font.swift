@@ -25,14 +25,6 @@ extension Font {
         return notoSans(.medium, size: 14)
     }()
     
-    static var h5: Font = {
-        return notoSans(.medium, size: 12)
-    }()
-    
-    static var ligth: Font = {
-        return notoSans(.light, size: 16)
-    }()
-    
     static func notoSans(_ font: NotoSans, size: CGFloat) -> Font {
         return .custom(font.rawValue, size: size)
     }
