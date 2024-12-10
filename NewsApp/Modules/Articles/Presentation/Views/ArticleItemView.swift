@@ -28,8 +28,10 @@ struct ArticleItemView: View {
                                         
                     HStack(alignment: .top, spacing: Spacing.small) {
                         Text(item.publishedAt)
-                        Text("𐤟")
-                        Text(item.displayAuthor)
+                        if !item.displayAuthor.isEmpty {
+                            Text("𐤟")
+                            Text(item.displayAuthor)
+                        }
                     }
                     .font(.ligth)
                     .foregroundColor(Color.secondary)
