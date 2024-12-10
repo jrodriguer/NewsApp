@@ -15,9 +15,6 @@ struct ArticleItemView: View {
             ImageView(image: item.image)
             
             VStack(alignment: .leading, spacing: Spacing.small) {
-                Text(item.source)
-                    .font(.h2)
-                    .foregroundColor(Color.secondary)
                 Text(item.displayTitle)
                     .font(.h1)
                     .foregroundColor(Color.primary)
