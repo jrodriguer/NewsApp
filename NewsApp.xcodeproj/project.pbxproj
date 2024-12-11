@@ -170,11 +170,12 @@
 		8A391DFF2CFBA35A00141230 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Designs/Color.swift,
-				Designs/Font/Font.swift,
-				Designs/Font/NotoSans.swift,
-				Designs/Spacing.swift,
+				Color/Color.swift,
+				Font/Font.swift,
+				Font/NotoSans.swift,
 				Models/NewsAppIOSWidgetAttributes.swift,
+				Models/PagingData.swift,
+				Spacing/Spacing.swift,
 			);
 			target = 8A4E22B82B4A2BCA006D71C6 /* NewsApp */;
 		};

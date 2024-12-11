@@ -9,9 +9,9 @@ import Foundation
 
 protocol ArticleViewModelProtocol: ObservableObject {
     var articles: [ArticleListItemViewModel] { get set }
-    var isError: Bool {get}
-    var error: String {get}
-    var isEmpty: Bool {get}
+    var isError: Bool { get }
+    var error: String { get }
+    var isEmpty: Bool { get }
     func shouldShowLoader() -> Bool
     func fetchArticles() async
 }
@@ -25,6 +25,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     var isEmpty: Bool { return articles.isEmpty }
     
     private let articleListUseCase: ArticleListUseCase!
+    private let pagingData = PagingData(itemsPerPage: 10, maxPageLimit: 5)
     
     init(useCase: ArticleListUseCase) {
         self.articleListUseCase = useCase
