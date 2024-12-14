@@ -14,11 +14,11 @@ enum HTTPMethod: String {
 }
 
 protocol NetworkRequest {
-    var path: String {get set}
-    var method: HTTPMethod {get set}
-    var headerParameters: [String: String] {get set}
-    var queryParameters: [String: Any] {get set}
-    var bodyParameters: [String: Any] {get set}
+    var path: String { get set }
+    var method: HTTPMethod { get set }
+    var headerParameters: [String: String] { get set }
+    var queryParameters: [String: Any] { get set }
+    var bodyParameters: [String: Any] { get set }
 }
 
 final class DefaultNetworkRequest: NetworkRequest {

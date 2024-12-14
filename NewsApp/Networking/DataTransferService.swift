@@ -24,7 +24,7 @@ final class DefaultDataTransferService: DataTransferService {
     }
     
     /// Method to fetch data from Network Manager and Decode the data using decode method
-    /// - Parameter request:  Network request
+    /// - Parameter request: Network request
     /// - Returns: Decodable type object
     func request<T>(request: any NetworkRequest) async throws -> T where T : Decodable {
         let data = try await networkManager.fetch(request: request)

@@ -14,23 +14,18 @@ struct ArticleItemView: View {
         VStack {
             ImageView(image: item.image)
             
-            VStack(alignment: .leading, spacing: Spacing.small) {
+            VStack(alignment: .leading, spacing: Spacing.medium) {
                 Text(item.displayTitle)
-                    .font(.h1)
                     .foregroundColor(Color.primary)
-                    .lineLimit(3)
+                    .applyStyle(.h1)
                 
                 Divider()
                 
-                HStack(alignment: .top, spacing: Spacing.small) {
+                HStack(alignment: .top, spacing: Spacing.medium) {
                     Text(item.publishedAt)
-                    if !item.displayAuthor.isEmpty {
-                        Text("𐤟")
-                        Text(item.displayAuthor)
-                    }
+                        .applyStyle(.footNote)
                 }
-                .font(.h3)
-                .foregroundColor(Color.secondary)
+                .foregroundStyle(Color.secondary)
             }
             .layoutPriority(100)
             .multilineTextAlignment(.leading)
@@ -41,6 +36,6 @@ struct ArticleItemView: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.secondary.opacity(0.1), lineWidth: 1)
         )
-        .padding([.top, .horizontal])
+        .padding([.top, .horizontal], Spacing.medium)
     }
 }

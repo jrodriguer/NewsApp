@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ArticleListService {
-    func fetchArticleListFromNetwork() async throws -> ArticlePageDataListDTO
+    func fetchArticleListFromNetwork(page: Int, itemsPerPage: Int) async throws -> ArticlePageDataListDTO
 }
 
 final class DefaultArticleListService: ArticleListService {
@@ -19,8 +19,13 @@ final class DefaultArticleListService: ArticleListService {
         self.apiDataService = apiDataService
     }
     
-    func fetchArticleListFromNetwork() async throws -> ArticlePageDataListDTO {
-        let productListNetworkRequest = DefaultNetworkRequest(path: EndpointApi.topHeadlines, method: .get)
+    func fetchArticleListFromNetwork(page: Int, itemsPerPage: Int) async throws -> ArticlePageDataListDTO {
+        let productListNetworkRequest = DefaultNetworkRequest(
+            path: EndpointApi.topHeadlines,
+            method: .get,
+            queryParameters: ["page": page, "itemsPerPage": itemsPerPage]
+        )
+        Log.debug(tag: DefaultArticleListService.self, message: "Request: \(productListNetworkRequest)")
         return try await apiDataService.request(request: productListNetworkRequest)
     }
 }

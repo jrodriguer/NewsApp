@@ -38,18 +38,23 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     /// - Parameter category: category case
     @MainActor func fetchArticles() async {
         // TODO: Add parameter category (next version).
+        // TODO: Add Pagination.
         do {
-            let articleList = try await articleListUseCase.fetchArticleList()
-            self.articles = self.transformFetchedArticles(articleList)
-            self.isError = false
+            let newArticles = try await pagingData.loadNextPage { page in
+                try await self.articleListUseCase.fetchArticleList(page: page, itemsPerPage: self.pagingData.itemsPerPage)
+            }
+            articles.append(contentsOf: transformFetchedArticles(newArticles))
+            isError = false
             Log.debug(tag: ArticleViewModel.self, message: "Articles fetched successfully, \(articles.count)")
         } catch {
-            self.isError = true
+            isError = true
+            
             if let networkError = error as? NetworkError {
                 self.error = networkError.description
             } else {
                 self.error = error.localizedDescription
             }
+            
         }
     }
     

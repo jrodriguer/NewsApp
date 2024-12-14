@@ -52,8 +52,8 @@ final class DefaultURLRequestGenerator: URLRequestGenerator {
         components.path = request.path.hasPrefix("/") ? request.path : "/" + request.path
         
         var queryParameters = request.queryParameters.map { URLQueryItem(name: $0, value: "\($1)") }
-        queryParameters.append(URLQueryItem(name: "country", value: AppConfiguration.countryCode))
         queryParameters.append(URLQueryItem(name: "apiKey", value: AppConfiguration.apiKey))
+        queryParameters.append(URLQueryItem(name: "country", value: AppConfiguration.countryCode))
         components.queryItems = queryParameters
         
         guard let url = components.url else {

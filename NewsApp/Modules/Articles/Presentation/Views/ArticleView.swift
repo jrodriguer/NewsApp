@@ -21,7 +21,8 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     @State private var scrollToID: UUID? = nil
     @State private var showFab = true
     @State private var offset = CGFloat.zero
-    
+    @State private var dataID: UUID? = nil
+
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
@@ -34,7 +35,9 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 case .listView: listSection
                 }
             }
-            .navigationTitle(Text("News").font(.h1))
+            .navigationBarTitle("News")
+            .toolbarRole(.navigationStack)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 toolbarContent
             }
@@ -93,94 +96,44 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
 //    }
     
     private var cardSection: some View {
+        // TODO: Infinite scrolling.
         ScrollView {
             VStack(spacing: 0) {
-                if !viewModel.shouldShowLoader() {
-                    ForEach(viewModel.articles, id: \.id) { item in
-                        if item.title != "[Removed]" {
-                            NavigationLink(value: item) {
-                                ArticleItemView(item: item)
-                            }
-                            .accessibilityIdentifier("NavigationLink_\(item.id)")
+                ForEach(viewModel.articles, id: \.id) { item in
+                    if item.title != "[Removed]" {
+                        NavigationLink(value: item) {
+                            ArticleItemView(item: item)
                         }
+                        .accessibilityIdentifier("NavigationLink_\(item.id)")
                     }
-                    .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
-                        ArticleDetailView(item: item)
-                    })
                 }
+                .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
+                    ArticleDetailView(item: item)
+                })
             }
         }
     }
     
     private var listSection: some View {
-        VStack {
-            ScrollViewReader { proxy in
-                ZStack(alignment: .bottomTrailing) {
-                    List {
-                        if !viewModel.shouldShowLoader() {
-                            ForEach(viewModel.articles, id: \.id) { item in
-                                if item.title != "[Removed]" {
-                                    ZStack(alignment: .leading) {
-                                        ArticleRowView(item: item)
-                                            .environmentObject(viewModel)
-                                        
-                                        NavigationLink(destination:
-                                                        ArticleDetailView(item: item)
-                                            .environmentObject(viewModel)
-                                        ) {
-                                            EmptyView()
-                                        }
-                                        .accessibilityIdentifier("NavigationLink_\(item.id)")
-                                        .opacity(0.0)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .background(Color.background.edgesIgnoringSafeArea(.all))
-                    
-//                    if showFab {
-//                        FloatingActionButtonView(name: "chevron.up", radius: 55, action: {
-//                            scrollToTop(proxy)
-//                        })
+        // TODO: Infinite scrolling.
+//        ScrollView {
+            List(viewModel.articles) { article in
+                ArticleRowView(item: article)
+//                ForEach(viewModel.articles, id: \.id) { item in
+//                    if item.title != "[Removed]" {
+//                        NavigationLink(value: item) {
+//                            ArticleRowView(item: item)
+//                        }
+//                        .accessibilityIdentifier("NavigationLink_\(item.id)")
 //                    }
-                }
-                .background(GeometryReader {
-                    Color.clear.preference(
-                        key: ViewOffsetKey.self,
-                        value: -$0.frame(in: .named("scroll")).origin.y
-                    )
-                })
-                .onPreferenceChange(ViewOffsetKey.self) { newOffset in
-                    handleScrollOffset(newOffset)
-                }
-            }
+//                }
+//                if !viewModel.shouldShowLoader() {
+//                    ProgressView()
+//                        .task {
+//                            await viewModel.fetchArticles()
+//                        }
+//                }
+//            }
         }
-    }
-    
-    private func scrollToTop(_ proxy: ScrollViewProxy) {
-        if let firstArticle = viewModel.articles.first {
-            scrollToID = firstArticle.id
-            DispatchQueue.main.async {
-                withAnimation {
-                    proxy.scrollTo(firstArticle.id, anchor: .top)
-                }
-            }
-        }
-    }
-    
-    private func handleScrollOffset(_ newOffset: CGFloat) {
-        offset = newOffset
-        withAnimation {
-            showFab = newOffset > -100
-        }
-    }
-}
-
-struct ViewOffsetKey: PreferenceKey {
-    typealias Value = CGFloat
-    static var defaultValue = CGFloat.zero
-    static func reduce(value: inout Value, nextValue: () -> Value) {
-        value += nextValue()
     }
 }
