@@ -21,11 +21,10 @@ struct ArticleItemView: View {
                 
                 Divider()
                 
-                HStack(alignment: .top, spacing: Spacing.medium) {
-                    Text(item.publishedAt)
-                        .applyStyle(.footNote)
-                }
-                .foregroundStyle(Color.secondary)
+                Text(item.publishedAt)
+                    .applyStyle(.footNote)
+                    .frame(alignment: .top)
+                    .foregroundStyle(Color.secondary)
             }
             .layoutPriority(100)
             .multilineTextAlignment(.leading)
