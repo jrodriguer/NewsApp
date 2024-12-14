@@ -96,7 +96,6 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
 //    }
     
     private var cardSection: some View {
-        // TODO: Infinite scrolling.
         ScrollView {
             VStack(spacing: 0) {
                 ForEach(viewModel.articles, id: \.id) { item in

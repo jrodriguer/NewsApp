@@ -37,8 +37,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     /// Fetches articles and catches error if any
     /// - Parameter category: category case
     @MainActor func fetchArticles() async {
-        // TODO: Add parameter category (next version).
-        // TODO: Add Pagination.
+        // TODO: Fetch per category (next version).
         do {
             let newArticles = try await pagingData.loadNextPage { page in
                 try await self.articleListUseCase.fetchArticleList(page: page, itemsPerPage: self.pagingData.itemsPerPage)

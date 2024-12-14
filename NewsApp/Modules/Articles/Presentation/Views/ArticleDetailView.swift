@@ -20,24 +20,25 @@ struct ArticleDetailView: View {
                 
                 VStack(alignment: .leading, spacing: Spacing.medium) {
                     Text(item.displayTitle)
-                        .font(.h1)
                         .foregroundColor(.primary)
+                        .applyStyle(.h1)
                         .multilineTextAlignment(.leading)
                     
                     if !item.displayAuthor.isEmpty {
                         Text(item.displayAuthor)
-                            .font(.h2)
                             .foregroundColor(.secondary)
+                            .applyStyle(.h2)
                     }
                     
                     Text(item.description ?? "")
-                        .font(.h3)
                         .foregroundColor(.primary)
+                        .applyStyle(.body)
                         .lineLimit(nil)
                     
+                    // TODO: Differentiate with another style
                     if !item.displayContent.isEmpty {
                         Text(item.displayContent)
-                            .font(.h3)
+                            .applyStyle(.body)
                             .foregroundColor(.primary)
                             .lineLimit(nil)
                     }
@@ -45,8 +46,8 @@ struct ArticleDetailView: View {
                     HStack {
                         Link(destination: URL(string: item.link)!) {
                             Image(systemName: "link.circle.fill")
-                                .font(.h1)
                         }
+
                         Button {
 //                            if favorites.contains(item) {
 //                                favorites.remove(item)
