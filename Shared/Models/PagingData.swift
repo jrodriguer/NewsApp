@@ -17,7 +17,6 @@ actor PagingData {
     
     init(itemsPerPage: Int, maxPageLimit: Int) {
         assert(itemsPerPage > 0 && maxPageLimit > 0, "Items per page and max page limit must be greater than zero")
-        
         self.itemsPerPage = itemsPerPage
         self.maxPageLimit = maxPageLimit
     }
