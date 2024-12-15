@@ -116,15 +116,15 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     private var listSection: some View {
         // TODO: Infinite scrolling.
 //        ScrollView {
-            List(viewModel.articles) { article in
-                ArticleRowView(item: article)
+            List(viewModel.articles) { item in
+                if item.title != "[Removed]" {
+                    ArticleRowView(item: item)
+                }
 //                ForEach(viewModel.articles, id: \.id) { item in
-//                    if item.title != "[Removed]" {
 //                        NavigationLink(value: item) {
 //                            ArticleRowView(item: item)
 //                        }
 //                        .accessibilityIdentifier("NavigationLink_\(item.id)")
-//                    }
 //                }
 //                if !viewModel.shouldShowLoader() {
 //                    ProgressView()

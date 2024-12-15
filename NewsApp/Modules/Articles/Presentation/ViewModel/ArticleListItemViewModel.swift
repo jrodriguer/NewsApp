@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArticleListItemViewModel: Hashable {
+struct ArticleListItemViewModel: Identifiable, Hashable {
     let id: UUID
     let source: String
     let author: String?
@@ -62,7 +62,6 @@ struct ArticleListItemViewModel: Hashable {
     
     var publishedStringToDate: Date {
         let dateFormatter = DateFormatter()
-        // TODO: Get locale from user locations configuration (next version).
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         let date = dateFormatter.date(from: publishedAt)
         return date ?? Date()

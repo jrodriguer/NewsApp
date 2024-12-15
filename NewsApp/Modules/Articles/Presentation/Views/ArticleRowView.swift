@@ -11,9 +11,10 @@ struct ArticleRowView: View {
     var item: ArticleListItemViewModel
         
     var body: some View {
-        VStack(alignment: .trailing) {
+        VStack(alignment: .leading, spacing: Spacing.small) {
             HStack {
                 Text(item.displayTitle)
+                    .applyStyle(.h3)
                     .multilineTextAlignment(.leading)
                     .swipeActions(edge: .leading) {
                         Button {
@@ -32,7 +33,6 @@ struct ArticleRowView: View {
                         .tint(.red)
                     }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
             
 //            if favorites.contains(article) {
 //                Spacer()
@@ -43,11 +43,12 @@ struct ArticleRowView: View {
             
             HStack {
                 Text(item.source)
+                    .applyStyle(.footNote)
+                    .foregroundStyle(Color.secondary)
             }
-            .foregroundColor(.primary)
-            .font(.h2)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
+        .foregroundStyle(Color.primary)
     }
 }
 

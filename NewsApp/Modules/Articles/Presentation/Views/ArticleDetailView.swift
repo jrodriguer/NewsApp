@@ -35,7 +35,6 @@ struct ArticleDetailView: View {
                         .applyStyle(.body)
                         .lineLimit(nil)
                     
-                    // TODO: Differentiate with another style
                     if !item.displayContent.isEmpty {
                         Text(item.displayContent)
                             .applyStyle(.body)
@@ -46,6 +45,7 @@ struct ArticleDetailView: View {
                     HStack {
                         Link(destination: URL(string: item.link)!) {
                             Image(systemName: "link.circle.fill")
+                                .font(.system(size: Spacing.large))
                         }
 
                         Button {
@@ -67,13 +67,14 @@ struct ArticleDetailView: View {
                             
                             Label {
                                 Text("Add to Favorites")
+                                    .applyStyle(.headLine)
                             } icon: {
                                 
                             }
                         }
                         .accessibilityIdentifier("FavoritesButton")
                         .buttonStyle(.borderedProminent)
-                        .padding()
+                        .padding(.horizontal, Spacing.medium)
                     }
                 }
                 .padding(Spacing.medium)
