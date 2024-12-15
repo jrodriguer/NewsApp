@@ -22,9 +22,10 @@ struct ArticleItemView: View {
                 Divider()
                 
                 Text(item.publishedAt)
+                    .foregroundStyle(Color.secondary)
                     .applyStyle(.footNote)
                     .frame(alignment: .top)
-                    .foregroundStyle(Color.secondary)
+                    .bold()
             }
             .layoutPriority(100)
             .multilineTextAlignment(.leading)

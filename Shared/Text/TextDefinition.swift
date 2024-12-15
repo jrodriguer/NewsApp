@@ -20,5 +20,5 @@ enum TextDefinitions {
     static let headLine = TextDefinition(size: 16, weight: .semiBold, lineHeight: 22)
     static let body = TextDefinition(size: 16, weight: .regular, lineHeight: 22)
     static let subHead = TextDefinition(size: 14, weight: .regular, lineHeight: 20)
-    static let footNote = TextDefinition(size: 12, weight: .regular, lineHeight: 16)
+    static let footNote = TextDefinition(size: 12, weight: .semiBold, lineHeight: 16)
 }
