@@ -115,24 +115,24 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     private var listSection: some View {
         // TODO: Infinite scrolling.
-//        ScrollView {
-            List(viewModel.articles) { item in
-                if item.title != "[Removed]" {
+        List(viewModel.articles) { item in
+            if item.title != "[Removed]" {
+                NavigationLink(value: item) {
                     ArticleRowView(item: item)
                 }
-//                ForEach(viewModel.articles, id: \.id) { item in
-//                        NavigationLink(value: item) {
-//                            ArticleRowView(item: item)
-//                        }
-//                        .accessibilityIdentifier("NavigationLink_\(item.id)")
-//                }
-//                if !viewModel.shouldShowLoader() {
-//                    ProgressView()
-//                        .task {
-//                            await viewModel.fetchArticles()
-//                        }
-//                }
-//            }
+                .accessibilityIdentifier("NavigationLink_\(item.id)")
+            }
         }
+        .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
+            ArticleDetailView(item: item)
+        })
+        
+        
+        //                if !viewModel.shouldShowLoader() {
+        //                    ProgressView()
+        //                        .task {
+        //                            await viewModel.fetchArticles()
+        //                        }
+        //                }
     }
 }
