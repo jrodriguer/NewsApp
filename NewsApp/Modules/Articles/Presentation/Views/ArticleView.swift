@@ -35,6 +35,8 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 case .listView: listSection
                 }
             }
+            // FIXME: Remplace deprecated modifier.
+            // TODO: Apply custom font and size.
             .navigationBarTitle("News")
             .toolbarRole(.navigationStack)
             .navigationBarTitleDisplayMode(.large)

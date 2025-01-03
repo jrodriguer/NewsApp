@@ -25,7 +25,6 @@ struct ArticleItemView: View {
                     .foregroundStyle(Color.secondary)
                     .applyStyle(.footNote)
                     .frame(alignment: .top)
-                    .bold()
             }
             .layoutPriority(100)
             .multilineTextAlignment(.leading)
