@@ -80,7 +80,16 @@ struct ArticleDetailView: View {
                 .padding(Spacing.medium)
             }
         }
-        .navigationTitle("\(item.source)")
         .navigationBarTitleDisplayMode(.inline)
     }
+}
+
+#Preview {
+    ArticleDetailView(item: ArticleListItemViewModel(
+        id: UUID(),
+        source: "The Washington Post",
+        title: "Americans see disparities in mental and physical care, survey finds - The Washington Post",
+        link: "https://www.washingtonpost.com/wellness/2024/05/27/mental-health-treatment-disparity/",
+        publishedAt: "2024-05-27T12:30:00Z")
+    )
 }
