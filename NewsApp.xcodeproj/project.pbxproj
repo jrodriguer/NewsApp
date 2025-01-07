@@ -169,8 +169,6 @@
 			isa = PBXGroup;
 			children = (
 				8AA1BFB22D284F0800071810 /* NotoSans */,
-				8AA1BF502D284DF100071810 /* Font.swift */,
-				8AA1BF512D284DF100071810 /* NotoSans.swift */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -298,6 +296,7 @@
 				8AE9CCFA2CC4271000399F1E /* URLAuthenticationChallenge+TrustServer.swift */,
 				8AA1BF582D284DF100071810 /* Text.swift */,
 				8AA1BF442D284DF100071810 /* Color.swift */,
+				8AA1BF502D284DF100071810 /* Font.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -369,6 +368,7 @@
 				8A8C186B2B728A5C008E3C8C /* Extensions */,
 				8AA1BF562D284DF100071810 /* Spacing.swift */,
 				8AA1BF592D284DF100071810 /* TextDefinition.swift */,
+				8AA1BF512D284DF100071810 /* NotoSans.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
