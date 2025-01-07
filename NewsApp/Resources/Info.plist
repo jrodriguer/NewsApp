@@ -4,17 +4,15 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>NotoSans-Light</string>
-		<string>NotoSans-ExtraLight</string>
-		<string>NotoSans-Regular</string>
-		<string>NotoSans-Medium</string>
-		<string>NotoSans-SemiBold</string>
-		<string>NotoSans-Bold</string>
-		<string>NotoSans-ExtraBold</string>
-		<string>NotoSans-Thin</string>
-		<string>NotoSans-Black</string>
+		<string>NotoSans-Thin.ttf</string>
+		<string>NotoSans-SemiBold.ttf</string>
+		<string>NotoSans-Regular.ttf</string>
+		<string>NotoSans-Medium.ttf</string>
+		<string>NotoSans-Black.ttf</string>
+		<string>NotoSans-Bold.ttf</string>
+		<string>NotoSans-ExtraBold.ttf</string>
+		<string>NotoSans-ExtraLight.ttf</string>
+		<string>NotoSans-Light.ttf</string>
 	</array>
-	<key>NSSupportsLiveActivities</key>
-	<true/>
 </dict>
 </plist>

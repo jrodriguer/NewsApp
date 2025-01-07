@@ -35,9 +35,12 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 case .listView: listSection
                 }
             }
-            // FIXME: Remplace deprecated modifier.
-            // TODO: Apply custom font and size.
-            .navigationBarTitle("News")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("News")
+                        .applyStyle(.h1)
+                }
+            }
             .toolbarRole(.navigationStack)
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
@@ -128,13 +131,5 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
             ArticleDetailView(item: item)
         })
-        
-        
-        //                if !viewModel.shouldShowLoader() {
-        //                    ProgressView()
-        //                        .task {
-        //                            await viewModel.fetchArticles()
-        //                        }
-        //                }
     }
 }
