@@ -22,6 +22,8 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     @State private var showFab = true
     @State private var offset = CGFloat.zero
     @State private var dataID: UUID? = nil
+    
+    @StateObject private var favorites = FavoritesViewModel<ArticleListItemViewModel>(saveKey: FavoriteKey.articleFavorites)
 
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
@@ -96,6 +98,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         }
     }
     
+    // TODO: Check and enable search articles result.
 //    private var searchResult: [ArticleListItemViewModel] {
 //        favorites.filtered(from: viewModel.articles, showFavoritesOnly: showFavoritesOnly)
 //    }
@@ -113,6 +116,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 }
                 .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
                     ArticleDetailView(item: item)
+                        .environmentObject(favorites)
                 })
             }
         }
@@ -131,5 +135,11 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
             ArticleDetailView(item: item)
         })
+    }
+}
+
+struct ArticleView_Previews: PreviewProvider {
+    static var previews: some View {
+        ArticleView(viewModel: ArticleView_Previews.getViewModel())
     }
 }

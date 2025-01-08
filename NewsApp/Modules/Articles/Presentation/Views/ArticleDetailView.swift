@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ArticleDetailView: View {
     var item: ArticleListItemViewModel
+    @EnvironmentObject var favorites: FavoritesViewModel<ArticleListItemViewModel>
     
     var body: some View {
         ScrollView {
@@ -49,21 +50,21 @@ struct ArticleDetailView: View {
                         }
 
                         Button {
-//                            if favorites.contains(item) {
-//                                favorites.remove(item)
-//                            } else {
-//                                favorites.add(item)
-//                            }
+                            if favorites.contains(item) {
+                                favorites.remove(item)
+                            } else {
+                                favorites.add(item)
+                            }
                         } label: {
-//                            if favorites.contains(item) {
-//                                Label {
-//                                    Text("Remove from Favorites")
-//                                } icon: { }
-//                            } else {
-//                                Label {
-//                                    Text("Add to Favorites")
-//                                } icon: { }
-//                            }
+                            if favorites.contains(item) {
+                                Label {
+                                    Text("Remove from Favorites")
+                                } icon: { }
+                            } else {
+                                Label {
+                                    Text("Add to Favorites")
+                                } icon: { }
+                            }
                             
                             Label {
                                 Text("Add to Favorites")
@@ -82,14 +83,4 @@ struct ArticleDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
     }
-}
-
-#Preview {
-    ArticleDetailView(item: ArticleListItemViewModel(
-        id: UUID(),
-        source: "The Washington Post",
-        title: "Americans see disparities in mental and physical care, survey finds - The Washington Post",
-        link: "https://www.washingtonpost.com/wellness/2024/05/27/mental-health-treatment-disparity/",
-        publishedAt: "2024-05-27T12:30:00Z")
-    )
 }

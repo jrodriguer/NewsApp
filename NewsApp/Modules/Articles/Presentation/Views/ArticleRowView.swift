@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ArticleRowView: View {
     var item: ArticleListItemViewModel
+    @EnvironmentObject var favorites: FavoritesViewModel<ArticleListItemViewModel>
         
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.small) {
@@ -18,28 +19,28 @@ struct ArticleRowView: View {
                     .multilineTextAlignment(.leading)
                     .swipeActions(edge: .leading) {
                         Button {
-//                            if favorites.contains(article) {
-//                                favorites.remove(article)
-//                            } else {
-//                                favorites.add(article)
-//                            }
+                            if favorites.contains(item) {
+                                favorites.remove(item)
+                            } else {
+                                favorites.add(item)
+                            }
                         } label: {
-//                            if favorites.contains(article) {
-//                                Label("Favorite", systemImage: "heart.slash")
-//                            } else {
-//                                Label("Favorite", systemImage: "suit.heart.fill")
-//                            }                            
+                            if favorites.contains(item) {
+                                Label("Favorite", systemImage: "heart.slash")
+                            } else {
+                                Label("Favorite", systemImage: "suit.heart.fill")
+                            }                            
                         }
                         .tint(.red)
                     }
             }
             
-//            if favorites.contains(article) {
-//                Spacer()
-//                Image(systemName: "heart.fill")
-//                    .accessibilityLabel("This is a favorite article")
-//                    .foregroundColor(.red)
-//            }
+            if favorites.contains(item) {
+                Spacer()
+                Image(systemName: "heart.fill")
+                    .accessibilityLabel("This is a favorite item")
+                    .foregroundColor(.red)
+            }
             
             HStack {
                 Text(item.source)
@@ -50,15 +51,4 @@ struct ArticleRowView: View {
         }
         .foregroundStyle(Color.primary)
     }
-}
-
-#Preview {
-    ArticleRowView(item: ArticleListItemViewModel(
-        id: UUID(),
-        source: "The Washington Post",
-        author: "Hannah Docter-Loeb",
-        title: "Americans see disparities in mental and physical care, survey finds - The Washington Post",
-        link: "https://www.washingtonpost.com/wellness/2024/05/27/mental-health-treatment-disparity/",
-        publishedAt: "2024-05-27T12:30:00Z")
-    )
 }
