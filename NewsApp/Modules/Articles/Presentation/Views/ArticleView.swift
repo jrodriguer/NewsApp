@@ -128,12 +128,14 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
             if item.title != "[Removed]" {
                 NavigationLink(value: item) {
                     ArticleRowView(item: item)
+                        .environmentObject(favorites)
                 }
                 .accessibilityIdentifier("NavigationLink_\(item.id)")
             }
         }
         .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
             ArticleDetailView(item: item)
+                .environmentObject(favorites)
         })
     }
 }
