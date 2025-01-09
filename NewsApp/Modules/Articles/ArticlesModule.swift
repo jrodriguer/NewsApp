@@ -17,15 +17,23 @@ final class ArticlesModule {
     }
     
     func generateHomeView() -> HomeView {
-        return HomeView(articleView: generateArticleView())
+        return HomeView(articleView: generateArticleView(), favoriteView: generateFavoriteView())
     }
     
     private func generateArticleView() -> ArticleView<ArticleViewModel> {
         return ArticleView(viewModel: generateArticleViewModel())
     }
     
+    private func generateFavoriteView() -> FavoriteView<FavoritesViewModel<ArticleListItemViewModel>> {
+        return FavoriteView(viewModel: generateFavoriteViewModel())
+    }
+    
     private func generateArticleViewModel() -> ArticleViewModel {
         ArticleViewModel(useCase: generateArticleListUseCase())
+    }
+    
+    private func generateFavoriteViewModel() -> FavoritesViewModel<ArticleListItemViewModel> {
+        FavoritesViewModel(saveKey: FavoriteKey.articleFavorites)
     }
     
     private func generateArticleListUseCase() -> ArticleListUseCase {

@@ -32,6 +32,7 @@
 		8A4FC96D2CA77A7100B47BBC /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FC96C2CA77A7100B47BBC /* DataTransferService.swift */; };
 		8A4FC96F2CA77E7A00B47BBC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FC96E2CA77E7A00B47BBC /* NetworkManager.swift */; };
 		8A4FC9732CA88B8700B47BBC /* EndpointApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FC9722CA88B8700B47BBC /* EndpointApi.swift */; };
+		8A5EB3512D301687008841E3 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5EB3502D301687008841E3 /* FavoriteView.swift */; };
 		8A6EAA0E2CC2B0F2008A6226 /* NetworkConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EAA0D2CC2B0F2008A6226 /* NetworkConfigurable.swift */; };
 		8A6EAA102CC2B2FB008A6226 /* NetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EAA0F2CC2B2FB008A6226 /* NetworkSessionManager.swift */; };
 		8A6EAA122CC2E2AB008A6226 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EAA112CC2E2AB008A6226 /* URLSessionProtocol.swift */; };
@@ -123,6 +124,7 @@
 		8A4FC96C2CA77A7100B47BBC /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		8A4FC96E2CA77E7A00B47BBC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8A4FC9722CA88B8700B47BBC /* EndpointApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointApi.swift; sourceTree = "<group>"; };
+		8A5EB3502D301687008841E3 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		8A6EAA0D2CC2B0F2008A6226 /* NetworkConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurable.swift; sourceTree = "<group>"; };
 		8A6EAA0F2CC2B2FB008A6226 /* NetworkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManager.swift; sourceTree = "<group>"; };
 		8A6EAA112CC2E2AB008A6226 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				8A8C18732B7296F8008E3C8C /* Components */,
 				8A8C186F2B728C85008E3C8C /* HomeView.swift */,
 				8A382B312D2CC9DC00603EA2 /* ArticleView_Previews.swift */,
+				8A5EB3502D301687008841E3 /* FavoriteView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				8A78C7FD2C8739DD007311AE /* NetworkRequest.swift in Sources */,
 				8AE9CCF92CC426CB00399F1E /* SharedURLSessionDelegate.swift in Sources */,
 				8A4FC9732CA88B8700B47BBC /* EndpointApi.swift in Sources */,
+				8A5EB3512D301687008841E3 /* FavoriteView.swift in Sources */,
 				8A4FC96D2CA77A7100B47BBC /* DataTransferService.swift in Sources */,
 				8A72E9732C8232EE0014A276 /* Log.swift in Sources */,
 				8AE9CCF52CC4227C00399F1E /* AppConfiguration.swift in Sources */,

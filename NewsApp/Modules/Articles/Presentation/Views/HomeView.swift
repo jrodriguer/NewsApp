@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var showModal: Bool = false
     
     let articleView: ArticleView<ArticleViewModel>
+    let favoriteView: FavoriteView<FavoritesViewModel<ArticleListItemViewModel>>
     
     var body: some View {
         if selectedTab == .News {
