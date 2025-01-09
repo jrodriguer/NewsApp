@@ -11,12 +11,23 @@ enum FavoriteKey: String {
     case articleFavorites
 }
 
-class FavoritesViewModel<T: Identifiable & Codable>: ObservableObject {
-    private var saveKey: FavoriteKey
-    private var userDefaultsManager: any UserDefaultsProtocol.Type
-    @Published private var favorites: [T] = []
+protocol FavoritesViewModelProtocol: ObservableObject {
+    associatedtype T: Identifiable & Codable
+    var favorites: [T] { get set }
+    func contains(_ value: T) -> Bool
+    func add(_ value: T)
+    func remove(_ value: T)
+    func filtered(from allItems: [T], showFavoritesOnly: Bool) -> [T]
+}
+
+class FavoritesViewModel<T: Identifiable & Codable>: FavoritesViewModelProtocol {
     
-    init(saveKey: FavoriteKey, userDefaultsManager: any UserDefaultsProtocol.Type = UserDefaultsService<T>.self) {
+    @Published var favorites: [T] = []
+    
+    private var saveKey: FavoriteKey
+    private var userDefaultsManager: any UserDefaultsServiceProtocol.Type
+    
+    init(saveKey: FavoriteKey, userDefaultsManager: any UserDefaultsServiceProtocol.Type = UserDefaultsService<T>.self) {
         self.saveKey = saveKey
         self.userDefaultsManager = userDefaultsManager
         self.favorites = loadFavorites()

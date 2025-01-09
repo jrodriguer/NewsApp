@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol UserDefaultsProtocol {
+protocol UserDefaultsServiceProtocol {
     associatedtype T: Codable
     static func saveItem(_ saveKey: FavoriteKey, _ data: Data)
     static func removeItem(_ saveKey: FavoriteKey)
     static func getItem(_ saveKey: FavoriteKey) -> Data?
 }
 
-class UserDefaultsService<T: Codable>: UserDefaultsProtocol {
+class UserDefaultsService<T: Codable>: UserDefaultsServiceProtocol {
     static func saveItem(_ saveKey: FavoriteKey, _ data: Data) {
         UserDefaults.standard.set(data, forKey: saveKey.rawValue)
     }
