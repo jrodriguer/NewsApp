@@ -65,13 +65,6 @@ struct ArticleDetailView: View {
                                     Text("Add to Favorites")
                                 } icon: { }
                             }
-                            
-                            Label {
-                                Text("Add to Favorites")
-                                    .applyStyle(.headLine)
-                            } icon: {
-                                
-                            }
                         }
                         .accessibilityIdentifier("FavoritesButton")
                         .buttonStyle(.borderedProminent)
