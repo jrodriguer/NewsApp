@@ -18,13 +18,14 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
+    
+    @StateObject private var favorites = FavoritesViewModel<ArticleListItemViewModel>(saveKey: FavoriteKey.articleFavorites)
+    
     @State private var scrollToID: UUID? = nil
     @State private var showFab = true
     @State private var offset = CGFloat.zero
     @State private var dataID: UUID? = nil
     
-    @StateObject private var favorites = FavoritesViewModel<ArticleListItemViewModel>(saveKey: FavoriteKey.articleFavorites)
-
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
@@ -37,20 +38,15 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 case .listView: listSection
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("News")
-                        .applyStyle(.h1)
-                }
-            }
-            .toolbarRole(.navigationStack)
-            .navigationBarTitleDisplayMode(.large)
+            .searchable(text: $viewModel.searchText)
             .toolbar {
                 toolbarContent
             }
-        }
-        .task {
-            await fetchArticles()
+            // TODO: Display title with my custom font.
+            .navigationTitle("News")
+            .task {
+                await fetchArticles()
+            }
         }
     }
     
@@ -92,21 +88,18 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         }
     }
     
+    // TODO: Move to view model.
     private var showFavoritesButton: some View {
+        // FIXME: Display only favorites articles.
         Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
             showFavoritesOnly.toggle()
         }
     }
     
-    // TODO: Check and enable search articles result.
-//    private var searchResult: [ArticleListItemViewModel] {
-//        favorites.filtered(from: viewModel.articles, showFavoritesOnly: showFavoritesOnly)
-//    }
-    
     private var cardSection: some View {
         ScrollView {
             VStack(spacing: 0) {
-                ForEach(viewModel.articles, id: \.id) { item in
+                ForEach(viewModel.filteredArticles) { item in
                     if item.title != "[Removed]" {
                         NavigationLink(value: item) {
                             ArticleItemView(item: item)
@@ -124,7 +117,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     private var listSection: some View {
         // TODO: Infinite scrolling.
-        List(viewModel.articles) { item in
+        List(viewModel.filteredArticles) { item in
             if item.title != "[Removed]" {
                 NavigationLink(value: item) {
                     ArticleRowView(item: item)

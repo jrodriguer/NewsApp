@@ -9,20 +9,24 @@ import Foundation
 
 protocol ArticleViewModelProtocol: ObservableObject {
     var articles: [ArticleListItemViewModel] { get set }
+    var searchText: String { get set }
+    var isEmpty: Bool { get }
     var isError: Bool { get }
     var error: String { get }
-    var isEmpty: Bool { get }
-    func shouldShowLoader() -> Bool
     func fetchArticles() async
+    func shouldShowLoader() -> Bool
+    var filteredArticles: [ArticleListItemViewModel] { get }
 }
 
 final class ArticleViewModel: ArticleViewModelProtocol {
     
     @Published var articles: [ArticleListItemViewModel]
+    @Published var searchText: String
     @Published var isError: Bool
     @Published var error: String
     
     var isEmpty: Bool { return articles.isEmpty }
+    var isSearching: Bool { return !searchText.isEmpty }
     
     private let articleListUseCase: ArticleListUseCase!
     private let pagingData = PagingData(itemsPerPage: 10, maxPageLimit: 5)
@@ -30,6 +34,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     init(useCase: ArticleListUseCase) {
         self.articleListUseCase = useCase
         self.articles = []
+        self.searchText = ""
         self.isError = false
         self.error = ""
     }
@@ -57,6 +62,18 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         }
     }
     
+    func shouldShowLoader() -> Bool {
+        return (isEmpty && !isError)
+    }
+    
+    var filteredArticles: [ArticleListItemViewModel] {
+        guard !searchText.isEmpty else { return articles }
+        return articles.filter { article in
+            Log.debug(tag: ArticleViewModel.self, message: "Filtering article \(article.title)")
+            return article.title.lowercased().contains(searchText.lowercased())
+        }
+    }
+    
     /// Maps Articles to ArticleListItemViewModel
     /// - Parameter articles: array of Articles
     /// Returns: array of ArticleListItemViewModel
@@ -74,9 +91,5 @@ final class ArticleViewModel: ArticleViewModelProtocol {
                 image: article.urlToImage
             )
         }
-    }
-    
-    func shouldShowLoader() -> Bool {
-        return (isEmpty && !isError)
     }
 }
