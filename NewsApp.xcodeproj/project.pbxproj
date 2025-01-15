@@ -401,10 +401,10 @@
 				8A9CFC912B4EC61000F70B13 /* ArticleDetailView.swift */,
 				8A9CFC8D2B4EC5F300F70B13 /* ArticleRowView.swift */,
 				8A8C18712B728E15008E3C8C /* ArticleView.swift */,
-				8A8C18732B7296F8008E3C8C /* Components */,
-				8A8C186F2B728C85008E3C8C /* HomeView.swift */,
 				8A382B312D2CC9DC00603EA2 /* ArticleView_Previews.swift */,
+				8A8C18732B7296F8008E3C8C /* Components */,
 				8A5EB3502D301687008841E3 /* FavoriteView.swift */,
+				8A8C186F2B728C85008E3C8C /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
