@@ -23,10 +23,8 @@ struct ImageView: View {
                 if image == nil {
                     WrongImageView()
                 } else {
-                    VStack {
-                        ProgressView()
-                    }
-                    .frame(width: 100, height: 100, alignment: .center)
+                    Spacer()
+                    ProgressView()
                 }
             @unknown default:
                 WrongImageView()
