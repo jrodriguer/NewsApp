@@ -45,10 +45,10 @@ struct ArticleRowView: View {
             HStack {
                 Text(item.source)
                     .applyStyle(.footNote)
-                    .foregroundStyle(Color.secondary)
+                    .foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .foregroundStyle(Color.primary)
+        .foregroundStyle(.primary)
     }
 }
