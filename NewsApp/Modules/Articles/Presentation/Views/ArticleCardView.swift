@@ -16,7 +16,7 @@ struct ArticleCardView: View {
             
             VStack(alignment: .leading, spacing: Spacing.medium) {
                 Text(item.displayTitle)
-                    .foregroundColor(Color.primary)
+                    .foregroundStyle(Color.primary)
                     .applyStyle(.h2)
                 
                 Divider()
