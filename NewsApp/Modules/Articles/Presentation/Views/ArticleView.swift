@@ -42,10 +42,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
             .toolbar {
                 toolbarItem
             }
-            
-            // TODO: Display title with my custom font.
             .navigationTitle("News")
-            
             .task {
                 await fetchArticles()
             }
