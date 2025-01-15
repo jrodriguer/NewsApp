@@ -1,5 +1,5 @@
 //
-//  ArticleItemView.swift
+//  ArticleCardView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 10/1/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ArticleItemView: View {
+struct ArticleCardView: View {
     var item: ArticleListItemViewModel
     
     var body: some View {
@@ -17,7 +17,7 @@ struct ArticleItemView: View {
             VStack(alignment: .leading, spacing: Spacing.medium) {
                 Text(item.displayTitle)
                     .foregroundColor(Color.primary)
-                    .applyStyle(.h1)
+                    .applyStyle(.h2)
                 
                 Divider()
                 

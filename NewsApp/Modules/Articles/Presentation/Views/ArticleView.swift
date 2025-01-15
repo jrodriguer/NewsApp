@@ -88,7 +88,6 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         }
     }
     
-    // TODO: Move to view model.
     private var showFavoritesButton: some View {
         // FIXME: Display only favorites articles.
         Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
@@ -109,7 +108,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                         ForEach(viewModel.filteredArticles) { item in
                             if item.title != "[Removed]" {
                                 NavigationLink(value: item) {
-                                    ArticleItemView(item: item)
+                                    ArticleCardView(item: item)
                                 }
                                 .accessibilityIdentifier("NavigationLink_\(item.id)")
                             }
