@@ -42,7 +42,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     /// Fetches articles and catches error if any
     /// - Parameter category: category case
     @MainActor func fetchArticles() async {
-        // TODO: Fetch per category (next version).
+        // TODO: Fetch per category.
         do {
             let newArticles = try await pagingData.loadNextPage { page in
                 try await self.articleListUseCase.fetchArticleList(page: page, itemsPerPage: self.pagingData.itemsPerPage)
@@ -66,6 +66,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         return (isEmpty && !isError)
     }
     
+    /// Computed property to compute the filtered array for articles.
     var filteredArticles: [ArticleListItemViewModel] {
         guard !searchText.isEmpty else { return articles }
         return articles.filter { article in

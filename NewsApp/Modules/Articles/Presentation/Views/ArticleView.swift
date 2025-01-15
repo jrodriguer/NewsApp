@@ -98,19 +98,28 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     private var cardSection: some View {
         ScrollView {
-            VStack(spacing: 0) {
-                ForEach(viewModel.filteredArticles) { item in
-                    if item.title != "[Removed]" {
-                        NavigationLink(value: item) {
-                            ArticleItemView(item: item)
+            VStack(alignment: .center, spacing: 0) {
+//                if viewModel.shouldShowLoader() {
+//                    ProgressView()
+//                } else {
+                if !viewModel.searchText.isEmpty &&
+                    viewModel.filteredArticles.isEmpty {
+                        Text("No articles found")
+                    } else {
+                        ForEach(viewModel.filteredArticles) { item in
+                            if item.title != "[Removed]" {
+                                NavigationLink(value: item) {
+                                    ArticleItemView(item: item)
+                                }
+                                .accessibilityIdentifier("NavigationLink_\(item.id)")
+                            }
                         }
-                        .accessibilityIdentifier("NavigationLink_\(item.id)")
+                        .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
+                            ArticleDetailView(item: item)
+                                .environmentObject(favorites)
+                        })
                     }
-                }
-                .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
-                    ArticleDetailView(item: item)
-                        .environmentObject(favorites)
-                })
+//                }
             }
         }
     }
