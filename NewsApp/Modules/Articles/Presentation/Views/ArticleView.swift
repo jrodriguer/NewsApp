@@ -73,7 +73,15 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 sortButtons
                 showFavoritesButton
             } label: {
-                Label("Menu", systemImage: "ellipsis.circle")
+                Circle()
+                    .stroke(Color.primary, lineWidth: 1)
+                    .frame(width: 30, height: 30)
+                    .overlay {
+                        Image(systemName: "ellipsis")
+                            .font(.system(size: 13.0, weight: .semibold))
+                            .foregroundColor(.primary)
+                            .padding(Spacing.small)
+                    }
             }
         }
     }
