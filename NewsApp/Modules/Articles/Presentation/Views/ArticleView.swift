@@ -40,12 +40,17 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
             }
             .searchable(text: $viewModel.searchText)
             .toolbar {
-                toolbarContent
+                toolbarItem
             }
+            
             // TODO: Display title with my custom font.
             .navigationTitle("News")
+            
             .task {
                 await fetchArticles()
+            }
+            .sheet(isPresented: $viewModel.isError) {
+                ErrorView(error: viewModel.error)
             }
         }
     }
@@ -54,7 +59,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         await viewModel.fetchArticles()
     }
     
-    private var toolbarContent: some ToolbarContent {
+    private var toolbarItem: some ToolbarContent {
         ToolbarItem {
             Menu {
                 Picker("View", selection: $selectedViewOption) {
