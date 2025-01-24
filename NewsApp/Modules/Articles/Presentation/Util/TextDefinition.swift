@@ -14,11 +14,12 @@ struct TextDefinition {
 }
 
 enum TextDefinitions {
-    static let h1 = TextDefinition(size: 27, weight: .medium, lineHeight: 34)
-    static let h2 = TextDefinition(size: 21, weight: .medium, lineHeight: 28)
-    static let h3 = TextDefinition(size: 19, weight: .regular, lineHeight: 26)
-    static let headLine = TextDefinition(size: 16, weight: .semiBold, lineHeight: 22)
-    static let body = TextDefinition(size: 16, weight: .regular, lineHeight: 22)
-    static let subHead = TextDefinition(size: 14, weight: .regular, lineHeight: 20)
-    static let footNote = TextDefinition(size: 12, weight: .semiBold, lineHeight: 16)
+    static let largeTitle = TextDefinition(size: 34, weight: .medium, lineHeight: 34)
+    static let h1 = TextDefinition(size: 28, weight: .medium, lineHeight: 34)
+    static let h2 = TextDefinition(size: 22, weight: .medium, lineHeight: 28)
+    static let h3 = TextDefinition(size: 20, weight: .regular, lineHeight: 26)
+    static let headLine = TextDefinition(size: 17, weight: .semiBold, lineHeight: 22)
+    static let body = TextDefinition(size: 17, weight: .regular, lineHeight: 22)
+    static let subHead = TextDefinition(size: 15, weight: .regular, lineHeight: 20)
+    static let footNote = TextDefinition(size: 13, weight: .semiBold, lineHeight: 16)
 }
