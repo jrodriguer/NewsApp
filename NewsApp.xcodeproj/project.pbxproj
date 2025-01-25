@@ -562,7 +562,6 @@
 			packageReferences = (
 				8AAB4D092B76599200C71B36 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8A8386752B85662F00FEC3BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				8AD804C02B8A42ED00DE501A /* XCRemoteSwiftPackageReference "SwiftOpenAI" */,
 				8A91CC002B8FB18800F673C5 /* XCRemoteSwiftPackageReference "Mocker" */,
 				8A9FEC622B93D2750027A3E6 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 			);
@@ -771,7 +770,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.juliorodriguez.newsapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.juliorodriguez.newsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -914,14 +913,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.8.1;
-			};
-		};
-		8AD804C02B8A42ED00DE501A /* XCRemoteSwiftPackageReference "SwiftOpenAI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftBeta/SwiftOpenAI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
