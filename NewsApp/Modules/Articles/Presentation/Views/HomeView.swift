@@ -8,20 +8,24 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedTab: Tabs = .News
-    @State private var showModal: Bool = false
+
+    @AppStorage("sidebarCustomization") var customization: TabViewCustomization
     
     let articleView: ArticleView<ArticleViewModel>
     let favoriteView: FavoriteView<FavoritesViewModel<ArticleListItemViewModel>>
     
     var body: some View {
-        if selectedTab == .News {
-            articleView
-                .accessibilityIdentifier("ArticleView")
-        } else {
-            Text("Favorites view")
-                .accessibilityIdentifier("FavoritesView")
+        TabView {
+            Tab("News", systemImage: "network") {
+                articleView
+            }
+            .customizationID("com.newsApp.News")
+            Tab("Favorites", systemImage: "suit.heart") {
+                favoriteView
+            }
+            .customizationID("com.newsApp.Favorites")
         }
-        CustomTabBarView(selectedTab: $selectedTab, showModal: $showModal)
+        .tabViewStyle(.sidebarAdaptable)
+        .tabViewCustomization($customization)
     }
 }

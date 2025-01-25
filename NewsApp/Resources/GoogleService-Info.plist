@@ -9,21 +9,21 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.jrodriguer.newsapp</string>
+	<string>com.jrodriguer.newsApp</string>
 	<key>PROJECT_ID</key>
 	<string>apple-news-app-fecf8</string>
 	<key>STORAGE_BUCKET</key>
 	<string>apple-news-app-fecf8.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:814482876333:ios:dc1dd2a6ae061a72ee2324</string>
 </dict>
