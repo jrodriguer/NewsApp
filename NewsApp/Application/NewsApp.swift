@@ -29,5 +29,9 @@ struct NewsApp: App {
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
+        
+        UITabBar.appearance().barTintColor = UIColor(.white)
+        UITabBar.appearance().backgroundColor = UIColor(.white)
+        UITabBar.appearance().unselectedItemTintColor = UIColor(.secondary)
     }
 }

@@ -27,5 +27,6 @@ struct HomeView: View {
         }
         .tabViewStyle(.sidebarAdaptable)
         .tabViewCustomization($customization)
+        .tint(.primary)
     }
 }
