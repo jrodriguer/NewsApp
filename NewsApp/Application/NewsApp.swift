@@ -25,13 +25,20 @@ struct NewsApp: App {
         navBarAppearance.backgroundColor = .white
         navBarAppearance.backgroundEffect = .none
         navBarAppearance.shadowColor = .clear
-
+        
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         
+        let fontAttributesNormal = [NSAttributedString.Key.font: UIFont(name: "NotoSans-Regular", size: TextDefinitions.footNote.size)!]
+        let fontAttributesSelected = [NSAttributedString.Key.font: UIFont(name: "NotoSans-Regular", size: TextDefinitions.footNote.size)!]
+        
+        UITabBarItem.appearance().setTitleTextAttributes(fontAttributesNormal, for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes(fontAttributesSelected, for: .selected)
+        
         UITabBar.appearance().barTintColor = UIColor(.white)
         UITabBar.appearance().backgroundColor = UIColor(.white)
         UITabBar.appearance().unselectedItemTintColor = UIColor(.secondary)
+        UITabBar.appearance().tintColor = UIColor(.primary)
     }
 }
