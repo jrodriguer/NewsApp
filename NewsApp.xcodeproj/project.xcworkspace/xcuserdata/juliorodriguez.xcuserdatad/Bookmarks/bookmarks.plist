@@ -46,7 +46,7 @@
 				<key>term</key>
 				<dict>
 					<key>text</key>
-					<string>// MARK: -</string>
+					<string>// MARK:</string>
 				</dict>
 			</dict>
 			<key>type</key>
