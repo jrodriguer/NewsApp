@@ -135,19 +135,27 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     private var listSection: some View {
         // TODO: Infinite scrolling.
-        List(viewModel.filteredArticles) { item in
-            if item.title != "[Removed]" {
-                NavigationLink(value: item) {
-                    ArticleRowView(item: item)
-                        .environmentObject(favorites)
+        VStack(alignment: .center, spacing: 0) {
+            if !viewModel.searchText.isEmpty &&
+                viewModel.filteredArticles.isEmpty {
+                Text("No articles found")
+            } else {
+                List(viewModel.filteredArticles) { item in
+                    if item.title != "[Removed]" {
+                        NavigationLink(value: item) {
+                            ArticleRowView(item: item)
+                                .environmentObject(favorites)
+                        }
+                        .accessibilityIdentifier("NavigationLink_\(item.id)")
+                    }
                 }
-                .accessibilityIdentifier("NavigationLink_\(item.id)")
+                .listStyle(.plain)
+                .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
+                    ArticleDetailView(item: item)
+                        .environmentObject(favorites)
+                })
             }
         }
-        .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
-            ArticleDetailView(item: item)
-                .environmentObject(favorites)
-        })
     }
 }
 
