@@ -16,6 +16,7 @@ struct ArticleRowView: View {
             HStack {
                 Text(item.displayTitle)
                     .applyStyle(.h3)
+                    .foregroundStyle(.primary)
                     .multilineTextAlignment(.leading)
                     .swipeActions(edge: .leading) {
                         Button {
@@ -39,7 +40,7 @@ struct ArticleRowView: View {
                 Spacer()
                 Image(systemName: "heart.fill")
                     .accessibilityLabel("This is a favorite item")
-                    .foregroundColor(.red)
+                    .foregroundStyle(.red)
             }
             
             HStack {
@@ -49,6 +50,5 @@ struct ArticleRowView: View {
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .foregroundStyle(.primary)
     }
 }
