@@ -70,6 +70,7 @@ struct ArticleDetailView: View {
                         .buttonStyle(.borderedProminent)
                         .padding(.horizontal, Spacing.medium)
                     }
+                    .padding(.top, Spacing.medium)
                 }
                 .padding(Spacing.medium)
             }
