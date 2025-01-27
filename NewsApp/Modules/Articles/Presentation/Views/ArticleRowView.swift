@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct ArticleRowView: View {
-    var item: ArticleListItemViewModel
+    var article: ArticleListItemViewModel
     @EnvironmentObject var favorites: FavoritesViewModel<ArticleListItemViewModel>
         
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.small) {
             HStack {
-                Text(item.displayTitle)
+                Text(article.displayTitle)
                     .applyStyle(.h3)
                     .foregroundStyle(.primary)
                     .multilineTextAlignment(.leading)
                     .swipeActions(edge: .leading) {
                         Button {
-                            if favorites.contains(item) {
-                                favorites.remove(item)
+                            if favorites.contains(article) {
+                                favorites.remove(article)
                             } else {
-                                favorites.add(item)
+                                favorites.add(article)
                             }
                         } label: {
-                            if favorites.contains(item) {
+                            if favorites.contains(article) {
                                 Label("Favorite", systemImage: "heart.slash")
                             } else {
                                 Label("Favorite", systemImage: "suit.heart.fill")
@@ -36,15 +36,15 @@ struct ArticleRowView: View {
                     }
             }
             
-            if favorites.contains(item) {
+            if favorites.contains(article) {
                 Spacer()
                 Image(systemName: "heart.fill")
-                    .accessibilityLabel("This is a favorite item")
+                    .accessibilityLabel("This is a favorite article")
                     .foregroundStyle(.red)
             }
             
             HStack {
-                Text(item.source)
+                Text(article.source)
                     .applyStyle(.footNote)
                     .foregroundStyle(.secondary)
             }

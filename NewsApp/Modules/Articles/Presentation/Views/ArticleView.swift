@@ -122,7 +122,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                             .accessibilityIdentifier("NavigationLink_\(item.id)")
                         }
                         .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
-                            ArticleDetailView(item: item)
+                            ArticleDetailView(article: item)
                                 .environmentObject(favorites)
                         })
                     }
@@ -133,25 +133,30 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     private var listSection: some View {
         // TODO: Infinite scrolling.
-        VStack(alignment: .center, spacing: 0) {
+        List {
             if !viewModel.searchText.isEmpty &&
                 viewModel.filteredArticles.isEmpty {
                 Text("No articles found")
             } else {
-                List(viewModel.filteredArticles) { item in
-                    NavigationLink(value: item) {
-                        ArticleRowView(item: item)
+                ForEach(viewModel.filteredArticles, id: \.id) { article in
+                    ZStack(alignment: .leading) {
+                        ArticleRowView(article: article)
                             .environmentObject(favorites)
+                            .id(article.id)
+                        
+                        NavigationLink(destination:
+                                        ArticleDetailView(article: article)
+                            .environmentObject(favorites)
+                        ) {
+                            EmptyView()
+                        }
+                        .accessibilityIdentifier("NavigationLink_\(article.id)")
+                        .opacity(0.0)
                     }
-                    .accessibilityIdentifier("NavigationLink_\(item.id)")
                 }
-                .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
-                    ArticleDetailView(item: item)
-                        .environmentObject(favorites)
-                })
-                .listStyle(.plain)
             }
         }
+        .scrollContentBackground(.hidden)
     }
 }
 

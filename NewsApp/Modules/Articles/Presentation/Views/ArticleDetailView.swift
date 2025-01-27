@@ -8,55 +8,55 @@
 import SwiftUI
 
 struct ArticleDetailView: View {
-    var item: ArticleListItemViewModel
+    var article: ArticleListItemViewModel
     @EnvironmentObject var favorites: FavoritesViewModel<ArticleListItemViewModel>
     
     var body: some View {
         ScrollView {
             VStack {
-                ImageView(image: item.image)
+                ImageView(image: article.image)
                     .frame(maxHeight: 300)
                     .cornerRadius(10)
                     .padding(Spacing.medium)
                 
                 VStack(alignment: .leading, spacing: Spacing.medium) {
-                    Text(item.displayTitle)
+                    Text(article.displayTitle)
                         .foregroundColor(.primary)
                         .applyStyle(.h1)
                         .multilineTextAlignment(.leading)
                     
-                    if !item.displayAuthor.isEmpty {
-                        Text(item.displayAuthor)
+                    if !article.displayAuthor.isEmpty {
+                        Text(article.displayAuthor)
                             .foregroundColor(.secondary)
                             .applyStyle(.h2)
                     }
                     
-                    Text(item.description ?? "")
+                    Text(article.description ?? "")
                         .foregroundColor(.primary)
                         .applyStyle(.body)
                         .lineLimit(nil)
                     
-                    if !item.displayContent.isEmpty {
-                        Text(item.displayContent)
+                    if !article.displayContent.isEmpty {
+                        Text(article.displayContent)
                             .applyStyle(.body)
                             .foregroundColor(.primary)
                             .lineLimit(nil)
                     }
                     
                     HStack {
-                        Link(destination: URL(string: item.link)!) {
+                        Link(destination: URL(string: article.link)!) {
                             Image(systemName: "link.circle.fill")
                                 .font(.system(size: Spacing.large))
                         }
 
                         Button {
-                            if favorites.contains(item) {
-                                favorites.remove(item)
+                            if favorites.contains(article) {
+                                favorites.remove(article)
                             } else {
-                                favorites.add(item)
+                                favorites.add(article)
                             }
                         } label: {
-                            if favorites.contains(item) {
+                            if favorites.contains(article) {
                                 Label {
                                     Text("Remove from Favorites")
                                 } icon: { }
