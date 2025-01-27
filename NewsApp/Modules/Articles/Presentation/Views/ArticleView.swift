@@ -137,8 +137,10 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
             if !viewModel.searchText.isEmpty &&
                 viewModel.filteredArticles.isEmpty {
                 Text("No articles found")
+                    .foregroundColor(.secondary)
+                    .accessibilityLabel("No articles matching your search were found.")
             } else {
-                ForEach(viewModel.filteredArticles, id: \.id) { article in
+                ForEach(viewModel.filteredArticles) { article in
                     ZStack(alignment: .leading) {
                         ArticleRowView(article: article)
                             .environmentObject(favorites)
