@@ -24,7 +24,6 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     @State private var scrollToID: UUID? = nil
     @State private var showFab = true
     @State private var offset = CGFloat.zero
-    @State private var dataID: UUID? = nil
     
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
@@ -129,32 +128,78 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     private var listSection: some View {
         // TODO: Infinite scrolling.
-        List {
-            if !viewModel.searchText.isEmpty &&
-                viewModel.filteredArticles.isEmpty {
-                Text("No articles found")
-                    .foregroundColor(.secondary)
-                    .accessibilityLabel("No articles matching your search were found.")
-            } else {
-                ForEach(viewModel.filteredArticles) { article in
-                    ZStack(alignment: .leading) {
-                        ArticleRowView(article: article)
-                            .environmentObject(favorites)
-                            .id(article.id)
-                        
-                        NavigationLink(destination:
-                                        ArticleDetailView(article: article)
-                            .environmentObject(favorites)
-                        ) {
-                            EmptyView()
+        ScrollViewReader { reader in
+            ZStack(alignment: .bottomTrailing) {
+                List {
+                    if !viewModel.searchText.isEmpty &&
+                        viewModel.filteredArticles.isEmpty {
+                        Text("No articles found")
+                            .foregroundColor(.secondary)
+                            .accessibilityLabel("No articles matching your search were found.")
+                    } else {
+                        ForEach(viewModel.filteredArticles) { article in
+                            ZStack(alignment: .leading) {
+                                ArticleRowView(article: article)
+                                    .environmentObject(favorites)
+                                    .id(article.id)
+                                
+                                NavigationLink(destination:
+                                                ArticleDetailView(article: article)
+                                    .environmentObject(favorites)
+                                ) {
+                                    EmptyView()
+                                }
+                                .accessibilityIdentifier("NavigationLink_\(article.id)")
+                                .opacity(0.0)
+                            }
                         }
-                        .accessibilityIdentifier("NavigationLink_\(article.id)")
-                        .opacity(0.0)
                     }
+                }
+                .scrollContentBackground(.hidden)
+                
+                if showFab {
+                    Button {
+                        scrollToTop(reader)
+                    } label: {
+                        Image(systemName: "chevron.up")
+                            .font(.largeTitle)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 55, height: 55, alignment: .center)
+                    }
+                    .foregroundStyle(Color.white)
+                    .background(.accent.opacity(0.6))
+                    .cornerRadius(55/2)
+                    .padding()
+                    .accessibilityIdentifier("FabButton")
                 }
             }
         }
-        .scrollContentBackground(.hidden)
+    }
+    
+    private func scrollToTop(_ proxy: ScrollViewProxy) {
+        if let firstArticle = viewModel.filteredArticles.first {
+            scrollToID = firstArticle.id
+            DispatchQueue.main.async {
+                withAnimation {
+                    proxy.scrollTo(firstArticle.id, anchor: .top)
+                }
+            }
+        }
+    }
+    
+    private func handleScrollOffset(_ newOffset: CGFloat) {
+        offset = newOffset
+        withAnimation {
+            showFab = newOffset > -100
+        }
+    }
+}
+
+struct ViewOffsetKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
     }
 }
 

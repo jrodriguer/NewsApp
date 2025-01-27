@@ -19,6 +19,7 @@ struct NewsApp: App {
     }
     
     init() {
+        // Navigaation bar
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.primary, .font: UIFont(name: "NotoSans-ExtraBold", size: TextDefinitions.largeTitle.size)!]
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.primary, .font: UIFont(name: "NotoSans-ExtraBold", size: TextDefinitions.headLine.size)!]
@@ -30,6 +31,7 @@ struct NewsApp: App {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         
+        // tab Bar Item
         let fontAttributesNormal = [NSAttributedString.Key.font: UIFont(name: "NotoSans-Regular", size: TextDefinitions.footNote.size)!]
         let fontAttributesSelected = [NSAttributedString.Key.font: UIFont(name: "NotoSans-Regular", size: TextDefinitions.footNote.size)!]
         

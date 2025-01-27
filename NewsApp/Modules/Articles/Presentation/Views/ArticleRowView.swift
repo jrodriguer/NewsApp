@@ -10,42 +10,39 @@ import SwiftUI
 struct ArticleRowView: View {
     var article: ArticleListItemViewModel
     @EnvironmentObject var favorites: FavoritesViewModel<ArticleListItemViewModel>
-        
+    @State private var isPressed = false
+    
     var body: some View {
-        ZStack(alignment: .leading) {
-            //        VStack(alignment: .leading, spacing: Spacing.small) {
+        VStack(alignment: .leading, spacing: Spacing.small) {
             HStack {
                 Text(article.displayTitle)
-                    .applyStyle(.h3)
+                    .applyStyle(.headLine)
                     .foregroundStyle(.primary)
                     .multilineTextAlignment(.leading)
-                    .swipeActions(edge: .leading) {
-                        Button {
-                            favorites.toggle(article)
-                        } label: {
-                            if favorites.contains(article) {
-                                Label("", systemImage: "heart.slash")
-                            } else {
-                                Label("", systemImage: "suit.heart.fill")
-                            }                            
-                        }
-                        .tint(.red)
-                    }
+                    .lineLimit(2)
+                    .scaleEffect(isPressed ? 0.90 : 1.0, anchor: .center)
                 
+                Spacer()
+                
+                // TODO: Remove from this, add button.
                 if favorites.contains(article) {
-                    Spacer()
                     Image(systemName: "heart.fill")
                         .accessibilityLabel("This is a favorite article")
-                        .foregroundStyle(.red)
+                        .foregroundStyle(.accent)
                 }
             }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 10)
+            .cornerRadius(8)
+            .animation(.easeInOut, value: isPressed)
             
-//            HStack {
-//                Text(article.source)
-//                    .applyStyle(.footNote)
-//                    .foregroundStyle(.secondary)
-//            }
-//            .frame(maxWidth: .infinity, alignment: .trailing)
+            .onLongPressGesture(minimumDuration: 1.5, pressing: { isPressing in
+                withAnimation {
+                    isPressed = isPressing
+                }
+            }, perform: {
+                favorites.toggle(article)
+            })
         }
     }
 }

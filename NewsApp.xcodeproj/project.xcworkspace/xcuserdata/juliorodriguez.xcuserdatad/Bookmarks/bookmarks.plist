@@ -52,6 +52,194 @@
 			<key>type</key>
 			<string>batch-find-query</string>
 		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>144</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>143</string>
+					<key>Timestamp</key>
+					<string>759703451.217037</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>NewsApp/Modules/Articles/Presentation/Views/ArticleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                                    .id(article.id)
+</string>
+				<key>leading</key>
+				<string>                                ArticleRowView(article: article)
+                                    .environmentObject(favorites)
+</string>
+				<key>trailing</key>
+				<string>                                
+                                NavigationLink(destination:
+                                                ArticleDetailView(article: article)
+</string>
+			</dict>
+			<key>title</key>
+			<string>assigned id</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>131</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>130</string>
+					<key>Timestamp</key>
+					<string>759702063.089421</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>NewsApp/Modules/Articles/Presentation/Views/ArticleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        ScrollViewReader { reader in
+</string>
+				<key>leading</key>
+				<string>    private var listSection: some View {
+        // TODO: Infinite scrolling.
+</string>
+				<key>trailing</key>
+				<string>            ZStack(alignment: .bottomTrailing) {
+                List {
+                    if !viewModel.searchText.isEmpty &amp;&amp;
+</string>
+			</dict>
+			<key>title</key>
+			<string>read scroll position and scroll to</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>184</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>183</string>
+					<key>Timestamp</key>
+					<string>759703451.217056</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>NewsApp/Modules/Articles/Presentation/Views/ArticleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                    proxy.scrollTo(firstArticle.id, anchor: .top)
+</string>
+				<key>leading</key>
+				<string>            DispatchQueue.main.async {
+                withAnimation {
+</string>
+				<key>trailing</key>
+				<string>                }
+            }
+        }
+</string>
+			</dict>
+			<key>title</key>
+			<string>scroll</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>183</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>182</string>
+					<key>Timestamp</key>
+					<string>759703451.217051</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>NewsApp/Modules/Articles/Presentation/Views/ArticleView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                withAnimation {
+</string>
+				<key>leading</key>
+				<string>            scrollToID = firstArticle.id
+            DispatchQueue.main.async {
+</string>
+				<key>trailing</key>
+				<string>                    proxy.scrollTo(firstArticle.id, anchor: .top)
+                }
+            }
+</string>
+			</dict>
+			<key>title</key>
+			<string>add animation for scroll to top</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
 	</array>
 </dict>
 </plist>
