@@ -47,8 +47,9 @@ final class ArticleViewModel: ArticleViewModelProtocol {
             let newArticles = try await pagingData.loadNextPage { page in
                 try await self.articleListUseCase.fetchArticleList(page: page, itemsPerPage: self.pagingData.itemsPerPage)
             }
-            let articlesExisting = newArticles.filter { $0.title != "[Removed]" }
-            articles.append(contentsOf: transformFetchedArticles(articlesExisting))
+            articles.append(contentsOf: transformFetchedArticles(
+                newArticles.filter { $0.title != "[Removed]" }
+            ))
             isError = false
             Log.debug(tag: ArticleViewModel.self, message: "Articles fetched successfully, \(articles.count)")
         } catch {
