@@ -12,7 +12,8 @@ struct ArticleRowView: View {
     @EnvironmentObject var favorites: FavoritesViewModel<ArticleListItemViewModel>
         
     var body: some View {
-        VStack(alignment: .leading, spacing: Spacing.small) {
+        ZStack(alignment: .leading) {
+            //        VStack(alignment: .leading, spacing: Spacing.small) {
             HStack {
                 Text(article.displayTitle)
                     .applyStyle(.h3)
@@ -20,35 +21,31 @@ struct ArticleRowView: View {
                     .multilineTextAlignment(.leading)
                     .swipeActions(edge: .leading) {
                         Button {
-                            if favorites.contains(article) {
-                                favorites.remove(article)
-                            } else {
-                                favorites.add(article)
-                            }
+                            favorites.toggle(article)
                         } label: {
                             if favorites.contains(article) {
-                                Label("Favorite", systemImage: "heart.slash")
+                                Label("", systemImage: "heart.slash")
                             } else {
-                                Label("Favorite", systemImage: "suit.heart.fill")
+                                Label("", systemImage: "suit.heart.fill")
                             }                            
                         }
                         .tint(.red)
                     }
+                
+                if favorites.contains(article) {
+                    Spacer()
+                    Image(systemName: "heart.fill")
+                        .accessibilityLabel("This is a favorite article")
+                        .foregroundStyle(.red)
+                }
             }
             
-            if favorites.contains(article) {
-                Spacer()
-                Image(systemName: "heart.fill")
-                    .accessibilityLabel("This is a favorite article")
-                    .foregroundStyle(.red)
-            }
-            
-            HStack {
-                Text(article.source)
-                    .applyStyle(.footNote)
-                    .foregroundStyle(.secondary)
-            }
-            .frame(maxWidth: .infinity, alignment: .trailing)
+//            HStack {
+//                Text(article.source)
+//                    .applyStyle(.footNote)
+//                    .foregroundStyle(.secondary)
+//            }
+//            .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
 }

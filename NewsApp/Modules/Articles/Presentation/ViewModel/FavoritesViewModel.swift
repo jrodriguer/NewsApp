@@ -68,6 +68,14 @@ class FavoritesViewModel<T: Identifiable & Codable>: FavoritesViewModelProtocol 
         saveForites()
     }
     
+    func toggle(_ value: T) {
+        if contains(value) {
+            remove(value)
+        } else {
+            add(value)
+        }
+    }
+    
     func filtered(from allItems: [T], showFavoritesOnly: Bool) -> [T] {
         return showFavoritesOnly ? allItems.filter { contains($0) } : allItems
     }
