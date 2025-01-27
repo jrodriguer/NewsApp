@@ -116,12 +116,10 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                         Text("No articles found")
                     } else {
                         ForEach(viewModel.filteredArticles) { item in
-                            if item.title != "[Removed]" {
-                                NavigationLink(value: item) {
-                                    ArticleCardView(item: item)
-                                }
-                                .accessibilityIdentifier("NavigationLink_\(item.id)")
+                            NavigationLink(value: item) {
+                                ArticleCardView(item: item)
                             }
+                            .accessibilityIdentifier("NavigationLink_\(item.id)")
                         }
                         .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
                             ArticleDetailView(item: item)
@@ -141,19 +139,17 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 Text("No articles found")
             } else {
                 List(viewModel.filteredArticles) { item in
-                    if item.title != "[Removed]" {
-                        NavigationLink(value: item) {
-                            ArticleRowView(item: item)
-                                .environmentObject(favorites)
-                        }
-                        .accessibilityIdentifier("NavigationLink_\(item.id)")
+                    NavigationLink(value: item) {
+                        ArticleRowView(item: item)
+                            .environmentObject(favorites)
                     }
+                    .accessibilityIdentifier("NavigationLink_\(item.id)")
                 }
-                .listStyle(.plain)
                 .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
                     ArticleDetailView(item: item)
                         .environmentObject(favorites)
                 })
+                .listStyle(.plain)
             }
         }
     }
