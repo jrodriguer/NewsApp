@@ -108,25 +108,21 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     private var cardSection: some View {
         ScrollView {
             VStack(alignment: .center, spacing: 0) {
-//                if viewModel.shouldShowLoader() {
-//                    ProgressView()
-//                } else {
                 if !viewModel.searchText.isEmpty &&
                     viewModel.filteredArticles.isEmpty {
-                        Text("No articles found")
-                    } else {
-                        ForEach(viewModel.filteredArticles) { item in
-                            NavigationLink(value: item) {
-                                ArticleCardView(item: item)
-                            }
-                            .accessibilityIdentifier("NavigationLink_\(item.id)")
+                    Text("No articles found")
+                } else {
+                    ForEach(viewModel.filteredArticles) { item in
+                        NavigationLink(value: item) {
+                            ArticleCardView(item: item)
                         }
-                        .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
-                            ArticleDetailView(article: item)
-                                .environmentObject(favorites)
-                        })
+                        .accessibilityIdentifier("NavigationLink_\(item.id)")
                     }
-//                }
+                    .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
+                        ArticleDetailView(article: item)
+                            .environmentObject(favorites)
+                    })
+                }
             }
         }
     }
