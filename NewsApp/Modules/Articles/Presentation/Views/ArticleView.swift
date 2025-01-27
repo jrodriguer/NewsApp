@@ -71,7 +71,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
             } label: {
                 Circle()
                     .stroke(Color.primary, lineWidth: 1)
-                    .frame(width: 30, height: 30)
+                    .frame(width: 24, height: 24)
                     .overlay {
                         Image(systemName: "ellipsis")
                             .font(.system(size: 13.0, weight: .semibold))
@@ -106,10 +106,11 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     private var cardSection: some View {
         ScrollView {
-            VStack(alignment: .center, spacing: 0) {
+            VStack {
                 if !viewModel.searchText.isEmpty &&
                     viewModel.filteredArticles.isEmpty {
                     Text("No articles found")
+                        .foregroundColor(.secondary)
                 } else {
                     ForEach(viewModel.filteredArticles) { item in
                         NavigationLink(value: item) {
@@ -135,7 +136,6 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                         viewModel.filteredArticles.isEmpty {
                         Text("No articles found")
                             .foregroundColor(.secondary)
-                            .accessibilityLabel("No articles matching your search were found.")
                     } else {
                         ForEach(viewModel.filteredArticles) { article in
                             ZStack(alignment: .leading) {
