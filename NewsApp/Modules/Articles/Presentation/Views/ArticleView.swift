@@ -22,13 +22,13 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     @StateObject private var favorites = FavoritesViewModel<ArticleListItemViewModel>(saveKey: FavoriteKey.articleFavorites)
     
     @State private var scrollToID: UUID? = nil
-    @State private var showFab = true
+    @State private var showFab = false
     @State private var offset = CGFloat.zero
     
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
-        
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -98,7 +98,6 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     }
     
     private var showFavoritesButton: some View {
-        // FIXME: Display only favorites articles.
         Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
             showFavoritesOnly.toggle()
         }
@@ -128,10 +127,9 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     }
     
     private var listSection: some View {
-        // TODO: Infinite scrolling.
-        ScrollViewReader { reader in
-            ZStack(alignment: .bottomTrailing) {
-                List {
+        ZStack(alignment: .bottomTrailing) {
+            ScrollView {
+                VStack {
                     if !viewModel.searchText.isEmpty &&
                         viewModel.filteredArticles.isEmpty {
                         Text("No articles found")
@@ -154,24 +152,27 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                             }
                         }
                     }
+                }.background(GeometryReader {
+                    Color.clear.preference(key: ViewOffsetKey.self,
+                                           value: -$0.frame(in: .named("scroll")).origin.y)
+                })
+                .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }
+            }.coordinateSpace(name: "scroll")
+            
+            if showFab {
+                Button {
+                    Log.debug(tag: ArticleView.self, message: "Scroll to top")
+                } label: {
+                    Image(systemName: "chevron.up")
+                        .font(.largeTitle)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 55, height: 55, alignment: .center)
                 }
-                .scrollContentBackground(.hidden)
-                
-                if showFab {
-                    Button {
-                        scrollToTop(reader)
-                    } label: {
-                        Image(systemName: "chevron.up")
-                            .font(.largeTitle)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 55, height: 55, alignment: .center)
-                    }
-                    .foregroundStyle(Color.white)
-                    .background(.accent.opacity(0.6))
-                    .cornerRadius(55/2)
-                    .padding()
-                    .accessibilityIdentifier("FabButton")
-                }
+                .foregroundStyle(Color.white)
+                .background(.accent.opacity(0.6))
+                .cornerRadius(55/2)
+                .padding()
+                .accessibilityIdentifier("FabButton")
             }
         }
     }
@@ -190,7 +191,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     private func handleScrollOffset(_ newOffset: CGFloat) {
         offset = newOffset
         withAnimation {
-            showFab = newOffset > -100
+            showFab = newOffset > 168 // random value to compare
         }
     }
 }

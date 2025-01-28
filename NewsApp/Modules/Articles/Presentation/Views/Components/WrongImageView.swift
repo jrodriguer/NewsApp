@@ -14,7 +14,7 @@ struct WrongImageView: View {
             .foregroundStyle(.secondary)
             .aspectRatio(contentMode: .fit)
             .frame(width: 200, height: 100)
-            .padding(.vertical, 12)
+            .padding(.vertical, Spacing.medium)
             .opacity(0.6)
     }
 }
