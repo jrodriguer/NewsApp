@@ -13,7 +13,7 @@ struct ArticleRowView: View {
     @State private var isPressed = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: Spacing.small) {
+        VStack {
             HStack {
                 Text(article.displayTitle)
                     .applyStyle(.headLine)
@@ -31,9 +31,7 @@ struct ArticleRowView: View {
                         .foregroundStyle(.accent)
                 }
             }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 10)
-            .cornerRadius(8)
+            .padding([.top, .horizontal], Spacing.medium)
             .animation(.easeInOut, value: isPressed)
             
             .onLongPressGesture(minimumDuration: 1.5, pressing: { isPressing in
