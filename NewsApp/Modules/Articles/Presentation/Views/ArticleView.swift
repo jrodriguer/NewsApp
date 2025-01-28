@@ -22,14 +22,12 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     @StateObject private var favorites = FavoritesViewModel<ArticleListItemViewModel>(saveKey: FavoriteKey.articleFavorites)
     
     @State private var scrollToID: UUID? = nil
-    @State private var showFab = true
-    @State private var offset = CGFloat.zero
-    @State private var dataID: UUID? = nil
+    @State private var showFab = false
     
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
     }
-        
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -72,7 +70,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
             } label: {
                 Circle()
                     .stroke(Color.primary, lineWidth: 1)
-                    .frame(width: 30, height: 30)
+                    .frame(width: 24, height: 24)
                     .overlay {
                         Image(systemName: "ellipsis")
                             .font(.system(size: 13.0, weight: .semibold))
@@ -99,7 +97,6 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     }
     
     private var showFavoritesButton: some View {
-        // FIXME: Display only favorites articles.
         Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
             showFavoritesOnly.toggle()
         }
@@ -107,47 +104,103 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     private var cardSection: some View {
         ScrollView {
-            VStack(alignment: .center, spacing: 0) {
-//                if viewModel.shouldShowLoader() {
-//                    ProgressView()
-//                } else {
+            VStack {
                 if !viewModel.searchText.isEmpty &&
                     viewModel.filteredArticles.isEmpty {
-                        Text("No articles found")
-                    } else {
-                        ForEach(viewModel.filteredArticles) { item in
-                            if item.title != "[Removed]" {
-                                NavigationLink(value: item) {
-                                    ArticleCardView(item: item)
-                                }
-                                .accessibilityIdentifier("NavigationLink_\(item.id)")
-                            }
+                    Text("No articles found")
+                        .foregroundColor(.secondary)
+                } else {
+                    ForEach(viewModel.filteredArticles) { item in
+                        NavigationLink(value: item) {
+                            ArticleCardView(item: item)
                         }
-                        .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
-                            ArticleDetailView(item: item)
-                                .environmentObject(favorites)
-                        })
+                        .accessibilityIdentifier("NavigationLink_\(item.id)")
                     }
-//                }
+                    .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
+                        ArticleDetailView(article: item)
+                            .environmentObject(favorites)
+                    })
+                }
             }
         }
     }
     
     private var listSection: some View {
-        // TODO: Infinite scrolling.
-        List(viewModel.filteredArticles) { item in
-            if item.title != "[Removed]" {
-                NavigationLink(value: item) {
-                    ArticleRowView(item: item)
-                        .environmentObject(favorites)
+        ScrollViewReader { scrollProxy in
+            ZStack(alignment: .bottomTrailing) {
+                ScrollView {
+                    VStack {
+                        if !viewModel.searchText.isEmpty &&
+                            viewModel.filteredArticles.isEmpty {
+                            Text("No articles found")
+                                .foregroundColor(.secondary)
+                        } else {
+                            ForEach(viewModel.filteredArticles) { article in
+                                ZStack(alignment: .leading) {
+                                    ArticleRowView(article: article)
+                                        .environmentObject(favorites)
+                                        .id(article.id)
+                                    
+                                    NavigationLink(destination:
+                                                    ArticleDetailView(article: article)
+                                        .environmentObject(favorites)
+                                    ) {
+                                        EmptyView()
+                                    }
+                                    .accessibilityIdentifier("NavigationLink_\(article.id)")
+                                    .opacity(0.0)
+                                }
+                            }
+                        }
+                    }.background(GeometryReader {
+                        Color.clear.preference(key: ViewOffsetKey.self,
+                                               value: -$0.frame(in: .named("scroll")).origin.y)
+                    })
+                    .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }
+                }.coordinateSpace(name: "scroll")
+                
+                if showFab {
+                    Button {
+                        scrollToTop(scrollProxy)
+                    } label: {
+                        Image(systemName: "chevron.up")
+                            .font(.largeTitle)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 55, height: 55, alignment: .center)
+                    }
+                    .foregroundStyle(Color.white)
+                    .background(.accent.opacity(0.6))
+                    .cornerRadius(55/2)
+                    .padding()
+                    .accessibilityIdentifier("FabButton")
                 }
-                .accessibilityIdentifier("NavigationLink_\(item.id)")
             }
         }
-        .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
-            ArticleDetailView(item: item)
-                .environmentObject(favorites)
-        })
+    }
+    
+    private func scrollToTop(_ proxy: ScrollViewProxy) {
+        if let firstArticle = viewModel.filteredArticles.first {
+            scrollToID = firstArticle.id
+            DispatchQueue.main.async {
+                withAnimation {
+                    proxy.scrollTo(firstArticle.id, anchor: .top)
+                }
+            }
+        }
+    }
+    
+    private func handleScrollOffset(_ newOffset: CGFloat) {
+        withAnimation {
+            showFab = newOffset > 168 // random value to compare
+        }
+    }
+}
+
+struct ViewOffsetKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
     }
 }
 

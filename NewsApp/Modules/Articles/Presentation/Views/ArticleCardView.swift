@@ -22,7 +22,7 @@ struct ArticleCardView: View {
                 Divider()
                 
                 Text(item.publishedAt)
-                    .foregroundStyle(Color.secondary)
+                    .foregroundStyle(.secondary)
                     .applyStyle(.footNote)
                     .frame(alignment: .top)
             }
@@ -33,7 +33,7 @@ struct ArticleCardView: View {
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.secondary.opacity(0.1), lineWidth: 1)
+                .stroke(.secondary.opacity(0.1), lineWidth: 1)
         )
         .padding([.top, .horizontal], Spacing.medium)
     }

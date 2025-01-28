@@ -47,7 +47,9 @@ final class ArticleViewModel: ArticleViewModelProtocol {
             let newArticles = try await pagingData.loadNextPage { page in
                 try await self.articleListUseCase.fetchArticleList(page: page, itemsPerPage: self.pagingData.itemsPerPage)
             }
-            articles.append(contentsOf: transformFetchedArticles(newArticles))
+            articles.append(contentsOf: transformFetchedArticles(
+                newArticles.filter { $0.title != "[Removed]" }
+            ))
             isError = false
             Log.debug(tag: ArticleViewModel.self, message: "Articles fetched successfully, \(articles.count)")
         } catch {
@@ -69,10 +71,8 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     /// Computed property to compute the filtered array for articles.
     var filteredArticles: [ArticleListItemViewModel] {
         guard !searchText.isEmpty else { return articles }
-        return articles.filter { article in
-            Log.debug(tag: ArticleViewModel.self, message: "Filtering article \(article.title)")
-            return article.title.lowercased().contains(searchText.lowercased())
-        }
+        let lowercasedSearchText = searchText.lowercased()
+        return articles.filter { $0.title.lowercased().contains(lowercasedSearchText) }
     }
     
     /// Maps Articles to ArticleListItemViewModel

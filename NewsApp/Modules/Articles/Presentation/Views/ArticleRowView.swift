@@ -8,47 +8,39 @@
 import SwiftUI
 
 struct ArticleRowView: View {
-    var item: ArticleListItemViewModel
+    var article: ArticleListItemViewModel
     @EnvironmentObject var favorites: FavoritesViewModel<ArticleListItemViewModel>
-        
+    @State private var isPressed = false
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: Spacing.small) {
+        VStack {
             HStack {
-                Text(item.displayTitle)
-                    .applyStyle(.h3)
+                Text(article.displayTitle)
+                    .applyStyle(.headLine)
+                    .foregroundStyle(.primary)
                     .multilineTextAlignment(.leading)
-                    .swipeActions(edge: .leading) {
-                        Button {
-                            if favorites.contains(item) {
-                                favorites.remove(item)
-                            } else {
-                                favorites.add(item)
-                            }
-                        } label: {
-                            if favorites.contains(item) {
-                                Label("Favorite", systemImage: "heart.slash")
-                            } else {
-                                Label("Favorite", systemImage: "suit.heart.fill")
-                            }                            
-                        }
-                        .tint(.red)
-                    }
-            }
-            
-            if favorites.contains(item) {
+                    .lineLimit(2)
+                    .scaleEffect(isPressed ? 0.90 : 1.0, anchor: .center)
+                
                 Spacer()
-                Image(systemName: "heart.fill")
-                    .accessibilityLabel("This is a favorite item")
-                    .foregroundColor(.red)
+                
+                // TODO: Remove from this, add button.
+                if favorites.contains(article) {
+                    Image(systemName: "heart.fill")
+                        .accessibilityLabel("This is a favorite article")
+                        .foregroundStyle(.accent)
+                }
             }
+            .padding([.top, .horizontal], Spacing.medium)
+            .animation(.easeInOut, value: isPressed)
             
-            HStack {
-                Text(item.source)
-                    .applyStyle(.footNote)
-                    .foregroundStyle(.secondary)
-            }
-            .frame(maxWidth: .infinity, alignment: .trailing)
+            .onLongPressGesture(minimumDuration: 1.5, pressing: { isPressing in
+                withAnimation {
+                    isPressed = isPressing
+                }
+            }, perform: {
+                favorites.toggle(article)
+            })
         }
-        .foregroundStyle(.primary)
     }
 }

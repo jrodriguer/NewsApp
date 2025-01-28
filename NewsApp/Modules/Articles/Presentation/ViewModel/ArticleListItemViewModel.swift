@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArticleListItemViewModel: Identifiable, Hashable, Codable {
+struct ArticleListItemViewModel: Identifiable, Encodable, Decodable, Hashable {
     let id: UUID
     let source: String
     let author: String?
