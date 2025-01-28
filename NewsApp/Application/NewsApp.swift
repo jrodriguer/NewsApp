@@ -40,7 +40,7 @@ struct NewsApp: App {
         
         UITabBar.appearance().barTintColor = UIColor(.white)
         UITabBar.appearance().backgroundColor = UIColor(.white)
-        UITabBar.appearance().unselectedItemTintColor = UIColor(Color.secondary)
+        UITabBar.appearance().unselectedItemTintColor = UIColor(.secondary)
         UITabBar.appearance().tintColor = UIColor(.primary)
     }
 }
