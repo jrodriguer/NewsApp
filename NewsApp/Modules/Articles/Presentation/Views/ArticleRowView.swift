@@ -24,7 +24,6 @@ struct ArticleRowView: View {
                 
                 Spacer()
                 
-                // TODO: Remove from this, add button.
                 if favorites.contains(article) {
                     Image(systemName: "heart.fill")
                         .accessibilityLabel("This is a favorite article")
@@ -42,5 +41,6 @@ struct ArticleRowView: View {
                 favorites.toggle(article)
             })
         }
+        
     }
 }

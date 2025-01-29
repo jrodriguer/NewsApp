@@ -169,7 +169,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                             .frame(width: 55, height: 55, alignment: .center)
                     }
                     .foregroundStyle(Color.white)
-                    .background(.accent.opacity(0.6))
+                    .background(.secondary.opacity(0.6))
                     .cornerRadius(55/2)
                     .padding()
                     .accessibilityIdentifier("FabButton")
