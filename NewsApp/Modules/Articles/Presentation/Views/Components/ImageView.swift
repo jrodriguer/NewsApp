@@ -16,7 +16,9 @@ struct ImageView: View {
             case .success(let image):
                 image
                     .resizable()
+                    .scaledToFill()
                     .aspectRatio(contentMode: .fit)
+                    .clipped()
             case .failure:
                 WrongImageView()
             case .empty:
