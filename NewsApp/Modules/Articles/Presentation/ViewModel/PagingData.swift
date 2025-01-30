@@ -38,16 +38,14 @@ actor PagingData {
         currentPage = nextPage
         hasReachedEnd = items.count < itemsPerPage
         
-        print("PAGING: fetch \(items.count) items(s) successfully. Current Page: \(currentPage)")
+        Log.debug(tag: PagingData.self, message: "PAGING: fetch \(items.count) items(s) successfully. Current Page: \(currentPage)")
         
         return items
     }
     
     func reset() {
-        print("PAGING: RESET")
+        Log.debug(tag: PagingData.self, message: "PAGING: RESET")
         currentPage = 0
         hasReachedEnd = false
     }
-    
 }
-

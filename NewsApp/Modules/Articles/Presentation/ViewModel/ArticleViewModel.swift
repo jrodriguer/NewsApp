@@ -11,7 +11,7 @@ protocol ArticleViewModelProtocol: ObservableObject {
     var articles: [ArticleListItemViewModel] { get set }
     var searchText: String { get set }
     var isEmpty: Bool { get }
-    var isError: Bool { get set }
+    var isError: Bool { get }
     var error: String { get }
     func fetchArticles() async
     func shouldShowLoader() -> Bool

@@ -15,12 +15,10 @@ enum ViewOption: String, CaseIterable {
 struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     @ObservedObject private var viewModel: ViewModel
+    @StateObject private var favorites = FavoritesViewModel<ArticleListItemViewModel>(saveKey: FavoriteKey.articleFavorites)
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
-    
-    @StateObject private var favorites = FavoritesViewModel<ArticleListItemViewModel>(saveKey: FavoriteKey.articleFavorites)
-    
     @State private var scrollToID: UUID? = nil
     @State private var showFab = false
     
@@ -41,12 +39,9 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 toolbarItem
             }
             .navigationTitle("News")
-            .task {
-                await fetchArticles()
-            }
-            .sheet(isPresented: $viewModel.isError) {
-                ErrorView(error: viewModel.error)
-            }
+        }
+        .task {
+            await fetchArticles()
         }
     }
     
@@ -105,14 +100,22 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     private var cardSection: some View {
         ScrollView {
             VStack {
-                if !viewModel.searchText.isEmpty &&
-                    viewModel.filteredArticles.isEmpty {
-                    Text("No articles found")
-                        .foregroundColor(.secondary)
+                if viewModel.shouldShowLoader() {
+                    ProgressView()
+                        .progressViewStyle(.circular)
                 } else {
                     ForEach(viewModel.filteredArticles) { article in
                         NavigationLink(value: article) {
                             ArticleCardView(article: article)
+                                .overlay {
+                                    if viewModel.isError {
+                                        ErrorView(errorDescription: viewModel.error) {
+                                            Task {
+                                                await fetchArticles()
+                                            }
+                                        }
+                                    }
+                                }
                         }
                         .accessibilityIdentifier("NavigationLink_\(article.id)")
                     }
@@ -153,7 +156,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                     })
                     .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }
                 }.coordinateSpace(name: "scroll")
-                
+
                 if showFab {
                     Button {
                         scrollToTop(scrollProxy)

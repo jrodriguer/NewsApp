@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct ArticleCardView: View {
-    var item: ArticleListItemViewModel
+    var article: ArticleListItemViewModel
     
     var body: some View {
         VStack {
-            ImageView(image: item.image)
+            ImageView(image: article.image)
             
             VStack(alignment: .leading, spacing: Spacing.medium) {
-                Text(item.displayTitle)
+                Text(article.displayTitle)
                     .foregroundStyle(Color.primary)
                     .applyStyle(.h2)
                 
                 Divider()
                 
-                Text(item.publishedAt)
+                Text(article.publishedAt)
                     .foregroundStyle(.secondary)
                     .applyStyle(.footNote)
                     .frame(alignment: .top)
