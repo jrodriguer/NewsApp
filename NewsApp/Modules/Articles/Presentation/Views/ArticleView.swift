@@ -110,14 +110,14 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                     Text("No articles found")
                         .foregroundColor(.secondary)
                 } else {
-                    ForEach(viewModel.filteredArticles) { item in
-                        NavigationLink(value: item) {
-                            ArticleCardView(item: item)
+                    ForEach(viewModel.filteredArticles) { article in
+                        NavigationLink(value: article) {
+                            ArticleCardView(article: article)
                         }
-                        .accessibilityIdentifier("NavigationLink_\(item.id)")
+                        .accessibilityIdentifier("NavigationLink_\(article.id)")
                     }
-                    .navigationDestination(for: ArticleListItemViewModel.self, destination: { item in
-                        ArticleDetailView(article: item)
+                    .navigationDestination(for: ArticleListItemViewModel.self, destination: { article in
+                        ArticleDetailView(article: article)
                             .environmentObject(favorites)
                     })
                 }
@@ -136,20 +136,15 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                                 .foregroundColor(.secondary)
                         } else {
                             ForEach(viewModel.filteredArticles) { article in
-                                ZStack(alignment: .leading) {
+                                NavigationLink(destination:
+                                                ArticleDetailView(article: article)
+                                    .environmentObject(favorites)
+                                ) {
                                     ArticleRowView(article: article)
                                         .environmentObject(favorites)
                                         .id(article.id)
-                                    
-                                    NavigationLink(destination:
-                                                    ArticleDetailView(article: article)
-                                        .environmentObject(favorites)
-                                    ) {
-                                        EmptyView()
-                                    }
-                                    .accessibilityIdentifier("NavigationLink_\(article.id)")
-                                    .opacity(0.0)
                                 }
+                                .accessibilityIdentifier("NavigationLink_\(article.id)")
                             }
                         }
                     }.background(GeometryReader {
