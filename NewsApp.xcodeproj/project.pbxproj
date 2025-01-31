@@ -386,7 +386,6 @@
 				8A8C18642B7285A3008E3C8C /* ArticleViewModel.swift */,
 				8A1DAC252B8E3C6F00259AD3 /* FavoritesViewModel.swift */,
 				8AE9CD002CC66E8E00399F1E /* ArticleListItemViewModel.swift */,
-				8AA1BF542D284DF100071810 /* PagingData.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -472,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				8A2CE7652C85D35C00B762D0 /* ArticleListUseCase.swift */,
+				8AA1BF542D284DF100071810 /* PagingData.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";

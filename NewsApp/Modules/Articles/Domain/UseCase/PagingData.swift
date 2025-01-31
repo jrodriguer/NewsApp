@@ -26,8 +26,13 @@ actor PagingData {
         !hasReachedEnd && nextPage <= maxPageLimit
     }
     
+    /// Load next page and increment the counter of current page
+    /// - Parameter dataFetchProvider: load data from API with page number parameter
+    /// Return: array with all articles
     func loadNextPage<T>(dataFetchProvider: @escaping (Int) async throws -> [T]) async throws -> [T] {
         if Task.isCancelled { return [] }
+        Log.debug(tag: PagingData.self, message: "PAGING: Current page: \(currentPage). Loading next page... \(nextPage)")
+        
         guard shouldLoadNextPage else { return [] }
         
         let nextPage = self.nextPage
@@ -36,7 +41,7 @@ actor PagingData {
         if Task.isCancelled || nextPage != self.nextPage { return [] }
         
         currentPage = nextPage
-        hasReachedEnd = items.count < itemsPerPage
+        hasReachedEnd = items.count < itemsPerPage // the end
         
         Log.debug(tag: PagingData.self, message: "PAGING: fetch \(items.count) items(s) successfully. Current Page: \(currentPage)")
         
