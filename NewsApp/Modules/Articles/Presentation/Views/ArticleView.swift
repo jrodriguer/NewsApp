@@ -107,15 +107,6 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                     ForEach(viewModel.filteredArticles) { article in
                         NavigationLink(value: article) {
                             ArticleCardView(article: article)
-                                .overlay {
-                                    if viewModel.isError {
-                                        ErrorView(errorDescription: viewModel.error) {
-                                            Task {
-                                                await fetchArticles()
-                                            }
-                                        }
-                                    }
-                                }
                         }
                         .accessibilityIdentifier("NavigationLink_\(article.id)")
                     }
