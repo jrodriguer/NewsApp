@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ArticleCardView: View {
     var article: ArticleListItemViewModel
-    
+    @EnvironmentObject var favorites: FavoritesViewModel<ArticleListItemViewModel>
+
     var body: some View {
         VStack {
             ImageView(image: article.image)
@@ -21,10 +22,20 @@ struct ArticleCardView: View {
                 
                 Divider()
                 
-                Text(article.publishedAt)
-                    .foregroundStyle(.secondary)
-                    .applyStyle(.footNote)
-                    .frame(alignment: .top)
+                HStack {
+                    Text(article.publishedAt)
+                        .foregroundStyle(.secondary)
+                        .applyStyle(.footNote)
+                        .frame(alignment: .top)
+                    
+                    Spacer()
+                    
+                    Button {
+                        favorites.toggle(article)
+                    } label: {
+                        Image(systemName: favorites.contains(article) ? "bookmark.fill" : "bookmark")
+                    }
+                }
             }
             .layoutPriority(100)
             .multilineTextAlignment(.leading)

@@ -100,21 +100,25 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     private var cardSection: some View {
         ScrollView {
             VStack {
-                if viewModel.shouldShowLoader() {
-                    ProgressView()
-                        .progressViewStyle(.circular)
-                } else {
-                    ForEach(viewModel.filteredArticles) { article in
-                        NavigationLink(value: article) {
+                ForEach(viewModel.filteredArticles) { article in
+                    NavigationLink(value: article) {
+                        if article == viewModel.filteredArticles.last {
                             ArticleCardView(article: article)
+                                .environmentObject(favorites)
+                                .task {
+                                    await fetchArticles()
+                                }
+                        } else {
+                            ArticleCardView(article: article)
+                                .environmentObject(favorites)
                         }
-                        .accessibilityIdentifier("NavigationLink_\(article.id)")
                     }
-                    .navigationDestination(for: ArticleListItemViewModel.self, destination: { article in
-                        ArticleDetailView(article: article)
-                            .environmentObject(favorites)
-                    })
+                    .accessibilityIdentifier("NavigationLink_\(article.id)")
                 }
+                .navigationDestination(for: ArticleListItemViewModel.self, destination: { article in
+                    ArticleDetailView(article: article)
+                        .environmentObject(favorites)
+                })
             }
         }
     }

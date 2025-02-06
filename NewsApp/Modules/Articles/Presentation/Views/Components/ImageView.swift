@@ -27,6 +27,7 @@ struct ImageView: View {
                 } else {
                     Spacer()
                     ProgressView()
+                    Spacer()
                 }
             @unknown default:
                 WrongImageView()

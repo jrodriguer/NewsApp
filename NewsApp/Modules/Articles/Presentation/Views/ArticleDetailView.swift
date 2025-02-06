@@ -14,19 +14,8 @@ struct ArticleDetailView: View {
     var body: some View {
         ScrollView {
             VStack {
-                ZStack(alignment: .topTrailing) {
-                    ImageView(image: article.image)
-                        .frame(maxHeight: 300)
-                    Button {
-                        favorites.toggle(article)
-                    } label: {
-                        Image(systemName: favorites.contains(article) ? "heart.fill" : "heart")
-                            .accessibilityLabel("Toggle favorite article")
-                            .foregroundStyle(.accent)
-                    }
-                    .frame(width: 24, height: 24)
-                    .padding(10)
-                }
+                ImageView(image: article.image)
+                    .frame(maxHeight: 300)
                 
                 VStack(alignment: .leading, spacing: Spacing.medium) {
                     Text(article.displayTitle)
