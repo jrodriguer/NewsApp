@@ -36,6 +36,7 @@ struct ArticleCardView: View {
                         Image(systemName: favorites.contains(article) ? "bookmark.fill" : "bookmark")
                     }
                 }
+                .padding(.trailing, Spacing.small)
             }
             .layoutPriority(100)
             .multilineTextAlignment(.leading)
