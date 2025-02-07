@@ -42,6 +42,6 @@ extension ArticleView_Previews {
             isEmpty && !isError
         }
         
-        func fetchArticles() async { }
+        func loadFirstPage() async { }
     }
 }

@@ -57,7 +57,6 @@
 		8AA1BF792D284DF100071810 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1BF442D284DF100071810 /* Color.swift */; };
 		8AA1BF7A2D284DF100071810 /* TextDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1BF592D284DF100071810 /* TextDefinition.swift */; };
 		8AA1BF7B2D284DF100071810 /* NotoSans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1BF512D284DF100071810 /* NotoSans.swift */; };
-		8AA1BF7D2D284DF100071810 /* PagingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1BF542D284DF100071810 /* PagingData.swift */; };
 		8AA1BF7F2D284DF100071810 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1BF582D284DF100071810 /* Text.swift */; };
 		8AAB4D0B2B76599200C71B36 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAB4D0A2B76599200C71B36 /* Alamofire */; };
 		8AB07D162C077BB7008237C0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB07D152C077BB7008237C0 /* Category.swift */; };
@@ -144,7 +143,6 @@
 		8AA1BF442D284DF100071810 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8AA1BF502D284DF100071810 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8AA1BF512D284DF100071810 /* NotoSans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotoSans.swift; sourceTree = "<group>"; };
-		8AA1BF542D284DF100071810 /* PagingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingData.swift; sourceTree = "<group>"; };
 		8AA1BF562D284DF100071810 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		8AA1BF582D284DF100071810 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		8AA1BF592D284DF100071810 /* TextDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDefinition.swift; sourceTree = "<group>"; };
@@ -162,6 +160,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		8A459D922D563A7200FF36BE /* Actors */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Actors; sourceTree = "<group>"; };
 		8A7877CF2D2D865A00554DA6 /* NewsAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NewsAppTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -468,7 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				8A2CE7652C85D35C00B762D0 /* ArticleListUseCase.swift */,
-				8AA1BF542D284DF100071810 /* PagingData.swift */,
+				8A459D922D563A7200FF36BE /* Actors */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -488,6 +487,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8A459D922D563A7200FF36BE /* Actors */,
 			);
 			name = NewsApp;
 			packageProductDependencies = (
@@ -608,7 +610,6 @@
 				8AA1BF792D284DF100071810 /* Color.swift in Sources */,
 				8AA1BF7A2D284DF100071810 /* TextDefinition.swift in Sources */,
 				8AA1BF7B2D284DF100071810 /* NotoSans.swift in Sources */,
-				8AA1BF7D2D284DF100071810 /* PagingData.swift in Sources */,
 				8A382B322D2CC9DC00603EA2 /* ArticleView_Previews.swift in Sources */,
 				8AA1BF7F2D284DF100071810 /* Text.swift in Sources */,
 				8A47F6F82D071E2100532257 /* ImageView.swift in Sources */,

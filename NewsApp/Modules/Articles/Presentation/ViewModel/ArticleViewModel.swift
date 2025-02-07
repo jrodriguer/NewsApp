@@ -13,7 +13,7 @@ protocol ArticleViewModelProtocol: ObservableObject {
     var isEmpty: Bool { get }
     var isError: Bool { get }
     var error: String { get }
-    func fetchArticles() async
+    func loadFirstPage() async
     func shouldShowLoader() -> Bool
     var filteredArticles: [ArticleListItemViewModel] { get }
 }
@@ -45,10 +45,11 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     
     /// Fetches articles and catches error if any
     /// - Parameter category: category case
-    @MainActor func fetchArticles() async {
-        // TODO: Fetch per category.
+    @MainActor func loadFirstPage() async {
         // FIXME: Infinite scrolling.
         do {
+            await self.articleListUseCase.reset()
+            
             let newArticles = try await self.articleListUseCase.fetchArticleList(itemsPerPage: 10, page: 1)
             articles.append(contentsOf: transformFetchedArticles(
                 newArticles.filter { $0.title != "[Removed]" }
@@ -57,12 +58,29 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         } catch {
             isError = true
             
-            if let networkError = error as? NetworkError {
-                self.error = networkError.description
-            } else {
-                self.error = error.localizedDescription
-            }
+//            if let networkError = error as? NetworkError {
+//                self.error = networkError.description
+//            } else {
+//                self.error = error.localizedDescription
+//            }
             
+            handlerError(error)
+        }
+    }
+    
+    func loadNextPage() async {
+        do {
+            let nextArticles = try await self.articleListUseCase.fetchArticleList(itemsPerPage: 10, page: 1)
+            articles.append(contentsOf: transformFetchedArticles(
+//                nextArticles.filter { $0.title != "[Removed]" }
+                cleanArticles(for: nextArticles)
+            ))
+            
+            isError = false
+        } catch {
+            isError = true
+
+            handlerError(error)
         }
     }
     
@@ -71,6 +89,10 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         guard !searchText.isEmpty else { return articles }
         let lowercasedSearchText = searchText.lowercased()
         return articles.filter { $0.title.lowercased().contains(lowercasedSearchText) }
+    }
+    
+    private func cleanArticles(for articles: [ArticleDomainListDTO]) -> [ArticleDomainListDTO] {
+        articles.filter { $0.title != "[Removed]" }
     }
     
     /// Maps Articles to ArticleListItemViewModel
@@ -89,6 +111,16 @@ final class ArticleViewModel: ArticleViewModelProtocol {
                 content: article.content,
                 image: article.urlToImage
             )
+        }
+    }
+    
+    private func handlerError(_ error: Error) {
+        Log.error(tag: ArticleViewModel.self, message: "Error: \(error)")
+        
+        if let networkError = error as? NetworkError {
+            self.error = networkError.description
+        } else {
+            self.error = error.localizedDescription
         }
     }
 }
