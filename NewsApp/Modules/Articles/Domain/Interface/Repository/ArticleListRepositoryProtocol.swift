@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ArticleListRepository {
-    func fetchArticleList(page: Int, itemsPerPage: Int) async throws -> [ArticleDomainListDTO]
+    func fetchArticleList(itemsPerPage: Int, page: Int) async throws -> [ArticleDomainListDTO]
 }

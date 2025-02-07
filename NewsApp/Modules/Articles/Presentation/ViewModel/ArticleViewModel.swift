@@ -25,11 +25,11 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     @Published var isError: Bool
     @Published var error: String
     
+    // FIXME: Clean flags.
     var isEmpty: Bool { return articles.isEmpty }
     var isSearching: Bool { return !searchText.isEmpty }
-    
+
     private let articleListUseCase: ArticleListUseCase!
-    private let pagingData = PagingData(itemsPerPage: 10, maxPageLimit: 5)
     
     init(useCase: ArticleListUseCase) {
         self.articleListUseCase = useCase
@@ -39,19 +39,21 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         self.error = ""
     }
     
+    func shouldShowLoader() -> Bool {
+        return (isEmpty && !isError)
+    }
+    
     /// Fetches articles and catches error if any
     /// - Parameter category: category case
     @MainActor func fetchArticles() async {
         // TODO: Fetch per category.
+        // FIXME: Infinite scrolling.
         do {
-            let newArticles = try await pagingData.loadNextPage { page in
-                try await self.articleListUseCase.fetchArticleList(page: page, itemsPerPage: self.pagingData.itemsPerPage)
-            }
+            let newArticles = try await self.articleListUseCase.fetchArticleList(itemsPerPage: 10, page: 1)
             articles.append(contentsOf: transformFetchedArticles(
                 newArticles.filter { $0.title != "[Removed]" }
             ))
             isError = false
-            Log.debug(tag: ArticleViewModel.self, message: "Articles fetched successfully, \(articles.count)")
         } catch {
             isError = true
             
@@ -62,10 +64,6 @@ final class ArticleViewModel: ArticleViewModelProtocol {
             }
             
         }
-    }
-    
-    func shouldShowLoader() -> Bool {
-        return (isEmpty && !isError)
     }
     
     /// Computed property to compute the filtered array for articles.
