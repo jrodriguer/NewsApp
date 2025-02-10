@@ -13,13 +13,14 @@ protocol ArticleViewModelProtocol: ObservableObject {
     var isEmpty: Bool { get }
     var isError: Bool { get }
     var error: String { get }
-    func loadFirstPage() async
-    func shouldShowLoader() -> Bool
     var filteredArticles: [ArticleListItemViewModel] { get }
+    func loadFirstPage()
+    func requestMoreItemsIfNeeded(for index: Int)
+    func shouldShowLoader() -> Bool
 }
 
 final class ArticleViewModel: ArticleViewModelProtocol {
-    
+
     @Published var articles: [ArticleListItemViewModel]
     @Published var searchText: String
     @Published var isError: Bool
@@ -27,9 +28,13 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     
     // FIXME: Clean flags.
     var isEmpty: Bool { return articles.isEmpty }
-    var isSearching: Bool { return !searchText.isEmpty }
 
     private let articleListUseCase: ArticleListUseCase!
+    
+    private let articlesFromEndThreshold: Int
+    private var totalArticlesAvailable: Int?
+    private var articlesLoadedCount: Int?
+    private var page: Int
     
     init(useCase: ArticleListUseCase) {
         self.articleListUseCase = useCase
@@ -37,50 +42,57 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         self.searchText = ""
         self.isError = false
         self.error = ""
+        
+        self.articlesFromEndThreshold = 15
+        self.page = 0
     }
     
     func shouldShowLoader() -> Bool {
         return (isEmpty && !isError)
     }
     
-    /// Fetches articles and catches error if any
-    /// - Parameter category: category case
-    @MainActor func loadFirstPage() async {
-        // FIXME: Infinite scrolling.
-        do {
-            await self.articleListUseCase.reset()
-            
-            let newArticles = try await self.articleListUseCase.fetchArticleList(itemsPerPage: 10, page: 1)
-            articles.append(contentsOf: transformFetchedArticles(
-                newArticles.filter { $0.title != "[Removed]" }
-            ))
-            isError = false
-        } catch {
-            isError = true
-            
-//            if let networkError = error as? NetworkError {
-//                self.error = networkError.description
-//            } else {
-//                self.error = error.localizedDescription
-//            }
-            
-            handlerError(error)
+    func loadFirstPage() {
+        page = 0
+        fetchArticles(page: page)
+    }
+    
+    func requestMoreItemsIfNeeded(for index: Int) {
+        guard let articlesLoadedCount = articlesLoadedCount,
+              let totalArticlesAvailable = totalArticlesAvailable else {
+            return
+        }
+        
+        if thresholdMeet(articlesLoadedCount, index) &&
+            moreItemsRemaining(articlesLoadedCount, totalArticlesAvailable) {
+            page += 1
+            fetchArticles(page: page)
         }
     }
     
-    func loadNextPage() async {
-        do {
-            let nextArticles = try await self.articleListUseCase.fetchArticleList(itemsPerPage: 10, page: 1)
-            articles.append(contentsOf: transformFetchedArticles(
-//                nextArticles.filter { $0.title != "[Removed]" }
-                cleanArticles(for: nextArticles)
-            ))
+    /// Fetches articles and catches error if any.
+    /// - Parameter category: category case.
+    private func fetchArticles(page: Int) {
+        // FIXME: Infinite scrolling.
+        isLoading = true
+        
+        Task {
+            let response = try await self.articleListUseCase.fetchArticleList(page: page)
+            self.articlesLoadedCount = response.count
+            await MainActor.run {
+                self.articles.append(contentsOf: self.transformFetchedArticles(
+                    response.filter { $0.title != "[Removed]" }
+                ))
+                self.isLoading = true
+                self.isError = false
+            }
+        } catch: { error in
+            self.isError = true
             
-            isError = false
-        } catch {
-            isError = true
-
-            handlerError(error)
+            if let networkError = error as? NetworkError {
+                self.error = networkError.description
+            } else {
+                self.error = error.localizedDescription
+            }
         }
     }
     
@@ -91,12 +103,8 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         return articles.filter { $0.title.lowercased().contains(lowercasedSearchText) }
     }
     
-    private func cleanArticles(for articles: [ArticleDomainListDTO]) -> [ArticleDomainListDTO] {
-        articles.filter { $0.title != "[Removed]" }
-    }
-    
-    /// Maps Articles to ArticleListItemViewModel
-    /// - Parameter articles: array of Articles
+    /// Maps Articles to ArticleListItemViewModel.
+    /// - Parameter articles: array of Articles.
     /// Returns: array of ArticleListItemViewModel
     private func transformFetchedArticles(_ articles: [ArticleDomainListDTO]) -> [ArticleListItemViewModel] {
         return articles.map { article in
@@ -114,13 +122,16 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         }
     }
     
-    private func handlerError(_ error: Error) {
-        Log.error(tag: ArticleViewModel.self, message: "Error: \(error)")
-        
-        if let networkError = error as? NetworkError {
-            self.error = networkError.description
-        } else {
-            self.error = error.localizedDescription
-        }
+    /// Determines whether we have meet the threshold for requesting more items.
+    /// - Parameter articlesLoadedCount.
+    /// - Parameter index.
+    /// Returns: the truth that the difference of all items except the index is equal to the threshold.
+    private func thresholdMeet(_ articlesLoadedCount: Int, _ index: Int) -> Bool {
+        return (articlesLoadedCount - index) == articlesFromEndThreshold
+    }
+    
+    /// Determines whether there is more data to load.
+    private func moreItemsRemaining(_ itemsLoadedCount: Int, _ totalItemsAvailable: Int) -> Bool {
+        return itemsLoadedCount < totalItemsAvailable
     }
 }

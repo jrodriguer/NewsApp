@@ -26,6 +26,7 @@ extension ArticleView_Previews {
         ]
         
         var searchText: String = "The"
+        var isLoading: Bool = false
         var isError: Bool = false
         var error: String = "Error"
         
@@ -42,6 +43,8 @@ extension ArticleView_Previews {
             isEmpty && !isError
         }
         
-        func loadFirstPage() async { }
+        func loadFirstPage() { }
+        
+        func requestMoreItemsIfNeeded(for index: Int) { }
     }
 }
