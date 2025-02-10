@@ -9,7 +9,6 @@ import Foundation
 
 protocol ArticleListUseCase {
     func fetchArticleList(page: Int) async throws -> [ArticleDomainListDTO]
-    func reset() async
 }
 
 final class DefaultArticleListUseCase: ArticleListUseCase {
@@ -22,9 +21,5 @@ final class DefaultArticleListUseCase: ArticleListUseCase {
     
     func fetchArticleList(page: Int) async throws -> [ArticleDomainListDTO] {
         try await repository.fetchArticleList(page: page)
-    }
-    
-    func reset() async {
-        await pagingData.reset()
     }
 }
