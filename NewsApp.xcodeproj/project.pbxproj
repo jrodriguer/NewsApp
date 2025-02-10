@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A112E3F2D5843B90092A479 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A112E3E2D5843B90092A479 /* Task.swift */; };
 		8A1DAC262B8E3C6F00259AD3 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAC252B8E3C6F00259AD3 /* FavoritesViewModel.swift */; };
 		8A2CE75F2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2CE75E2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift */; };
 		8A2CE7612C85C7B600B762D0 /* ArticleDomainListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2CE7602C85C7B600B762D0 /* ArticleDomainListDTO.swift */; };
@@ -94,6 +95,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A112E3E2D5843B90092A479 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		8A165CF62CD242220058C247 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		8A1DAC252B8E3C6F00259AD3 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		8A2CE75E2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -160,7 +162,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8A459D922D563A7200FF36BE /* Actors */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Actors; sourceTree = "<group>"; };
 		8A7877CF2D2D865A00554DA6 /* NewsAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NewsAppTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -345,6 +346,7 @@
 				8AA1BF582D284DF100071810 /* Text.swift */,
 				8AA1BF442D284DF100071810 /* Color.swift */,
 				8AA1BF502D284DF100071810 /* Font.swift */,
+				8A112E3E2D5843B90092A479 /* Task.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -467,7 +469,6 @@
 			isa = PBXGroup;
 			children = (
 				8A2CE7652C85D35C00B762D0 /* ArticleListUseCase.swift */,
-				8A459D922D563A7200FF36BE /* Actors */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -487,9 +488,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				8A459D922D563A7200FF36BE /* Actors */,
 			);
 			name = NewsApp;
 			packageProductDependencies = (
@@ -629,6 +627,7 @@
 				8A2CE7612C85C7B600B762D0 /* ArticleDomainListDTO.swift in Sources */,
 				8AB5F1642C7791DC00F41010 /* ArticlesModule.swift in Sources */,
 				8AB07D162C077BB7008237C0 /* Category.swift in Sources */,
+				8A112E3F2D5843B90092A479 /* Task.swift in Sources */,
 				8A4FC96F2CA77E7A00B47BBC /* NetworkManager.swift in Sources */,
 				8A2CE7662C85D35C00B762D0 /* ArticleListUseCase.swift in Sources */,
 				8A8C18652B7285A3008E3C8C /* ArticleViewModel.swift in Sources */,
