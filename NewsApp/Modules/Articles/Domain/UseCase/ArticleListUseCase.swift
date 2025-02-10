@@ -15,7 +15,6 @@ protocol ArticleListUseCase {
 final class DefaultArticleListUseCase: ArticleListUseCase {
     
     private let repository: ArticleListRepository
-    private let pagingData = PagingData(itemsPerPage: 10, maxPageLimit: 5)
     
     init(repository: ArticleListRepository) {
         self.repository = repository
