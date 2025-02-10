@@ -64,6 +64,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         
         if thresholdMeet(articlesLoadedCount, index) &&
             moreItemsRemaining(articlesLoadedCount, totalArticlesAvailable) {
+            Log.debug(tag: ArticleViewModel.self, message: "Index: \(index), requesting more items...")
             page += 1
             fetchArticles(page: page)
         }
@@ -73,7 +74,6 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     /// - Parameter category: category case.
     private func fetchArticles(page: Int) {
         // FIXME: Infinite scrolling.
-        isLoading = true
         
         Task {
             let response = try await self.articleListUseCase.fetchArticleList(page: page)
@@ -82,7 +82,6 @@ final class ArticleViewModel: ArticleViewModelProtocol {
                 self.articles.append(contentsOf: self.transformFetchedArticles(
                     response.filter { $0.title != "[Removed]" }
                 ))
-                self.isLoading = true
                 self.isError = false
             }
         } catch: { error in
