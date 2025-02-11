@@ -41,7 +41,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     init(useCase: ArticleListUseCase) {
         self.articleListUseCase = useCase
         self.articlesFromEndThreshold = 15
-        self.page = 0
+        self.page = 1
         self.articles = []
         self.searchText = ""
         self.isError = false
@@ -53,7 +53,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     }
     
     func loadFirstPage() {
-        page = 0
+        page = 1
         Task { @MainActor in
             await fetchArticles(page: page)
         }
