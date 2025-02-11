@@ -139,7 +139,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                                                value: -$0.frame(in: .named("scroll")).origin.y)
                     })
                     .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }
-                }.coordinateSpace(name: "scroll")
+                }.coordinateSpace(.named("scroll"))
 
                 if showFab {
                     Button {
@@ -161,7 +161,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     }
     
     private func scrollToTop(_ proxy: ScrollViewProxy) {
-        if let firstArticle = viewModel.filteredArticles.first {
+        if let firstArticle = viewModel.articles.first {
             scrollToID = firstArticle.id
             DispatchQueue.main.async {
                 withAnimation {
@@ -174,6 +174,10 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     private func handleScrollOffset(_ newOffset: CGFloat) {
         withAnimation {
             showFab = newOffset > 168 // random value to compare
+        }
+        
+        if newOffset > 500 && !viewModel.shouldShowLoader() {
+            viewModel.requestMoreItemsIfNeeded()
         }
     }
 }

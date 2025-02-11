@@ -15,7 +15,7 @@ protocol ArticleViewModelProtocol: ObservableObject {
     var error: String { get }
     var filteredArticles: [ArticleListItemViewModel] { get }
     func loadFirstPage()
-    func requestMoreItemsIfNeeded(for index: Int)
+    func requestMoreItemsIfNeeded()
     func shouldShowLoader() -> Bool
 }
 
@@ -59,15 +59,14 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         }
     }
     
-    func requestMoreItemsIfNeeded(for index: Int) {
+    func requestMoreItemsIfNeeded() {
         guard let articlesLoadedCount = articlesLoadedCount,
               let totalArticlesAvailable = totalArticlesAvailable else {
+            Log.debug(tag: ArticleViewModel.self, message: "Not enough data to determine if more items should be requested.")
             return
         }
-        
-        if thresholdMeet(articlesLoadedCount, index) &&
-            moreItemsRemaining(articlesLoadedCount, totalArticlesAvailable) {
-            Log.debug(tag: ArticleViewModel.self, message: "Index: \(index), requesting more items...")
+                        
+        if moreItemsRemaining(articlesLoadedCount, totalArticlesAvailable) {
             page += 1
             Task { @MainActor in
                 await fetchArticles(page: page)
@@ -89,7 +88,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
             
             articles.append(contentsOf: newArticles)
             articlesLoadedCount = articles.count
-
+            
             isError = false
         } catch {
             isError = true
@@ -103,6 +102,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         
     }
     
+    // TODO: Move from current view model, working on articles arrayÏ.
     /// Computed property to compute the filtered array for articles.
     var filteredArticles: [ArticleListItemViewModel] {
         guard !searchText.isEmpty else { return articles }
@@ -133,12 +133,14 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     /// - Parameter articlesLoadedCount.
     /// - Parameter index.
     /// Returns: the truth that the difference of all items except the index is equal to the threshold.
-    private func thresholdMeet(_ articlesLoadedCount: Int, _ index: Int) -> Bool {
-        return (articlesLoadedCount - index) == articlesFromEndThreshold
-    }
+//    private func thresholdMeet(_ articlesLoadedCount: Int, _ index: Int) -> Bool {
+//        Log.debug(tag: ArticleViewModel.self, message: "\(articlesLoadedCount - index == articlesFromEndThreshold ? "Threshold met!" : "Threshold not met!")")
+//        return (articlesLoadedCount - index) == articlesFromEndThreshold
+//    }
     
     /// Determines whether there is more data to load.
     private func moreItemsRemaining(_ itemsLoadedCount: Int, _ totalItemsAvailable: Int) -> Bool {
+        Log.debug(tag: ArticleViewModel.self, message: "More items remaining!")
         return itemsLoadedCount < totalItemsAvailable
     }
 }

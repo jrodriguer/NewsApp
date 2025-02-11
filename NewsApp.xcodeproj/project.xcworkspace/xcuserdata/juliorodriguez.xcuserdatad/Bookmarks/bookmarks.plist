@@ -52,6 +52,156 @@
 			<key>type</key>
 			<string>batch-find-query</string>
 		</dict>
+		<dict>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>destination</key>
+					<dict>
+						<key>location-parameters</key>
+						<dict>
+							<key>EndingColumnNumber</key>
+							<string>0</string>
+							<key>EndingLineNumber</key>
+							<string>145</string>
+							<key>StartingColumnNumber</key>
+							<string>0</string>
+							<key>StartingLineNumber</key>
+							<string>144</string>
+							<key>Timestamp</key>
+							<string>760982878.9411891</string>
+						</dict>
+						<key>rebasable-url</key>
+						<dict>
+							<key>base</key>
+							<string>workspace</string>
+							<key>payload</key>
+							<dict>
+								<key>relative-path</key>
+								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleView.swift</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>text-context</key>
+					<dict>
+						<key>focused</key>
+						<string>                }.coordinateSpace(.named("scroll"))
+</string>
+						<key>leading</key>
+						<string>                    })
+                    .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }
+</string>
+						<key>trailing</key>
+						<string>
+                if showFab {
+                    Button {
+</string>
+					</dict>
+					<key>title</key>
+					<string>Coordinate space &amp; GeometryReader</string>
+					<key>type</key>
+					<string>bookmark</string>
+				</dict>
+				<dict>
+					<key>destination</key>
+					<dict>
+						<key>location-parameters</key>
+						<dict>
+							<key>EndingColumnNumber</key>
+							<string>0</string>
+							<key>EndingLineNumber</key>
+							<string>144</string>
+							<key>StartingColumnNumber</key>
+							<string>0</string>
+							<key>StartingLineNumber</key>
+							<string>143</string>
+							<key>Timestamp</key>
+							<string>760982878.941197</string>
+						</dict>
+						<key>rebasable-url</key>
+						<dict>
+							<key>base</key>
+							<string>workspace</string>
+							<key>payload</key>
+							<dict>
+								<key>relative-path</key>
+								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleView.swift</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>text-context</key>
+					<dict>
+						<key>focused</key>
+						<string>                    .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }
+</string>
+						<key>leading</key>
+						<string>                                               value: -$0.frame(in: .named("scroll")).origin.y)
+                    })
+</string>
+						<key>trailing</key>
+						<string>                }.coordinateSpace(.named("scroll"))
+
+                if showFab {
+</string>
+					</dict>
+					<key>title</key>
+					<string>Listens for ViewOffsetKey changes and triggers handler</string>
+					<key>type</key>
+					<string>bookmark</string>
+				</dict>
+				<dict>
+					<key>destination</key>
+					<dict>
+						<key>location-parameters</key>
+						<dict>
+							<key>EndingColumnNumber</key>
+							<string>0</string>
+							<key>EndingLineNumber</key>
+							<string>188</string>
+							<key>StartingColumnNumber</key>
+							<string>0</string>
+							<key>StartingLineNumber</key>
+							<string>187</string>
+							<key>Timestamp</key>
+							<string>760982878.941161</string>
+						</dict>
+						<key>rebasable-url</key>
+						<dict>
+							<key>base</key>
+							<string>workspace</string>
+							<key>payload</key>
+							<dict>
+								<key>relative-path</key>
+								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleView.swift</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>text-context</key>
+					<dict>
+						<key>focused</key>
+						<string>struct ViewOffsetKey: PreferenceKey {
+</string>
+						<key>leading</key>
+						<string>}
+
+</string>
+						<key>trailing</key>
+						<string>    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -&gt; Value) {
+</string>
+					</dict>
+					<key>title</key>
+					<string>Stores the offset value as a view preference</string>
+					<key>type</key>
+					<string>bookmark</string>
+				</dict>
+			</array>
+			<key>title</key>
+			<string>Scroll tracking pattern</string>
+			<key>type</key>
+			<string>group</string>
+		</dict>
 	</array>
 </dict>
 </plist>
