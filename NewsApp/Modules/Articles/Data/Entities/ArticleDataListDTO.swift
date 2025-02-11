@@ -34,18 +34,22 @@ struct ArticleDataListDTO: Decodable {
     }
 }
 
-extension ArticleDataListDTO {
-    func toDomain() -> ArticleDomainListDTO {
-        .init(articleId: UUID(),
-              source: source.name,
-              author: author,
-              title: title,
-              description: description,
-              url: url,
-              publishedAt: publishedAt,
-              content: content,
-              urlToImage: urlToImage
-        )
+extension ArticlePageDataListDTO {
+    func toDomain() -> [ArticleDomainListDTO] {
+        articles.map { article in
+            ArticleDomainListDTO(
+                articleId: UUID(),
+                totalResults: totalResults,
+                source: article.source.name,
+                author: article.author,
+                title: article.title,
+                description: article.description,
+                url: article.url,
+                publishedAt: article.publishedAt,
+                content: article.content,
+                urlToImage: article.urlToImage
+            )
+        }
     }
 }
 

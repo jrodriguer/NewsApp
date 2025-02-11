@@ -23,28 +23,29 @@ final class ArticleViewModel: ArticleViewModelProtocol {
 
     @Published var articles: [ArticleListItemViewModel]
     @Published var searchText: String
+    
     @Published var isError: Bool
     @Published var error: String
     
     // FIXME: Clean flags.
     var isEmpty: Bool { return articles.isEmpty }
-
-    private let articleListUseCase: ArticleListUseCase!
     
     private let articlesFromEndThreshold: Int
+    
     private var totalArticlesAvailable: Int?
     private var articlesLoadedCount: Int?
     private var page: Int
     
+    private let articleListUseCase: ArticleListUseCase!
+    
     init(useCase: ArticleListUseCase) {
         self.articleListUseCase = useCase
+        self.articlesFromEndThreshold = 15
+        self.page = 0
         self.articles = []
         self.searchText = ""
         self.isError = false
         self.error = ""
-        
-        self.articlesFromEndThreshold = 15
-        self.page = 0
     }
     
     func shouldShowLoader() -> Bool {
@@ -53,7 +54,9 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     
     func loadFirstPage() {
         page = 0
-        fetchArticles(page: page)
+        Task { @MainActor in
+            await fetchArticles(page: page)
+        }
     }
     
     func requestMoreItemsIfNeeded(for index: Int) {
@@ -66,26 +69,30 @@ final class ArticleViewModel: ArticleViewModelProtocol {
             moreItemsRemaining(articlesLoadedCount, totalArticlesAvailable) {
             Log.debug(tag: ArticleViewModel.self, message: "Index: \(index), requesting more items...")
             page += 1
-            fetchArticles(page: page)
+            Task { @MainActor in
+                await fetchArticles(page: page)
+            }
         }
     }
     
     /// Fetches articles and catches error if any.
-    /// - Parameter category: category case.
-    private func fetchArticles(page: Int) {
+    /// - Parameter page.
+    @MainActor private func fetchArticles(page: Int) async {
+        
         // FIXME: Infinite scrolling.
         
-        Task {
-            let response = try await self.articleListUseCase.fetchArticleList(page: page)
-            self.articlesLoadedCount = response.count
-            await MainActor.run {
-                self.articles.append(contentsOf: self.transformFetchedArticles(
-                    response.filter { $0.title != "[Removed]" }
-                ))
-                self.isError = false
-            }
-        } catch: { error in
-            self.isError = true
+        do {
+            let response = try await articleListUseCase.fetchArticleList(page: page)
+            totalArticlesAvailable = response.map { $0.totalResults }.first
+            let validatedResponse = response.filter { $0.title != "[Removed]" }
+            let newArticles = transformFetchedArticles(validatedResponse)
+            
+            articles.append(contentsOf: newArticles)
+            articlesLoadedCount = articles.count
+
+            isError = false
+        } catch {
+            isError = true
             
             if let networkError = error as? NetworkError {
                 self.error = networkError.description
@@ -93,6 +100,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
                 self.error = error.localizedDescription
             }
         }
+        
     }
     
     /// Computed property to compute the filtered array for articles.

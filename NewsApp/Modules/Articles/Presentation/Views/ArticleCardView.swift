@@ -34,6 +34,8 @@ struct ArticleCardView: View {
                         favorites.toggle(article)
                     } label: {
                         Image(systemName: favorites.contains(article) ? "bookmark.fill" : "bookmark")
+                            .foregroundStyle(.primary)
+                            .accessibilityLabel("Bookmark this article")
                     }
                 }
                 .padding(.trailing, Spacing.small)

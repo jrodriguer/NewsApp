@@ -24,6 +24,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
+        viewModel.loadFirstPage()
     }
     
     var body: some View {
@@ -34,19 +35,12 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 case .listView: listSection
                 }
             }
-            .searchable(text: $viewModel.searchText)
+//            .searchable(text: $viewModel.searchText)
             .toolbar {
                 toolbarItem
             }
             .navigationTitle("News")
         }
-        .task {
-            await fetchArticles()
-        }
-    }
-    
-    private func fetchArticles() async {
-        await viewModel.fetchArticles()
     }
     
     private var toolbarItem: some ToolbarContent {
@@ -61,7 +55,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 .pickerStyle(.menu)
                 
                 sortButtons
-                showFavoritesButton
+                showBookmarksButton
             } label: {
                 Circle()
                     .stroke(Color.primary, lineWidth: 1)
@@ -91,8 +85,8 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
         }
     }
     
-    private var showFavoritesButton: some View {
-        Button(!showFavoritesOnly ? "Favorites only" : "All Articles") {
+    private var showBookmarksButton: some View {
+        Button(!showFavoritesOnly ? "Bookmarks only" : "All Articles") {
             showFavoritesOnly.toggle()
         }
     }
@@ -100,25 +94,22 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     private var cardSection: some View {
         ScrollView {
             VStack {
-                ForEach(viewModel.filteredArticles) { article in
-                    NavigationLink(value: article) {
-                        if article == viewModel.filteredArticles.last {
-                            ArticleCardView(article: article)
-                                .environmentObject(favorites)
-                                .task {
-                                    await fetchArticles()
-                                }
-                        } else {
+                if viewModel.shouldShowLoader() {
+                    ProgressView()
+                } else {
+                    ForEach(viewModel.articles) {article in
+                        NavigationLink(value: article) {
                             ArticleCardView(article: article)
                                 .environmentObject(favorites)
                         }
+                        .accessibilityIdentifier("NavigationLink_\(article.id)")
+                        
                     }
-                    .accessibilityIdentifier("NavigationLink_\(article.id)")
+                    .navigationDestination(for: ArticleListItemViewModel.self, destination: { article in
+                        ArticleDetailView(article: article)
+                            .environmentObject(favorites)
+                    })
                 }
-                .navigationDestination(for: ArticleListItemViewModel.self, destination: { article in
-                    ArticleDetailView(article: article)
-                        .environmentObject(favorites)
-                })
             }
         }
     }
@@ -128,12 +119,10 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
             ZStack(alignment: .bottomTrailing) {
                 ScrollView {
                     VStack {
-                        if !viewModel.searchText.isEmpty &&
-                            viewModel.filteredArticles.isEmpty {
-                            Text("No articles found")
-                                .foregroundColor(.secondary)
+                        if viewModel.shouldShowLoader() {
+                            ProgressView()
                         } else {
-                            ForEach(viewModel.filteredArticles) { article in
+                            ForEach(viewModel.articles) { article in
                                 NavigationLink(destination:
                                                 ArticleDetailView(article: article)
                                     .environmentObject(favorites)
