@@ -1,5 +1,5 @@
 //
-//  ImageView.swift
+//  ImageContainer.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 9/12/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageView: View {
+struct ImageContainer: View {
     var image: String?
     
     var body: some View {
@@ -20,22 +20,32 @@ struct ImageView: View {
                     .aspectRatio(contentMode: .fit)
                     .clipped()
             case .failure:
-                WrongImageView()
+                wrongImage
             case .empty:
                 if image == nil {
-                    WrongImageView()
+                    wrongImage
                 } else {
                     Spacer()
                     ProgressView()
                     Spacer()
                 }
             @unknown default:
-                WrongImageView()
+                wrongImage
             }
         }
+    }
+
+    private var wrongImage: some View {
+        Image(systemName: "photo.circle.fill")
+            .resizable()
+            .foregroundStyle(.secondary)
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 200, height: 100)
+            .padding(.vertical, Spacing.medium)
+            .opacity(0.6)
     }
 }
 
 #Preview {
-    ImageView(image: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2154325960.jpg?c=16x9&q=w_800,c_fill")
+    ImageContainer(image: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2154325960.jpg?c=16x9&q=w_800,c_fill")
 }
