@@ -63,13 +63,13 @@
 							<key>EndingColumnNumber</key>
 							<string>0</string>
 							<key>EndingLineNumber</key>
-							<string>145</string>
+							<string>27</string>
 							<key>StartingColumnNumber</key>
 							<string>0</string>
 							<key>StartingLineNumber</key>
-							<string>144</string>
+							<string>26</string>
 							<key>Timestamp</key>
-							<string>760982878.9411891</string>
+							<string>760987932.549045</string>
 						</dict>
 						<key>rebasable-url</key>
 						<dict>
@@ -78,23 +78,23 @@
 							<key>payload</key>
 							<dict>
 								<key>relative-path</key>
-								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleView.swift</string>
+								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleScrollContainer.swift</string>
 							</dict>
 						</dict>
 					</dict>
 					<key>text-context</key>
 					<dict>
 						<key>focused</key>
-						<string>                }.coordinateSpace(.named("scroll"))
+						<string>                .coordinateSpace(.named("scroll"))
 </string>
 						<key>leading</key>
-						<string>                    })
-                    .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }
+						<string>                        .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }
+                }
 </string>
 						<key>trailing</key>
-						<string>
-                if showFab {
-                    Button {
+						<string>                
+                fabButton(scrollProxy: scrollProxy)
+            }
 </string>
 					</dict>
 					<key>title</key>
@@ -110,13 +110,13 @@
 							<key>EndingColumnNumber</key>
 							<string>0</string>
 							<key>EndingLineNumber</key>
-							<string>144</string>
+							<string>21</string>
 							<key>StartingColumnNumber</key>
-							<string>0</string>
+							<string>52</string>
 							<key>StartingLineNumber</key>
-							<string>143</string>
+							<string>20</string>
 							<key>Timestamp</key>
-							<string>760982878.941197</string>
+							<string>760987988.517218</string>
 						</dict>
 						<key>rebasable-url</key>
 						<dict>
@@ -125,27 +125,27 @@
 							<key>payload</key>
 							<dict>
 								<key>relative-path</key>
-								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleView.swift</string>
+								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleScrollContainer.swift</string>
 							</dict>
 						</dict>
 					</dict>
 					<key>text-context</key>
 					<dict>
 						<key>focused</key>
-						<string>                    .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }
+						<string>
 </string>
 						<key>leading</key>
-						<string>                                               value: -$0.frame(in: .named("scroll")).origin.y)
-                    })
-</string>
+						<string>                ScrollView {
+                    scrollContent
+                        .background(GeometryReader {</string>
 						<key>trailing</key>
-						<string>                }.coordinateSpace(.named("scroll"))
-
-                if showFab {
+						<string>                            Color.clear.preference(key: ViewOffsetKey.self,
+                                                   value: -$0.frame(in: .named("scroll")).origin.y)
+                        })
 </string>
 					</dict>
 					<key>title</key>
-					<string>Listens for ViewOffsetKey changes and triggers handler</string>
+					<string>Stores the offset value as a view preference</string>
 					<key>type</key>
 					<string>bookmark</string>
 				</dict>
@@ -157,13 +157,13 @@
 							<key>EndingColumnNumber</key>
 							<string>0</string>
 							<key>EndingLineNumber</key>
-							<string>188</string>
+							<string>25</string>
 							<key>StartingColumnNumber</key>
-							<string>0</string>
+							<string>90</string>
 							<key>StartingLineNumber</key>
-							<string>187</string>
+							<string>24</string>
 							<key>Timestamp</key>
-							<string>760982878.941161</string>
+							<string>760987904.720234</string>
 						</dict>
 						<key>rebasable-url</key>
 						<dict>
@@ -172,27 +172,27 @@
 							<key>payload</key>
 							<dict>
 								<key>relative-path</key>
-								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleView.swift</string>
+								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleScrollContainer.swift</string>
 							</dict>
 						</dict>
 					</dict>
 					<key>text-context</key>
 					<dict>
 						<key>focused</key>
-						<string>struct ViewOffsetKey: PreferenceKey {
+						<string>
 </string>
 						<key>leading</key>
-						<string>}
-
-</string>
+						<string>                                                   value: -$0.frame(in: .named("scroll")).origin.y)
+                        })
+                        .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }</string>
 						<key>trailing</key>
-						<string>    typealias Value = CGFloat
-    static var defaultValue = CGFloat.zero
-    static func reduce(value: inout Value, nextValue: () -&gt; Value) {
+						<string>                }
+                .coordinateSpace(.named("scroll"))
+                
 </string>
 					</dict>
 					<key>title</key>
-					<string>Stores the offset value as a view preference</string>
+					<string>Listens for ViewOffsetKey changes and triggers handler</string>
 					<key>type</key>
 					<string>bookmark</string>
 				</dict>
