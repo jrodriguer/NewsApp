@@ -1,5 +1,5 @@
 //
-//  ArticleView.swift
+//  ArticleTabView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 6/2/24.
@@ -12,12 +12,12 @@ enum ViewOption: String, CaseIterable {
     case listView = "List View"
 }
 
-struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
+struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     @ObservedObject private var viewModel: ViewModel
     
     // FIXME: Wrapper with @ObservedObject, same way.
-    @StateObject private var favorites = FavoritesViewModel<ArticleListItemViewModel>(saveKey: FavoriteKey.articleFavorites)
+    @StateObject private var favorites = BookmarkViewModel<ArticleListItemViewModel>(saveKey: BookmarkKey.articleFavorites)
     
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
@@ -57,7 +57,6 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 .pickerStyle(.menu)
                 
                 sortButtons
-                showBookmarksButton
             } label: {
                 Circle()
                     .stroke(Color.primary, lineWidth: 1)
@@ -84,12 +83,6 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                     $0.publishedStringToDate.timeIntervalSinceNow < $1.publishedStringToDate.timeIntervalSinceNow
                 }
             }
-        }
-    }
-    
-    private var showBookmarksButton: some View {
-        Button(!showFavoritesOnly ? "Bookmarks only" : "All Articles") {
-            showFavoritesOnly.toggle()
         }
     }
     
@@ -125,7 +118,7 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     }
     
     private func handleScrollOffset(_ newOffset: CGFloat) {
-        // random value to compare
+        // random values to compare
         
         withAnimation {
             showFab = newOffset > 200
@@ -142,11 +135,5 @@ struct ViewOffsetKey: PreferenceKey {
     static var defaultValue = CGFloat.zero
     static func reduce(value: inout Value, nextValue: () -> Value) {
         value += nextValue()
-    }
-}
-
-struct ArticleView_Previews: PreviewProvider {
-    static var previews: some View {
-        ArticleView(viewModel: ArticleView_Previews.getViewModel())
     }
 }

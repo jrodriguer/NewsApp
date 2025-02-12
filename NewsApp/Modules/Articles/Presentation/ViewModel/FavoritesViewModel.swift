@@ -1,5 +1,5 @@
 //
-//  FavoritesViewModel.swift
+//  BookmarkViewModel.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 27/2/24.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum FavoriteKey: String {
+enum BookmarkKey: String {
     case articleFavorites
 }
 
-protocol FavoritesViewModelProtocol: ObservableObject {
+protocol BookmarkViewModelProtocol: ObservableObject {
     associatedtype T: Identifiable & Codable
     var favorites: [T] { get set }
     func contains(_ value: T) -> Bool
@@ -20,14 +20,14 @@ protocol FavoritesViewModelProtocol: ObservableObject {
     func filtered(from allItems: [T], showFavoritesOnly: Bool) -> [T]
 }
 
-class FavoritesViewModel<T: Identifiable & Codable>: FavoritesViewModelProtocol {
+class BookmarkViewModel<T: Identifiable & Codable>: BookmarkViewModelProtocol {
     
     @Published var favorites: [T] = []
     
-    private var saveKey: FavoriteKey
+    private var saveKey: BookmarkKey
     private var userDefaultsManager: any UserDefaultsServiceProtocol.Type
     
-    init(saveKey: FavoriteKey, userDefaultsManager: any UserDefaultsServiceProtocol.Type = UserDefaultsService<T>.self) {
+    init(saveKey: BookmarkKey, userDefaultsManager: any UserDefaultsServiceProtocol.Type = UserDefaultsService<T>.self) {
         self.saveKey = saveKey
         self.userDefaultsManager = userDefaultsManager
         self.favorites = loadFavorites()

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FavoriteView<ViewModel>: View where ViewModel: FavoritesViewModelProtocol {
+struct BookmarkTabView<ViewModel>: View where ViewModel: BookmarkViewModelProtocol {
     
     @ObservedObject private var viewModel: ViewModel
     

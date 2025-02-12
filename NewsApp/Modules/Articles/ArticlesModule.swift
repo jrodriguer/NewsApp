@@ -16,24 +16,28 @@ final class ArticlesModule {
         self.apiDataTransferService = apiDataTransferService
     }
     
-    func generateHomeView() -> HomeView {
-        return HomeView(articleView: generateArticleView(), favoriteView: generateFavoriteView())
+    func generateTabContentView() -> TabContentView {
+        return TabContentView(articleTabView: generateArticleTabView(), searchTabView: generateSearchTabView(), bookmarkTabView: generateBookmarkTabView())
     }
     
-    private func generateArticleView() -> ArticleView<ArticleViewModel> {
-        return ArticleView(viewModel: generateArticleViewModel())
+    private func generateArticleTabView() -> ArticleTabView<ArticleViewModel> {
+        return ArticleTabView(viewModel: generateArticleViewModel())
     }
     
-    private func generateFavoriteView() -> FavoriteView<FavoritesViewModel<ArticleListItemViewModel>> {
-        return FavoriteView(viewModel: generateFavoriteViewModel())
+    private func generateSearchTabView() -> SearchTabView {
+        return SearchTabView()
+    }
+    
+    private func generateBookmarkTabView() -> BookmarkTabView<BookmarkViewModel<ArticleListItemViewModel>> {
+        return BookmarkTabView(viewModel: generateBookmarkViewModel())
     }
     
     private func generateArticleViewModel() -> ArticleViewModel {
         ArticleViewModel(useCase: generateArticleListUseCase())
     }
     
-    private func generateFavoriteViewModel() -> FavoritesViewModel<ArticleListItemViewModel> {
-        FavoritesViewModel(saveKey: FavoriteKey.articleFavorites)
+    private func generateBookmarkViewModel() -> BookmarkViewModel<ArticleListItemViewModel> {
+        BookmarkViewModel(saveKey: BookmarkKey.articleFavorites)
     }
     
     private func generateArticleListUseCase() -> ArticleListUseCase {

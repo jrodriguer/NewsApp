@@ -9,21 +9,21 @@ import Foundation
 
 protocol UserDefaultsServiceProtocol {
     associatedtype T: Codable
-    static func saveItem(_ saveKey: FavoriteKey, _ data: Data)
-    static func removeItem(_ saveKey: FavoriteKey)
-    static func getItem(_ saveKey: FavoriteKey) -> Data?
+    static func saveItem(_ saveKey: BookmarkKey, _ data: Data)
+    static func removeItem(_ saveKey: BookmarkKey)
+    static func getItem(_ saveKey: BookmarkKey) -> Data?
 }
 
 class UserDefaultsService<T: Codable>: UserDefaultsServiceProtocol {
-    static func saveItem(_ saveKey: FavoriteKey, _ data: Data) {
+    static func saveItem(_ saveKey: BookmarkKey, _ data: Data) {
         UserDefaults.standard.set(data, forKey: saveKey.rawValue)
     }
     
-    static func removeItem(_ saveKey: FavoriteKey) {
+    static func removeItem(_ saveKey: BookmarkKey) {
         UserDefaults.standard.removeObject(forKey: saveKey.rawValue)
     }
 
-    static func getItem(_ saveKey: FavoriteKey) -> Data? {
+    static func getItem(_ saveKey: BookmarkKey) -> Data? {
         return UserDefaults.standard.data(forKey: saveKey.rawValue)
     }
 }
