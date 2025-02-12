@@ -34,6 +34,9 @@ struct ScrollContainer<Content: View>: View {
     @ViewBuilder
     private var scrollContent: some View {
         VStack {
+//            if viewModel.shouldShowLoader() {
+//                ProgressView()
+//            } else {
             ForEach(articles) { article in
                 content(article)
                     .id(article.id)

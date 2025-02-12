@@ -25,26 +25,16 @@ extension ArticleView_Previews {
             )
         ]
         
-        var searchText: String = "The"
         var isLoading: Bool = false
         var isError: Bool = false
         var error: String = "Error"
-        
-        // MARK: - Computed Properties
         var isEmpty: Bool { articles.isEmpty }
-        
-        var filteredArticles: [ArticleListItemViewModel] {
-            guard !searchText.isEmpty else { return articles }
-            return articles.filter { $0.title.lowercased().contains(searchText.lowercased()) }
-        }
-        
-        // MARK: - Protocol Methods
         func shouldShowLoader() -> Bool {
             isEmpty && !isError
         }
         
         func loadFirstPage() { }
         
-        func requestMoreItemsIfNeeded(for index: Int) { }
+        func requestMoreItemsIfNeeded() { }
     }
 }

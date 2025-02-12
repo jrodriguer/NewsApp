@@ -15,7 +15,10 @@ enum ViewOption: String, CaseIterable {
 struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     @ObservedObject private var viewModel: ViewModel
+    
+    // FIXME: Wrapper with @ObservedObject, same way.
     @StateObject private var favorites = FavoritesViewModel<ArticleListItemViewModel>(saveKey: FavoriteKey.articleFavorites)
+    
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
@@ -35,7 +38,6 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
                 case .listView: listSection
                 }
             }
-//            .searchable(text: $viewModel.searchText)
             .toolbar {
                 toolbarItem
             }
@@ -92,88 +94,41 @@ struct ArticleView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     }
     
     private var cardSection: some View {
-        ScrollView {
-            VStack {
-                if viewModel.shouldShowLoader() {
-                    ProgressView()
-                } else {
-                    ForEach(viewModel.articles) {article in
-                        NavigationLink(value: article) {
-                            ArticleCardView(article: article)
-                                .environmentObject(favorites)
-                        }
-                        .accessibilityIdentifier("NavigationLink_\(article.id)")
-                        
-                    }
-                    .navigationDestination(for: ArticleListItemViewModel.self, destination: { article in
-                        ArticleDetailView(article: article)
-                            .environmentObject(favorites)
-                    })
+        ScrollContainer(
+            articles: viewModel.articles,
+            content: { article in
+                NavigationLink(value: article) {
+                    ArticleCardView(article: article)
+                        .environmentObject(favorites)
                 }
-            }
-        }
+                .accessibilityIdentifier("NavigationLink_\(article.id)")
+            },
+            showFab: $showFab,
+            handleScrollOffset: handleScrollOffset
+        )
     }
     
     private var listSection: some View {
-        ScrollViewReader { scrollProxy in
-            ZStack(alignment: .bottomTrailing) {
-                ScrollView {
-                    VStack {
-                        if viewModel.shouldShowLoader() {
-                            ProgressView()
-                        } else {
-                            ForEach(viewModel.articles) { article in
-                                NavigationLink(destination:
-                                                ArticleDetailView(article: article)
-                                    .environmentObject(favorites)
-                                ) {
-                                    ArticleRowView(article: article)
-                                        .environmentObject(favorites)
-                                        .id(article.id)
-                                }
-                                .accessibilityIdentifier("NavigationLink_\(article.id)")
-                            }
-                        }
-                    }.background(GeometryReader {
-                        Color.clear.preference(key: ViewOffsetKey.self,
-                                               value: -$0.frame(in: .named("scroll")).origin.y)
-                    })
-                    .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }
-                }.coordinateSpace(.named("scroll"))
-
-                if showFab {
-                    Button {
-                        scrollToTop(scrollProxy)
-                    } label: {
-                        Image(systemName: "chevron.up")
-                            .font(.largeTitle)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 55, height: 55, alignment: .center)
+        ScrollContainer(
+            articles: viewModel.articles,
+            content: { article in
+                NavigationLink(destination: ArticleDetailView(article: article)
+                    .environmentObject(favorites)) {
+                        ArticleRowView(article: article)
+                            .environmentObject(favorites)
                     }
-                    .foregroundStyle(Color.white)
-                    .background(.secondary.opacity(0.6))
-                    .cornerRadius(55/2)
-                    .padding()
-                    .accessibilityIdentifier("FabButton")
-                }
-            }
-        }
-    }
-    
-    private func scrollToTop(_ proxy: ScrollViewProxy) {
-        if let firstArticle = viewModel.articles.first {
-            scrollToID = firstArticle.id
-            DispatchQueue.main.async {
-                withAnimation {
-                    proxy.scrollTo(firstArticle.id, anchor: .top)
-                }
-            }
-        }
+                    .accessibilityIdentifier("NavigationLink_\(article.id)")
+            },
+            showFab: $showFab,
+            handleScrollOffset: handleScrollOffset
+        )
     }
     
     private func handleScrollOffset(_ newOffset: CGFloat) {
+        // random value to compare
+        
         withAnimation {
-            showFab = newOffset > 168 // random value to compare
+            showFab = newOffset > 200
         }
         
         if newOffset > 500 && !viewModel.shouldShowLoader() {
