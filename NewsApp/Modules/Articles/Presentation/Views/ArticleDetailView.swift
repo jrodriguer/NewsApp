@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArticleDetailView: View {
     var article: ArticleListItemViewModel
-    @EnvironmentObject var favorites: FavoritesViewModel<ArticleListItemViewModel>
+    @EnvironmentObject var favorites: BookmarkViewModel<ArticleListItemViewModel>
     
     var body: some View {
         ScrollView {
@@ -41,6 +41,7 @@ struct ArticleDetailView: View {
                             .lineLimit(nil)
                     }
                     
+                    // TODO: Apply bookmark in detail anyway.
 //                    HStack {
 //                        Link(destination: URL(string: article.link)!) {
 //                            Image(systemName: "link.circle.fill")

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArticleCardView: View {
     var article: ArticleListItemViewModel
-    @EnvironmentObject var favorites: FavoritesViewModel<ArticleListItemViewModel>
+    @EnvironmentObject var favorites: BookmarkViewModel<ArticleListItemViewModel>
 
     var body: some View {
         VStack {
