@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScrollContainer<Content: View>: View {
     let articles: [ArticleListItemViewModel]
-    let content: (ArticleListItemViewModel) -> Content
+    @ViewBuilder let content: (ArticleListItemViewModel) -> Content
     @Binding var showFab: Bool
     let handleScrollOffset: (CGFloat) -> Void
     
@@ -31,17 +31,12 @@ struct ScrollContainer<Content: View>: View {
         }
     }
     
-    @ViewBuilder
     private var scrollContent: some View {
         VStack {
-//            if viewModel.shouldShowLoader() {
-//                ProgressView()
-//            } else {
             ForEach(articles) { article in
                 content(article)
                     .id(article.id)
             }
-            
         }
     }
     

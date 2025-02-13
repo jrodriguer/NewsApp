@@ -118,15 +118,23 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
     }
     
     private func handleScrollOffset(_ newOffset: CGFloat) {
-        // random values to compare
-        
         withAnimation {
             showFab = newOffset > 200
         }
         
-        if newOffset > 500 && !viewModel.shouldShowLoader() {
+        let contentHeight = calculateContentHeight()
+        let screenHeight = UIScreen.main.bounds.height
+        
+        if (newOffset + screenHeight) >= contentHeight * 0.95
+            && !viewModel.shouldShowLoader()
+            && !viewModel.isLoading {
             viewModel.requestMoreItemsIfNeeded()
         }
+    }
+    
+    private func calculateContentHeight() -> CGFloat {
+        let estimatedRowHeight = selectedViewOption == .cardView ? 300.0 : 80.0
+        return CGFloat(viewModel.articles.count) * estimatedRowHeight
     }
 }
 
