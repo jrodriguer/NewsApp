@@ -7,45 +7,24 @@
 
 import Foundation
 
-protocol ArticleViewModelProtocol: ObservableObject {
-    var articles: [ArticleListItemViewModel] { get set }
-    var searchText: String { get set }
-    var isEmpty: Bool { get }
-    var isError: Bool { get }
-    var error: String { get }
-    var filteredArticles: [ArticleListItemViewModel] { get }
-    func loadFirstPage()
-    func requestMoreItemsIfNeeded()
-    func shouldShowLoader() -> Bool
-}
+@MainActor
+class ArticleViewModel: ObservableObject {
 
-final class ArticleViewModel: ArticleViewModelProtocol {
-
-    @Published var articles: [ArticleListItemViewModel]
-    @Published var searchText: String
-    
-    @Published var isError: Bool
-    @Published var error: String
-    
-    // FIXME: Clean flags.
+    @Published var articles: [ArticleListItemViewModel] = []
+    @Published var isLoading = false
+    @Published var isError = false
+    @Published var error = ""
+        
     var isEmpty: Bool { return articles.isEmpty }
-    
-    private let articlesFromEndThreshold: Int
-    
+        
     private var totalArticlesAvailable: Int?
     private var articlesLoadedCount: Int?
-    private var page: Int
+    private var page = 1
     
     private let articleListUseCase: ArticleListUseCase!
     
     init(useCase: ArticleListUseCase) {
         self.articleListUseCase = useCase
-        self.articlesFromEndThreshold = 15
-        self.page = 1
-        self.articles = []
-        self.searchText = ""
-        self.isError = false
-        self.error = ""
     }
     
     func shouldShowLoader() -> Bool {
@@ -54,7 +33,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     
     func loadFirstPage() {
         page = 1
-        Task { @MainActor in
+        Task {
             await fetchArticles(page: page)
         }
     }
@@ -68,7 +47,8 @@ final class ArticleViewModel: ArticleViewModelProtocol {
                         
         if moreItemsRemaining(articlesLoadedCount, totalArticlesAvailable) {
             page += 1
-            Task { @MainActor in
+            Log.debug(tag: ArticleViewModel.self, message: "To fetch more items. Page: \(page)")
+            Task {
                 await fetchArticles(page: page)
             }
         }
@@ -76,10 +56,8 @@ final class ArticleViewModel: ArticleViewModelProtocol {
     
     /// Fetches articles and catches error if any.
     /// - Parameter page.
-    @MainActor private func fetchArticles(page: Int) async {
-        
-        // FIXME: Infinite scrolling.
-        
+    private func fetchArticles(page: Int) async {
+        isLoading = true
         do {
             let response = try await articleListUseCase.fetchArticleList(page: page)
             totalArticlesAvailable = response.map { $0.totalResults }.first
@@ -88,7 +66,7 @@ final class ArticleViewModel: ArticleViewModelProtocol {
             
             articles.append(contentsOf: newArticles)
             articlesLoadedCount = articles.count
-            
+            isLoading = false
             isError = false
         } catch {
             isError = true
@@ -99,15 +77,6 @@ final class ArticleViewModel: ArticleViewModelProtocol {
                 self.error = error.localizedDescription
             }
         }
-        
-    }
-    
-    // TODO: Move from current view model, working on articles arrayÏ.
-    /// Computed property to compute the filtered array for articles.
-    var filteredArticles: [ArticleListItemViewModel] {
-        guard !searchText.isEmpty else { return articles }
-        let lowercasedSearchText = searchText.lowercased()
-        return articles.filter { $0.title.lowercased().contains(lowercasedSearchText) }
     }
     
     /// Maps Articles to ArticleListItemViewModel.
