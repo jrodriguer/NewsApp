@@ -12,7 +12,7 @@ struct TabContentView: View {
     @AppStorage("sidebarCustomization") var customization: TabViewCustomization
     
     let articleTabView: ArticleTabView<ArticleViewModel>
-    let searchTabView: SearchTabView
+    let searchTabView: SearchTabView<ArticleViewModel>
     let bookmarkTabView: BookmarkTabView<BookmarkViewModel<ArticleListItemViewModel>>
     
     var body: some View {

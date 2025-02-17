@@ -7,11 +7,14 @@
 
 import Foundation
 
-@MainActor
 class ArticleSearchViewModel: ObservableObject {
     
     @Published var searchText = ""
     
-    private init() { }
+    private let articleListUseCase: ArticleListUseCase!
+    
+    init(useCase: ArticleListUseCase) {
+        self.articleListUseCase = useCase
+    }
 
 }

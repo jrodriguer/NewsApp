@@ -24,8 +24,8 @@ final class ArticlesModule {
         return ArticleTabView(viewModel: generateArticleViewModel())
     }
     
-    private func generateSearchTabView() -> SearchTabView {
-        return SearchTabView()
+    private func generateSearchTabView() -> SearchTabView<ArticleViewModel> {
+        return SearchTabView(viewModel: generateArticleViewModel())
     }
     
     private func generateBookmarkTabView() -> BookmarkTabView<BookmarkViewModel<ArticleListItemViewModel>> {

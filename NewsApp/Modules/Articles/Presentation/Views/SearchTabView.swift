@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-struct SearchTabView: View {
+struct SearchTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
+    
+    @ObservedObject private var viewModel: ViewModel
+    
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        .navigationTitle("Search")
     }
-}
-
-#Preview {
-    SearchTabView()
 }
