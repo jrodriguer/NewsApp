@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A1DAC262B8E3C6F00259AD3 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAC252B8E3C6F00259AD3 /* FavoritesViewModel.swift */; };
+		8A1DAC262B8E3C6F00259AD3 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAC252B8E3C6F00259AD3 /* BookmarkViewModel.swift */; };
 		8A2CE75F2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2CE75E2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift */; };
 		8A2CE7612C85C7B600B762D0 /* ArticleDomainListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2CE7602C85C7B600B762D0 /* ArticleDomainListDTO.swift */; };
 		8A2CE7662C85D35C00B762D0 /* ArticleListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2CE7652C85D35C00B762D0 /* ArticleListUseCase.swift */; };
@@ -96,7 +96,7 @@
 
 /* Begin PBXFileReference section */
 		8A165CF62CD242220058C247 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		8A1DAC252B8E3C6F00259AD3 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		8A1DAC252B8E3C6F00259AD3 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		8A2CE75E2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListRepositoryProtocol.swift; sourceTree = "<group>"; };
 		8A2CE7602C85C7B600B762D0 /* ArticleDomainListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDomainListDTO.swift; sourceTree = "<group>"; };
 		8A2CE7652C85D35C00B762D0 /* ArticleListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListUseCase.swift; sourceTree = "<group>"; };
@@ -382,7 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				8A8C18642B7285A3008E3C8C /* ArticleViewModel.swift */,
-				8A1DAC252B8E3C6F00259AD3 /* FavoritesViewModel.swift */,
+				8A1DAC252B8E3C6F00259AD3 /* BookmarkViewModel.swift */,
 				8AE9CD002CC66E8E00399F1E /* ArticleListItemViewModel.swift */,
 			);
 			path = ViewModel;
@@ -601,7 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A1DAC262B8E3C6F00259AD3 /* FavoritesViewModel.swift in Sources */,
+				8A1DAC262B8E3C6F00259AD3 /* BookmarkViewModel.swift in Sources */,
 				8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */,
 				8AA1BF772D284DF100071810 /* Font.swift in Sources */,
 				8A66DE922D5BB9D4005AD4AE /* FabButtonView.swift in Sources */,
