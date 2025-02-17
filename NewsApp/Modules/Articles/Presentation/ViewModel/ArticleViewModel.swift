@@ -7,8 +7,18 @@
 
 import Foundation
 
-@MainActor
-class ArticleViewModel: ObservableObject {
+protocol ArticleViewModelProtocol: ObservableObject {
+    var articles: [ArticleListItemViewModel] { get set }
+    var isEmpty: Bool { get }
+    var isLoading: Bool { get }
+    var isError: Bool { get }
+    var error: String { get }
+    func loadFirstPage()
+    func requestMoreItemsIfNeeded()
+    func shouldShowLoader() -> Bool
+}
+
+class ArticleViewModel: ArticleViewModelProtocol {
 
     @Published var articles: [ArticleListItemViewModel] = []
     @Published var isLoading = false
@@ -40,11 +50,12 @@ class ArticleViewModel: ObservableObject {
     
     func requestMoreItemsIfNeeded() {
         guard let articlesLoadedCount = articlesLoadedCount,
-              let totalArticlesAvailable = totalArticlesAvailable else {
-            Log.debug(tag: ArticleViewModel.self, message: "Not enough data to determine if more items should be requested.")
+              let totalArticlesAvailable = totalArticlesAvailable, !isLoading else {
             return
         }
-                        
+        
+        isLoading = true
+        
         if moreItemsRemaining(articlesLoadedCount, totalArticlesAvailable) {
             page += 1
             Log.debug(tag: ArticleViewModel.self, message: "To fetch more items. Page: \(page)")
@@ -64,10 +75,12 @@ class ArticleViewModel: ObservableObject {
             let validatedResponse = response.filter { $0.title != "[Removed]" }
             let newArticles = transformFetchedArticles(validatedResponse)
             
-            articles.append(contentsOf: newArticles)
-            articlesLoadedCount = articles.count
-            isLoading = false
-            isError = false
+            await MainActor.run {
+                articles.append(contentsOf: newArticles)
+                articlesLoadedCount = articles.count
+                isLoading = false
+                isError = false
+            }
         } catch {
             isError = true
             
@@ -108,8 +121,8 @@ class ArticleViewModel: ObservableObject {
 //    }
     
     /// Determines whether there is more data to load.
-    private func moreItemsRemaining(_ itemsLoadedCount: Int, _ totalItemsAvailable: Int) -> Bool {
-        Log.debug(tag: ArticleViewModel.self, message: "More items remaining!")
-        return itemsLoadedCount < totalItemsAvailable
+    private func moreItemsRemaining(_ articlesLoadedCount: Int, _ totalArticlesAvailable: Int) -> Bool {
+        Log.debug(tag: ArticleViewModel.self, message: "More items remaining! Articles loaded: \(articlesLoadedCount), Total articles available: \(totalArticlesAvailable)")
+        return articlesLoadedCount < totalArticlesAvailable
     }
 }

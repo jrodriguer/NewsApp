@@ -1,5 +1,5 @@
 //
-//  ScrollContainer.swift
+//  ScrollContainerView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 11/2/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ScrollContainer<Content: View>: View {
+struct ScrollContainerView<Content: View>: View {
     let articles: [ArticleListItemViewModel]
     @ViewBuilder let content: (ArticleListItemViewModel) -> Content
     @Binding var showFab: Bool
@@ -26,7 +26,11 @@ struct ScrollContainer<Content: View>: View {
                 }
                 .coordinateSpace(.named("scroll"))
                 
-                fabButton(scrollProxy: scrollProxy)
+                if showFab {
+                    FabButtonView(action: {
+                        scrollToTop(scrollProxy)
+                    })
+                }
             }
         }
     }
@@ -37,21 +41,6 @@ struct ScrollContainer<Content: View>: View {
                 content(article)
                     .id(article.id)
             }
-        }
-    }
-    
-    @ViewBuilder
-    private func fabButton(scrollProxy: ScrollViewProxy) -> some View {
-        if showFab {
-            Button {
-                scrollToTop(scrollProxy)
-            } label: {
-                Image(systemName: "chevron.up")
-                    .font(.largeTitle)
-                    .frame(width: 55, height: 55)
-            }
-            .buttonStyle(FabButtonStyle())
-            .accessibilityIdentifier("FabButton")
         }
     }
     

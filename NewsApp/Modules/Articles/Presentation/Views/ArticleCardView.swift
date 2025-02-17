@@ -13,7 +13,7 @@ struct ArticleCardView: View {
 
     var body: some View {
         VStack {
-            ImageContainer(image: article.image)
+            ImageView(image: article.image)
             
             VStack(alignment: .leading, spacing: Spacing.medium) {
                 Text(article.displayTitle)

@@ -87,7 +87,7 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
     }
     
     private var cardSection: some View {
-        ScrollContainer(
+        ScrollContainerView(
             articles: viewModel.articles,
             content: { article in
                 NavigationLink(value: article) {
@@ -102,7 +102,7 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
     }
     
     private var listSection: some View {
-        ScrollContainer(
+        ScrollContainerView(
             articles: viewModel.articles,
             content: { article in
                 NavigationLink(destination: ArticleDetailView(article: article)

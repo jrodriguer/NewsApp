@@ -1,5 +1,5 @@
 //
-//  ImageContainer.swift
+//  ImageView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 9/12/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageContainer: View {
+struct ImageView: View {
     var image: String?
     
     var body: some View {
@@ -47,5 +47,5 @@ struct ImageContainer: View {
 }
 
 #Preview {
-    ImageContainer(image: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2154325960.jpg?c=16x9&q=w_800,c_fill")
+    ImageView(image: "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2154325960.jpg?c=16x9&q=w_800,c_fill")
 }
