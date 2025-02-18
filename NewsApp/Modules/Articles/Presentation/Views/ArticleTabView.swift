@@ -90,11 +90,12 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
         ScrollContainerView(
             articles: viewModel.articles,
             content: { article in
-                NavigationLink(value: article) {
-                    ArticleCardView(article: article)
-                        .environmentObject(favorites)
-                }
-                .accessibilityIdentifier("NavigationLink_\(article.id)")
+                NavigationLink(destination: ArticleDetailView(article: article)
+                    .environmentObject(bookmarks)) {
+                        ArticleCardView(article: article)
+                            .environmentObject(bookmarks)
+                    }
+                    .accessibilityIdentifier("NavigationLink_\(article.id)")
             },
             showFab: $showFab,
             handleScrollOffset: handleScrollOffset
@@ -106,9 +107,9 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
             articles: viewModel.articles,
             content: { article in
                 NavigationLink(destination: ArticleDetailView(article: article)
-                    .environmentObject(favorites)) {
+                    .environmentObject(bookmarks)) {
                         ArticleRowView(article: article)
-                            .environmentObject(favorites)
+                            .environmentObject(bookmarks)
                     }
                     .accessibilityIdentifier("NavigationLink_\(article.id)")
             },
