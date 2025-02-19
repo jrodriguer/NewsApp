@@ -10,23 +10,26 @@ import SwiftUI
 struct TabContentView: View {
 
     @AppStorage("sidebarCustomization") var customization: TabViewCustomization
-    
+    @StateObject private var bookmarkViewModel = BookmarkViewModel(saveKey: BookmarkKey.articleBookmarks)
     let articleTabView: ArticleTabView<ArticleViewModel>
     let searchTabView: SearchTabView<ArticleViewModel>
-    let bookmarkTabView: BookmarkTabView<BookmarkViewModel<ArticleListItemViewModel>>
-    
+        
     var body: some View {
         TabView {
             Tab("News", systemImage: "network") {
                 articleTabView
+                    .environmentObject(bookmarkViewModel)
             }
             .customizationID("com.newsApp.News")
+            
             Tab("Searchs", systemImage: "magnifyingglass") {
                 searchTabView
             }
             .customizationID("com.newsApp.Searchs")
+            
             Tab("Bookmarks", systemImage: "bookmark") {
-                bookmarkTabView
+                BookmarkTabView()
+                    .environmentObject(bookmarkViewModel)
             }
             .customizationID("com.newsApp.Bookmarks")
         }

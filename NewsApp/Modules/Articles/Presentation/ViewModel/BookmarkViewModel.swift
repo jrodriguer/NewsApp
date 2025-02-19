@@ -8,67 +8,69 @@
 import Foundation
 
 enum BookmarkKey: String {
-    case articleFavorites
+    case articleBookmarks
 }
 
 protocol BookmarkViewModelProtocol: ObservableObject {
-    associatedtype T: Identifiable & Codable
-    var favorites: [T] { get set }
-    func contains(_ value: T) -> Bool
-    func add(_ value: T)
-    func remove(_ value: T)
-    func filtered(from allItems: [T], showFavoritesOnly: Bool) -> [T]
+    var bookmarks: [ArticleListItemViewModel] { get set }
+    func loadBookmarks() -> [ArticleListItemViewModel]
+    func contains(_ value: ArticleListItemViewModel) -> Bool
+    func add(_ value: ArticleListItemViewModel)
+    func remove(_ value: ArticleListItemViewModel)
+    func filtered(from allItems: [ArticleListItemViewModel], showFavoritesOnly: Bool) -> [ArticleListItemViewModel]
 }
 
-class BookmarkViewModel<T: Identifiable & Codable>: BookmarkViewModelProtocol {
+class BookmarkViewModel: BookmarkViewModelProtocol {
     
-    @Published var favorites: [T] = []
+    @Published var bookmarks: [ArticleListItemViewModel] = []
     
     private var saveKey: BookmarkKey
     private var userDefaultsManager: any UserDefaultsServiceProtocol.Type
     
-    init(saveKey: BookmarkKey, userDefaultsManager: any UserDefaultsServiceProtocol.Type = UserDefaultsService<T>.self) {
+    init(saveKey: BookmarkKey, userDefaultsManager: any UserDefaultsServiceProtocol.Type = UserDefaultsService<ArticleListItemViewModel>.self) {
         self.saveKey = saveKey
         self.userDefaultsManager = userDefaultsManager
-        self.favorites = loadFavorites()
+        self.bookmarks = loadBookmarks()
     }
     
-    private func loadFavorites() -> [T] {
-        if let storedItems = UserDefaultsService<[T]>.getItem(saveKey),
-           let decodedItems = try? JSONDecoder().decode([T].self, from: storedItems) {
-            favorites = decodedItems
-            return favorites
+    func loadBookmarks() -> [ArticleListItemViewModel] {
+        if let storedItems = UserDefaultsService<[ArticleListItemViewModel]>.getItem(saveKey),
+           let decodedItems = try? JSONDecoder().decode([ArticleListItemViewModel].self, from: storedItems) {
+            bookmarks = decodedItems
+            return bookmarks
         } else {
             return []
         }
     }
     
-    private func saveForites() {
+    private func saveBookmarks() {
         do {
-            let encoded = try JSONEncoder().encode(favorites)
-            UserDefaultsService<T>.saveItem(saveKey, encoded)
+            let encoded = try JSONEncoder().encode(bookmarks)
+            UserDefaultsService<ArticleListItemViewModel>.saveItem(saveKey, encoded)
+            Log.debug(tag: BookmarkViewModel.self, message: "Bookmarks saved")
         } catch {
             print("Error encoding value \(error)")
         }
     }
     
-    func contains(_ value: T) -> Bool {
-        return favorites.contains { $0.id == value.id }
+    func contains(_ value: ArticleListItemViewModel) -> Bool {
+        return bookmarks.contains { $0.id == value.id }
     }
     
-    func add(_ value: T) {
+    func add(_ value: ArticleListItemViewModel) {
         objectWillChange.send()
-        favorites.append(value)
-        saveForites()
+        bookmarks.append(value)
+        Log.debug(tag: BookmarkViewModel.self, message: "Bookmarks updated")
+        saveBookmarks()
     }
     
-    func remove(_ value: T) {
+    func remove(_ value: ArticleListItemViewModel) {
         objectWillChange.send()
-        favorites.removeAll(where: { $0.id == value.id })
-        saveForites()
+        bookmarks.removeAll(where: { $0.id == value.id })
+        saveBookmarks()
     }
     
-    func toggle(_ value: T) {
+    func toggle(_ value: ArticleListItemViewModel) {
         if contains(value) {
             remove(value)
         } else {
@@ -76,7 +78,7 @@ class BookmarkViewModel<T: Identifiable & Codable>: BookmarkViewModelProtocol {
         }
     }
     
-    func filtered(from allItems: [T], showFavoritesOnly: Bool) -> [T] {
+    func filtered(from allItems: [ArticleListItemViewModel], showFavoritesOnly: Bool) -> [ArticleListItemViewModel] {
         return showFavoritesOnly ? allItems.filter { contains($0) } : allItems
     }
 }

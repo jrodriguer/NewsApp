@@ -15,10 +15,7 @@ enum ViewOption: String, CaseIterable {
 struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol {
     
     @ObservedObject private var viewModel: ViewModel
-    
-    // FIXME: Wrapper with @ObservedObject, same way.
-    @StateObject private var favorites = BookmarkViewModel<ArticleListItemViewModel>(saveKey: BookmarkKey.articleFavorites)
-    
+    @EnvironmentObject private var bookmarks: BookmarkViewModel
     @State private var selectedCategory = Category.general
     @State private var selectedViewOption = ViewOption.cardView
     @State private var showFavoritesOnly = false
@@ -93,7 +90,7 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
                 NavigationLink(destination: ArticleDetailView(article: article)
                     .environmentObject(bookmarks)) {
                         ArticleCardView(article: article)
-                            .environmentObject(bookmarks)
+                                .environmentObject(bookmarks)
                     }
                     .accessibilityIdentifier("NavigationLink_\(article.id)")
             },

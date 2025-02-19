@@ -17,7 +17,7 @@ final class ArticlesModule {
     }
     
     func generateTabContentView() -> TabContentView {
-        return TabContentView(articleTabView: generateArticleTabView(), searchTabView: generateSearchTabView(), bookmarkTabView: generateBookmarkTabView())
+        return TabContentView(articleTabView: generateArticleTabView(), searchTabView: generateSearchTabView())
     }
     
     private func generateArticleTabView() -> ArticleTabView<ArticleViewModel> {
@@ -28,16 +28,16 @@ final class ArticlesModule {
         return SearchTabView(viewModel: generateArticleViewModel())
     }
     
-    private func generateBookmarkTabView() -> BookmarkTabView<BookmarkViewModel<ArticleListItemViewModel>> {
-        return BookmarkTabView(viewModel: generateBookmarkViewModel())
+    private func generateBookmarkTabView() -> BookmarkTabView {
+        return BookmarkTabView()
     }
     
     private func generateArticleViewModel() -> ArticleViewModel {
         ArticleViewModel(useCase: generateArticleListUseCase())
     }
     
-    private func generateBookmarkViewModel() -> BookmarkViewModel<ArticleListItemViewModel> {
-        BookmarkViewModel(saveKey: BookmarkKey.articleFavorites)
+    private func generateBookmarkViewModel() -> BookmarkViewModel {
+        BookmarkViewModel(saveKey: BookmarkKey.articleBookmarks)
     }
     
     private func generateArticleListUseCase() -> ArticleListUseCase {

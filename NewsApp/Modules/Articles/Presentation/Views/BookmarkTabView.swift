@@ -7,15 +7,27 @@
 
 import SwiftUI
 
-struct BookmarkTabView<ViewModel>: View where ViewModel: BookmarkViewModelProtocol {
+struct BookmarkTabView: View {
     
-    @ObservedObject private var viewModel: ViewModel
-    
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
-    }
+    @EnvironmentObject private var viewModel: BookmarkViewModel
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                ScrollView {
+                    VStack(spacing: 0) {
+                        ForEach(viewModel.bookmarks) { bookmark in
+                            NavigationLink(destination: ArticleDetailView(article: bookmark)
+                                .environmentObject(viewModel)) {
+                                    ArticleCardView(article: bookmark)
+                                        .environmentObject(viewModel)
+                                }
+                                .accessibilityIdentifier("NavigationLink_\(bookmark.id)")
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Bookmarks")
+        }
     }
 }
