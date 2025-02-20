@@ -1,5 +1,5 @@
 //
-//  ScrollContainerView.swift
+//  ScrollContentView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 11/2/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ScrollContainerView<Content: View>: View {
+struct ScrollContentView<Content: View>: View {
     let articles: [ArticleListItemViewModel]
     @ViewBuilder let content: (ArticleListItemViewModel) -> Content
     @Binding var showFab: Bool

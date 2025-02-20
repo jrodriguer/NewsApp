@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArticleRowView: View {
     var article: ArticleListItemViewModel
-    @EnvironmentObject var favorites: FavoritesViewModel<ArticleListItemViewModel>
+    @EnvironmentObject var favorites: BookmarkViewModel
     @State private var isPressed = false
     
     var body: some View {
@@ -25,9 +25,10 @@ struct ArticleRowView: View {
                 Spacer()
                 
                 if favorites.contains(article) {
-                    Image(systemName: "heart.fill")
-                        .accessibilityLabel("This is a favorite article")
+                    Image(systemName: "bookmark.fill")
+                        .accessibilityLabel("This is a boorkmarked article")
                         .foregroundStyle(.accent)
+                        
                 }
             }
             .padding([.top, .horizontal], Spacing.medium)

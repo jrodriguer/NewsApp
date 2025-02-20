@@ -33,7 +33,7 @@
 		8A4FC9732CA88B8700B47BBC /* EndpointApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FC9722CA88B8700B47BBC /* EndpointApi.swift */; };
 		8A5EB3512D301687008841E3 /* BookmarkTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5EB3502D301687008841E3 /* BookmarkTabView.swift */; };
 		8A66DE922D5BB9D4005AD4AE /* FabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66DE912D5BB9D4005AD4AE /* FabButtonView.swift */; };
-		8A66DE942D5BBE87005AD4AE /* ScrollContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66DE932D5BBE87005AD4AE /* ScrollContainerView.swift */; };
+		8A66DE942D5BBE87005AD4AE /* ScrollContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66DE932D5BBE87005AD4AE /* ScrollContentView.swift */; };
 		8A6EAA0E2CC2B0F2008A6226 /* NetworkConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EAA0D2CC2B0F2008A6226 /* NetworkConfigurable.swift */; };
 		8A6EAA102CC2B2FB008A6226 /* NetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EAA0F2CC2B2FB008A6226 /* NetworkSessionManager.swift */; };
 		8A6EAA122CC2E2AB008A6226 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EAA112CC2E2AB008A6226 /* URLSessionProtocol.swift */; };
@@ -123,7 +123,7 @@
 		8A4FC9722CA88B8700B47BBC /* EndpointApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointApi.swift; sourceTree = "<group>"; };
 		8A5EB3502D301687008841E3 /* BookmarkTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTabView.swift; sourceTree = "<group>"; };
 		8A66DE912D5BB9D4005AD4AE /* FabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FabButtonView.swift; sourceTree = "<group>"; };
-		8A66DE932D5BBE87005AD4AE /* ScrollContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollContainerView.swift; sourceTree = "<group>"; };
+		8A66DE932D5BBE87005AD4AE /* ScrollContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollContentView.swift; sourceTree = "<group>"; };
 		8A6EAA0D2CC2B0F2008A6226 /* NetworkConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurable.swift; sourceTree = "<group>"; };
 		8A6EAA0F2CC2B2FB008A6226 /* NetworkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionManager.swift; sourceTree = "<group>"; };
 		8A6EAA112CC2E2AB008A6226 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
@@ -355,7 +355,7 @@
 			children = (
 				8A66DE912D5BB9D4005AD4AE /* FabButtonView.swift */,
 				8A47F6F72D071E2100532257 /* ImageView.swift */,
-				8A66DE932D5BBE87005AD4AE /* ScrollContainerView.swift */,
+				8A66DE932D5BBE87005AD4AE /* ScrollContentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -629,7 +629,7 @@
 				8AB5F1642C7791DC00F41010 /* ArticlesModule.swift in Sources */,
 				8AB07D162C077BB7008237C0 /* Category.swift in Sources */,
 				8A4FC96F2CA77E7A00B47BBC /* NetworkManager.swift in Sources */,
-				8A66DE942D5BBE87005AD4AE /* ScrollContainerView.swift in Sources */,
+				8A66DE942D5BBE87005AD4AE /* ScrollContentView.swift in Sources */,
 				8A2CE7662C85D35C00B762D0 /* ArticleListUseCase.swift in Sources */,
 				8A8C18652B7285A3008E3C8C /* ArticleViewModel.swift in Sources */,
 				8A3E1CA72C8715FE00851895 /* ArticleListService.swift in Sources */,
