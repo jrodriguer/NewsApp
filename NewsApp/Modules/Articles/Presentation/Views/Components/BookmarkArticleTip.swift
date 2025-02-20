@@ -27,24 +27,38 @@ struct BookmarkArticleTip: Tip {
 
 struct CustomTipViewStyle: TipViewStyle {
     func makeBody(configuration: TipViewStyle.Configuration) -> some View {
-        VStack {
-            HStack(alignment: .top, spacing: Spacing.medium) {
+        VStack(alignment: .leading) {
+            HStack(alignment: .top) {
                 configuration.image?
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 45.0, height: 45.0)
+                    .frame(width: 48, height: 48)
                     .foregroundStyle(.primary)
+                    .padding(.top, Spacing.small)
                 
                 VStack(alignment: .leading, spacing: Spacing.minimum) {
                     configuration.title?
                         .applyStyle(.headLine)
                     configuration.message?
                         .applyStyle(.subHead)
+                    
+                    ForEach(configuration.actions) { action in
+                        Button(action: action.handler) {
+                            action
+                                .label()
+                                .foregroundStyle(.primary)
+                                .fontWeight(.semibold)
+                        }
+                    }
                 }
                 
+                Spacer()
+                
                 Button(action: { configuration.tip.invalidate(reason: .tipClosed) }) {
-                    Image(systemName: "xmark").scaledToFit()
+                    Image(systemName: "xmark")
+                        .scaledToFit()
                         .foregroundStyle(.secondary)
+                        .padding(Spacing.small)
                 }
             }
             .frame(maxWidth: .infinity)
