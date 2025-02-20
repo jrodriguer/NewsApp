@@ -23,7 +23,7 @@ final class DefaultArticleListService: ArticleListService {
         let productListNetworkRequest = DefaultNetworkRequest(
             path: EndpointApi.topHeadlines,
             method: .get,
-            queryParameters: ["page": page, "pageSize": "20"]
+            queryParameters: ["page": page, "pageSize": "10"]
         )
         Log.debug(tag: DefaultArticleListService.self, message: "Request: \(productListNetworkRequest)")
         return try await apiDataService.request(request: productListNetworkRequest)

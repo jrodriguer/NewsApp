@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 @main
 struct NewsApp: App {
@@ -42,5 +43,7 @@ struct NewsApp: App {
         UITabBar.appearance().backgroundColor = UIColor(.white)
         UITabBar.appearance().unselectedItemTintColor = UIColor(.secondary)
         UITabBar.appearance().tintColor = UIColor(.primary)
+        
+        try? Tips.configure()
     }
 }

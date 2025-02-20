@@ -111,15 +111,6 @@ class ArticleViewModel: ArticleViewModelProtocol {
         }
     }
     
-    /// Determines whether we have meet the threshold for requesting more items.
-    /// - Parameter articlesLoadedCount.
-    /// - Parameter index.
-    /// Returns: the truth that the difference of all items except the index is equal to the threshold.
-//    private func thresholdMeet(_ articlesLoadedCount: Int, _ index: Int) -> Bool {
-//        Log.debug(tag: ArticleViewModel.self, message: "\(articlesLoadedCount - index == articlesFromEndThreshold ? "Threshold met!" : "Threshold not met!")")
-//        return (articlesLoadedCount - index) == articlesFromEndThreshold
-//    }
-    
     /// Determines whether there is more data to load.
     private func moreItemsRemaining(_ articlesLoadedCount: Int, _ totalArticlesAvailable: Int) -> Bool {
         Log.debug(tag: ArticleViewModel.self, message: "More items remaining! Articles loaded: \(articlesLoadedCount), Total articles available: \(totalArticlesAvailable)")
