@@ -43,51 +43,37 @@ struct TabsView: View {
     let searchTabView: SearchTabView<ArticleViewModel>
     
     var body: some View {
-        ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
-            
-            TabView(selection: $selectedTab) {
-                switch selectedTab {
-                case .news:
-                    articleTabView
-                        .environmentObject(bookmarkViewModel)
-                case .search:
-                    searchTabView
-                case .bookmarks:
-                    BookmarkTabView()
-                        .environmentObject(bookmarkViewModel)
-                }
-//                Tab("News", systemImage: "network", value: .news) {
-//                    articleTabView
-//                        .environmentObject(bookmarkViewModel)
-//                }
-//                
-//                Tab("Searchs", systemImage: "magnifyingglass", value: .search) {
-//                    searchTabView
-//                }
-//                
-//                Tab("Bookmarks", systemImage: "bookmark", value: .bookmarks) {
-//                    BookmarkTabView()
-//                        .environmentObject(bookmarkViewModel)
-//                }
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .ignoresSafeArea(.all, edges: .bottom)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(TabSelect.allCases ,id: \.self) { viewSelect in
-                        TabButton(tabSelect: viewSelect, selectedTab: $selectedTab)
+        ZStack(alignment: .bottom) {
+            Group {
+                TabView(selection: $selectedTab) {
+                    switch selectedTab {
+                    case .news:
+                        articleTabView
+                            .environmentObject(bookmarkViewModel)
+                    case .search:
+                        searchTabView
+                    case .bookmarks:
+                        BookmarkTabView()
+                            .environmentObject(bookmarkViewModel)
                     }
                 }
-                
             }
-            .padding(.horizontal, Spacing.extraMedium)
-            .padding(.vertical, Spacing.minimum)
-            .background(Color.white)
-            .clipShape(Capsule())
-            .shadow(color: Color.black.opacity(0.15), radius: 5, x: 5, y: 5)
-            .shadow(color: Color.black.opacity(0.15), radius: 5, x: -5, y: -5)
-            .padding(.horizontal)
+            
+            HStack(spacing: 0) {
+                ForEach(TabSelect.allCases ,id: \.rawValue) { tab in
+                    TabButton(tabSelect: tab, selectedTab: $selectedTab)
+                }
+            }
+            .coordinateSpace(.named("TABBARVIEW"))
+            .padding(.horizontal, Spacing.minimum)
+            .frame(height: 45)
+//            .background(
+//                .background
+//                    .shadow(.drop(color: .primary.opacity(0.08), radius: 5, x: 5, y: 5))
+//                    .shadow(.drop(color: .primary.opacity(0.06), radius: 5, x: -5, y: -5)),
+//                in: .capsule
+//            )
+            .animation(.smooth(duration: 0.3, extraBounce: 0), value: selectedTab)
         }
     }
 }

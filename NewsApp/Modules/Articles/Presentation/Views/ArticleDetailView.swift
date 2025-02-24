@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArticleDetailView: View {
     var article: ArticleListItemViewModel
-    @EnvironmentObject var favorites: BookmarkViewModel<ArticleListItemViewModel>
+    @EnvironmentObject var favorites: BookmarkViewModel
     
     var body: some View {
         ScrollView {
