@@ -3,6 +3,205 @@
 <plist version="1.0">
 <dict>
 	<key>top-level-items</key>
-	<array/>
+	<array>
+		<dict>
+			<key>query-specification</key>
+			<dict>
+				<key>match-case</key>
+				<integer>1</integer>
+				<key>query</key>
+				<string>text</string>
+				<key>term</key>
+				<dict>
+					<key>text</key>
+					<string>// TODO:</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>batch-find-query</string>
+		</dict>
+		<dict>
+			<key>query-specification</key>
+			<dict>
+				<key>match-case</key>
+				<integer>1</integer>
+				<key>query</key>
+				<string>text</string>
+				<key>term</key>
+				<dict>
+					<key>text</key>
+					<string>// FIXME:</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>batch-find-query</string>
+		</dict>
+		<dict>
+			<key>query-specification</key>
+			<dict>
+				<key>match-case</key>
+				<integer>1</integer>
+				<key>query</key>
+				<string>text</string>
+				<key>term</key>
+				<dict>
+					<key>text</key>
+					<string>// MARK:</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>batch-find-query</string>
+		</dict>
+		<dict>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>destination</key>
+					<dict>
+						<key>location-parameters</key>
+						<dict>
+							<key>EndingColumnNumber</key>
+							<string>0</string>
+							<key>EndingLineNumber</key>
+							<string>27</string>
+							<key>StartingColumnNumber</key>
+							<string>0</string>
+							<key>StartingLineNumber</key>
+							<string>26</string>
+							<key>Timestamp</key>
+							<string>760987932.549045</string>
+						</dict>
+						<key>rebasable-url</key>
+						<dict>
+							<key>base</key>
+							<string>workspace</string>
+							<key>payload</key>
+							<dict>
+								<key>relative-path</key>
+								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleScrollContainer.swift</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>text-context</key>
+					<dict>
+						<key>focused</key>
+						<string>                .coordinateSpace(.named("scroll"))
+</string>
+						<key>leading</key>
+						<string>                        .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }
+                }
+</string>
+						<key>trailing</key>
+						<string>                
+                fabButton(scrollProxy: scrollProxy)
+            }
+</string>
+					</dict>
+					<key>title</key>
+					<string>Coordinate space &amp; GeometryReader</string>
+					<key>type</key>
+					<string>bookmark</string>
+				</dict>
+				<dict>
+					<key>destination</key>
+					<dict>
+						<key>location-parameters</key>
+						<dict>
+							<key>EndingColumnNumber</key>
+							<string>0</string>
+							<key>EndingLineNumber</key>
+							<string>21</string>
+							<key>StartingColumnNumber</key>
+							<string>52</string>
+							<key>StartingLineNumber</key>
+							<string>20</string>
+							<key>Timestamp</key>
+							<string>760987988.517218</string>
+						</dict>
+						<key>rebasable-url</key>
+						<dict>
+							<key>base</key>
+							<string>workspace</string>
+							<key>payload</key>
+							<dict>
+								<key>relative-path</key>
+								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleScrollContainer.swift</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>text-context</key>
+					<dict>
+						<key>focused</key>
+						<string>
+</string>
+						<key>leading</key>
+						<string>                ScrollView {
+                    scrollContent
+                        .background(GeometryReader {</string>
+						<key>trailing</key>
+						<string>                            Color.clear.preference(key: ViewOffsetKey.self,
+                                                   value: -$0.frame(in: .named("scroll")).origin.y)
+                        })
+</string>
+					</dict>
+					<key>title</key>
+					<string>Stores the offset value as a view preference</string>
+					<key>type</key>
+					<string>bookmark</string>
+				</dict>
+				<dict>
+					<key>destination</key>
+					<dict>
+						<key>location-parameters</key>
+						<dict>
+							<key>EndingColumnNumber</key>
+							<string>0</string>
+							<key>EndingLineNumber</key>
+							<string>25</string>
+							<key>StartingColumnNumber</key>
+							<string>90</string>
+							<key>StartingLineNumber</key>
+							<string>24</string>
+							<key>Timestamp</key>
+							<string>760987904.720234</string>
+						</dict>
+						<key>rebasable-url</key>
+						<dict>
+							<key>base</key>
+							<string>workspace</string>
+							<key>payload</key>
+							<dict>
+								<key>relative-path</key>
+								<string>NewsApp/Modules/Articles/Presentation/Views/ArticleScrollContainer.swift</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>text-context</key>
+					<dict>
+						<key>focused</key>
+						<string>
+</string>
+						<key>leading</key>
+						<string>                                                   value: -$0.frame(in: .named("scroll")).origin.y)
+                        })
+                        .onPreferenceChange(ViewOffsetKey.self) { handleScrollOffset($0) }</string>
+						<key>trailing</key>
+						<string>                }
+                .coordinateSpace(.named("scroll"))
+                
+</string>
+					</dict>
+					<key>title</key>
+					<string>Listens for ViewOffsetKey changes and triggers handler</string>
+					<key>type</key>
+					<string>bookmark</string>
+				</dict>
+			</array>
+			<key>title</key>
+			<string>Scroll tracking pattern</string>
+			<key>type</key>
+			<string>group</string>
+		</dict>
+	</array>
 </dict>
 </plist>
