@@ -11,6 +11,7 @@ enum Spacing {
     static let minimum: CGFloat = 4
     static let small: CGFloat = 8
     static let medium: CGFloat = 16
+    static let extraMedium: CGFloat = 25
     static let large: CGFloat = 32
     static let extraLarge: CGFloat = 64
 }
