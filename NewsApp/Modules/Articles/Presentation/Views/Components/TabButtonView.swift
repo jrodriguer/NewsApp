@@ -10,14 +10,12 @@ import SwiftUI
 struct TabButton: View {
     
     let tabSelect: TabSelect
-    let activeForeground: Color = .white
-    let activeBackground: Color = .accent
     
     @Binding var selectedTab: TabSelect
     /// For matched geometry effect
     @Namespace private var animation
     /// View properties
-    @State private var tabLocation: CGRect = .zero
+    @Binding var tabLocation: CGRect
     
     var body: some View {
         Button {
@@ -26,9 +24,9 @@ struct TabButton: View {
             HStack(spacing: Spacing.minimum) {
                 Image(systemName: tabSelect.tabIcon)
                     .renderingMode(.template)
-                // this compares the selection to the button's associated enum.
-                // The enum provides the image name to the button,
-                // but we are always dealing with a case of the enum.
+                /// This compares the selection to the button's associated enum.
+                /// The enum provides the image name to the button,
+                /// but we are always dealing with a case of the enum.
                     .opacity(selectedTab == tabSelect ? (1) : (0.5))
                     .frame(width: 32, height: 32)
                     .lineLimit(1)
@@ -38,7 +36,7 @@ struct TabButton: View {
                         .applyStyle(.headLine)
                 }
             }
-            .foregroundStyle(selectedTab == tabSelect ? activeForeground : .secondary.opacity(0.6))
+            .foregroundStyle(selectedTab == tabSelect ? Color.primary : .secondary.opacity(0.6))
             .padding(.vertical, Spacing.minimum)
             .padding(.leading, Spacing.small)
             .padding(.trailing, Spacing.medium)
@@ -46,7 +44,9 @@ struct TabButton: View {
             .background {
                 if selectedTab == tabSelect {
                     Capsule()
-                        .fill(activeBackground.gradient)
+                        .fill(Color.accent.gradient)
+                    /// slight fade in/out effect while swiutching from one tab to another
+                    /// Let's remove that effect sugin the new onGeometryChange modfier
                         .onGeometryChange(for: CGRect.self, of: {
                             $0.frame(in: .named("TABBARVIEW"))
                         }, action: { newValue in
