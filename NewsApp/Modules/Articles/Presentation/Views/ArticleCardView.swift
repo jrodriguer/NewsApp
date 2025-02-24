@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ArticleCardView: View {
+    @EnvironmentObject var favorites: BookmarkViewModel
     var article: ArticleListItemViewModel
-    @EnvironmentObject var favorites: BookmarkViewModel<ArticleListItemViewModel>
 
     var body: some View {
         VStack {
@@ -24,7 +24,7 @@ struct ArticleCardView: View {
                 
                 HStack {
                     Text(article.publishedAt)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(Color.secondary)
                         .applyStyle(.footNote)
                         .frame(alignment: .top)
                     
@@ -34,7 +34,7 @@ struct ArticleCardView: View {
                         favorites.toggle(article)
                     } label: {
                         Image(systemName: favorites.contains(article) ? "bookmark.fill" : "bookmark")
-                            .foregroundStyle(.primary)
+                            .foregroundStyle(Color.primary)
                             .accessibilityLabel("Bookmark this article")
                     }
                 }
