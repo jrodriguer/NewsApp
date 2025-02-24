@@ -20,7 +20,7 @@ struct NewsApp: App {
     }
     
     init() {
-        // Navigaation bar
+        /// Navigation bar
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.primary, .font: UIFont(name: "NotoSans-ExtraBold", size: TextDefinitions.largeTitle.size)!]
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.primary, .font: UIFont(name: "NotoSans-ExtraBold", size: TextDefinitions.headLine.size)!]
@@ -32,7 +32,7 @@ struct NewsApp: App {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         
-        // tab Bar Item
+        /// Tab Bar Item
         let fontAttributesNormal = [NSAttributedString.Key.font: UIFont(name: "NotoSans-Regular", size: TextDefinitions.footNote.size)!]
         let fontAttributesSelected = [NSAttributedString.Key.font: UIFont(name: "NotoSans-Regular", size: TextDefinitions.footNote.size)!]
         
@@ -41,8 +41,8 @@ struct NewsApp: App {
         
         UITabBar.appearance().barTintColor = UIColor(.white)
         UITabBar.appearance().backgroundColor = UIColor(.white)
-        UITabBar.appearance().unselectedItemTintColor = UIColor(.secondary)
-        UITabBar.appearance().tintColor = UIColor(.primary)
+        UITabBar.appearance().unselectedItemTintColor = UIColor(Color.secondary)
+        UITabBar.appearance().tintColor = UIColor(Color.primary)
         
         try? Tips.configure()
     }
