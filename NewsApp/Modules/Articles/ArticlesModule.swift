@@ -16,8 +16,8 @@ final class ArticlesModule {
         self.apiDataTransferService = apiDataTransferService
     }
     
-    func generateTabContentView() -> TabContentView {
-        return TabContentView(articleTabView: generateArticleTabView(), searchTabView: generateSearchTabView())
+    func generateTabsView() -> TabsView {
+        return TabsView(articleTabView: generateArticleTabView(), searchTabView: generateSearchTabView())
     }
     
     private func generateArticleTabView() -> ArticleTabView<ArticleViewModel> {

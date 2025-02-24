@@ -1,5 +1,5 @@
 //
-//  TabContentView.swift
+//  TabsView.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 6/2/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TabContentView: View {
+struct TabsView: View {
 
     @AppStorage("sidebarCustomization") var customization: TabViewCustomization
     @StateObject private var bookmarkViewModel = BookmarkViewModel(saveKey: BookmarkKey.articleBookmarks)

@@ -15,7 +15,7 @@ struct NewsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            appDIContainer.homeView
+            appDIContainer.tabsView
         }
     }
     
