@@ -51,24 +51,27 @@ struct ContentView: View {
                 if #available(iOS 18.0, *) {
                     TabView(selection: $activeTab) {
                         Tab.init(value: .news) {
-                            Text("News")
+                            articleTabView
                                 .toolbarVisibility(.hidden, for: .tabBar)
+                                .environmentObject(bookmarkViewModel)
                         }
                         
                         Tab.init(value: .search) {
-                            Text("Search")
+                            searchTabView
                                 .toolbarVisibility(.hidden, for: .tabBar)
                         }
                         
                         Tab.init(value: .news) {
-                            Text("Bookmarks")
+                            BookmarkTabView()
                                 .toolbarVisibility(.hidden, for: .tabBar)
+                                .environmentObject(bookmarkViewModel)
                         }
                     }
                 } else {
                     TabView(selection: $activeTab) {
-                        Text("News")
+                        articleTabView
                             .tag(TabSelect.news)
+                            .environmentObject(bookmarkViewModel)
                             .background {
                                 if !isTabBarHidden {
                                     HideTabBar {
@@ -77,11 +80,12 @@ struct ContentView: View {
                                 }
                             }
                         
-                        Text("Search")
+                        searchTabView
                             .tag(TabSelect.search)
                         
-                        Text("Bookmarks")
+                        BookmarkTabView()
                             .tag(TabSelect.bookmarks)
+                            .environmentObject(bookmarkViewModel)
                     }
                 }
             }
