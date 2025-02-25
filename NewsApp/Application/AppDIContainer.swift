@@ -16,8 +16,8 @@ final class AppDIContainer {
         return DefaultDataTransferService(networkManager: networkManager)
     }()
     
-    lazy var tabsView: TabsView = {
+    lazy var tabsView: ContentView = {
         let articlesModule = ArticlesModule(apiDataTransferService: apiDataTransferService)
-        return articlesModule.generateTabsView()
+        return articlesModule.generateContentView()
     }()
 }
