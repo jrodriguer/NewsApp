@@ -42,8 +42,10 @@ struct TabsView: View {
     @State private var tabLocation: CGRect = .zero
     let articleTabView: ArticleTabView<ArticleViewModel>
     let searchTabView: SearchTabView<ArticleViewModel>
-    
+        
     var body: some View {
+        let status = selectedTab == .news || selectedTab == .search
+
         ZStack(alignment: .bottom) {
             Group {
                 TabView(selection: $selectedTab) {
@@ -81,6 +83,7 @@ struct TabsView: View {
 //                        .shadow(.drop(color: .primary.opacity(0.08), radius: 5, x: -5, y: -5)),
 //                    in: .capsule
                 )
+                .zIndex(10)
                 
                 Button {
                     
@@ -92,6 +95,10 @@ struct TabsView: View {
                         .clipShape(.circle)
                         
                 }
+                .allowsHitTesting(status)
+                .offset(x: status ? 0 : -20)
+                .padding(.leading, status ? 0 : -42)
+                
             }
             .animation(.smooth(duration: 0.3, extraBounce: 0), value: selectedTab)
         }

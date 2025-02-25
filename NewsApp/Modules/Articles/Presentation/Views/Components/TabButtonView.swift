@@ -45,8 +45,8 @@ struct TabButton: View {
                 if selectedTab == tabSelect {
                     Capsule()
                         .fill(Color.accent.gradient)
-                    /// slight fade in/out effect while swiutching from one tab to another
-                    /// Let's remove that effect sugin the new onGeometryChange modfier
+                    /// slight fade in/out effect while switching from one tab to another
+                    /// Let's remove that effect using the new onGeometryChange modfier
                         .onGeometryChange(for: CGRect.self, of: {
                             $0.frame(in: .named("TABBARVIEW"))
                         }, action: { newValue in
