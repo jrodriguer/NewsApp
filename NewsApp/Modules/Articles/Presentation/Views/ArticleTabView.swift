@@ -39,6 +39,7 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
                 toolbarItem
             }
             .navigationTitle("News")
+            .safeAreaPadding(.bottom, 60)
         }
     }
     
@@ -89,7 +90,7 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
             content: { article in
                 NavigationLink(destination: ArticleDetailView(article: article)
                     .environmentObject(bookmarks)) {
-                        ArticleCardView(article: article)
+                        ItemCardView(item: article)
                                 .environmentObject(bookmarks)
                     }
                     .accessibilityIdentifier("NavigationLink_\(article.id)")
@@ -105,7 +106,7 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
             content: { article in
                 NavigationLink(destination: ArticleDetailView(article: article)
                     .environmentObject(bookmarks)) {
-                        ArticleRowView(article: article)
+                        ItemRowView(item: article)
                             .environmentObject(bookmarks)
                     }
                     .accessibilityIdentifier("NavigationLink_\(article.id)")

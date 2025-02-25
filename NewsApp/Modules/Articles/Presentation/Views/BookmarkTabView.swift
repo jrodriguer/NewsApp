@@ -25,7 +25,7 @@ struct BookmarkTabView: View {
                         ForEach(viewModel.bookmarks) { bookmark in
                             NavigationLink(destination: ArticleDetailView(article: bookmark)
                                 .environmentObject(viewModel)) {
-                                    ArticleCardView(article: bookmark)
+                                    ItemCardView(item: bookmark)
                                         .environmentObject(viewModel)
                                 }
                                 .accessibilityIdentifier("NavigationLink_\(bookmark.id)")
