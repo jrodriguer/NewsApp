@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A0A06DB2D6CA01B009D44D8 /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0A06DA2D6CA01B009D44D8 /* TabButtonView.swift */; };
+		8A0A06DB2D6CA01B009D44D8 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0A06DA2D6CA01B009D44D8 /* CustomTabBarView.swift */; };
 		8A1DAC262B8E3C6F00259AD3 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAC252B8E3C6F00259AD3 /* BookmarkViewModel.swift */; };
 		8A2CE75F2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2CE75E2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift */; };
 		8A2CE7612C85C7B600B762D0 /* ArticleDomainListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2CE7602C85C7B600B762D0 /* ArticleDomainListDTO.swift */; };
@@ -97,7 +97,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8A0A06DA2D6CA01B009D44D8 /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
+		8A0A06DA2D6CA01B009D44D8 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		8A165CF62CD242220058C247 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		8A1DAC252B8E3C6F00259AD3 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		8A2CE75E2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -361,7 +361,7 @@
 				8A47F6F72D071E2100532257 /* ImageView.swift */,
 				8A66DE932D5BBE87005AD4AE /* ScrollContentView.swift */,
 				8A59DEED2D67430800F80586 /* BookmarkArticleTip.swift */,
-				8A0A06DA2D6CA01B009D44D8 /* TabButtonView.swift */,
+				8A0A06DA2D6CA01B009D44D8 /* CustomTabBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -651,7 +651,7 @@
 				8A72E9732C8232EE0014A276 /* Log.swift in Sources */,
 				8AE9CCF52CC4227C00399F1E /* AppConfiguration.swift in Sources */,
 				8AE9CCF32CC4215B00399F1E /* AppDIContainer.swift in Sources */,
-				8A0A06DB2D6CA01B009D44D8 /* TabButtonView.swift in Sources */,
+				8A0A06DB2D6CA01B009D44D8 /* CustomTabBarView.swift in Sources */,
 				8A8C18722B728E15008E3C8C /* ArticleTabView.swift in Sources */,
 				8A9CFC942B4EC7B500F70B13 /* ArticleCardView.swift in Sources */,
 				8A6EAA142CC2E30F008A6226 /* URLRequestGenerator.swift in Sources */,
