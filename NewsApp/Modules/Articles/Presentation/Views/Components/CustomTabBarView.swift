@@ -72,19 +72,26 @@ struct CustomTabBarView: View {
             .padding(.horizontal, Spacing.minimum)
             .frame(height: 45)
             .background(
-                // TODO: Change background color.
-                // FIXME: Apply the correct shadow.
-                Color.background
-                    .shadow(.drop(color: .primary.opacity(0.08), radius: 5, x: 5, y: 5))
-                    .shadow(.drop(color: .primary.opacity(0.06), radius: 5, x: -5, y: -5)),
-                in: .capsule
+                Capsule()
+                    .foregroundStyle(Color.white)
+                    .shadow(
+                        color: Color.background.opacity(0.08),
+                        radius: 5,
+                        x: 5,
+                        y: 5
+                    )
+                    .shadow(
+                        color: Color.background.opacity(0.06),
+                        radius: 5,
+                        x: -5,
+                        y: -5
+                    )
             )
             .zIndex(10)
             
             Button {
                 
             } label: {
-                // TODO: Apply font, like h3.
                 Image(systemName: activeTab == .news ? "person.fill" : "slider.vertical.3")
                     .frame(width: 42, height: 42)
                     .foregroundStyle(Color.primary)
