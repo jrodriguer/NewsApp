@@ -7,38 +7,10 @@
 
 import SwiftUI
 
-enum TabSelect: String, CaseIterable {
-    case news
-    case search
-    case bookmarks
-    
-    var tabIcon: String {
-        switch self {
-        case .news:
-            return "network"
-        case .search:
-            return "magnifyingglass"
-        case .bookmarks:
-            return "bookmark"
-        }
-    }
-    
-    var title: String {
-        switch self {
-        case .news:
-            return "News"
-        case .search:
-            return "Search"
-        case .bookmarks:
-            return "Bookmarks"
-        }
-    }
-}
-
 struct ContentView: View {
     
     @StateObject private var bookmarkViewModel = BookmarkViewModel(saveKey: BookmarkKey.articleBookmarks)
-    @State private var activeTab: TabSelect = .news
+    @State private var activeTab: TabBarType = .news
     @State private var isTabBarHidden: Bool = false
     
     let articleTabView: ArticleTabView<ArticleViewModel>
@@ -70,7 +42,7 @@ struct ContentView: View {
                 } else {
                     TabView(selection: $activeTab) {
                         articleTabView
-                            .tag(TabSelect.news)
+                            .tag(TabBarType.news)
                             .environmentObject(bookmarkViewModel)
                             .background {
                                 if !isTabBarHidden {
@@ -81,10 +53,10 @@ struct ContentView: View {
                             }
                         
                         searchTabView
-                            .tag(TabSelect.search)
+                            .tag(TabBarType.search)
                         
                         BookmarkTabView()
-                            .tag(TabSelect.bookmarks)
+                            .tag(TabBarType.bookmarks)
                             .environmentObject(bookmarkViewModel)
                     }
                 }
