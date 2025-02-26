@@ -11,7 +11,7 @@ struct CustomTabBarView: View {
     
     var activeForeground: Color = .primary
     var activeBackground: Color = .accent
-    @Binding var activeTab: TabSelect
+    @Binding var activeTab: TabBarType
     @Namespace private var animation
     @State private var tabLocation: CGRect = .zero
     
@@ -20,7 +20,7 @@ struct CustomTabBarView: View {
 
         HStack(spacing: !status ? 0 : 12) {
              HStack(spacing: 0) {
-                ForEach(TabSelect.allCases ,id: \.rawValue) { tab in
+                ForEach(TabBarType.allCases ,id: \.rawValue) { tab in
                     Button {
                         activeTab = tab
                     } label: {
