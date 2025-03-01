@@ -11,6 +11,7 @@ enum TabBarType: String, CaseIterable {
     case news
     case search
     case bookmarks
+    case settings
     
     var tabIcon: String {
         switch self {
@@ -20,6 +21,8 @@ enum TabBarType: String, CaseIterable {
             return "magnifyingglass"
         case .bookmarks:
             return "bookmark"
+        case .settings:
+            return "gearshape"
         }
     }
     
@@ -31,6 +34,8 @@ enum TabBarType: String, CaseIterable {
             return "Search"
         case .bookmarks:
             return "Bookmarks"
+        case .settings:
+            return "Settings"
         }
     }
 }

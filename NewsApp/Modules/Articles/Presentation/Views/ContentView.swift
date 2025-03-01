@@ -38,6 +38,11 @@ struct ContentView: View {
                                 .toolbarVisibility(.hidden, for: .tabBar)
                                 .environmentObject(bookmarkViewModel)
                         }
+                        
+                        Tab.init(value: .settings) {
+                            SettingsTabView()
+                                .toolbarVisibility(.hidden, for: .tabBar)
+                        }
                     }
                 } else {
                     TabView(selection: $activeTab) {
@@ -58,6 +63,9 @@ struct ContentView: View {
                         BookmarkTabView()
                             .tag(TabBarType.bookmarks)
                             .environmentObject(bookmarkViewModel)
+                        
+                        SettingsTabView()
+                            .tag(TabBarType.settings)
                     }
                 }
             }
