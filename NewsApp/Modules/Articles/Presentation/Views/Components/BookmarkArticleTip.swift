@@ -34,9 +34,9 @@ struct CustomTipViewStyle: TipViewStyle {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 48, height: 48)
                     .foregroundStyle(.primary)
-                    .padding(.top, Spacing.small)
+                    .padding(.top, 8)
                 
-                VStack(alignment: .leading, spacing: Spacing.minimum) {
+                VStack(alignment: .leading, spacing: 2) {
                     configuration.title?
                         .applyStyle(.headLine)
                     configuration.message?
@@ -57,12 +57,12 @@ struct CustomTipViewStyle: TipViewStyle {
                 Button(action: { configuration.tip.invalidate(reason: .tipClosed) }) {
                     Image(systemName: "xmark")
                         .scaledToFit()
-                        .foregroundStyle(.secondary)
-                        .padding(Spacing.small)
+                        .foregroundStyle(Color.secondary)
+                        .padding(4)
                 }
             }
             .frame(maxWidth: .infinity)
         }
-        .padding(Spacing.medium)
+        .padding(10)
     }
 }

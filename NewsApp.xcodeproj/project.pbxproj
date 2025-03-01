@@ -58,7 +58,6 @@
 		8A9CFC942B4EC7B500F70B13 /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CFC932B4EC7B500F70B13 /* ItemCardView.swift */; };
 		8A9FEC642B93D2750027A3E6 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9FEC632B93D2750027A3E6 /* SwiftyBeaver */; };
 		8AA1BF772D284DF100071810 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1BF502D284DF100071810 /* Font.swift */; };
-		8AA1BF782D284DF100071810 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1BF562D284DF100071810 /* Spacing.swift */; };
 		8AA1BF792D284DF100071810 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1BF442D284DF100071810 /* Color.swift */; };
 		8AA1BF7A2D284DF100071810 /* TextDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1BF592D284DF100071810 /* TextDefinition.swift */; };
 		8AA1BF7B2D284DF100071810 /* NotoSans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1BF512D284DF100071810 /* NotoSans.swift */; };
@@ -153,7 +152,6 @@
 		8AA1BF442D284DF100071810 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8AA1BF502D284DF100071810 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8AA1BF512D284DF100071810 /* NotoSans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotoSans.swift; sourceTree = "<group>"; };
-		8AA1BF562D284DF100071810 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		8AA1BF582D284DF100071810 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		8AA1BF592D284DF100071810 /* TextDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDefinition.swift; sourceTree = "<group>"; };
 		8AABBC972B963BD100D78C5D /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
@@ -426,7 +424,6 @@
 			isa = PBXGroup;
 			children = (
 				8A8C186B2B728A5C008E3C8C /* Extensions */,
-				8AA1BF562D284DF100071810 /* Spacing.swift */,
 				8AA1BF592D284DF100071810 /* TextDefinition.swift */,
 				8AA1BF512D284DF100071810 /* NotoSans.swift */,
 			);
@@ -617,7 +614,6 @@
 				8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */,
 				8AA1BF772D284DF100071810 /* Font.swift in Sources */,
 				8A66DE922D5BB9D4005AD4AE /* FabButtonView.swift in Sources */,
-				8AA1BF782D284DF100071810 /* Spacing.swift in Sources */,
 				8AA1BF792D284DF100071810 /* Color.swift in Sources */,
 				8AA1BF7A2D284DF100071810 /* TextDefinition.swift in Sources */,
 				8A59DEEE2D67430800F80586 /* BookmarkArticleTip.swift in Sources */,

@@ -41,7 +41,7 @@ struct ImageView: View {
             .foregroundStyle(.secondary)
             .aspectRatio(contentMode: .fit)
             .frame(width: 200, height: 100)
-            .padding(.vertical, Spacing.medium)
+            .padding(.vertical, 12)
             .opacity(0.6)
     }
 }

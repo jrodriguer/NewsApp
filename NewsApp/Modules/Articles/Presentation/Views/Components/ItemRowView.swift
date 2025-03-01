@@ -31,7 +31,7 @@ struct ItemRowView: View {
                         
                 }
             }
-            .padding([.top, .horizontal], Spacing.medium)
+            .padding([.top, .horizontal], 12)
             .animation(.easeInOut, value: isPressed)
             
             .onLongPressGesture(minimumDuration: 1.5, pressing: { isPressing in

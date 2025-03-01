@@ -15,7 +15,7 @@ struct ItemCardView: View {
         VStack {
             ImageView(image: item.image)
             
-            VStack(alignment: .leading, spacing: Spacing.medium) {
+            VStack(alignment: .leading, spacing: 12) {
                 Text(item.displayTitle)
                     .foregroundStyle(Color.primary)
                     .applyStyle(.h2)
@@ -38,17 +38,17 @@ struct ItemCardView: View {
                             .accessibilityLabel("Bookmark this item")
                     }
                 }
-                .padding(.trailing, Spacing.small)
+                .padding(.trailing, 8)
             }
             .layoutPriority(100)
             .multilineTextAlignment(.leading)
-            .padding(Spacing.medium)
+            .padding(12)
         }
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(.secondary.opacity(0.1), lineWidth: 1)
         )
-        .padding([.top, .horizontal], Spacing.medium)
+        .padding([.top, .horizontal], 12)
     }
 }

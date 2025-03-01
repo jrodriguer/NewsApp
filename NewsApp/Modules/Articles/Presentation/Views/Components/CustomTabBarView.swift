@@ -24,7 +24,7 @@ struct CustomTabBarView: View {
                     Button {
                         activeTab = tab
                     } label: {
-                        HStack(spacing: Spacing.minimum) {
+                        HStack(spacing: 5) {
                             Image(systemName: tab.tabIcon)
                                 .renderingMode(.template)
                             /// This compares the selection to the button's associated enum.
@@ -69,7 +69,7 @@ struct CustomTabBarView: View {
                     .offset(x: tabLocation.minX)
             }
             .coordinateSpace(.named("TABBARVIEW"))
-            .padding(.horizontal, Spacing.minimum)
+            .padding(.horizontal, 5)
             .frame(height: 45)
             .background(
                 Capsule()
@@ -103,7 +103,7 @@ struct CustomTabBarView: View {
             .offset(x: status ? 0 : -20)
             .padding(.leading, status ? 0 : -42)
         }
-        .padding(.bottom, Spacing.minimum)
+        .padding(.bottom, 5)
         .animation(.smooth(duration: 0.3, extraBounce: 0), value: activeTab)
     }
 }

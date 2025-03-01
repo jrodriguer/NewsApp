@@ -43,6 +43,7 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
         }
     }
     
+    // TODO: Move to tab bar, new tab.
     private var toolbarItem: some ToolbarContent {
         ToolbarItem {
             Menu {
@@ -63,7 +64,7 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
                         Image(systemName: "ellipsis")
                             .font(.system(size: 13.0, weight: .semibold))
                             .foregroundColor(.primary)
-                            .padding(Spacing.small)
+                            .padding(6)
                     }
             }
         }

@@ -19,7 +19,7 @@ struct BookmarkTabView: View {
                 TipView(bookmarkArticleTip)
                     .textFieldStyle(.roundedBorder)
                     .tipViewStyle(CustomTipViewStyle())
-                    .padding([.top, .horizontal], Spacing.medium)
+                    .padding([.top, .horizontal], 8)
                 ScrollView {
                     VStack(spacing: 0) {
                         ForEach(viewModel.bookmarks) { bookmark in

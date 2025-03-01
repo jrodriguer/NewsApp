@@ -17,7 +17,7 @@ struct ArticleDetailView: View {
                 ImageView(image: article.image)
                     .frame(maxHeight: 300)
                 
-                VStack(alignment: .leading, spacing: Spacing.medium) {
+                VStack(alignment: .leading, spacing: 15) {
                     Text(article.displayTitle)
                         .foregroundColor(.primary)
                         .applyStyle(.h1)
@@ -40,17 +40,9 @@ struct ArticleDetailView: View {
                             .foregroundColor(.primary)
                             .lineLimit(nil)
                     }
-                    
-                    // TODO: Apply bookmark in detail anyway.
-//                    HStack {
-//                        Link(destination: URL(string: article.link)!) {
-//                            Image(systemName: "link.circle.fill")
-//                                .font(.system(size: Spacing.large))
-//                        }
-//                    }
-//                    .padding(.top, Spacing.medium)
                 }
-                .padding(Spacing.medium)
+                .padding()
+                .safeAreaPadding(.bottom, 32)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
