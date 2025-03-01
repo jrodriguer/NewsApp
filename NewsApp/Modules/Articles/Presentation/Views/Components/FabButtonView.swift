@@ -29,6 +29,6 @@ struct FabButtonStyle: ButtonStyle {
             .foregroundStyle(Color.white)
             .background(Color.secondary.opacity(0.6))
             .cornerRadius(55/2)
-            .padding(Spacing.small)
+            .padding(8)
     }
 }
