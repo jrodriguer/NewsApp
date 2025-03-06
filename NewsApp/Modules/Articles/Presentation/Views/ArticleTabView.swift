@@ -41,9 +41,9 @@ struct ArticleTabView<ViewModel>: View where ViewModel: ArticleViewModelProtocol
             .navigationTitle("News")
             .safeAreaPadding(.bottom, 60)
         }
+        .accentColor(.primary)
     }
     
-    // TODO: Move to tab bar, new tab.
     private var toolbarItem: some ToolbarContent {
         ToolbarItem {
             Menu {
