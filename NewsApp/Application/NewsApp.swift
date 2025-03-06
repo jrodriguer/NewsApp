@@ -20,6 +20,18 @@ struct NewsApp: App {
     }
     
     init() {
+        // Navigation bar
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.primary, .font: UIFont(name: "NotoSans-ExtraBold", size: TextDefinitions.largeTitle.size)!]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.primary, .font: UIFont(name: "NotoSans-ExtraBold", size: TextDefinitions.headLine.size)!]
+        navBarAppearance.backgroundColor = .white
+        navBarAppearance.backgroundEffect = .none
+        navBarAppearance.shadowColor = .clear
+        
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        UINavigationBar.appearance().compactAppearance = navBarAppearance
+        
         try? Tips.configure()
     }
 }
