@@ -4,6 +4,8 @@
 //
 //  Created by Julio Rodriguez on 19/10/24.
 //
+//  Description:
+//  Initialize global dependencies and creates the entry point of the app.
 
 import Foundation
 

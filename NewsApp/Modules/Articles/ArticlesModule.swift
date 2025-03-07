@@ -4,6 +4,8 @@
 //
 //  Created by Julio Rodriguez on 22/8/24.
 //
+//  Description:
+//  Manufactures the specific components of the Articles module.
 
 import Foundation
 import SwiftUI
@@ -17,7 +19,11 @@ final class ArticlesModule {
     }
     
     func generateContentView() -> ContentView {
-        return ContentView(articleTabView: generateArticleTabView(), searchTabView: generateSearchTabView())
+        return ContentView(
+            articleTabView: generateArticleTabView(),
+            searchTabView: generateSearchTabView(),
+            bookmarkTabView: generateBookmarkTabView()
+        )
     }
     
     private func generateArticleTabView() -> ArticleTabView<ArticleViewModel> {
@@ -28,8 +34,12 @@ final class ArticlesModule {
         return SearchTabView(viewModel: generateArticleViewModel())
     }
     
-    private func generateBookmarkTabView() -> BookmarkTabView {
-        return BookmarkTabView()
+    private func generateBookmarkTabView() -> AnyView {
+        let view = BookmarkTabView()
+                .environmentObject(generateBookmarkViewModel())
+            return AnyView(view)
+//        return BookmarkTabView()
+//            .environmentObject(generateBookmarkViewModel()) as! BookmarkTabView
     }
     
     private func generateArticleViewModel() -> ArticleViewModel {

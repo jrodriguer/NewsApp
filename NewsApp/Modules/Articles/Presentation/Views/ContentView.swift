@@ -15,6 +15,7 @@ struct ContentView: View {
     
     let articleTabView: ArticleTabView<ArticleViewModel>
     let searchTabView: SearchTabView<ArticleViewModel>
+    let bookmarkTabView: AnyView
         
     var body: some View {
 
@@ -33,10 +34,10 @@ struct ContentView: View {
                                 .toolbarVisibility(.hidden, for: .tabBar)
                         }
                         
-                        Tab.init(value: .news) {
-                            BookmarkTabView()
+                        Tab.init(value: .bookmarks) {
+                            bookmarkTabView
                                 .toolbarVisibility(.hidden, for: .tabBar)
-                                .environmentObject(bookmarkViewModel)
+//                                .environmentObject(bookmarkViewModel)
                         }
                         
                         Tab.init(value: .settings) {
