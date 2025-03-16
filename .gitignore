@@ -7,8 +7,9 @@
 # Xcode
 xcuserdata/
 project.xcworkspace/
-DerivedData/
+DerivedData
 *.xcuserstate
+xcuserdata/*
 
 # build products
 build/
