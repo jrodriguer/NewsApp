@@ -27,7 +27,7 @@ struct FabButtonStyle: ButtonStyle {
     func makeBody(configuration: ButtonStyle.Configuration) -> some View {
         configuration.label
             .foregroundStyle(Color.white)
-            .background(Color.secondary.opacity(0.6))
+            .background(Color.background.opacity(0.6))
             .cornerRadius(55/2)
             .padding(8)
     }
