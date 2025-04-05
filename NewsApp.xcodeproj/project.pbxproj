@@ -316,7 +316,7 @@
 			children = (
 				8A72E9702C8232B10014A276 /* Configuration.swift */,
 				8A72E9722C8232EE0014A276 /* Log.swift */,
-				8AF720CE2C8371FD000383C2 /* Entity */,
+				8AF720CE2C8371FD000383C2 /* Entities */,
 				8AABBC922B9635FF00D78C5D /* Environments */,
 				8AF720CF2C837204000383C2 /* Interface */,
 				8AF720D22C837225000383C2 /* UseCase */,
@@ -449,13 +449,13 @@
 			path = Api;
 			sourceTree = "<group>";
 		};
-		8AF720CE2C8371FD000383C2 /* Entity */ = {
+		8AF720CE2C8371FD000383C2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				8A2CE7602C85C7B600B762D0 /* ArticleDomainListDTO.swift */,
 				8A9A46F52D6F0B1900CB55D0 /* TabBarType.swift */,
 			);
-			path = Entity;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		8AF720CF2C837204000383C2 /* Interface */ = {
