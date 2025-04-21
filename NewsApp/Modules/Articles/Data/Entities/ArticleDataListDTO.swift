@@ -14,7 +14,7 @@ struct ArticlePageDataListDTO: Decodable {
 }
 
 struct ArticleDataListDTO: Decodable {
-    let source: Source
+    let source: SourceDTO
     let author: String?
     let title: String
     let description: String?
@@ -53,7 +53,7 @@ extension ArticlePageDataListDTO {
     }
 }
 
-struct Source: Decodable {
+struct SourceDTO: Decodable {
     let id: String?
     let name: String
 }
