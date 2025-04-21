@@ -169,6 +169,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8A7877CF2D2D865A00554DA6 /* NewsAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NewsAppTests; sourceTree = "<group>"; };
+		8AB743732DB6F8D4000322B7 /* DataSources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DataSources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +337,7 @@
 		8A8C18672B728738008E3C8C /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8AB743732DB6F8D4000322B7 /* DataSources */,
 				8AE62B272B7BD02C005DFD77 /* Api */,
 				8A3E1CAA2C8718AD00851895 /* Entities */,
 				8A78C7FB2C87385A007311AE /* RepositoryImplementation */,
@@ -489,6 +491,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8AB743732DB6F8D4000322B7 /* DataSources */,
 			);
 			name = NewsApp;
 			packageProductDependencies = (
