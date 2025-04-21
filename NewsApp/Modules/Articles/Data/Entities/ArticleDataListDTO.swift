@@ -35,9 +35,9 @@ struct ArticleDataListDTO: Decodable {
 }
 
 extension ArticlePageDataListDTO {
-    func toDomain() -> [ArticleDomainListDTO] {
+    func toDomain() -> [ArticleList] {
         articles.map { article in
-            ArticleDomainListDTO(
+            ArticleList(
                 articleId: UUID(),
                 totalResults: totalResults,
                 source: article.source.name,

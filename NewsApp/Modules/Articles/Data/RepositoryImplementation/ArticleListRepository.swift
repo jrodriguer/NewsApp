@@ -15,7 +15,7 @@ final class DefaultArticleListRepository: ArticleListRepository {
         self.service = service
     }
     
-    func fetchArticleList(page: Int) async throws -> [ArticleDomainListDTO] {
+    func fetchArticleList(page: Int) async throws -> [ArticleList] {
         let fetchedArticles = try await service.fetchArticleListFromNetwork(page: page).toDomain()
         return fetchedArticles
     }

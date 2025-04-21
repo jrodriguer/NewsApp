@@ -1,5 +1,5 @@
 //
-//  ArticleDomainListDTO.swift
+//  ArticleList.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 2/9/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArticleDomainListDTO {
+struct ArticleList {
     let articleId: UUID
     let totalResults: Int
     let source: String
