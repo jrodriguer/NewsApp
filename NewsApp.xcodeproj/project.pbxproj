@@ -318,7 +318,7 @@
 				8A72E9722C8232EE0014A276 /* Log.swift */,
 				8AF720CE2C8371FD000383C2 /* Entities */,
 				8AABBC922B9635FF00D78C5D /* Environments */,
-				8AF720CF2C837204000383C2 /* Interface */,
+				8AF720CF2C837204000383C2 /* RepositoryInterfaces */,
 				8AF720D22C837225000383C2 /* UseCase */,
 			);
 			path = Domain;
@@ -458,20 +458,12 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		8AF720CF2C837204000383C2 /* Interface */ = {
-			isa = PBXGroup;
-			children = (
-				8AF720D02C83720D000383C2 /* Repository */,
-			);
-			path = Interface;
-			sourceTree = "<group>";
-		};
-		8AF720D02C83720D000383C2 /* Repository */ = {
+		8AF720CF2C837204000383C2 /* RepositoryInterfaces */ = {
 			isa = PBXGroup;
 			children = (
 				8A2CE75E2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift */,
 			);
-			path = Repository;
+			path = RepositoryInterfaces;
 			sourceTree = "<group>";
 		};
 		8AF720D22C837225000383C2 /* UseCase */ = {
