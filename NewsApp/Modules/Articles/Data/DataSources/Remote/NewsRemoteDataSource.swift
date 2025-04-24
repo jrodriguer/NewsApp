@@ -26,6 +26,21 @@ class NewsRemoteDataSource {
         
         return try JSONDecoder().decode(ArticlePageDataListDTO.self, from: data)
     }
+    
+    func getTopHeadlines() async throws -> ArticlePageDataListDTO {
+        guard let url = URL(string: "\(baseURL)top-headlines?apiKey=\(apiKey)") else {
+            throw URLError(.badURL)
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+            throw APIError.invalidResponse
+        }
+        
+        return try JSONDecoder().decode(ArticlePageDataListDTO.self, from: data)
+    }
 }
 
 enum APIError: Error {
