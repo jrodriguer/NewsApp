@@ -1,5 +1,5 @@
 //
-//  ArticleDataListDTO.swift
+//  ArticlePageListDTO.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 3/9/24.
@@ -7,34 +7,27 @@
 
 import Foundation
 
-struct ArticlePageDataListDTO: Decodable {
+struct ArticlePageListDTO: Decodable {
     let status: String
     let totalResults: Int
-    let articles: [ArticleDataListDTO]
-}
-
-struct ArticleDataListDTO: Decodable {
-    let source: SourceDTO
-    let author: String?
-    let title: String
-    let description: String?
-    let url: String
-    let urlToImage: String?
-    let publishedAt: Date
-    let content: String?
-    private enum CodingKeys: String, CodingKey {
-        case source,
-             title,
-             url,
-             publishedAt,
-             author,
-             description,
-             urlToImage,
-             content
+    let articles: [ArticleListDTO]
+    
+    struct ArticleListDTO: Decodable {
+        let source: SourceDTO
+        let author: String?
+        let title: String
+        let description: String?
+        let url: String
+        let urlToImage: String?
+        let publishedAt: Date
+        let content: String?
+        
+        struct SourceDTO: Decodable {
+            let id: String?
+            let name: String
+        }
     }
-}
-
-extension ArticlePageDataListDTO {
+    
     func toDomain() -> [ArticleList] {
         articles.map { article in
             ArticleList(
@@ -51,9 +44,4 @@ extension ArticlePageDataListDTO {
             )
         }
     }
-}
-
-struct SourceDTO: Decodable {
-    let id: String?
-    let name: String
 }
