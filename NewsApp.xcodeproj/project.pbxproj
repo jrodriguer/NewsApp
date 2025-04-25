@@ -205,6 +205,15 @@
 			path = DataModels;
 			sourceTree = "<group>";
 		};
+		8A44DA3D2DBBAA14004ABC3A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8A72E9702C8232B10014A276 /* Configuration.swift */,
+				8A72E9722C8232EE0014A276 /* Log.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		8A47F6FC2D074A0900532257 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,12 +319,11 @@
 		8A7C4D6F2B879029009E98F6 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				8A72E9702C8232B10014A276 /* Configuration.swift */,
-				8A72E9722C8232EE0014A276 /* Log.swift */,
 				8AF720CE2C8371FD000383C2 /* Entities */,
 				8AABBC922B9635FF00D78C5D /* Environments */,
 				8AF720CF2C837204000383C2 /* RepositoryInterfaces */,
 				8AF720D22C837225000383C2 /* UseCase */,
+				8A44DA3D2DBBAA14004ABC3A /* Utils */,
 			);
 			path = Domain;
 			sourceTree = "<group>";

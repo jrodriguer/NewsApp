@@ -20,6 +20,6 @@ final class DefaultArticleListUseCase: ArticleListUseCase {
     }
     
     func fetchArticleList(page: Int) async throws -> [ArticleList] {
-        try await repository.fetchArticleList(page: page)
+        try await repository.fetchTrendingArticles(page: page)
     }
 }
