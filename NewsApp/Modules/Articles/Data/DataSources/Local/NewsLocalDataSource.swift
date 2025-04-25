@@ -9,5 +9,7 @@ import Foundation
 
 class NewsLocalDataSource {
     
+    private let userDefaults = UserDefaults.standard
+    
     
 }
