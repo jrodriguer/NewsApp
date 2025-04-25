@@ -1,5 +1,5 @@
 //
-//  NewsRemoteDataSource.swift
+//  ArticleRemoteDataSource.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 22/4/25.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-class NewsRemoteDataSource {
+class ArticleRemoteDataSource {
     
     private let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
     private let baseURL = "https://newsapi.org/v2/"
     
-    func getEverything(of query: String) async throws -> ArticlePageDataListDTO {
+    func fetchArticlesByQuery(_ query: String) async throws -> ArticlePageDataListDTO {
         guard let url = URL(string: "\(baseURL)everything?q=\(query)&apiKey=\(apiKey)") else {
             throw URLError(.badURL)
         }
@@ -27,8 +27,8 @@ class NewsRemoteDataSource {
         return try JSONDecoder().decode(ArticlePageDataListDTO.self, from: data)
     }
     
-    func getTopHeadlines() async throws -> ArticlePageDataListDTO {
-        guard let url = URL(string: "\(baseURL)top-headlines?apiKey=\(apiKey)") else {
+    func fetchTrendingArticles(page: Int) async throws -> ArticlePageDataListDTO {
+        guard let url = URL(string: "\(baseURL)top-headlines?page=\(page)&apiKey=\(apiKey)") else {
             throw URLError(.badURL)
         }
         

@@ -9,14 +9,20 @@ import Foundation
 
 final class DefaultArticleListRepository: ArticleListRepository {
     
-    private let service: ArticleListService
+    private let remoteDataSource: ArticleRemoteDataSource
+    private let localDataSource: NewsLocalDataSource
     
-    init(service: ArticleListService) {
-        self.service = service
+    init(remoteDataSource: ArticleRemoteDataSource, localDataSource: NewsLocalDataSource) {
+        self.remoteDataSource = remoteDataSource
+        self.localDataSource = localDataSource
     }
     
-    func fetchArticleList(page: Int) async throws -> [ArticleList] {
-        let fetchedArticles = try await service.fetchArticleListFromNetwork(page: page).toDomain()
-        return fetchedArticles
+    func fetchArticlesByQuery(query: String) async throws -> [ArticleList] {
+        let articleDTO = try await remoteDataSource.fetchArticlesByQuery(query)
+        return articleDTO.toDomain()
+    }
+    
+    func fetchTrendingArticles(page: Int) async throws -> [ArticleList] {
+        return []
     }
 }

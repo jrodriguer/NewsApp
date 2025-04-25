@@ -8,5 +8,6 @@
 import Foundation
 
 protocol ArticleListRepository {
-    func fetchArticleList(page: Int) async throws -> [ArticleList]
+    func fetchArticlesByQuery(query: String) async throws -> [ArticleList]
+    func fetchTrendingArticles(page: Int) async throws -> [ArticleList]
 }
