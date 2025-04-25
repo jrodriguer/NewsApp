@@ -12,7 +12,7 @@ class ArticleRemoteDataSource {
     private let apiKey = "978764b3fe6b412f8517a7d9c0a1e140"
     private let baseURL = "https://newsapi.org/v2/"
     
-    func fetchArticlesByQuery(_ query: String) async throws -> ArticlePageDataListDTO {
+    func fetchArticlesByQuery(_ query: String) async throws -> ArticlePageListDTO {
         guard let url = URL(string: "\(baseURL)everything?q=\(query)&apiKey=\(apiKey)") else {
             throw URLError(.badURL)
         }
@@ -24,10 +24,10 @@ class ArticleRemoteDataSource {
             throw APIError.invalidResponse
         }
         
-        return try JSONDecoder().decode(ArticlePageDataListDTO.self, from: data)
+        return try JSONDecoder().decode(ArticlePageListDTO.self, from: data)
     }
     
-    func fetchTrendingArticles(page: Int) async throws -> ArticlePageDataListDTO {
+    func fetchTrendingArticles(page: Int) async throws -> ArticlePageListDTO {
         guard let url = URL(string: "\(baseURL)top-headlines?page=\(page)&apiKey=\(apiKey)") else {
             throw URLError(.badURL)
         }
@@ -39,7 +39,7 @@ class ArticleRemoteDataSource {
             throw APIError.invalidResponse
         }
         
-        return try JSONDecoder().decode(ArticlePageDataListDTO.self, from: data)
+        return try JSONDecoder().decode(ArticlePageListDTO.self, from: data)
     }
 }
 
