@@ -23,6 +23,7 @@ final class DefaultArticleListRepository: ArticleListRepository {
     }
     
     func fetchTrendingArticles(page: Int) async throws -> [ArticleList] {
-        return []
+        let articleDTO = try await remoteDataSource.fetchTrendingArticles(page: page)
+        return articleDTO.toDomain()
     }
 }
