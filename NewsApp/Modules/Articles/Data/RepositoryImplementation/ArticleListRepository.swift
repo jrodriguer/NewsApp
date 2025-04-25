@@ -7,12 +7,12 @@
 
 import Foundation
 
-final class DefaultArticleListRepository: ArticleListRepository {
+final class ArticleListRepository: ArticleListRepositoryProtocol {
     
     private let remoteDataSource: ArticleRemoteDataSource
-    private let localDataSource: NewsLocalDataSource
+    private let localDataSource: ArticleLocalDataSource
     
-    init(remoteDataSource: ArticleRemoteDataSource, localDataSource: NewsLocalDataSource) {
+    init(remoteDataSource: ArticleRemoteDataSource, localDataSource: ArticleLocalDataSource) {
         self.remoteDataSource = remoteDataSource
         self.localDataSource = localDataSource
     }
