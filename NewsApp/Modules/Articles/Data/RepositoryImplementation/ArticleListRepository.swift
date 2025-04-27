@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ArticleListRepository: ArticleListRepositoryProtocol {
+class ArticleListRepository: ArticleListRepositoryProtocol {
     
     private let remoteDataSource: ArticleRemoteDataSource
     private let localDataSource: ArticleLocalDataSource

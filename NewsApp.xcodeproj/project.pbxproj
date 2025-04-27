@@ -25,6 +25,8 @@
 		8A3E1CA52C87157E00851895 /* ArticleListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E1CA42C87157E00851895 /* ArticleListRepository.swift */; };
 		8A3E1CA72C8715FE00851895 /* ArticleListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E1CA62C8715FE00851895 /* ArticleListService.swift */; };
 		8A3E1CAC2C8718CB00851895 /* ArticlePageListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E1CAB2C8718CB00851895 /* ArticlePageListDTO.swift */; };
+		8A44DA5F2DBE5006004ABC3A /* SearchHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A44DA5E2DBE5006004ABC3A /* SearchHistoryRepository.swift */; };
+		8A44DA612DBE521F004ABC3A /* SearchHistoryRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A44DA602DBE521F004ABC3A /* SearchHistoryRepositoryProtocol.swift */; };
 		8A47F6F82D071E2100532257 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47F6F72D071E2100532257 /* ImageView.swift */; };
 		8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */; };
 		8A4E22C12B4A2BCC006D71C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E22C02B4A2BCC006D71C6 /* Assets.xcassets */; };
@@ -114,6 +116,8 @@
 		8A3E1CA42C87157E00851895 /* ArticleListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListRepository.swift; sourceTree = "<group>"; };
 		8A3E1CA62C8715FE00851895 /* ArticleListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListService.swift; sourceTree = "<group>"; };
 		8A3E1CAB2C8718CB00851895 /* ArticlePageListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePageListDTO.swift; sourceTree = "<group>"; };
+		8A44DA5E2DBE5006004ABC3A /* SearchHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryRepository.swift; sourceTree = "<group>"; };
+		8A44DA602DBE521F004ABC3A /* SearchHistoryRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryRepositoryProtocol.swift; sourceTree = "<group>"; };
 		8A47F6F72D071E2100532257 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		8A4E22B92B4A2BCA006D71C6 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApp.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				8A3E1CA42C87157E00851895 /* ArticleListRepository.swift */,
+				8A44DA5E2DBE5006004ABC3A /* SearchHistoryRepository.swift */,
 			);
 			path = RepositoryImplementation;
 			sourceTree = "<group>";
@@ -457,6 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				8A2CE75E2C85BE9D00B762D0 /* ArticleListRepositoryProtocol.swift */,
+				8A44DA602DBE521F004ABC3A /* SearchHistoryRepositoryProtocol.swift */,
 			);
 			path = RepositoryInterfaces;
 			sourceTree = "<group>";
@@ -603,11 +609,13 @@
 			files = (
 				8A1DAC262B8E3C6F00259AD3 /* BookmarkViewModel.swift in Sources */,
 				8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */,
+				8A44DA612DBE521F004ABC3A /* SearchHistoryRepositoryProtocol.swift in Sources */,
 				8AA1BF772D284DF100071810 /* Font.swift in Sources */,
 				8A66DE922D5BB9D4005AD4AE /* FabButtonView.swift in Sources */,
 				8AA1BF792D284DF100071810 /* Color.swift in Sources */,
 				8AA1BF7A2D284DF100071810 /* TextDefinition.swift in Sources */,
 				8A59DEEE2D67430800F80586 /* BookmarkArticleTip.swift in Sources */,
+				8A44DA5F2DBE5006004ABC3A /* SearchHistoryRepository.swift in Sources */,
 				8AA1BF7B2D284DF100071810 /* NotoSans.swift in Sources */,
 				8AA1BF7F2D284DF100071810 /* Text.swift in Sources */,
 				8A47F6F82D071E2100532257 /* ImageView.swift in Sources */,

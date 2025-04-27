@@ -21,14 +21,14 @@ class SearchHistoryLocalDataSource: SearchHistoryLocalDataSourceProtocol {
         return userDefaults.stringArray(forKey: recentSearchesKey) ?? []
     }
     
-    func saveSearch(_ cityName: String) throws {
+    func saveSearch(_ articleTitle: String) throws {
         var searches = userDefaults.stringArray(forKey: recentSearchesKey) ?? []
         
         // Remove existing entry if present
-        searches.removeAll { $0 == cityName }
+        searches.removeAll { $0 == articleTitle }
         
         // Add at the beginning
-        searches.insert(cityName, at: 0)
+        searches.insert(articleTitle, at: 0)
         
         // Limit to max number of searches
         if searches.count > maxSearches {
