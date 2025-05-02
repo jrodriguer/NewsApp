@@ -9,7 +9,7 @@ import Foundation
 
 protocol SearchHistoryLocalDataSourceProtocol {
     func getRecentSearches() throws -> [String]
-    func saveSearch(_ cityName: String) throws
+    func saveSearch(_ articleTitle: String) throws
 }
 
 class SearchHistoryLocalDataSource: SearchHistoryLocalDataSourceProtocol {
