@@ -8,8 +8,10 @@
 import Foundation
 
 class ArticleLocalDataSource  {
-    
     private let userDefaults = UserDefaults.standard
     
-    
+    func saveArticles(_ articles: [ArticleListLocal]) throws {
+        let encodedArticles = try JSONEncoder().encode(articles)
+        userDefaults.set(encodedArticles, forKey: "articles")
+    }
 }
