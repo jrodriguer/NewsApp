@@ -1,5 +1,5 @@
 //
-//  ArticlePageDTO.swift
+//  ArticleResponseDTO.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 3/9/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArticlePageDTO: Decodable {
+struct ArticleResponseDTO: Decodable {
     let status: String
     let totalResults: Int
     let articles: [ArticleDTO]
