@@ -1,5 +1,5 @@
 //
-//  ArticleListLocal.swift
+//  ArticleLocal.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 2/5/25.
@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct ArticleListLocal: Codable {
-    let articleId: UUID
-    let totalResults: Int
+struct ArticleLocal: Codable {
+    let id: UUID
     let source: String
     let author: String?
     let title: String
@@ -19,10 +18,9 @@ struct ArticleListLocal: Codable {
     let content: String?
     let urlToImage: String?
     
-    func toDomain() -> ArticleList {
-        return ArticleList(
-            articleId: articleId,
-            totalResults: totalResults,
+    func toDomain() -> Article {
+        return Article(
+            id: id,
             source: source,
             author: author,
             title: title,
@@ -34,10 +32,9 @@ struct ArticleListLocal: Codable {
         )
     }
     
-    static func fromDomain(_ domain: ArticleList) -> ArticleListLocal {
-        return ArticleListLocal(
-            articleId: domain.articleId,
-            totalResults: domain.totalResults,
+    static func fromDomain(_ domain: Article) -> ArticleLocal {
+        return ArticleLocal(
+            id: domain.id,
             source: domain.source,
             author: domain.author,
             title: domain.title,

@@ -1,5 +1,5 @@
 //
-//  ArticlePageListDTO.swift
+//  ArticlePageDTO.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 3/9/24.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ArticlePageListDTO: Decodable {
+struct ArticlePageDTO: Decodable {
     let status: String
     let totalResults: Int
-    let articles: [ArticleListDTO]
+    let articles: [ArticleDTO]
     
-    struct ArticleListDTO: Decodable {
+    struct ArticleDTO: Decodable {
         let source: SourceDTO
         let author: String?
         let title: String
@@ -28,11 +28,10 @@ struct ArticlePageListDTO: Decodable {
         }
     }
     
-    func toDomain() -> [ArticleList] {
+    func toDomain() -> [Article] {
         articles.map { article in
-            ArticleList(
-                articleId: UUID(),
-                totalResults: totalResults,
+            Article(
+                id: UUID(),
                 source: article.source.name,
                 author: article.author,
                 title: article.title,
