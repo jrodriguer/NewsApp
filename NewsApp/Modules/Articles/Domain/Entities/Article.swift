@@ -1,5 +1,5 @@
 //
-//  ArticleList.swift
+//  Article.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 2/9/24.
@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct ArticleList {
+struct Article {
     let articleId: UUID
-    let totalResults: Int
     let source: String
     let author: String?
     let title: String
