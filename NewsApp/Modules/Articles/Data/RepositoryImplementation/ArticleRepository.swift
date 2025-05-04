@@ -1,5 +1,5 @@
 //
-//  ArticleListRepository.swift
+//  ArticleRepository.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 3/9/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ArticleListRepository: ArticleListRepositoryProtocol {
+class ArticleRepository: ArticleListRepositoryProtocol {
     private let remoteDataSource: ArticleRemoteDataSource
     private let localDataSource: ArticleLocalDataSource
     
