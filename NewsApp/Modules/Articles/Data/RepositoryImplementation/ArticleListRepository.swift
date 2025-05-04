@@ -16,12 +16,12 @@ class ArticleListRepository: ArticleListRepositoryProtocol {
         self.localDataSource = localDataSource
     }
     
-    func fetchArticlesByQuery(query: String) async throws -> [ArticleList] {
+    func fetchArticlesByQuery(query: String) async throws -> [Article] {
         let articleDTO = try await remoteDataSource.fetchArticlesByQuery(query)
         return articleDTO.toDomain()
     }
     
-    func fetchTrendingArticles(page: Int) async throws -> [ArticleList] {
+    func fetchTrendingArticles(page: Int) async throws -> [Article] {
         let articleDTO = try await remoteDataSource.fetchTrendingArticles(page: page)
         return articleDTO.toDomain()
     }
