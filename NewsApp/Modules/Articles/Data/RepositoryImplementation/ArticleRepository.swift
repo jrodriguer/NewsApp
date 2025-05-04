@@ -25,4 +25,13 @@ class ArticleListRepository: ArticleListRepositoryProtocol {
         let articleDTO = try await remoteDataSource.fetchTrendingArticles(page: page)
         return articleDTO.toDomain()
     }
+    
+    func getCachedArticle(forArticle article: String) async throws -> Article? {
+        return try localDataSource.getArticle(forArticle: article)?.toDomain()
+    }
+    
+    func saveArticle(_ article: Article) async throws {
+        let localModel = ArticleLocal.fromDomain(article)
+        try localDataSource.saveArticle(localModel)
+    }
 }
