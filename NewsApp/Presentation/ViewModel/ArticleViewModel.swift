@@ -95,10 +95,10 @@ class ArticleViewModel: ArticleViewModelProtocol {
     /// Maps Articles to ArticleListItemViewModel.
     /// - Parameter articles: array of Articles.
     /// Returns: array of ArticleListItemViewModel
-    private func transformFetchedArticles(_ articles: [ArticleDomainListDTO]) -> [ArticleListItemViewModel] {
+    private func transformFetchedArticles(_ articles: [ArticleList]) -> [ArticleListItemViewModel] {
         return articles.map { article in
             ArticleListItemViewModel(
-                id: article.articleId,
+                id: article.id,
                 source: article.source,
                 author: article.author,
                 title: article.title,

@@ -1,5 +1,5 @@
 //
-//  ArticleRepository.swift
+//  ArticleListRepository.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 3/9/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ArticleRepository: ArticleListRepositoryProtocol {
+class ArticleListRepository: ArticleListRepositoryProtocol {
     private let remoteDataSource: ArticleRemoteDataSource
     private let localDataSource: ArticleLocalDataSource
     
@@ -16,6 +16,7 @@ class ArticleRepository: ArticleListRepositoryProtocol {
         self.localDataSource = localDataSource
     }
     
+    // - MARK: Network
     func fetchArticlesByQuery(query: String) async throws -> [Article] {
         let articleDTO = try await remoteDataSource.fetchArticlesByQuery(query)
         return articleDTO.toDomain()
@@ -26,6 +27,7 @@ class ArticleRepository: ArticleListRepositoryProtocol {
         return articleDTO.toDomain()
     }
     
+    // - MARK: Cached
     func getCachedArticle(forArticle article: String) async throws -> Article? {
         return try localDataSource.getArticle(forArticle: article)?.toDomain()
     }
