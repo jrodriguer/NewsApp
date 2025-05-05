@@ -95,8 +95,8 @@
 		8AAA2B4A2DC83C78005D5D7C /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Domain/Environments/Dev.xcconfig,
-				Resources/Info.plist,
+				Articles/Domain/Environments/Dev.xcconfig,
+				Articles/Resources/Info.plist,
 			);
 			target = 8A4E22B82B4A2BCA006D71C6 /* NewsApp */;
 		};
@@ -104,7 +104,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8A7877CF2D2D865A00554DA6 /* NewsAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NewsAppTests; sourceTree = "<group>"; };
-		8AAA2B202DC83C64005D5D7C /* New Folder */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8AAA2B4A2DC83C78005D5D7C /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "New Folder"; sourceTree = "<group>"; };
+		8AAA2B202DC83C64005D5D7C /* Modules */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8AAA2B4A2DC83C78005D5D7C /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Modules; sourceTree = "<group>"; };
 		8AB7437E2DB6FFE7000322B7 /* UIModels */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UIModels; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -160,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				8AB5F15C2C7788E200F41010 /* Presentation */,
-				8AAA2B202DC83C64005D5D7C /* New Folder */,
+				8AAA2B202DC83C64005D5D7C /* Modules */,
 				8A5967BF2C85FE5A000A9545 /* Application */,
 			);
 			path = NewsApp;
@@ -204,10 +204,10 @@
 		8AB5F15C2C7788E200F41010 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8AB7437E2DB6FFE7000322B7 /* UIModels */,
 				8AB5F1612C77900A00F41010 /* Util */,
 				8AB5F15D2C77890000F41010 /* ViewModel */,
 				8AB5F15E2C77890900F41010 /* Views */,
-				8AB7437E2DB6FFE7000322B7 /* UIModels */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -263,7 +263,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				8AAA2B202DC83C64005D5D7C /* New Folder */,
+				8AAA2B202DC83C64005D5D7C /* Modules */,
 				8AB7437E2DB6FFE7000322B7 /* UIModels */,
 			);
 			name = NewsApp;
