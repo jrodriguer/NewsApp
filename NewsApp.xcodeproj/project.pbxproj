@@ -342,7 +342,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"NewsApp/Resources/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"NewsApp/Modules/Articles/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = X55H9FTVGN;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
