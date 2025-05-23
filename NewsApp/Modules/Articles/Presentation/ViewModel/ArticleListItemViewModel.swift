@@ -1,5 +1,5 @@
 //
-//  ArticleListItemViewModel.swift
+//  ArticleItemViewModel.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 21/10/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArticleListItemViewModel: Identifiable, Encodable, Decodable, Hashable {
+struct ArticleItemViewModel: Identifiable, Encodable, Decodable, Hashable {
     let id: UUID
     let source: String
     let author: String?

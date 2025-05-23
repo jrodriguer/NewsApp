@@ -9,6 +9,7 @@ import Foundation
 
 struct Article {
     let id: UUID
+    let totalResults: Int
     let source: String
     let author: String?
     let title: String

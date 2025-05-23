@@ -7,31 +7,21 @@
 
 import Foundation
 
-protocol ArticleViewModelProtocol: ObservableObject {
-    var articles: [ArticleListItemViewModel] { get set }
-    var isEmpty: Bool { get }
-    var isLoading: Bool { get }
-    var isError: Bool { get }
-    var error: String { get }
-    func loadFirstPage()
-    func requestMoreItemsIfNeeded()
-    func shouldShowLoader() -> Bool
-}
+class ArticleViewModel: ObservableObject {
+    private let articleListUseCase: ArticleListUseCase
 
-class ArticleViewModel: ArticleViewModelProtocol {
-
-    @Published var articles: [ArticleListItemViewModel] = []
-    @Published var isLoading = false
-    @Published var isError = false
-    @Published var error = ""
-        
-    var isEmpty: Bool { return articles.isEmpty }
-        
     private var totalArticlesAvailable: Int?
     private var articlesLoadedCount: Int?
     private var page = 1
     
-    private let articleListUseCase: ArticleListUseCase!
+    @Published var articles: [ArticleItemViewModel] = []
+    @Published var isLoading = false
+    @Published var isError = false
+    @Published var error = ""
+    @Published var searchQuery = ""
+    @Published var recentSearches: [String] = []
+        
+    var isEmpty: Bool { return articles.isEmpty }
     
     init(useCase: ArticleListUseCase) {
         self.articleListUseCase = useCase
@@ -83,21 +73,16 @@ class ArticleViewModel: ArticleViewModelProtocol {
             }
         } catch {
             isError = true
-            
-            if let networkError = error as? NetworkError {
-                self.error = networkError.description
-            } else {
-                self.error = error.localizedDescription
-            }
+            self.error = error.localizedDescription
         }
     }
     
-    /// Maps Articles to ArticleListItemViewModel.
+    /// Maps Articles to ArticleItemViewModel.
     /// - Parameter articles: array of Articles.
-    /// Returns: array of ArticleListItemViewModel
-    private func transformFetchedArticles(_ articles: [ArticleList]) -> [ArticleListItemViewModel] {
+    /// Returns: array of ArticleItemViewModel
+    private func transformFetchedArticles(_ articles: [Article]) -> [ArticleItemViewModel] {
         return articles.map { article in
-            ArticleListItemViewModel(
+            ArticleItemViewModel(
                 id: article.id,
                 source: article.source,
                 author: article.author,
