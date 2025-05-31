@@ -1,13 +1,13 @@
 //
-//  ArticleItemViewModel.swift
+//  ArticleUIModel.swift
 //  NewsApp
 //
-//  Created by Julio Rodriguez on 21/10/24.
+//  Created by Julio Rodriguez on 31/5/25.
 //
 
 import Foundation
 
-struct ArticleItemViewModel: Identifiable, Encodable, Decodable, Hashable {
+struct ArticleUIModel: Identifiable, Encodable, Decodable, Hashable {
     let id: UUID
     let source: String
     let author: String?
@@ -70,7 +70,7 @@ struct ArticleItemViewModel: Identifiable, Encodable, Decodable, Hashable {
 //    static func timeDifference(from date: Date) -> String {
 //        let currentDate = Date()
 //        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date, to: currentDate)
-//        
+//
 //        if let year = components.year, year > 0 {
 //            return "\(year) year\(year == 1 ? "" : "s") ago"
 //        } else if let month = components.month, month > 0 {

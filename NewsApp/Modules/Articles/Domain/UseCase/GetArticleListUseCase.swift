@@ -1,5 +1,5 @@
 //
-//  ArticleListUseCase.swift
+//  GetArticleUseCase.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 2/9/24.
@@ -7,11 +7,7 @@
 
 import Foundation
 
-protocol ArticleListUseCase {
-    func fetchArticleList(page: Int) async throws -> [Article]
-}
-
-final class DefaultArticleListUseCase: ArticleListUseCase {
+final class GetArticleUseCase {
     private let repository: ArticleListRepositoryProtocol
     
     init(repository: ArticleListRepositoryProtocol) {
