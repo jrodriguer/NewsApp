@@ -5,9 +5,7 @@
 //  Created by Julio Rodriguez on 5/5/25.
 //
 
-import Foundation
 import XCTest
-
 @testable import NewsApp
 
 class ManageSearchHistoryUseCaseTests: XCTestCase {
