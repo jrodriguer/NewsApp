@@ -11,10 +11,10 @@ class ArticleSearchViewModel: ObservableObject {
     
     @Published var searchText = ""
     
-    private let articleListUseCase: ArticleListUseCase!
+    private let GetArticleUseCase: GetArticleUseCase!
     
-    init(useCase: ArticleListUseCase) {
-        self.articleListUseCase = useCase
+    init(useCase: GetArticleUseCase) {
+        self.GetArticleUseCase = useCase
     }
 
 }
