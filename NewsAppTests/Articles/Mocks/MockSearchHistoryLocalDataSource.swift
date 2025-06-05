@@ -26,22 +26,22 @@ class MockSearchHistoryLocalDataSource: SearchHistoryLocalDataSourceProtocol {
         return mockSearches
     }
     
-    func saveSearch(_ cityName: String) throws {
+    func saveSearch(_ articleTitle: String) throws {
         saveSearchCalled = true
-        lastSavedSearch = cityName
+        lastSavedSearch = articleTitle
         
         if shouldThrowError {
             throw NSError(domain: "test", code: 0)
         }
         
-        if !mockSearches.contains(cityName) {
-            mockSearches.insert(cityName, at: 0)
+        if !mockSearches.contains(articleTitle) {
+            mockSearches.insert(articleTitle, at: 0)
             if mockSearches.count > 5 {
                 mockSearches = Array(mockSearches.prefix(5))
             }
         } else {
-            mockSearches.removeAll { $0 == cityName }
-            mockSearches.insert(cityName, at: 0)
+            mockSearches.removeAll { $0 == articleTitle }
+            mockSearches.insert(articleTitle, at: 0)
         }
     }
 }

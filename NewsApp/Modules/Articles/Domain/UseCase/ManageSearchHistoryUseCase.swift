@@ -18,7 +18,7 @@ class ManageSearchHistoryUseCase {
         return try await repository.getRecentSearches()
     }
     
-    func addSearchTerm(_ cityName: String) async throws {
-        try await repository.addSearch(cityName)
+    func addSearchTerm(_ articleTitle: String) async throws {
+        try await repository.addSearch(articleTitle)
     }
 }

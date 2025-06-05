@@ -14,7 +14,7 @@ final class GetArticleUseCase {
         self.repository = repository
     }
     
-    func fetchArticleList(page: Int) async throws -> [Article] {
+    func fetchArticles(page: Int) async throws -> [Article] {
         try await repository.fetchTrendingArticles(page: page)
     }
 }

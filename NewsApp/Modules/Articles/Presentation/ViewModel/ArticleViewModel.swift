@@ -25,6 +25,10 @@ class ArticleViewModel: ObservableObject {
     init(getArticleUseCase: GetArticleUseCase, searchHistoryUseCase: ManageSearchHistoryUseCase) {
         self.getArticleUseCase = getArticleUseCase
         self.searchHistoryUseCase = searchHistoryUseCase
+        
+        Task {
+            await loadRecentSearches()
+        }
     }
     
     func shouldShowLoader() -> Bool {
@@ -60,13 +64,13 @@ class ArticleViewModel: ObservableObject {
     private func fetchArticles(page: Int) async {
         isLoading = true
         do {
-            let response = try await getArticleUseCase.fetchArticleList(page: page)
+            let response = try await getArticleUseCase.fetchArticles(page: page)
             totalArticlesAvailable = response.map { $0.totalResults }.first
             let validatedResponse = response.filter { $0.title != "[Removed]" }
-            let newArticles = transformFetchedArticles(validatedResponse)
+            let articleListResponse = transformFetchedArticles(validatedResponse)
             
             await MainActor.run {
-                articles.append(contentsOf: newArticles)
+                articles.append(contentsOf: articleListResponse)
                 articlesLoadedCount = articles.count
                 isLoading = false
                 isError = false
@@ -100,5 +104,25 @@ class ArticleViewModel: ObservableObject {
     private func moreItemsRemaining(_ articlesLoadedCount: Int, _ totalArticlesAvailable: Int) -> Bool {
         Log.debug(tag: ArticleViewModel.self, message: "More items remaining! Articles loaded: \(articlesLoadedCount), Total articles available: \(totalArticlesAvailable)")
         return articlesLoadedCount < totalArticlesAvailable
+    }
+    
+    @MainActor
+    private func loadRecentSearches() async {
+        do {
+            self.recentSearches = try await searchHistoryUseCase.getRecentSearches()
+        } catch {
+            print("Failed to load recent searches: \(error)")
+        }
+    }
+    
+    @MainActor
+    private func addToRecentSearches(_ articleTitle: String) async {
+        do {
+            try await searchHistoryUseCase.addSearchTerm(articleTitle)
+            // Reload the list
+            self.recentSearches = try await searchHistoryUseCase.getRecentSearches()
+        } catch {
+            print("Failed to update recent searches: \(error)")
+        }
     }
 }
