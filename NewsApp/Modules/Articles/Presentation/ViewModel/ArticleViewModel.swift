@@ -10,15 +10,13 @@ import Foundation
 class ArticleViewModel: ObservableObject {
     private let getArticleUseCase: GetArticleUseCase
     private let searchHistoryUseCase: ManageSearchHistoryUseCase
-
     private var totalArticlesAvailable: Int?
     private var articlesLoadedCount: Int?
     private var page = 1
-    
     @Published var articles: [ArticleUIModel] = []
     @Published var isLoading = false
     @Published var isError = false
-    @Published var error = ""
+    @Published var errorMessage = ""
     @Published var searchQuery = ""
     @Published var recentSearches: [String] = []
         
@@ -75,7 +73,7 @@ class ArticleViewModel: ObservableObject {
             }
         } catch {
             isError = true
-            self.error = error.localizedDescription
+            errorMessage = error.localizedDescription
         }
     }
     
