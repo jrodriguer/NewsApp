@@ -93,7 +93,7 @@ class ArticleViewModel: ObservableObject {
                 title: article.title,
                 description: article.description,
                 link: article.url,
-                publishedAt: article.publishedAt.formatted(date: .long, time: .shortened),
+                publishedAt: article.publishedAt,
                 content: article.content,
                 image: article.urlToImage
             )
