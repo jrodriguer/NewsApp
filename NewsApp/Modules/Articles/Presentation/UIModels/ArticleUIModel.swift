@@ -14,7 +14,7 @@ struct ArticleUIModel: Identifiable, Encodable, Decodable, Hashable {
     let title: String
     let description: String?
     let link: String
-    let publishedAt: String
+    let publishedAt: Date
     let content: String?
     let image: String?
     
@@ -25,7 +25,7 @@ struct ArticleUIModel: Identifiable, Encodable, Decodable, Hashable {
         title: String,
         description: String? = nil,
         link: String,
-        publishedAt: String,
+        publishedAt: Date,
         content: String? = nil,
         image: String? = nil
     ) {
@@ -60,29 +60,22 @@ struct ArticleUIModel: Identifiable, Encodable, Decodable, Hashable {
         return content.replacingOccurrences(of: "\\[.*\\]", with: "", options: .regularExpression)
     }
     
-    var publishedStringToDate: Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        let date = dateFormatter.date(from: publishedAt)
-        return date ?? Date()
+    static func timeDifference(from date: Date) -> String {
+        let currentDate = Date()
+        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date, to: currentDate)
+
+        if let year = components.year, year > 0 {
+            return "\(year) year\(year == 1 ? "" : "s") ago"
+        } else if let month = components.month, month > 0 {
+            return "\(month) month\(month == 1 ? "" : "s") ago"
+        } else if let day = components.day, day > 0 {
+            return "\(day) day\(day == 1 ? "" : "s") ago"
+        } else if let hour = components.hour, hour > 0 {
+            return "\(hour) hour\(hour == 1 ? "" : "s") ago"
+        } else if let minute = components.minute, minute > 0 {
+            return "\(minute) minute\(minute == 1 ? "" : "s") ago"
+        } else {
+            return "Just now"
+        }
     }
-    
-//    static func timeDifference(from date: Date) -> String {
-//        let currentDate = Date()
-//        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date, to: currentDate)
-//
-//        if let year = components.year, year > 0 {
-//            return "\(year) year\(year == 1 ? "" : "s") ago"
-//        } else if let month = components.month, month > 0 {
-//            return "\(month) month\(month == 1 ? "" : "s") ago"
-//        } else if let day = components.day, day > 0 {
-//            return "\(day) day\(day == 1 ? "" : "s") ago"
-//        } else if let hour = components.hour, hour > 0 {
-//            return "\(hour) hour\(hour == 1 ? "" : "s") ago"
-//        } else if let minute = components.minute, minute > 0 {
-//            return "\(minute) minute\(minute == 1 ? "" : "s") ago"
-//        } else {
-//            return "Just now"
-//        }
-//    }
 }
