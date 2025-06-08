@@ -14,7 +14,6 @@ struct ContentView: View {
     @State private var isTabBarHidden: Bool = false
     
     let articleTabView: ArticleTabView<ArticleViewModel>
-    let searchTabView: SearchTabView<ArticleViewModel>
     let bookmarkTabView: AnyView
         
     var body: some View {
@@ -27,11 +26,6 @@ struct ContentView: View {
                             articleTabView
                                 .toolbarVisibility(.hidden, for: .tabBar)
                                 .environmentObject(bookmarkViewModel)
-                        }
-                        
-                        Tab.init(value: .search) {
-                            searchTabView
-                                .toolbarVisibility(.hidden, for: .tabBar)
                         }
                         
                         Tab.init(value: .bookmarks) {
@@ -57,9 +51,6 @@ struct ContentView: View {
                                     }
                                 }
                             }
-                        
-                        searchTabView
-                            .tag(TabBarType.search)
                         
                         BookmarkTabView()
                             .tag(TabBarType.bookmarks)
