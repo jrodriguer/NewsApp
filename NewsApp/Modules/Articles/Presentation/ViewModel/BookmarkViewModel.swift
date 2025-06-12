@@ -12,30 +12,30 @@ enum BookmarkKey: String {
 }
 
 protocol BookmarkViewModelProtocol: ObservableObject {
-    var bookmarks: [ArticleListItemViewModel] { get set }
-    func loadBookmarks() -> [ArticleListItemViewModel]
-    func contains(_ value: ArticleListItemViewModel) -> Bool
-    func add(_ value: ArticleListItemViewModel)
-    func remove(_ value: ArticleListItemViewModel)
-    func filtered(from allItems: [ArticleListItemViewModel], showFavoritesOnly: Bool) -> [ArticleListItemViewModel]
+    var bookmarks: [ArticleUIModel] { get set }
+    func loadBookmarks() -> [ArticleUIModel]
+    func contains(_ value: ArticleUIModel) -> Bool
+    func add(_ value: ArticleUIModel)
+    func remove(_ value: ArticleUIModel)
+    func filtered(from allItems: [ArticleUIModel], showFavoritesOnly: Bool) -> [ArticleUIModel]
 }
 
 class BookmarkViewModel: BookmarkViewModelProtocol {
     
-    @Published var bookmarks: [ArticleListItemViewModel] = []
+    @Published var bookmarks: [ArticleUIModel] = []
     
     private var saveKey: BookmarkKey
     private var userDefaultsManager: any UserDefaultsServiceProtocol.Type
     
-    init(saveKey: BookmarkKey, userDefaultsManager: any UserDefaultsServiceProtocol.Type = UserDefaultsService<ArticleListItemViewModel>.self) {
+    init(saveKey: BookmarkKey, userDefaultsManager: any UserDefaultsServiceProtocol.Type = UserDefaultsService<ArticleUIModel>.self) {
         self.saveKey = saveKey
         self.userDefaultsManager = userDefaultsManager
         self.bookmarks = loadBookmarks()
     }
     
-    func loadBookmarks() -> [ArticleListItemViewModel] {
-        if let storedItems = UserDefaultsService<[ArticleListItemViewModel]>.getItem(saveKey),
-           let decodedItems = try? JSONDecoder().decode([ArticleListItemViewModel].self, from: storedItems) {
+    func loadBookmarks() -> [ArticleUIModel] {
+        if let storedItems = UserDefaultsService<[ArticleUIModel]>.getItem(saveKey),
+           let decodedItems = try? JSONDecoder().decode([ArticleUIModel].self, from: storedItems) {
             bookmarks = decodedItems
             return bookmarks
         } else {
@@ -46,31 +46,31 @@ class BookmarkViewModel: BookmarkViewModelProtocol {
     private func saveBookmarks() {
         do {
             let encoded = try JSONEncoder().encode(bookmarks)
-            UserDefaultsService<ArticleListItemViewModel>.saveItem(saveKey, encoded)
+            UserDefaultsService<ArticleUIModel>.saveItem(saveKey, encoded)
             Log.debug(tag: BookmarkViewModel.self, message: "Bookmarks saved")
         } catch {
             print("Error encoding value \(error)")
         }
     }
     
-    func contains(_ value: ArticleListItemViewModel) -> Bool {
+    func contains(_ value: ArticleUIModel) -> Bool {
         return bookmarks.contains { $0.id == value.id }
     }
     
-    func add(_ value: ArticleListItemViewModel) {
+    func add(_ value: ArticleUIModel) {
         objectWillChange.send()
         bookmarks.append(value)
         Log.debug(tag: BookmarkViewModel.self, message: "Bookmarks updated")
         saveBookmarks()
     }
     
-    func remove(_ value: ArticleListItemViewModel) {
+    func remove(_ value: ArticleUIModel) {
         objectWillChange.send()
         bookmarks.removeAll(where: { $0.id == value.id })
         saveBookmarks()
     }
     
-    func toggle(_ value: ArticleListItemViewModel) {
+    func toggle(_ value: ArticleUIModel) {
         if contains(value) {
             remove(value)
         } else {
@@ -78,7 +78,7 @@ class BookmarkViewModel: BookmarkViewModelProtocol {
         }
     }
     
-    func filtered(from allItems: [ArticleListItemViewModel], showFavoritesOnly: Bool) -> [ArticleListItemViewModel] {
+    func filtered(from allItems: [ArticleUIModel], showFavoritesOnly: Bool) -> [ArticleUIModel] {
         return showFavoritesOnly ? allItems.filter { contains($0) } : allItems
     }
 }
