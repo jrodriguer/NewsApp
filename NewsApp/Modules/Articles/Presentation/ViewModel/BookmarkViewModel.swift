@@ -27,14 +27,14 @@ class BookmarkViewModel: BookmarkViewModelProtocol {
     private var saveKey: BookmarkKey
     private var userDefaultsManager: any UserDefaultsServiceProtocol.Type
     
-    init(saveKey: BookmarkKey, userDefaultsManager: any UserDefaultsServiceProtocol.Type = UserDefaultsService<ArticleUIModel>.self) {
+    init(saveKey: BookmarkKey, userDefaultsManager: any UserDefaultsServiceProtocol.Type = UserDefaultsService.self) {
         self.saveKey = saveKey
         self.userDefaultsManager = userDefaultsManager
         self.bookmarks = loadBookmarks()
     }
     
     func loadBookmarks() -> [ArticleUIModel] {
-        if let storedItems = UserDefaultsService<[ArticleUIModel]>.getItem(saveKey),
+        if let storedItems = UserDefaultsService.getItem<[ArticleUIModel]>(saveKey),
            let decodedItems = try? JSONDecoder().decode([ArticleUIModel].self, from: storedItems) {
             bookmarks = decodedItems
             return bookmarks
@@ -46,7 +46,7 @@ class BookmarkViewModel: BookmarkViewModelProtocol {
     private func saveBookmarks() {
         do {
             let encoded = try JSONEncoder().encode(bookmarks)
-            UserDefaultsService<ArticleUIModel>.saveItem(saveKey, encoded)
+            UserDefaultsService.saveItem<ArticleUIModel>(saveKey, encoded)
             Log.debug(tag: BookmarkViewModel.self, message: "Bookmarks saved")
         } catch {
             print("Error encoding value \(error)")
