@@ -10,13 +10,12 @@ import TipKit
 
 @main
 struct NewsApp: App {
-    
-    private let dependencyContainer = DependencyContainer()
+    private let dependencies = DependencyContainer()
     
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                
+                ContentView(viewModel: dependencies.makeArticleViewModel())
             }
         }
     }
