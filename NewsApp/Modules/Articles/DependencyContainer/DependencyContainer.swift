@@ -1,5 +1,5 @@
 //
-//  AppDIContainer.swift
+//  DependencyContainer.swift
 //  NewsApp
 //
 //  Created by Julio Rodriguez on 19/10/24.
@@ -9,7 +9,7 @@
 
 import Foundation
 
-class AppDIContainer {
+class DependencyContainer {
     // Data sources
     lazy var articleRemoteDataSource = ArticleRemoteDataSource()
     lazy var articleLocalDataSource = ArticleLocalDataSource()

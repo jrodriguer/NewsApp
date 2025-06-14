@@ -11,7 +11,6 @@
 		8A91CC022B8FB18800F673C5 /* Mocker in Frameworks */ = {isa = PBXBuildFile; productRef = 8A91CC012B8FB18800F673C5 /* Mocker */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8A9FEC642B93D2750027A3E6 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9FEC632B93D2750027A3E6 /* SwiftyBeaver */; };
 		8AAB4D0B2B76599200C71B36 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAB4D0A2B76599200C71B36 /* Alamofire */; };
-		8AE9CCF32CC4215B00399F1E /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE9CCF22CC4215B00399F1E /* AppDIContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +41,6 @@
 		8A4E22B92B4A2BCA006D71C6 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApp.swift; sourceTree = "<group>"; };
 		8A7877CE2D2D865A00554DA6 /* NewsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AE9CCF22CC4215B00399F1E /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -113,18 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				8AAA2B202DC83C64005D5D7C /* Modules */,
-				8A5967BF2C85FE5A000A9545 /* Application */,
-			);
-			path = NewsApp;
-			sourceTree = "<group>";
-		};
-		8A5967BF2C85FE5A000A9545 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				8AE9CCF22CC4215B00399F1E /* AppDIContainer.swift */,
 				8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */,
 			);
-			path = Application;
+			path = NewsApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,7 +235,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A4E22BD2B4A2BCA006D71C6 /* NewsApp.swift in Sources */,
-				8AE9CCF32CC4215B00399F1E /* AppDIContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
