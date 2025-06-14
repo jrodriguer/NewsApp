@@ -44,11 +44,57 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		8AAA2B4A2DC83C78005D5D7C /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		8AAF3C772DFD03F800DBCB85 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Articles/Domain/Environments/Dev.xcconfig,
-				Articles/Resources/Info.plist,
+				DataModels/ArticleLocal.swift,
+				DataModels/ArticleResponseDTO.swift,
+				DataSources/Local/ArticleLocalDataSource.swift,
+				DataSources/Local/SearchHistoryLocalDataSource.swift,
+				DataSources/Remote/ArticleRemoteDataSource.swift,
+				RepositoryImplementation/ArticleRepository.swift,
+				RepositoryImplementation/SearchHistoryRepository.swift,
+				Services/UserDefaultsService.swift,
+			);
+			target = 8A4E22B82B4A2BCA006D71C6 /* NewsApp */;
+		};
+		8AAF3C782DFD03F800DBCB85 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				DependencyContainer.swift,
+			);
+			target = 8A4E22B82B4A2BCA006D71C6 /* NewsApp */;
+		};
+		8AAF3C792DFD03F800DBCB85 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Entities/Article.swift,
+				RepositoryInterfaces/ArticleListRepositoryProtocol.swift,
+				RepositoryInterfaces/SearchHistoryRepositoryProtocol.swift,
+				Services/UserDefaultsServiceProtocol.swift,
+				UseCase/GetArticleListUseCase.swift,
+				UseCase/ManageSearchHistoryUseCase.swift,
+				Utils/Configuration.swift,
+				Utils/Log.swift,
+			);
+			target = 8A4E22B82B4A2BCA006D71C6 /* NewsApp */;
+		};
+		8AAF3C7A2DFD03F800DBCB85 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				"Fonts/NotoSans-Black.ttf",
+				"Fonts/NotoSans-Bold.ttf",
+				"Fonts/NotoSans-ExtraBold.ttf",
+				"Fonts/NotoSans-ExtraLight.ttf",
+				"Fonts/NotoSans-Light.ttf",
+				"Fonts/NotoSans-Medium.ttf",
+				"Fonts/NotoSans-Regular.ttf",
+				"Fonts/NotoSans-SemiBold.ttf",
+				"Fonts/NotoSans-Thin.ttf",
+				"GoogleService-Info.plist",
+				news.json,
+				"Preview Content/Preview Assets.xcassets",
 			);
 			target = 8A4E22B82B4A2BCA006D71C6 /* NewsApp */;
 		};
@@ -56,7 +102,11 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8A7877CF2D2D865A00554DA6 /* NewsAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NewsAppTests; sourceTree = "<group>"; };
-		8AAA2B202DC83C64005D5D7C /* Modules */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8AAA2B4A2DC83C78005D5D7C /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Modules; sourceTree = "<group>"; };
+		8AAF3C002DFD03F800DBCB85 /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8AAF3C772DFD03F800DBCB85 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
+		8AAF3C022DFD03F800DBCB85 /* DependencyContainer */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8AAF3C782DFD03F800DBCB85 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DependencyContainer; sourceTree = "<group>"; };
+		8AAF3C122DFD03F800DBCB85 /* Domain */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8AAF3C792DFD03F800DBCB85 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Domain; sourceTree = "<group>"; };
+		8AAF3C302DFD03F800DBCB85 /* Presentation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Presentation; sourceTree = "<group>"; };
+		8AAF3C412DFD03F800DBCB85 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8AAF3C7A2DFD03F800DBCB85 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +160,11 @@
 		8A4E22BB2B4A2BCA006D71C6 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
-				8AAA2B202DC83C64005D5D7C /* Modules */,
+				8AAF3C002DFD03F800DBCB85 /* Data */,
+				8AAF3C022DFD03F800DBCB85 /* DependencyContainer */,
+				8AAF3C122DFD03F800DBCB85 /* Domain */,
+				8AAF3C302DFD03F800DBCB85 /* Presentation */,
+				8AAF3C412DFD03F800DBCB85 /* Resources */,
 				8A4E22BC2B4A2BCA006D71C6 /* NewsApp.swift */,
 			);
 			path = NewsApp;
@@ -133,7 +187,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				8AAA2B202DC83C64005D5D7C /* Modules */,
+				8AAF3C302DFD03F800DBCB85 /* Presentation */,
 			);
 			name = NewsApp;
 			packageProductDependencies = (

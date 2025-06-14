@@ -11,11 +11,13 @@ import TipKit
 @main
 struct NewsApp: App {
     
-    private let appDIContainer = AppDIContainer()
+    private let dependencyContainer = DependencyContainer()
     
     var body: some Scene {
         WindowGroup {
-            appDIContainer.tabsView
+            NavigationStack {
+                
+            }
         }
     }
     
