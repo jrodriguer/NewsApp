@@ -9,7 +9,6 @@ import Foundation
 
 struct ArticleLocal: Codable {
     let id: UUID
-    let totalResults: Int
     let source: String
     let author: String?
     let title: String
@@ -22,7 +21,6 @@ struct ArticleLocal: Codable {
     func toDomain() -> Article {
         return Article(
             id: id,
-            totalResults: totalResults,
             source: source,
             author: author,
             title: title,
@@ -37,7 +35,6 @@ struct ArticleLocal: Codable {
     static func fromDomain(_ domain: Article) -> ArticleLocal {
         return ArticleLocal(
             id: domain.id,
-            totalResults: domain.totalResults,
             source: domain.source,
             author: domain.author,
             title: domain.title,
