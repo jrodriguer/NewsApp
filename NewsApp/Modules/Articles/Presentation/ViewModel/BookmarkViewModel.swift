@@ -34,9 +34,8 @@ class BookmarkViewModel: BookmarkViewModelProtocol {
     }
     
     func loadBookmarks() -> [ArticleUIModel] {
-        if let storedItems = UserDefaultsService.getItem<[ArticleUIModel]>(saveKey),
-           let decodedItems = try? JSONDecoder().decode([ArticleUIModel].self, from: storedItems) {
-            bookmarks = decodedItems
+        if let storedItems = UserDefaultsService.getItem(saveKey) as [ArticleUIModel]? {
+            bookmarks = storedItems
             return bookmarks
         } else {
             return []
@@ -46,7 +45,7 @@ class BookmarkViewModel: BookmarkViewModelProtocol {
     private func saveBookmarks() {
         do {
             let encoded = try JSONEncoder().encode(bookmarks)
-            UserDefaultsService.saveItem<ArticleUIModel>(saveKey, encoded)
+            UserDefaultsService.saveItem(saveKey, encoded)
             Log.debug(tag: BookmarkViewModel.self, message: "Bookmarks saved")
         } catch {
             print("Error encoding value \(error)")
