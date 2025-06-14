@@ -8,30 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @StateObject var viewModel: ArticleViewModel
     @StateObject private var bookmarkViewModel = BookmarkViewModel(saveKey: BookmarkKey.articleBookmarks)
     @State private var activeTab: TabBarType = .news
     @State private var isTabBarHidden: Bool = false
-    
-    let articleTabView: ArticleTabView<ArticleViewModel>
-    let bookmarkTabView: AnyView
-        
+            
     var body: some View {
-
         ZStack(alignment: .bottom) {
             Group {
                 if #available(iOS 18.0, *) {
                     TabView(selection: $activeTab) {
                         Tab.init(value: .news) {
-                            articleTabView
+                            ArticleTabView(viewModel: viewModel)
                                 .toolbarVisibility(.hidden, for: .tabBar)
                                 .environmentObject(bookmarkViewModel)
                         }
                         
                         Tab.init(value: .bookmarks) {
-                            bookmarkTabView
+                            BookmarkTabView()
                                 .toolbarVisibility(.hidden, for: .tabBar)
-//                                .environmentObject(bookmarkViewModel)
+                                .environmentObject(bookmarkViewModel)
                         }
                         
                         Tab.init(value: .settings) {
@@ -41,7 +37,7 @@ struct ContentView: View {
                     }
                 } else {
                     TabView(selection: $activeTab) {
-                        articleTabView
+                        ArticleTabView(viewModel: viewModel)
                             .tag(TabBarType.news)
                             .environmentObject(bookmarkViewModel)
                             .background {

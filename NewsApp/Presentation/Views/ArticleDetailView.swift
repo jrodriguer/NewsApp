@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ArticleDetailView: View {
-    var article: ArticleListItemViewModel
+    var article: ArticleUIModel
     @EnvironmentObject var favorites: BookmarkViewModel
     
     var body: some View {

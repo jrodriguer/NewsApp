@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemRowView: View {
-    var item: ArticleListItemViewModel
+    var item: ArticleUIModel
     @EnvironmentObject var favorites: BookmarkViewModel
     @State private var isPressed = false
     

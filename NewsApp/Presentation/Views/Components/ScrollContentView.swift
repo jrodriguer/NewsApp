@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ScrollContentView<Content: View>: View {
-    let articles: [ArticleListItemViewModel]
-    @ViewBuilder let content: (ArticleListItemViewModel) -> Content
+    let articles: [ArticleUIModel]
+    @ViewBuilder let content: (ArticleUIModel) -> Content
     @Binding var showFab: Bool
     let handleScrollOffset: (CGFloat) -> Void
     
